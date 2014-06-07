@@ -1,0 +1,206 @@
+#les utilisateurs :
+User:
+  tableName: User
+  actAs:
+    Searchable:
+      fields: [id,Nom, Prenom,Mail,Tel,Type]
+  columns:
+    Login:
+      type: string(255)
+      unique: true
+      notnull: true
+    Password:
+      type: string(255)
+      notnull: true
+    Nom:
+      type: string(255)
+    Prenom:
+      type: string(255)
+    Mail:
+      type: string(255)
+    Tel:
+      type: string(255)
+    Type:
+      type: integer
+
+#les clients :
+Client:
+  tableName: Client
+  actAs:
+    Searchable:
+      fields: [id,Nom, Prenom,Mail,Tel]
+  columns:
+    Nom:
+      type: string(255)
+    Prenom:
+      type: string(255)
+    Mail:
+      type: string(255)
+    Tel:
+      type: string(255)
+    Commentaire:
+      type: string(255)
+
+#les factures :
+Facture:
+  tableName: Facture
+  actAs:
+    Timestampable: 
+      created:
+        name: Date
+      updated:
+        name: DateModif
+  columns:
+    IdClient:
+      type: integer
+    IdUser:
+      type: integer
+      notnull: true
+    IdUserModif:
+      type: integer
+      notnull: true
+    TotalHT:
+      type: integer
+    TotalTTC:
+      type: integer
+  relations:
+    client:
+      class: Client
+      local: IdClient
+      foreign: id
+      alias: Client # on pourra acceder à l'objet avec Facture->Client
+      foreignAlias: FactureClient
+    user:
+      class: User
+      local: IdUser
+      foreign: id
+      alias: User # on pourra acceder à l'objet avec Facture->Client
+      foreignAlias: FactureUser
+    userModif:
+      class: User
+      local: IdUserModif
+      foreign: id
+      alias: UserModif # on pourra acceder à l'objet avec Facture->Client
+      foreignAlias: FactureUserModif
+
+
+#les classes de produit :
+Classe:
+  tableName: Classe
+  actAs:
+    Searchable:
+      fields: [Libelle]
+  columns:
+    Libelle:
+      type: string(255)
+
+#les produits :
+Produit:
+  tableName: Produit
+  actAs:
+    Searchable:
+      fields: [id,Libelle, Conditionnement]
+  columns:
+    Libelle:
+      type: string(255)
+    Prix:
+      type: float
+    Ordonnance:
+      type: boolean
+    Commentaire:
+      type: string(255)
+    Alerte:
+      type: integer
+    Conditionnement:
+      type: string(255)
+    IdClasse:
+      type: integer
+  relations:
+    classe:
+      class: Classe
+      local: IdClasse
+      foreign: id
+      alias: Classe # on pourra acceder à l'objet avec LigneFacture->Facture
+      foreignAlias: ProduitClasse
+
+#les lignes de facture :
+LigneFacture:
+  tableName: LigneFacture
+  columns:
+    IdProduit:
+      type: integer
+    Quantite:
+      type: integer
+    IdFacture:
+      type: integer
+  relations:
+    facture:
+      class: Facture
+      local: IdFacture
+      foreign: id
+      alias: Facture # on pourra acceder à l'objet avec LigneFacture->Facture
+      foreignAlias: LigneFactureFacture
+    produit:
+      class: Produit
+      local: IdProduit
+      foreign: id
+      alias: Produit # on pourra acceder à l'objet avec LigneFacture->Facture
+      foreignAlias: LigneFactureProduit
+
+
+#les articles :
+Article:
+  tableName: Article
+  actAs:
+    Searchable:
+      fields: [id,CodeBarre]
+    Timestampable: 
+      created:
+        name: DateAjout
+      updated:
+        name: DateModif
+  columns:
+    CodeBarre:
+      type: integer
+    DateExpiration:
+      type: date
+    IdProduit:
+      type: integer
+    DateVente:
+      type: date
+    Commentaire:
+      type: string(255)
+  relations:
+    produit:
+      class: Produit
+      local: IdProduit
+      foreign: id
+      alias: Produit # on pourra acceder à l'objet avec LigneFacture->Facture
+      foreignAlias: ArticleProduits
+
+#les fournisseurs :
+Fournisseur:
+  tableName: Fournisseur
+  actAs:
+    Searchable:
+      fields: [id,Libelle, Adresse,Mail,Tel]
+  columns:
+    LIbelle:
+      type: string(255)
+    Adresse:
+      type: string(255)
+    Tel:
+      type: string(255)
+    Mail:
+      type: string(255)
+    Commentaire:
+      type: string(255)
+    IdProduit:
+      type: integer
+  relations:
+    produit:
+      class: Produit
+      local: IdProduit
+      foreign: id
+      alias: Produit # on pourra acceder à l'objet avec LigneFacture->Facture
+      foreignAlias: FournisseurProduit
