@@ -5,7 +5,6 @@ define('ROOT',str_replace('index.php','',$_SERVER['SCRIPT_FILENAME']));
 require(ROOT.'conf/config.php');
 require(ROOT.'core/controller.php');
 
-
 require(ROOT.'lib/addendum/annotations.php');
 require(ROOT.'annotations/MyAnnotations.php');
 require(ROOT.'core/AnnotationManager.php');
@@ -20,14 +19,14 @@ require(ROOT.'lib/functions.php');
 
 require(ROOT.'lib/vendor/doctrine/Doctrine.php');
 
-require(ROOT.'core/model.php');
+require(ROOT.'core/Model.php');
 
 $params = explode('/',$_GET['p']);
 $controller = $params[0];
 $action = isset($params[1]) ? $params[1] : 'index';
 //header('Content-type: text/html; charset=UTF-8');
 if(empty($controller)){
-	$controller = 'home';
+	$controller = 'Home';
 	$action = 'index';	
 }
 

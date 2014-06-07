@@ -1,6 +1,6 @@
 <?php
  
-class ALertes extends Controller{
+class Alertes extends Controller{
 
 
     /**

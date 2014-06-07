@@ -1,5 +1,5 @@
 	
-					<h1>Connexion</h1>
+					<h1>Connexion test</h1>
 					<form action="<?=WEBROOT?>Comptes/connexion" method="post">
 						<ul>
 							<li>
