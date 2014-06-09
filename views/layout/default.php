@@ -1,4 +1,4 @@
-﻿<html style="overflow-x: hidden" lang="fr">
+﻿<html style="overflow: none;overflow: hidden;" lang="fr">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
 		<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" /> 
@@ -35,7 +35,7 @@
 		-->
 	</head>
 
-	<body>
+	<body style="overflow: none;overflow-x: hidden">
 
 		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div></a> <a><div id="gear"></div><div id="alerte"></div><div class="badge">44</div></a>
 		<div class="welcome_info">

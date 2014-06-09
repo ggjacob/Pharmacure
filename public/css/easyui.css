@@ -584,7 +584,7 @@
 }
 .tabs li a.tabs-close {
   width: 12px;
-  right: -10px;
+  right: -0px;
   opacity: 0.6;
   filter: alpha(opacity=60);
 }
@@ -807,8 +807,7 @@
 .tabs-header-left .tabs li.tabs-selected a.tabs-inner,
 .tabs-header-right .tabs li.tabs-selected a.tabs-inner {
   border-color: #FEFEFE;
-  background-color:#b0b0b0; 
-  width:100%;
+  background-color:#b0b0b0;
 }
 .tabs-p-tool a:hover,
 .tabs li a:hover.tabs-close,
