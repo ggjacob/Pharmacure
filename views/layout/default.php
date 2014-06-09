@@ -49,12 +49,12 @@
 				<td width="250px" height="100%" style="border-color:#DEDEDE; background-color:#15992B; border-right-style:solid; border-right-width:2px; -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3); ">
 				<div id="modules">
 						<table class="menutab" cellspacing="10px">	
-							<tr><td class="module" width="50px">O</td><td class="module" ><a href="#" name="Clients" onclick='addTab("Clients","<?=WEBROOT?>Clients/index")'>Clients</a></td></tr>
-							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Inventaire" onclick='addTab("Inventaire","<?=WEBROOT?>Inventaires/index")'>Inventaire</a></td></tr>
-							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Fournisseurs" onclick='addTab("Fournisseurs","<?=WEBROOT?>Fournisseurs/index")'>Fournisseurs</a></td></tr>
-							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Produits"	onclick='addTab("Produits","<?=WEBROOT?>Produits/index")'>Produits</a></td></tr>
-							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Factures"  onclick='addTab("Factures","<?=WEBROOT?>Factures/index")'>Factures</a></td></tr>
-							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Statistiques" onclick='addTab("Statistiques","<?=WEBROOT?>Statistiques/index")'>Statistiques</a></td></tr>	
+							<tr><td class="module" width="50px">O</td><td class="module" ><a href="#" name="Clients" onclick='addTab("Clients","<?=WEBROOT?>Clients/index")'><div width="100%" height="100%">Clients</div></a></td></tr>
+							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Inventaire" onclick='addTab("Inventaire","<?=WEBROOT?>Inventaires/index")'><div width="100%" height="100%">Inventaire</div></a></td></tr>
+							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Fournisseurs" onclick='addTab("Fournisseurs","<?=WEBROOT?>Fournisseurs/index")'><div width="100%" height="100%">Fournisseurs</div></a></td></tr>
+							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Produits"	onclick='addTab("Produits","<?=WEBROOT?>Produits/index")'><div width="100%" height="100%">Produits</div></a></td></tr>
+							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Factures"  onclick='addTab("Factures","<?=WEBROOT?>Factures/index")'><div width="100%" height="100%">Factures</div></a></td></tr>
+							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Statistiques" onclick='addTab("Statistiques","<?=WEBROOT?>Statistiques/index")'><div width="100%" height="100%">Statistiques</div></a></td></tr>	
 						</table>
 					</div>
 				</td>
