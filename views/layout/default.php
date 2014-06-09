@@ -37,7 +37,7 @@
 
 	<body>
 
-		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div></a>
+		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div></a> <a><div id="gear"></div></a>
 		<?php if(isset($_SESSION['user'])):?>
 			Bonjour <?=$_SESSION['user']->Nom?> <br>
 		<a href="<?=WEBROOT?>Comptes/deconnexion">Déconnexion </a>	
