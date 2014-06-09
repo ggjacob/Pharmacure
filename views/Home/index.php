@@ -25,8 +25,19 @@
   									</table>
   								</div>
   								<div class="lower_content">
-  									<div class="table_header">Mes produits</div>
-  									<div class="table_header_sub"><form>Recherche: <input type="text"/></form></div>
+  									<div class="table_header"><span class="table_title">Mes produits</span></div>
+  									 <div class="table_header_sub"> 
+                       <form>
+                        <select name="view_number" size="1"> 
+                          <option>10</option>
+                          <option>20</option>
+                          <option>30</option>
+                          <option>40</option>
+                          <option>50</option>
+                        </select> Affichage Par Page
+                        <span class="left">Recherche: <input type="text"/></span>
+                      </form>
+                    </div>
   									<table width="750px">
   										<tr ><th width="50px">Id</th><th width="450px">Label</th>	<th width="50px">Prix</th>	<th width="75px">Quantité</th></tr>
   										<tr><td>1</td>	<td>Product 1 </td> <td>1000 CFA</td><td>40</td></tr>
