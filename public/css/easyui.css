@@ -11,6 +11,7 @@
 .panel-body {
   border-width: 1px;
   border-style: solid;
+
 }
 .panel-header {
   padding: 5px;
@@ -26,6 +27,7 @@
   overflow: auto;
   border-top-width: 0;
   padding: 0;
+
 }
 .panel-body-noheader {
   border-top-width: 1px;
@@ -119,9 +121,10 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFF5FF,endColorstr=#E0ECFF,GradientType=0);
 }
 .panel-body {
-  background-color: #ffffff;
+  background-color: #f5f3f1;
   color: #000000;
   font-size: 12px;
+
 }
 .panel-title {
   font-size: 12px;
@@ -803,7 +806,8 @@
 .tabs-header-left .tabs li.tabs-selected a.tabs-inner,
 .tabs-header-right .tabs li.tabs-selected a.tabs-inner {
   border-color: #FEFEFE;
-  background-color:#EFEFEF; 
+  background-color:#b0b0b0; 
+  width:calc(100%);
 }
 .tabs-p-tool a:hover,
 .tabs li a:hover.tabs-close,

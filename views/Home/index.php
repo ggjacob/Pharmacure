@@ -1,10 +1,10 @@
 <div class="upper_content">
   									<table width="100%" height="100%" >
   										<tr height="150px">
-  											<td width="200px"><div class="blue"> <div></td>
-  											<td width="200px"><div class="green"> <div></td>
-  											<td width="200px"><div class="red"> <div></td>
-  											<td width="200px"><div class="marine"> <div></td>
+  											<td width="200px"><a href="#" name="Clients" onclick='addTab("Clients","<?=WEBROOT?>Clients/index")'><div class="blue_icon"> </div></a></td>
+  											<td width="200px"><a href="#" name="Produits"  onclick='addTab("Produits","<?=WEBROOT?>Produits/index")'><div class="green_icon"> </div></a></td>
+  											<td width="200px"><a href="#" name="Statistiques" onclick='addTab("Alertes","<?=WEBROOT?>Alert/index")'><div class="red_icon"> </div></a></td>
+  											<td width="200px"><a href="#" name="Statistiques" onclick='addTab("Statistiques","<?=WEBROOT?>Statistiques/index")'><div class="marine_icon"> </div></a></td>
   										</tr>
   										<tr align="center" height="20px">
   											<td>Ajouter Un Client

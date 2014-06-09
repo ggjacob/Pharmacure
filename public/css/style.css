@@ -104,14 +104,14 @@ background-image: url('../images/logo.png');
 
 .welcome_info
 { position:absolute;
-  right:100px; top:5px;
+  right:150px; top:10px;
   color:white;
 }
 
 #logo
 {
-position:absolute; left:30px;
-width:200px;
+position:absolute; left:20px;
+width:210px;
 height:45px;
 background-image: url('../images/logo.png');
 }
@@ -130,6 +130,13 @@ height:32px;
 background-image: url('../images/alerte.png')
 }
 
+.disconnect
+{
+position:absolute; right:50px; top:10px;
+width:48px;
+height:28px;
+background-image: url('../images/dis.png')
+}
 .badge {
   position:absolute; left:300px; top:6px;
 background: radial-gradient( center -9px, circle closest-side, white 0, #E80C0F 26px );
@@ -142,7 +149,7 @@ border: 1px solid white;
 border-radius: 12px; /* must be 1/2 of ( border-width*2 + width ) */
 box-shadow: 1px 1px 1px black;
 color: white;
-font: bold 17px/15px Helvetica, Verdana, Tahoma;
+font: bold 15px/13px Helvetica, Verdana, Tahoma;
 height: 16px; /* height + padding-top must equal width */
 padding-top: 2px; /* height + padding-top must equal width */
 text-align: center;
@@ -170,7 +177,7 @@ border-top-style:hidden;
 border-left-style:solid;
 border-right-style:solid;
 border-width:1px;
-background-color:#FFFFFF;
+background-color:#f5f3f1;
 }
 
 #modules
@@ -221,6 +228,36 @@ background: #34A645;
               -webkit-transition-timing-function: linear; 
 }
 
+.clients_img
+{ width:50px; height:48px; position:absolute; top:0px;
+  background-image: url('../images/menu/clients.png');
+}
+
+.inventaire_img
+{ width:50px; height:48px; position:absolute; top:0px;
+  background-image: url('../images/menu/inventaire.png');
+}
+
+.fournisseurs_img
+{ width:50px; height:48px; position:absolute; top:0px;
+  background-image: url('../images/menu/fourniseurs.png');
+}
+
+.produits_img
+{ width:50px; height:48px; position:absolute; top:0px;
+  background-image: url('../images/menu/produits.png');
+}
+
+.facture_img
+{ width:50px; height:48px; position:absolute; top:0px;
+  background-image: url('../images/menu/facture.png');
+}
+
+.statistique_img
+{ width:50px; height:48px; position:absolute; top:0px;
+  background-image: url('../images/menu/statistique.png');
+}
+
 .upper_content
 {
 position:relative;
@@ -235,34 +272,41 @@ height:300px;
 border-style:solid; border-width:0px;
 }
 
-.blue
+
+.blue_icon
+{
+  position:absolute;
+  left:0px; top:0px;
+width:200px;
+height:150px;
+background-image: url('../images/menu/ajouter_un_client.png')
+}
+
+.green_icon
+{left:0px; top:0px;
+  position:relative;
+
+width:200px;
+height:150px;
+background-image: url('../images/menu/ajouter_un_produit.png')
+}
+
+.red_icon
+{left:0px; top:0px;
+position:relative;
+
+width:200px;
+height:150px;
+background-image: url('../images/menu/alerte.png')
+}
+
+.marine_icon
 {
   position:relative;
-left:35px; top:10px;
-width:129px;
-height:129px;
-background-image: url('../images/blue_circle.png')
-}
-.green
-{position:relative;
- left:35px; top:10px;
-width:129px;
-height:129px;
-background-image: url('../images/green_circle.png')
-}
-.red
-{position:relative;
-left:35px; top:10px;
-width:129px;
-height:129px;
-background-image: url('../images/red_circle.png')
-}
-.marine
-{position:relative;
-left:35px; top:10px;
-width:129px;
-height:129px;
-background-image: url('../images/marine_circle.png')
+left:0px; top:0px;
+width:200px;
+height:150px;
+background-image: url('../images/menu/rapport.png')
 }
 
 .info_box_blue
@@ -278,21 +322,21 @@ background-color:#4FC4CA;
 
 width:195px;
 height:100px;
-background-color:#A5C877;
+background-color:#1aaf5d;
 }
 .info_box_red
 {position:relative;
 
 width:195px;
 height:100px;
-background-color:#CF7E8F;
+background-color:#d95055;
 }
 .info_box_marine
 {position:relative;
 
 width:195px;
 height:100px;
-background-color:#8FC3E9;
+background-color:#128ac6;
 }
 
 .lower_content
@@ -302,6 +346,7 @@ border-style:solid; border-width:0px;
 left:10px; top:20px;
 width:800px;
   border:1px solid #dfdfdf;
+
 }
 
 .table_header
