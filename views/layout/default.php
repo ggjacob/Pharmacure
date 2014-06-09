@@ -35,7 +35,7 @@
 		-->
 	</head>
 
-	<body style="overflow: none;overflow-x: hidden">
+	<body style="overflow: none;overflow: hidden">
 
 		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div></a> <a><div id="gear"></div><div id="alerte"></div><div class="badge">44</div></a>
 		<div class="welcome_info">
