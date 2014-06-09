@@ -15,19 +15,19 @@
 	    <script type="text/javascript" src="<?=WEBROOT?>public/js/app.js"></script>
 		
 		<script>
-		function addTab(title, url){
-				if ($('#tt').tabs('exists', title)){
-				$('#tt').tabs('select', title);
-				} else {
-					var content = '<iframe scrolling="auto" id="'+title+'" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
-					$('#tt').tabs('add',{
-						title:title,
-						content:content,
-						closable:true	
-					});
-				}	
-		}
-	</script>
+			function addTab(title, url){
+					if ($('#tt').tabs('exists', title)){
+					$('#tt').tabs('select', title);
+					} else {
+						var content = '<iframe scrolling="auto" id="'+title+'" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+						$('#tt').tabs('add',{
+							title:title,
+							content:content,
+							closable:true	
+						});
+					}	
+			}
+	    </script>
 		<!--
 		<script type="text/javascript" src="public/js/color.js"></script>
 		<script type="text/javascript" src="public/js/angular.min.js"></script>
@@ -44,38 +44,23 @@
 		<?php endif;?>
 		</div>
 		<div id="content">
-			<table width="100%" border="0px">
+			<table width="100%" height="100%" border="2px">
 			<tr height="100%" style="padding:0px; border-spacing: 0px; border-collapse: separate;">
-				<td width="250px" height="100%" style="border-color:#DEDEDE; border-right-style:solid; border-right-width:2px; -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3); ">
-					<div id="modules">
-						<form  method="POST" action="#">
-							<?php if(isset($_SESSION['user']) && $_SESSION['user']->Type == 3):?>
-							<input onclick='addTab("Administrer","<?=WEBROOT?>Administrations/index")' type="submit" name="Administrer" value="Administrer" id="module" class="button submit">
-							<?php endif;?>
-							<input onclick='addTab("Clients","<?=WEBROOT?>Clients/index")' type="submit" name="Clients" value="Clients" id="module" class="green submit">
-							
-							<input onclick='addTab("Inventaire","<?=WEBROOT?>Inventaires/index")' type="submit" name="Inventaire" value="Inventaire" id="module" class="green submit">
-						
-						
-							<input onclick='addTab("Fournisseurs","<?=WEBROOT?>Fournisseurs/index")' type="submit" name="Fournisseurs" value="Fournisseurs" id="module" class="green submit">
-							
-							
-							<input onclick='addTab("Produits","<?=WEBROOT?>Produits/index")' type="submit" name="Produits" value="Produits" id="module" class="blue submit">
-						
-							
-							<input onclick='addTab("Factures","<?=WEBROOT?>Factures/index")' type="submit" name="Factures" value="Factures" id="module" class="blue submit">
-						
-							
-							<input onclick='addTab("Statistiques","<?=WEBROOT?>Statistiques/index")' type="submit" name="Statistiques" value="Statistiques" id="module" class="blue submit">
-						
-							
-							<input onclick='addTab("Alertes","<?=WEBROOT?>Alertes/index")' type="submit" name="Alertes" value="Alertes" id="module" class="red submit">
-						</form>
+				<td width="250px" height="100%" style="border-color:#DEDEDE; background-color:#15992B; border-right-style:solid; border-right-width:2px; -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3); ">
+				<div id="modules">
+						<table class="menutab" cellspacing="10px">	
+							<tr><td class="module" width="50px">O</td><td class="module" ><a href="#" name="Clients" onclick='addTab("Clients","<?=WEBROOT?>Clients/index")'>Clients</a></td></tr>
+							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Inventaire" onclick='addTab("Inventaire","<?=WEBROOT?>Inventaires/index")'>Inventaire</a></td></tr>
+							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Fournisseurs" onclick='addTab("Fournisseurs","<?=WEBROOT?>Fournisseurs/index")'>Fournisseurs</a></td></tr>
+							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Produits"	onclick='addTab("Produits","<?=WEBROOT?>Produits/index")'>Produits</a></td></tr>
+							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Factures"  onclick='addTab("Factures","<?=WEBROOT?>Factures/index")'>Factures</a></td></tr>
+							<tr><td class="module" width="50px">O</td><td class="module"><a href="#" name="Statistiques" onclick='addTab("Statistiques","<?=WEBROOT?>Statistiques/index")'>Statistiques</a></td></tr>	
+						</table>
 					</div>
 				</td>
 				<td height="100%">
 					<div id="tt" class="easyui-tabs" style="max-width:1020px;height:600px;">
-  							<div title="Vente">
+  							<div title="ACCEUIL">
 							</div>
  							<?php //echo $content_for_layout; ?>
 					</div>

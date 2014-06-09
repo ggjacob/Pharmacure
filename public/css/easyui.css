@@ -107,6 +107,7 @@
 .panel-header,
 .panel-body {
   border-color: #95B8E7;
+  background-color:#EFEFEF;
 }
 .panel-header {
   background-color: #E0ECFF;
@@ -725,14 +726,14 @@
   border: 0px;
   background: transparent;
 }
-.tabs-scroller-left {
-  background: #E0ECFF url('../images/tabs_icons.png') no-repeat 1px center;
+.tabs-scroller-left { 
+  background: #E0ECFF url('../images/mg/tabs_icons.png') no-repeat 1px center;
 }
 .tabs-scroller-right {
-  background: #E0ECFF url('../images/tabs_icons.png') no-repeat -15px center;
+  background: #E0ECFF url('../images//tabs_icons.png') no-repeat -15px center;
 }
 .tabs li a.tabs-close {
-  background: url('../images/tabs_icons.png') no-repeat -34px center;
+  background: url('../images//tabs_icons.png') no-repeat -34px center;
 }
 .tabs li a.tabs-inner:hover {
   background: #eaf2ff;
@@ -801,12 +802,13 @@
 .tabs-header-bottom .tabs li.tabs-selected a.tabs-inner,
 .tabs-header-left .tabs li.tabs-selected a.tabs-inner,
 .tabs-header-right .tabs li.tabs-selected a.tabs-inner {
-  border-color: #95B8E7;
+  border-color: #FEFEFE;
+  background-color:#EFEFEF; 
 }
 .tabs-p-tool a:hover,
 .tabs li a:hover.tabs-close,
 .tabs-scroller-over {
-  background-color: #eaf2ff;
+  background-color: #FFFFFF;
 }
 .tabs li.tabs-selected a.tabs-inner {
   border-bottom: 1px solid #ffffff;

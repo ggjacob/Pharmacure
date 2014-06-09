@@ -151,4 +151,5 @@ class Comptes extends Controller{
             $this->redirect('Comptes/connexion',2);   
     }
 }
+
 ?>

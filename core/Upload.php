@@ -1216,4 +1216,5 @@ private function Envoi_image($ressource, $destination, $type, $qualite)
 
 }
 //FIN DE CLASSE
+
 ?>

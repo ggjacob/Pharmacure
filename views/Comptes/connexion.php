@@ -1,4 +1,4 @@
-	
+
 					<h1>Connexion</h1>
 					<form action="<?=WEBROOT?>Comptes/connexion" method="post">
 						<ul>
@@ -18,4 +18,3 @@
 							</li>
 						</ul>
 					</form>
-				
