@@ -59,10 +59,11 @@
 					</div>
 				</td>
 				<td height="100%">
-					<div id="tt" class="easyui-tabs" style="max-width:1020px;height:600px;">
+					<div id="tt" class="easyui-tabs" style="height:600px;">
   							<div title="ACCEUIL">
+  								<?php echo $content_for_layout; ?>	
 							</div>
- 							<?php //echo $content_for_layout; ?>
+ 							
 					</div>
 				</td>
 			</tr>
