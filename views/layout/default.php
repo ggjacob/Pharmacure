@@ -37,11 +37,13 @@
 
 	<body>
 
-		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div></a> <a><div id="gear"></div></a>
-		<?php if(isset($_SESSION['user'])):?>
-			Bonjour <?=$_SESSION['user']->Nom?> <br>
-		<a href="<?=WEBROOT?>Comptes/deconnexion">Déconnexion </a>	
-		<?php endif;?>
+		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div></a> <a><div id="gear"></div><div id="alerte"></div><div class="badge">4</div></a>
+		<div class="welcome_info">
+			<?php if(isset($_SESSION['user'])):?>
+				Bonjour <?=$_SESSION['user']->Nom?> <br>
+			<a href="<?=WEBROOT?>Comptes/deconnexion">Déconnexion </a>	
+			<?php endif;?>
+		</div>
 		</div>
 		<div id="content">
 			<table width="100%" height="100%" border="2px">

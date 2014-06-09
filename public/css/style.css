@@ -83,13 +83,37 @@ body{
   font-family:helvetica; 
   font-weight:lighter; position:relative; bottom:0px;
 }
+/* La page de connexion */
+.connect_background
+{
+position:relative;
+width:100%;
+height:100%;
+background-color:#272822;;
+}
+
+.connect_logo
+{
+position:absolute; left:30px;
+width:1000px;
+height:1000px;
+background-image: url('../images/logo.png');
+}
+
+/* */
+
+.welcome_info
+{ position:absolute;
+  right:100px; top:5px;
+  color:white;
+}
 
 #logo
 {
 position:absolute; left:30px;
 width:200px;
 height:45px;
-background-image: url('../images/logo.png')
+background-image: url('../images/logo.png');
 }
 #gear
 {
@@ -97,6 +121,32 @@ position:absolute; left:250px; top:15px;
 width:32px;
 height:32px;
 background-image: url('../images/gear.png')
+}
+#alerte
+{
+position:absolute; left:285px; top:13px;
+width:32px;
+height:32px;
+background-image: url('../images/alerte.png')
+}
+
+.badge {
+  position:absolute; left:300px; top:6px;
+background: radial-gradient( center -9px, circle closest-side, white 0, #E80C0F 26px );
+background: -moz-radial-gradient( center -9px, circle closest-side, white 0, #E80C0F 26px );
+background: -ms-radial-gradient( center -9px, circle closest-side, white 0, #E80C0F 26px );
+background: -o-radial-gradient( center -9px, circle closest-side, white 0, #E80C0F 26px );
+background: -webkit-radial-gradient( center -9px, circle closest-side, white 0, #E80C0F 26px );
+background-color: red;
+border: 1px solid white;
+border-radius: 12px; /* must be 1/2 of ( border-width*2 + width ) */
+box-shadow: 1px 1px 1px black;
+color: white;
+font: bold 17px/15px Helvetica, Verdana, Tahoma;
+height: 16px; /* height + padding-top must equal width */
+padding-top: 2px; /* height + padding-top must equal width */
+text-align: center;
+width: 19px;
 }
 
 #top
