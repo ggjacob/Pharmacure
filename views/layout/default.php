@@ -53,11 +53,11 @@
 				<div id="modules">
 						<table class="menutab" cellspacing="10px">	
 							<tr><td class="module" width="50px"><div class="clients_img"></div></td><td class="module" ><a href="#" name="Clients" onclick='addTab("Clients","<?=WEBROOT?>Clients/index")'><div width="100%" height="100%">Clients</div></a></td></tr>
-							<tr><td class="module" width="50px"><div class="inventaire_img"></td><td class="module"><a href="#" name="Inventaire" onclick='addTab("Inventaire","<?=WEBROOT?>Inventaires/index")'><div width="100%" height="100%">Inventaire</div></a></td></tr>
-							<tr><td class="module" width="50px"><div class="fournisseurs_img"></td><td class="module"><a href="#" name="Fournisseurs" onclick='addTab("Fournisseurs","<?=WEBROOT?>Fournisseurs/index")'><div width="100%" height="100%">Fournisseurs</div></a></td></tr>
-							<tr><td class="module" width="50px"><div class="produits_img"></td><td class="module"><a href="#" name="Produits"	onclick='addTab("Produits","<?=WEBROOT?>Produits/index")'><div width="100%" height="100%">Produits</div></a></td></tr>
-							<tr><td class="module" width="50px"><div class="facture_img"></td><td class="module"><a href="#" name="Factures"  onclick='addTab("Factures","<?=WEBROOT?>Factures/index")'><div width="100%" height="100%">Factures</div></a></td></tr>
-							<tr><td class="module" width="50px"><div class="statistique_img"></td><td class="module"><a href="#" name="Statistiques" onclick='addTab("Statistiques","<?=WEBROOT?>Statistiques/index")'><div width="100%" height="100%">Statistiques</div></a></td></tr>	
+							<tr><td class="module" width="50px"><div class="inventaire_img"></div></td><td class="module"><a href="#" name="Inventaire" onclick='addTab("Inventaire","<?=WEBROOT?>Inventaires/index")'><div width="100%" height="100%">Inventaire</div></a></td></tr>
+							<tr><td class="module" width="50px"><div class="fournisseurs_img"></div></td><td class="module"><a href="#" name="Fournisseurs" onclick='addTab("Fournisseurs","<?=WEBROOT?>Fournisseurs/index")'><div width="100%" height="100%">Fournisseurs</div></a></td></tr>
+							<tr><td class="module" width="50px"><div class="produits_img"></div></td><td class="module"><a href="#" name="Produits"	onclick='addTab("Produits","<?=WEBROOT?>Produits/index")'><div width="100%" height="100%">Produits</div></a></td></tr>
+							<tr><td class="module" width="50px"><div class="facture_img"></div></td><td class="module"><a href="#" name="Factures"  onclick='addTab("Factures","<?=WEBROOT?>Factures/index")'><div width="100%" height="100%">Factures</div></a></td></tr>
+							<tr><td class="module" width="50px"><div class="statistique_img"></div></td><td class="module"><a href="#" name="Statistiques" onclick='addTab("Statistiques","<?=WEBROOT?>Statistiques/index")'><div width="100%" height="100%">Statistiques</div></a></td></tr>	
 						</table>
 					</div>
 				</td>
