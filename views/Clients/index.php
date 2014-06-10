@@ -77,10 +77,9 @@ function modifClient(id){
                       </form>
                     </div>
                                     <table width="750px">
-                                        <tr ><th width="50px">Id</th><th width="450px">Label</th>   <th width="50px">Prix</th>  <th width="75px">Quantité</th></tr>
-                                        <tr><td>1</td>  <td>Product 1 </td> <td>1000 CFA</td><td>40</td></tr>
-                                        <tr><td>4</td>  <td>Product 2 </td> <td>3500 CFA</td><td>42</td></tr>
-                                        <tr><td>5</td>  <td>Product 3 </td> <td>4000 CFA</td><td>543</td></tr>
-                                        <tr><td>6</td>  <td>Product 4 </td> <td>100 CFA</td><td>34</td></tr>
+                                        <tr ><th width="50px">Id</th><th width="75px">Prenom</th>   <th width="75px">Nom</th>  <th width="75px">Mail</th><th width="75px">Tel</th> <th width="75px">Commentaires</th></tr>
+                                        <?php foreach($view['clients'] as $client) : ?>
+                                                <tr><td><?=$client->id?></td>  <td><?=$client->Prenom?></td> <td><?=$client->Nom?></td><td><?=$client->Mail?></td> <td><?=$client->Tel?></td> <td><?=$client->Commentaire?></td></tr>
+                                        <?php endforeach;?>
                                     </table>
 </div>
