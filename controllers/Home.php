@@ -34,10 +34,7 @@ class Home extends Controller{
             $d['view'] = array("titre" => "Contact","form" => $form);
             $this->set($d);
             $this->render('contact');    
-        }
-
-
-        
+        }        
     }
 }
 ?>

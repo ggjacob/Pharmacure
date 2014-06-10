@@ -3,13 +3,13 @@ class Controller{
 
     var $vars = array();
     var $erreur = array();
-    var $layout = 'default';
+    var $layout = 'Iframe';
 
     function __construct(){
         if(isset($_POST)){
             $this->data = $_POST;
         }
-		$this->layout=false;
+		//$this->layout=false;
     }
 
     function set($d){
