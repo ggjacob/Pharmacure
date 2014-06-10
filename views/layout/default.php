@@ -34,6 +34,7 @@
 		<script type="text/javascript" src="public/js/app.js"></script>
 		-->
 	</head>
+
 	<body style="overflow: none;overflow: hidden">
 
 		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div></a> <a><div id="gear"></div><div id="alerte"></div><div class="badge">44</div></a>
