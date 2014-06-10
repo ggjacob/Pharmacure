@@ -5,7 +5,7 @@ define('ROOT',str_replace('index.php','',$_SERVER['SCRIPT_FILENAME']));
 require(ROOT.'conf/config.php');
 require(ROOT.'core/controller.php');
 
-require(ROOT.'lib/addendum/annotations.php');
+require(ROOT.'lib/addendum/annotations.php') ;
 require(ROOT.'annotations/MyAnnotations.php');
 require(ROOT.'core/AnnotationManager.php');
 require(ROOT.'core/SecurityManager.php');
