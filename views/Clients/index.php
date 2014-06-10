@@ -1,40 +1,32 @@
 
-<link rel="stylesheet" href="<?=WEBROOT?>public/css/style.css">
-        <link rel="stylesheet" href="<?=WEBROOT?>public/css/tab.css">
-
-        <link rel="stylesheet" type="text/css" href="<?=WEBROOT?>public/css/easyui.css">
-        <link rel="stylesheet" type="text/css" href="<?=WEBROOT?>public/css/icon.css">
-
-
-        <script type="text/javascript" src="<?=WEBROOT?>public/js/jquery-1.4.4.min.js"></script>
-        <script type="text/javascript" src="<?=WEBROOT?>public/js/jquery.easyui.min.js"></script>
-        <script type="text/javascript" src="<?=WEBROOT?>public/js/app.js"></script>
 <script type="text/javascript">
-function ajoutClient(){
-            $.ajax({
-                type: "POST",
-                url: 'creation',
-                dataType: 'html',
-                success: function(data) {
-                    $('#retour').html('');
-                    $("#retour").append(data);
-                    $('#retour').fadeIn();                                
-                }
-            });       
+    $(document).ready( function () {
+       $('#data_source').DataTable( {
+        scrollY: 400,
+        language: {
+        processing:     "Traitement en cours...",
+        search:         "Rechercher&nbsp;:",
+        lengthMenu:    "Afficher _MENU_ &eacute;l&eacute;ments",
+        info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+        infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+        infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+        infoPostFix:    "",
+        loadingRecords: "Chargement en cours...",
+        zeroRecords:    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+        emptyTable:     "Aucune donnée disponible dans le tableau",
+        paginate: {
+            first:      "Premier",
+            previous:   "Pr&eacute;c&eacute;dent",
+            next:       "Suivant",
+            last:       "Dernier"
+        },
+        aria: {
+            sortAscending:  ": activer pour trier la colonne par ordre croissant",
+            sortDescending: ": activer pour trier la colonne par ordre décroissant"
+        }
     }
-function modifClient(id){
-            $.ajax({
-                type: "GET",
-                url: 'mesinfos/'+id,
-                dataType: 'html',
-                success: function(data) {
-                    $('#modifier').html('');
-                    $("#modifier").append(data);
-                    $('#modifier').fadeIn();
-                }
-            });       
-    }
-
+        } );
+    } );
 </script>
 <div class="upper_content">
                                     <table width="100%" height="100%" >
@@ -63,23 +55,15 @@ function modifClient(id){
                                     </table>
                                 </div>
                                 <div class="lower_content">
-                                    <div class="table_header"><span class="table_title">Mes produits</span></div>
-                                     <div class="table_header_sub"> 
-                       <form>
-                        <select name="view_number" size="1"> 
-                          <option>10</option>
-                          <option>20</option>
-                          <option>30</option>
-                          <option>40</option>
-                          <option>50</option>
-                        </select> Affichage Par Page
-                        <span class="left">Recherche: <input type="text"/></span>
-                      </form>
-                    </div>
-                                    <table width="750px">
-                                        <tr ><th width="50px">Id</th><th width="75px">Prenom</th>   <th width="75px">Nom</th>  <th width="75px">Mail</th><th width="75px">Tel</th> <th width="75px">Commentaires</th></tr>
+                                    <div class="table_header"><span class="table_title">Mes clients</span></div>
+                                    <table id="data_source"  width="750px">
+                                         <thead>
+                                            <tr ><th>Id</th><th>Prenom</th>   <th >Nom</th>  <th >Mail</th><th>Tel</th> <th >Commentaires</th></tr>    
+                                         </thead>
+                                         <tbody>
                                         <?php foreach($view['clients'] as $client) : ?>
                                                 <tr><td><?=$client->id?></td>  <td><?=$client->Prenom?></td> <td><?=$client->Nom?></td><td><?=$client->Mail?></td> <td><?=$client->Tel?></td> <td><?=$client->Commentaire?></td></tr>
                                         <?php endforeach;?>
+                                        <tbody>
                                     </table>
 </div>
