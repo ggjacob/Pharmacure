@@ -25,14 +25,14 @@
   									</table>
   								</div>
   							<div class="lower_content">
-  									<div class="table_header"><span class="table_title">Mes produits</span></div>
+  									<div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes produits</span></div>
   									<table id="data_source">
                          <thead>
                             <tr ><th>Id</th><th>Prenom</th>   <th >Nom</th>  <th >Mail</th><th>Tel</th> <th >Commentaires</th></tr>    
                          </thead>
                          <tbody>
                         <?php foreach($view['clients'] as $client) : ?>
-                                <tr><td><?=$client->id?></td>  <td><?=$client->Prenom?></td> <td><?=$client->Nom?></td><td><?=$client->Mail?></td> <td><?=$client->Tel?></td> <td><?=$client->Commentaire?></td></tr>
+                                <tr><td class="center"><?=$client->id?></td>  <td ><?=$client->Prenom?></td> <td><?=$client->Nom?></td><td><?=$client->Mail?></td> <td><?=$client->Tel?></td> <td><?=$client->Commentaire?></td></tr>
                         <?php endforeach;?>
                         <tbody>
                     </table>

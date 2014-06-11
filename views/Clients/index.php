@@ -25,7 +25,7 @@
                                     </table>
                                 </div>
                                 <div class="lower_content">
-                                    <div class="table_header"><span class="table_title">Mes clients</span></div>
+                                    <div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes clients</span></div>
                                     <table id="data_source">
                                          <thead>
                                             <tr ><th>Id</th><th>Prenom</th>   <th >Nom</th>  <th >Mail</th><th>Tel</th> <th >Commentaires</th></tr>    
