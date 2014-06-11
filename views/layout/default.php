@@ -32,6 +32,18 @@
 						});
 					}	
 			}
+			function addTabVentes(title, url){
+					if ($('#tt').tabs('exists', title)){
+					$('#tt').tabs('select', title);
+					} else {
+						var content = '<iframe scrolling="auto" id="'+title+'" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+						$('#tt').tabs('add',{
+							title:title,
+							content:content,
+							closable:false	
+						});
+					}	
+			}
 	    </script>
 		<!--
 		<script type="text/javascript" src="public/js/color.js"></script>
@@ -40,7 +52,7 @@
 		-->
 	</head>
 
-	<body style="overflow-x: none;overflow-x: hidden">
+	<body style="overflow-x: none;overflow-x: hidden" onload='addTabVentes("Vente","<?=WEBROOT?>Vente/index")'>
 
 		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div></a> <a><div id="gear"></div><div id="alerte"></div><div class="badge">44</div></a>
 		<div class="welcome_info">
@@ -71,6 +83,7 @@
   							<div title="ACCEUIL">
   								<?php echo $content_for_layout; ?>	
 							</div>
+							
  							
 					</div>
 				</td>

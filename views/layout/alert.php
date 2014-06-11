@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
 <link rel="stylesheet" href="<?=WEBROOT?>public/css/alert.css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?=WEBROOT?>public/js/jquery.js"></script>
 <script language="JavaScript">
 function cancelDiv() {
             $("#alert").hide();
