@@ -6,8 +6,10 @@ class Home extends Controller{
      * @UserS('REQUIRED')
      */
     function index(){
-			$d['view'] = array("titre" => "Pharmacure",
-        	"descp" => "vous êtes sur la page d'accueil");
+
+            $clients = new Client();
+            $clients = Doctrine_Core::getTable('client')->findAll();
+            $d['view'] = array("titre" => "Pharmacure","clients"=>$clients);
 			$this->set($d);
 			$this->layout="default";
 			$this->render('index');

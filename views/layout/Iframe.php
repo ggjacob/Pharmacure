@@ -8,4 +8,5 @@
 <script type="text/javascript" src="<?=WEBROOT?>public/js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="<?=WEBROOT?>public/js/app.js"></script>
 <script type="text/javascript" src="<?=WEBROOT?>public/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<?=WEBROOT?>public/js/table.js"></script>
 <?php echo $content_for_layout; ?>

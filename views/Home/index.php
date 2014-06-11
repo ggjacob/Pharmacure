@@ -26,23 +26,14 @@
   								</div>
   							<div class="lower_content">
   									<div class="table_header"><span class="table_title">Mes produits</span></div>
-  									 <div class="table_header_sub"> 
-                       <form>
-                        <select name="view_number" size="1"> 
-                          <option>10</option>
-                          <option>20</option>
-                          <option>30</option>
-                          <option>40</option>
-                          <option>50</option>
-                        </select> Affichage Par Page
-                        <span class="left">Recherche: <input type="text"/></span>
-                      </form>
-                    </div>
-  									<table width="750px">
-  										<tr ><th width="50px">Id</th><th width="450px">Label</th>	<th width="50px">Prix</th>	<th width="75px">Quantité</th></tr>
-  										<tr><td>1</td>	<td>Product 1 </td> <td>1000 CFA</td><td>40</td></tr>
-  										<tr><td>4</td>	<td>Product 2 </td> <td>3500 CFA</td><td>42</td></tr>
-  										<tr><td>5</td>	<td>Product 3 </td> <td>4000 CFA</td><td>543</td></tr>
-  										<tr><td>6</td>	<td>Product 4 </td> <td>100 CFA</td><td>34</td></tr>
-  									</table>
+  									<table id="data_source">
+                         <thead>
+                            <tr ><th>Id</th><th>Prenom</th>   <th >Nom</th>  <th >Mail</th><th>Tel</th> <th >Commentaires</th></tr>    
+                         </thead>
+                         <tbody>
+                        <?php foreach($view['clients'] as $client) : ?>
+                                <tr><td><?=$client->id?></td>  <td><?=$client->Prenom?></td> <td><?=$client->Nom?></td><td><?=$client->Mail?></td> <td><?=$client->Tel?></td> <td><?=$client->Commentaire?></td></tr>
+                        <?php endforeach;?>
+                        <tbody>
+                    </table>
 </div>
