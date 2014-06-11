@@ -182,7 +182,7 @@ background-color:#f5f3f1;
 
 #modules
 {position:relative;
-width:100%;
+width:250px;
 top:30px;
 border-style:hidden;
 
@@ -197,10 +197,8 @@ border-style:hidden;
  
 }
 
-
-
 .menutab
-{ position:relative; left:0px; top:20px;
+{ position:fixed; left:0px; top:100px;
   width:250px; height:300px; 
   color:#FFFFFF;
   border-collapse:separate; 
@@ -294,7 +292,6 @@ background-image: url('../images/menu/ajouter_un_produit.png')
 .red_icon
 {left:0px; top:0px;
 position:relative;
-
 width:200px;
 height:150px;
 background-image: url('../images/menu/alerte.png')
@@ -302,11 +299,17 @@ background-image: url('../images/menu/alerte.png')
 
 .marine_icon
 {
-  position:relative;
+position:relative;
 left:0px; top:0px;
 width:200px;
 height:150px;
 background-image: url('../images/menu/rapport.png')
+}
+.blue_icon, .green_icon, .red_icon, .marine_icon{
+  opacity:0.75;
+}
+.blue_icon:hover, .green_icon:hover, .red_icon:hover, .marine_icon:hover{
+  opacity:0.99;
 }
 
 .info_box_blue
@@ -381,12 +384,15 @@ left:25px;
   position:relative; left:360px;
 }
 
-.lower_content table tr th{
+.lower_content table tr th, .lower_content table thead tr th{
   height:35px;
 vertical-align:middle
   }
+  .lower_content table{
+  width:calc(100% - 40px);
+  }
 
-.lower_content table tr td{
+.lower_content table tr td, .lower_content table tbody tr td{
 border:1px solid #dfdfdf;
 height:30px;
 text-align:center;
@@ -396,7 +402,7 @@ vertical-align:middle
 .lower_content table{
     border-collapse: collapse;
         border-spacing: 0;
-  position:relative;left:25px;
+  
   margin:0px;padding:0px;
   border:1px solid #dfdfdf;
   margin-bottom:10px;

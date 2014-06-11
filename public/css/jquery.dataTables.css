@@ -226,7 +226,11 @@ table.dataTable td {
   zoom: 1;
 }
 .dataTables_wrapper .dataTables_length {
-  float: left;
+  position:absolute;
+}
+.dataTables_length label {
+  position:relative;
+  left:10px;
 }
 .dataTables_wrapper .dataTables_filter {
   float: right;

@@ -47,9 +47,9 @@
 		
 		</div>
 		<div id="content">
-			<table width="100%" height="100%" border="2px">
-			<tr height="100%" style="padding:0px; border-spacing: 0px; border-collapse: separate;">
-				<td width="250px" height="100%" style="border-color:#DEDEDE; background-color:#15992B; border-right-style:solid; border-right-width:2px; -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3); ">
+			<table width="100%" style="min-height:100%;" border="2px">
+			<tr style=" min-height:100%; padding:0px; border-spacing: 0px; border-collapse: separate;">
+				<td width="250px" style="min-height:100%; border-color:#DEDEDE; background-color:#15992B; border-right-style:solid; border-right-width:2px; -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3); ">
 				<div id="modules">
 						<table class="menutab" cellspacing="10px">	
 							<tr><td class="module" width="50px"><div class="clients_img"></div></td><td class="module" ><a href="#" name="Clients" onclick='addTab("Clients","<?=WEBROOT?>Clients/index")'><div width="100%" height="100%">Clients</div></a></td></tr>
@@ -59,10 +59,10 @@
 							<tr><td class="module" width="50px"><div class="facture_img"></div></td><td class="module"><a href="#" name="Factures"  onclick='addTab("Factures","<?=WEBROOT?>Factures/index")'><div width="100%" height="100%">Factures</div></a></td></tr>
 							<tr><td class="module" width="50px"><div class="statistique_img"></div></td><td class="module"><a href="#" name="Statistiques" onclick='addTab("Statistiques","<?=WEBROOT?>Statistiques/index")'><div width="100%" height="100%">Statistiques</div></a></td></tr>	
 						</table>
-					</div>
+				</div>
 				</td>
-				<td height="100%">
-					<div id="tt" class="easyui-tabs" style="height:600px;">
+				<td style="min-height:100%;">
+					<div id="tt" class="easyui-tabs" style="min-height:100%;">
   							<div title="ACCEUIL">
   								<?php echo $content_for_layout; ?>	
 							</div>

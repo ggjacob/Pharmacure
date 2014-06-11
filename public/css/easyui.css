@@ -12,6 +12,7 @@
   border-width: 1px;
   border-style: solid;
 
+
 }
 .panel-header {
   padding: 5px;
@@ -27,7 +28,11 @@
   overflow: auto;
   border-top-width: 0;
   padding: 0;
+   
+}
 
+div.panel div.panel-body{
+min-height:800px !important;
 }
 .panel-body-noheader {
   border-top-width: 1px;

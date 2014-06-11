@@ -24,7 +24,7 @@
   										</tr>
   									</table>
   								</div>
-  								<div class="lower_content">
+  							<div class="lower_content">
   									<div class="table_header"><span class="table_title">Mes produits</span></div>
   									 <div class="table_header_sub"> 
                        <form>
