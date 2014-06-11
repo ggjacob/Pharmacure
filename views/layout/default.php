@@ -1,4 +1,4 @@
-﻿<html style="overflow-x: none;overflow-x: hidden;" lang="fr">
+﻿<html style="overflow: none;overflow: hidden;" lang="fr">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
 		<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" /> 
