@@ -45,6 +45,22 @@
 					}	
 			}
 	    </script>
+	   <script type="text/javascript"> 
+		function display_c()
+		{
+			var refresh=1000; // Refresh rate in milli seconds
+			mytime=setTimeout('display_ct()',refresh)
+		}
+
+		function display_ct() 
+		{
+			var strcount;
+			var x = new Date();
+			var x1=x.toUTCString();
+			document.getElementById('ct').innerHTML = x1;
+			tt=display_c();
+		 }
+		</script>
 	   
 		<!--
 		<script type="text/javascript" src="public/js/color.js"></script>
@@ -53,13 +69,13 @@
 		-->
 	</head>
 
-	<body style="overflow-x: none;overflow-x: hidden" onload='addTabVentes("Vente","<?=WEBROOT?>Vente/index")'>
+	<body style="overflow-x: none;overflow-x: hidden" onload="display_ct();" onload='addTabVentes("Vente","<?=WEBROOT?>Vente/index")'>
 
 		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div></a> <a><div id="gear"></div><div id="alerte"></div><div class="badge">44</div></a>
 		<div class="welcome_info">
 			<?php if(isset($_SESSION['user'])):?>
 				Bonjour <?=$_SESSION['user']->Nom?> <br>
-				<?echo date("D M d, Y G:i a"); ?></div>
+				<span id='ct' ></span></div>
 			<a href="<?=WEBROOT?>Comptes/deconnexion"><div class="disconnect"> </div></a>	
 			<?php endif;?>
 		
