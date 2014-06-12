@@ -358,7 +358,6 @@ left:10px; top:20px;
 width:800px;
   border:1px solid #dfdfdf;
   background-color:#FAFAFA;
-
 }
 
 .table_header
@@ -393,7 +392,7 @@ left:30px;
   position:relative; left:360px;
 }
 
-.lower_content table tr th, .lower_content table thead tr th{
+.lower_content table tr th, .lower_content table thead tr th, #sale_table tr th{
   height:35px;
 vertical-align:middle
   }
@@ -407,11 +406,16 @@ height:30px;
 text-align:left;
 vertical-align:middle
 }
+#sale_table tr td{
+border:1px solid #dfdfdf;
+height:30px;
+vertical-align:middle
+}
 .lower_content table tbody tr td.center{
 text-align:center;
   }
 
-.lower_content table{
+.lower_content table, #sale_table {
     border-collapse: collapse;
         border-spacing: 0;
   
@@ -420,7 +424,7 @@ text-align:center;
   margin-bottom:0px;
 }
 
-.lower_content tr:last-child td:last-child {
+.lower_content tr:last-child td:last-child, #sale_table tr:last-child td:last-child {
   -moz-border-radius-bottomright:0px;
   -webkit-border-bottom-right-radius:0px;
   border-bottom-right-radius:0px;
@@ -428,25 +432,26 @@ text-align:center;
 .lower_content table tr:first-child td{
   border-top-style:hidden !important;
 }
-.lower_content table tr:first-child td:first-child {
+.lower_content table tr:first-child td:first-child, #sale_table tr:first-child td:first-child {
   -moz-border-radius-topleft:0px;
   -webkit-border-top-left-radius:0px;
   border-top-left-radius:0px;
 
 }
-.lower_content table tr:first-child td:last-child {
+.lower_content table tr:first-child td:last-child, #sale_table tr:first-child td:last-child{
   -moz-border-radius-topright:0px;
   -webkit-border-top-right-radius:0px;
   border-top-right-radius:0px;
-}.lower_content tr:last-child td:first-child{
+
+}.lower_content tr:last-child td:first-child, #sale_table tr:last-child td:first-child{
   -moz-border-radius-bottomleft:0px;
   -webkit-border-bottom-left-radius:0px;
   border-bottom-left-radius:0px;
 }.lower_content tr:hover td{
   
 }
-.lower_content tr:nth-child(odd){ background-color:#f6f6f6; }
-.lower_content tr:nth-child(even)    { background-color:#ffffff; }.CSSTableGenerator td{
+.lower_content tr:nth-child(odd), #sale_table tr:nth-child(odd){ background-color:#f6f6f6; }
+.lower_content tr:nth-child(even), #sale_table tr:nth-child(even)    { background-color:#ffffff; }.CSSTableGenerator td{
   vertical-align:middle;
   
   
@@ -458,14 +463,14 @@ text-align:center;
   font-family:Arial;
   font-weight:normal;
   color:#000000;
-}.lower_content tr:last-child td{
+}.lower_content tr:last-child td, #sale_table tr:last-child td{
   border-width:0px 1px 0px 0px;
-}.lower_content tr td:last-child{
+}.lower_content tr td:last-child, #sale_table tr td:last-child{
   border-width:0px 0px 1px 0px;
-}.lower_content tr:last-child td:last-child{
+}.lower_content tr:last-child td:last-child, #sale_table tr:last-child td:last-child{
   border-width:0px 0px 0px 0px;
 }
-.Clower_contenttr:first-child td{
+.lower_content tr:first-child td, #sale_table tr:first-child td{
     background:-o-linear-gradient(bottom, #ffffff 5%, #f6f6f6 100%);  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6) );
   background:-moz-linear-gradient( center top, #ffffff 5%, #f6f6f6 100% );
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#f6f6f6");  background: -o-linear-gradient(top,#ffffff,f6f6f6);
@@ -479,17 +484,17 @@ text-align:center;
   font-weight:bold;
   color:#ffffff;
 }
-.lower_content tr:first-child:hover td{
+.lower_content tr:first-child:hover td, #sale_table tr:first-child:hover td{
   background:-o-linear-gradient(bottom, #ffffff 5%, #f6f6f6 100%);  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6) );
   background:-moz-linear-gradient( center top, #ffffff 5%, #f6f6f6 100% );
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#f6f6f6");  background: -o-linear-gradient(top,#ffffff,f6f6f6);
 
   background-color:#ffffff;
 }
-.lower_content tr:first-child td:first-child{
+.lower_content tr:first-child td:first-child, #sale_table tr:first-child td:first-child{
   border-width:0px 0px 1px 0px;
 }
-.lower_content tr:first-child td:last-child{
+.lower_content tr:first-child td:last-child, #sale_table tr:first-child td:last-child{
   border-width:0px 0px 1px 1px;
 }
 
@@ -508,3 +513,95 @@ div.dataTables_info
 position:relative;
 right:10px;
 }
+
+/* --------------------------------------------
+   Sales Page
+-------------------------------------------- */
+
+#sale_content {
+        position:absolute; top:0px; left:-10px;
+        width:100%;
+        min-height:100%;
+            }
+
+      #sale_form
+      {
+        position : relative; left:50px; top:0px;
+        width : 600px;
+
+        border-left-style:groove;
+        border-right-style:groove;
+        background: #FFFDFB;
+          padding: 20px 30px 20px 30px;
+          font: 12px Georgia, "Times New Roman", Times, serif;
+          color: #888;
+          text-shadow: 1px 1px 1px #FFF;
+          border:1px solid #DADADA;
+
+      }
+
+      #sale_form input[type="text"]{
+          border: 1px solid #DADADA;
+          color: #888;
+          height: 24px;
+          margin-bottom: 16px;
+          margin-right: 6px;
+          margin-top: 2px;
+          outline: 0 none;
+          padding: 3px 3px 3px 5px;
+          width: 70%;
+          font: normal 12px/12px Arial, "Arial";
+      }
+
+      #sale_content h1
+      {   
+        font: 25px Arial, "Arial";
+          position:relative;
+          top:10px;
+          display: block;
+          border-bottom: 1px solid #DADADA;
+          border-bottom-width:0px;
+           margin: 0px 80px 40px 45px;
+          color: #888;
+      }
+
+   
+      }
+
+   
+
+      #sale_form table.info tr td
+      {
+        padding-bottom: 1em;
+      }
+
+
+      #sale_form textarea
+      { 
+        border: 1px solid #DADADA; width:525px; height:125px;
+          color: #888;
+          margin-bottom: 16px;
+          margin-right: 6px;
+          margin-top: 2px;
+          outline: 0 none;
+          padding: 3px 3px 3px 5px;
+          font: normal 12px/12px Georgia, "Times New Roman", Times, serif;    
+
+      }
+
+
+
+
+      #send
+      { position:relative;  left:160px; width:250px; top:10px;
+         background: #15992B;
+        border: none;
+          padding: 10px 25px 10px 25px;
+          color: #FFF;
+      }
+
+      #send:hover
+      {
+        background: #00C040;
+      }
+
