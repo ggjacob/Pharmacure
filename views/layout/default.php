@@ -68,7 +68,7 @@
 		-->
 	</head>
 
-	<body style="overflow-x: none;overflow-x: hidden" onload='addTabVentes("Vente","<?=WEBROOT?>Vente/index");' >
+	<body style="overflow-x: none;overflow-x: hidden" onload='display_ct();addTabVentes("Vente","<?=WEBROOT?>Vente/index");' >
 
 		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div><div class="logo_info">PharmaCure&trade;</br></div><div class="logo_info_small">Le Premier Traitement Digital</div></a> <a><div id="gear"></div><div id="alerte"></div><div class="badge">44</div></a>
 		<div class="welcome_info" style="font-size:15;">
