@@ -3,9 +3,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
 		<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" /> 
 		<title><?=$view['titre']?></title>
+
 		<link rel="stylesheet" href="<?=WEBROOT?>public/css/style.css">
 		<link rel="stylesheet" href="<?=WEBROOT?>public/css/tab.css">
-
 		<link rel="stylesheet" type="text/css" href="<?=WEBROOT?>public/css/easyui.css">
 		<link rel="stylesheet" type="text/css" href="<?=WEBROOT?>public/css/icon.css">
 		<link rel="stylesheet" type="text/css" href="<?=WEBROOT?>public/css/jquery.dataTables.css">
@@ -14,54 +14,9 @@
 		<script type="text/javascript" src="<?=WEBROOT?>public/js/jquery.js"></script>
 	    <script type="text/javascript" src="<?=WEBROOT?>public/js/jquery.easyui.min.js"></script>
 	    <script type="text/javascript" src="<?=WEBROOT?>public/js/app.js"></script>
-	    
 	    <script type="text/javascript" src="<?=WEBROOT?>public/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="<?=WEBROOT?>public/js/table.js"></script>
 
-		
-		<script>
-			function addTab(title, url){
-					if ($('#tt').tabs('exists', title)){
-					$('#tt').tabs('select', title);
-					} else {
-						var content = '<iframe scrolling="auto" id="'+title+'" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
-						$('#tt').tabs('add',{
-							title:title,
-							content:content,
-							closable:true	
-						});
-					}	
-			}
-			function addTabVentes(title, url){
-					if ($('#tt').tabs('exists', title)){
-					$('#tt').tabs('select', title);
-					} else {
-						var content = '<iframe scrolling="auto" id="'+title+'" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
-						$('#tt').tabs('add',{
-							title:title,
-							content:content,
-							closable:false	
-						});
-					}
-					$('#tt').tabs('select', "ACCEUIL");	
-			}
- 
-			function display_c()
-			{
-				var refresh=1000; // Refresh rate in milli seconds
-				mytime=setTimeout('display_ct()',refresh)
-			}
-
-			function display_ct() 
-			{
-				var strcount;
-				var x = new Date();
-				var x1=x.toUTCString();
-				document.getElementById('ct').innerHTML = x1;
-				tt=display_c();
-			 }
-	    </script>
-	   
 		<!--
 		<script type="text/javascript" src="public/js/color.js"></script>
 		<script type="text/javascript" src="public/js/angular.min.js"></script>

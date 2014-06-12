@@ -1,25 +1,45 @@
-function ajoutTab(title){
-	alert('<li><a href="#tabs-1">'+nom+'</a></li>');
-	$("#tabs ul").append('<li><a href="#tabs-1">'+nom+'</a></li>');
+function addTab(title, url){
+					if ($('#tt').tabs('exists', title)){
+					$('#tt').tabs('select', title);
+					} else {
+						var content = '<iframe scrolling="auto" id="'+title+'" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+						$('#tt').tabs('add',{
+							title:title,
+							content:content,
+							closable:true	
+						});
+					}	
+			}
+
+function addTabVentes(title, url){
+		if ($('#tt').tabs('exists', title)){
+		$('#tt').tabs('select', title);
+		} else {
+			var content = '<iframe scrolling="auto" id="'+title+'" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+			$('#tt').tabs('add',{
+				title:title,
+				content:content,
+				closable:false	
+			});
+		}
+		$('#tt').tabs('select', "ACCEUIL");	
 }
 
+function display_c()
+{
+	var refresh=1000; // Refresh rate in milli seconds
+	mytime=setTimeout('display_ct()',refresh)
+}
 
-
-function addTab(title, url){
-			alert("badi");
-			if ($('#tabs').tabs('exists', title)){
-				$('#tabs').tabs('select', title);
-			} else {
-				var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
-				$('#tab').tabs('add',{
-					title:title,
-					content:content,
-					closable:true
-				});
-			}
-		}
-
-
+function display_ct() 
+{
+	var strcount;
+	var x = new Date();
+	var x1=x.toUTCString();
+	document.getElementById('ct').innerHTML = x1;
+	tt=display_c();
+ }
+ 
 jQuery(document).ready(function($) {
 		   		$( "#tabs" ).tabs();
 		   		
