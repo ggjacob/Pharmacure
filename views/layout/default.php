@@ -42,7 +42,8 @@
 							content:content,
 							closable:false	
 						});
-					}	
+					}
+					$('#tt').tabs('select', "ACCEUIL");	
 			}
  
 			function display_c()
