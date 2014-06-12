@@ -44,23 +44,22 @@
 						});
 					}	
 			}
-	    </script>
-	   <script type="text/javascript"> 
-		function display_c()
-		{
-			var refresh=1000; // Refresh rate in milli seconds
-			mytime=setTimeout('display_ct()',refresh)
-		}
+ 
+			function display_c()
+			{
+				var refresh=1000; // Refresh rate in milli seconds
+				mytime=setTimeout('display_ct()',refresh)
+			}
 
-		function display_ct() 
-		{
-			var strcount;
-			var x = new Date();
-			var x1=x.toUTCString();
-			document.getElementById('ct').innerHTML = x1;
-			tt=display_c();
-		 }
-		</script>
+			function display_ct() 
+			{
+				var strcount;
+				var x = new Date();
+				var x1=x.toUTCString();
+				document.getElementById('ct').innerHTML = x1;
+				tt=display_c();
+			 }
+	    </script>
 	   
 		<!--
 		<script type="text/javascript" src="public/js/color.js"></script>
@@ -69,7 +68,7 @@
 		-->
 	</head>
 
-	<body style="overflow-x: none;overflow-x: hidden" onload="display_ct();" onload='addTabVentes("Vente","<?=WEBROOT?>Vente/index")'>
+	<body style="overflow-x: none;overflow-x: hidden" onload='addTabVentes("Vente","<?=WEBROOT?>Vente/index");' >
 
 		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div><div class="logo_info">PharmaCure&trade;</br></div><div class="logo_info_small">Le Premier Traitement Digital</div></a> <a><div id="gear"></div><div id="alerte"></div><div class="badge">44</div></a>
 		<div class="welcome_info" style="font-size:15;">
