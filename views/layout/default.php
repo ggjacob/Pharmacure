@@ -72,10 +72,10 @@
 	<body style="overflow-x: none;overflow-x: hidden" onload="display_ct();" onload='addTabVentes("Vente","<?=WEBROOT?>Vente/index")'>
 
 		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div></a> <a><div id="gear"></div><div id="alerte"></div><div class="badge">44</div></a>
-		<div class="welcome_info">
+		<div class="welcome_info" style="font-size:15;">
 			<?php if(isset($_SESSION['user'])):?>
 				Bonjour <?=$_SESSION['user']->Nom?> <br>
-				<span id='ct' ></span></div>
+				<span id='ct' style="font-size:10;"></span></div>
 			<a href="<?=WEBROOT?>Comptes/deconnexion"><div class="disconnect"> </div></a>	
 			<?php endif;?>
 		
