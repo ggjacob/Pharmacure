@@ -17,14 +17,14 @@
   											</td>
   										</tr>
   										<tr>
-  											<td><div class="info_box_blue"></div></td>
-  											<td><div class="info_box_green"></div></td>
-  											<td><div class="info_box_red"></div></td>
-  											<td><div class="info_box_marine"></div></td>
+  											<td><div class="info_box_blue"><div class="meter_text">Clients</div><span class="number">34 521</span><span class="percentage">20%</span><div class="meter"><span style="width: 20%"></span></div></div></td>
+  											<td><div class="info_box_green"><div class="meter_text">Produits</div><span class="number">869</span><span class="percentage">40%</span><div class="meter"><span style="width: 40%"></span></div></div></td>
+  											<td><div class="info_box_red"><div class="meter_text">Alertes</div><span class="number">4 444</span><span class="percentage">80%</span><div class="meter"><span style="width: 80%%"></span></div></div></td>
+  											<td><div class="info_box_marine"><div class="meter_text">Rapports</div><span class="number">1 000</span><span class="percentage">30%</span><div class="meter"><span style="width: 30%"></span></div></div></td>
   										</tr>
   									</table>
   								</div>
-  							<div class="lower_content">
+  							<div class="lower_content" >
   									<div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes produits</span></div>
   									<table id="data_source">
                          <thead>

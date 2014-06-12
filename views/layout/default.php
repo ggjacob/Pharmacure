@@ -45,6 +45,7 @@
 					}	
 			}
 	    </script>
+	   
 		<!--
 		<script type="text/javascript" src="public/js/color.js"></script>
 		<script type="text/javascript" src="public/js/angular.min.js"></script>

@@ -604,4 +604,140 @@ right:10px;
       {
         background: #00C040;
       }
+/* --------------------------------------------
+   End of Sales Page
+-------------------------------------------- */
+/* --------------------------------------------
+    Progress Bar
+-------------------------------------------- */
+      .meter_text
+      {
+        position:absolute; left:15px;
+        color:white;
+        font-size:25;
+      }
+      span.number
+      { position:absolute; top:40px; left:20px;
+        color:white;
+        font-size:15; font-weight:bold;
+      }
+      span.percentage
+      { position:absolute; top:40px; right:20px;
+        color:white;
+        font-size:15; font-weight:bold;
+      }
+      .meter { 
+        width:150px;
+      height: 10px;  /* Can be anything */
+      position: absolute; left:17px;
+      margin: 60px 0 20px 0; /* Just for demo spacing */
+      background: #FEFEFE;
+      -moz-border-radius: 6px;
+      -webkit-border-radius: 6px;
+      border-radius: 7px;
+      padding: 5px;
+      -webkit-box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+      -moz-box-shadow   : inset 0 -1px 1px rgba(255,255,255,0.3);
+      box-shadow        : inset 0 -1px 1px rgba(255,255,255,0.3);
+    }
+    .meter > span {
+      display: block;
+      height: 100%;
+         -webkit-border-top-right-radius: 2px;
+      -webkit-border-bottom-right-radius: 2px;
+             -moz-border-radius-topright: 2px;
+          -moz-border-radius-bottomright: 2px;
+                 border-top-right-radius: 2px;
+              border-bottom-right-radius: 2px;
+          -webkit-border-top-left-radius: 6px;
+       -webkit-border-bottom-left-radius: 6px;
+              -moz-border-radius-topleft: 6px;
+           -moz-border-radius-bottomleft: 6px;
+                  border-top-left-radius: 6px;
+               border-bottom-left-radius: 6px;
+      background-color: rgb(0,192,64);
+      background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(0,192,64)),
+        color-stop(1, rgb(21,153,43))
+       );
+      background-image: -moz-linear-gradient(
+        center bottom,
+        rgb(43,194,83) 37%,
+        rgb(84,240,84) 69%
+       );
+      -webkit-box-shadow: 
+        inset 0 2px 9px  rgba(255,255,255,0.3),
+        inset 0 -2px 6px rgba(0,0,0,0.4);
+      -moz-box-shadow: 
+        inset 0 2px 9px  rgba(255,255,255,0.3),
+        inset 0 -2px 6px rgba(0,0,0,0.4);
+      box-shadow: 
+        inset 0 2px 9px  rgba(255,255,255,0.3),
+        inset 0 -2px 6px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .meter > span:after, .animate > span > span {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background-image: 
+         -webkit-gradient(linear, 0 0, 100% 100%, 
+            color-stop(.25, rgba(255, 255, 255, .2)), 
+            color-stop(.25, transparent), color-stop(.5, transparent), 
+            color-stop(.5, rgba(255, 255, 255, .2)), 
+            color-stop(.75, rgba(255, 255, 255, .2)), 
+            color-stop(.75, transparent), to(transparent)
+         );
+      background-image: 
+        -moz-linear-gradient(
+          -45deg, 
+            rgba(255, 255, 255, .2) 25%, 
+            transparent 25%, 
+            transparent 50%, 
+            rgba(255, 255, 255, .2) 50%, 
+            rgba(255, 255, 255, .2) 75%, 
+            transparent 75%, 
+            transparent
+         );
+      z-index: 1;
+      -webkit-background-size: 50px 50px;
+      -moz-background-size: 50px 50px;
+      -webkit-animation: move 2s linear infinite;
+         -webkit-border-top-right-radius: 8px;
+      -webkit-border-bottom-right-radius: 8px;
+             -moz-border-radius-topright: 8px;
+          -moz-border-radius-bottomright: 8px;
+                 border-top-right-radius: 8px;
+              border-bottom-right-radius: 8px;
+          -webkit-border-top-left-radius: 20px;
+       -webkit-border-bottom-left-radius: 20px;
+              -moz-border-radius-topleft: 20px;
+           -moz-border-radius-bottomleft: 20px;
+                  border-top-left-radius: 20px;
+               border-bottom-left-radius: 20px;
+      overflow: hidden;
+    }
+    
+    .animate > span:after {
+      display: none;
+    }
+    
+    @-webkit-keyframes move {
+        0% {
+           background-position: 0 0;
+        }
+        100% {
+           background-position: 50px 50px;
+        }
+    }
+    
+    
+    .nostripes > span > span, .nostripes > span:after {
+      -webkit-animation: none;
+      background-image: none;
+    }
 
