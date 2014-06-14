@@ -8,7 +8,7 @@ class Vente extends Controller{
      */
     function index(){
         
-        $d['view'] = array("titre" => "On vend ou bien ?? Makoroni ni cho o ni mayonaise au be ne deme");
+        $d['view'] = array("titre" => "");
         $this->set($d); 
         $this->render('index');
     }
