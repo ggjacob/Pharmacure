@@ -4,7 +4,7 @@
 		<font color="black">
 			<h1> Effectuer Une Vente</h1>
 		</font>
-		<form action="/contact/display" method="post" id="sale_form">
+		<form action="#" method="post" id="sale_form">
 			<font color="black" size="4">
 				<table class="info" border="0px" width="600px">
 					<tr>
