@@ -78,6 +78,7 @@ table.dataTable td {
   clear: both;
   *zoom: 1;
   zoom: 1;
+
 }
 .dataTables_wrapper .dataTables_length {
   position:absolute;
@@ -212,6 +213,7 @@ table.dataTable td {
 .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
   *margin-top: -1px;
   -webkit-overflow-scrolling: touch;
+  height:275px !important;
 }
 .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody th > div.dataTables_sizing,
 .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody td > div.dataTables_sizing {
