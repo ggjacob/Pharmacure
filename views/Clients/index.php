@@ -27,11 +27,11 @@
                                     <div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes clients</span></div>
                                     <table id="data_source">
                          <thead>
-                            <tr ><th>Action</th><th>Prenom</th>   <th >Nom</th>  <th >Mail</th><th>Tel</th> <th >Commentaires</th></tr>    
+                            <tr ><th>Action</th><th>id</th>   <th >Nom</th>  <th >Prenom</th><th>Tel</th></tr>    
                          </thead>
                          <tbody>
                         <?php foreach($view['clients'] as $client) : ?>
-                                <tr><td class="center"><div class="add_icon_table" Onclick="open_infos('Client', <?=$client->id?>)"></div><a href="<?=WEBROOT?>Clients/delete/<?=$client->id?>"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->Prenom?></td> <td><?=$client->Nom?></td><td><?=$client->Mail?></td> <td><?=$client->Tel?></td> <td><?=$client->Commentaire?></td></tr>
+                                <tr><td class="center"><div class="add_icon_table" Onclick="open_infos('Client', <?=$client->id?>)"></div><a href="<?=WEBROOT?>Clients/delete/id"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->id?></td> <td><?=$client->Nom?></td><td><?=$client->Prenom?></td> <td><?=$client->Tel?></td> </tr>
                         <?php endforeach;?>
                         <tbody>
                     </table>
