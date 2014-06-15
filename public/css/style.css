@@ -321,7 +321,7 @@ height:240px;
 {
 border-style:solid; border-width:0px;
 }
-
+/*View des differents onglets */
 .add_client
 {
  width:300px; height:250px; position:relative; top:7px; left:250px; bottom-margin:50px;
@@ -331,6 +331,28 @@ border-style:solid; border-width:0px;
 {
 cursor:pointer;
  background-image: url('../images/add_client.png');
+}
+
+.produit_client
+{
+ width:300px; height:250px; position:relative; top:7px; left:250px; bottom-margin:50px;
+  background-image: url('../images/add_produit_gray.png'); 
+}
+.produit_client:hover
+{
+cursor:pointer;
+ background-image: url('../images/add_prdoduit.png');
+}
+
+.fournisseur_client
+{
+ width:300px; height:250px; position:relative; top:7px; left:250px; bottom-margin:50px;
+  background-image: url('../images/add_fournisseur_gray.png'); 
+}
+.fournisseur_client:hover
+{
+cursor:pointer;
+ background-image: url('../images/add_fournisseur.png');
 }
 
 .hide_form
