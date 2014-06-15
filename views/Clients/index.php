@@ -7,9 +7,9 @@
                 <table class="upper_content_forms_table" >
                     <tr>
                         <td width="42px" align="left">Nom</td>   
-                        <td align="center"><input type="text" name="nom" placeholder="Nom Du Client">  </td>
+                        <td align="center"><input type="text" name="nom" placeholder="Nom Du Client"  required>  </td>
                         <td width="42px" align="left">Prenom</td>   
-                        <td align="center"><input type="text" name="prenom" placeholder="Prenom Du Client">  </td>
+                        <td align="center"><input type="text" name="prenom" placeholder="Prenom Du Client" required>  </td>
                     </tr>
                     <tr>
                         <td width="42px" align="left">N&deg; Tel</td>   
