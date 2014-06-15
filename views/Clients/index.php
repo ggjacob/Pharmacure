@@ -1,6 +1,6 @@
-<div id="form_action" class="add_client" onClick="show_form('upper_content_forms')">Clique here</div>
+<div id="form_action" class="add_client" onClick="show_form('upper_content_forms', 'form_action')"></div>
 <div id="upper_content_forms" >
-    <div class="hide_form" onClick="hide_form('upper_content_forms')"></div>
+    <div class="hide_form" onClick="hide_form('upper_content_forms', 'form_action')"></div>
         <form action="<?=WEBROOT?>Clients/creation" method="post" >
             <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
             <font color="black" size="4">
@@ -23,7 +23,7 @@
         </form>
 </div>
 
-<div class="lower_content" style="font-size:13;">
+<div class="lower_content" style="font-size:13; top:20px">
                                     <div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes clients</span></div>
                                     <table id="data_source">
                          <thead>
@@ -31,7 +31,7 @@
                          </thead>
                          <tbody>
                         <?php foreach($view['clients'] as $client) : ?>
-                                <tr><td class="center"><div class="add_icon_table" Onclick="open_infos('Client', <?=$client->id?>)"></div><a href="<?=WEBROOT?>Clients/delete/id"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->id?></td> <td><?=$client->Nom?></td><td><?=$client->Prenom?></td> <td><?=$client->Tel?></td> </tr>
+                                <tr><td class="center"><div class="view_icon_table" Onclick=""></div><div class="modif_icon_table" Onclick="open_infos('Client', <?=$client->id?>)"></div><a href="<?=WEBROOT?>Clients/delete/id"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->id?></td> <td><?=$client->Nom?></td><td><?=$client->Prenom?></td> <td><?=$client->Tel?></td> </tr>
                         <?php endforeach;?>
                         <tbody>
                     </table>

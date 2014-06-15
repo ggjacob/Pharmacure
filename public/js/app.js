@@ -50,18 +50,23 @@ jQuery(document).ready(function($) {
 });
 
 var ddmenuitem	= 0;
-function show_form(id)
+var ddmenuitem2	= 0;
+function show_form(id, action)
 {	
 	ddmenuitem = document.getElementById(id);
+	ddmenuitem2 = document.getElementById(action);
 	ddmenuitem.style.visibility = 'visible';
 	ddmenuitem.style.position = 'relative';
-
+		ddmenuitem2.style.visibility = 'hidden';
+	ddmenuitem2.style.position = 'absolute';
 }
 
-function hide_form(id)
+function hide_form(id, action)
 {	
-
+	ddmenuitem2 = document.getElementById(action);
 	ddmenuitem = document.getElementById(id);
 	ddmenuitem.style.visibility = 'hidden';
 	ddmenuitem.style.position = 'absolute';
+	ddmenuitem2.style.visibility = 'visible';
+	ddmenuitem2.style.position = 'relative';
 }

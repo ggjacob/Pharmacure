@@ -324,44 +324,59 @@ border-style:solid; border-width:0px;
 
 .add_client
 {
- width:100px; height:25px; position:relative; top:5px; left:10px;
-  background-image: url('../images/menu/add_client.png'); 
+ width:300px; height:250px; position:relative; top:7px; left:250px; bottom-margin:50px;
+  background-image: url('../images/add_client_gray.png'); 
 }
 .add_client:hover
 {
 cursor:pointer;
+ background-image: url('../images/add_client.png');
 }
+
 .hide_form
 {
  width:20px; height:20px; position:absolute; top:5px; right:10px; 
-background-image: url('../images/hide_form_gray.png'); 
+background-image: url('../images/hide_gray.png'); 
 }
 .hide_form:hover
 {
 cursor:pointer;
 background-image: url('../images/hide_form.png'); 
 }
-
-.add_icon_table
-{ float:left;
+/*-------------------- Table ICONS --------------------*/
+.view_icon_table
+{ float:left;left:10px;
  width:20px; height:20px; position:relative;
-  background-image: url('../images/add_icon.png'); 
+  background-image: url('../images/view_icon_gray.png'); 
 }
-.add_icon_table:hover
+.view_icon_table:hover
 {
 cursor:pointer;
+background-image: url('../images/view_icon.png'); 
 }
+
+.modif_icon_table
+{ float:left; left:25px;
+ width:20px; height:20px; position:relative;
+  background-image: url('../images/modif_icon_gray.png'); 
+}
+.modif_icon_table:hover
+{
+cursor:pointer;
+background-image: url('../images/modif_icon.png'); 
+}
+
 .remove_icon_table
 {
-width:20px; height:20px; position:relative;left:30px;
-background-image: url('../images/hide_form_gray.png');
+width:20px; height:20px; position:relative;left:80px;
+background-image: url('../images/hide_gray.png');
 }
 .remove_icon_table:hover
 {
 cursor:pointer;
 background-image: url('../images/hide_form.png'); 
 }
-
+/*-------------------------------------------------------*/
 #upper_content_forms {
         position:absolute; top:0px; left:10px;
         width:740px; 
