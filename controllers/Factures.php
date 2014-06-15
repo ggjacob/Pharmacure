@@ -10,7 +10,7 @@ class Factures extends Controller{
         
         $d['view'] = array("titre" => "Gestion des Factures");
         $this->set($d); 
-        $this->render('index');
+        $this->render('index'); 
     }
 }
 ?>

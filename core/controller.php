@@ -21,7 +21,6 @@ class Controller{
     }
 
     function alert($msg,$duration){
-
             require(ROOT.'views/layout/alert.php');
     }
 

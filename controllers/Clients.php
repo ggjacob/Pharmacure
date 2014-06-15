@@ -7,11 +7,11 @@ class Clients extends Controller{
      * @UserS('REQUIRED')
      */
     function index(){
-        
+        $form['type'] ='create';
         $clients = new Client();
         $clients = Doctrine_Core::getTable('client')->findAll();
-        $d['view'] = array("titre" => "Gestion des clients","clients"=>$clients);
-        $this->set($d); 
+        $d['view'] = array("titre" => "Gestion des clients","clients"=>$clients,"form" => $form);
+        $this->set($d);
         $this->render('index');
     }
 
@@ -73,7 +73,7 @@ class Clients extends Controller{
                     $client->init($this->data['nom'],$this->data['prenom'],$this->data['mail'],$this->data['tel'],$this->data['commentaire']);        
                     $client->save();    
                     $this->alert("Client crée avec succès.",2000);
-                    $this->redirect('Clients/index',2);
+                    $this->redirect('Clients/index',0);
                 }
                 else
                 {
@@ -81,7 +81,8 @@ class Clients extends Controller{
                     $this->set($d);
                     $this->render('creation');
                 }
-            }else{
+            }
+            else{
                     $currentClient = new Client();
                     $currentClient = Doctrine_Core::getTable('client')->find($this->data['id']);
 
