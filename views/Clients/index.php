@@ -31,7 +31,7 @@
                          </thead>
                          <tbody>
                         <?php foreach($view['clients'] as $client) : ?>
-                                <tr><td class="center"><div class="add_icon_table" Onclick="open_infos('Client', <?=$client->id?>)"></div><a href="<?=WEBROOT?>Clients/delete/id"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->Prenom?></td> <td><?=$client->Nom?></td><td><?=$client->Mail?></td> <td><?=$client->Tel?></td> <td><?=$client->Commentaire?></td></tr>
+                                <tr><td class="center"><div class="add_icon_table" Onclick="open_infos('Client', <?=$client->id?>)"></div><a href="<?=WEBROOT?>Clients/delete/<?=$client->id?>"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->Prenom?></td> <td><?=$client->Nom?></td><td><?=$client->Mail?></td> <td><?=$client->Tel?></td> <td><?=$client->Commentaire?></td></tr>
                         <?php endforeach;?>
                         <tbody>
                     </table>

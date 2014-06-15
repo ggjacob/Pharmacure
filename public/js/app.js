@@ -66,6 +66,4 @@ function hide_form(id)
 	ddmenuitem = document.getElementById(id);
 	ddmenuitem.style.visibility = 'hidden';
 	ddmenuitem.style.position = 'absolute';
-
-
 }
