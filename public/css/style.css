@@ -341,6 +341,27 @@ background-image: url('../images/hide_form_gray.png');
 cursor:pointer;
 background-image: url('../images/hide_form.png'); 
 }
+
+.add_icon_table
+{ float:left;
+ width:20px; height:20px; position:relative;
+  background-image: url('../images/add_icon.png'); 
+}
+.add_icon_table:hover
+{
+cursor:pointer;
+}
+.remove_icon_table
+{
+width:20px; height:20px; position:relative;left:30px;
+background-image: url('../images/hide_form_gray.png');
+}
+.remove_icon_table:hover
+{
+cursor:pointer;
+background-image: url('../images/hide_form.png'); 
+}
+
 #upper_content_forms {
         position:absolute; top:0px; left:10px;
         width:740px; 
