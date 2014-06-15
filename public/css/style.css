@@ -333,23 +333,23 @@ cursor:pointer;
  background-image: url('../images/add_client.png');
 }
 
-.produit_client
+.add_produit
 {
  width:300px; height:250px; position:relative; top:7px; left:250px; bottom-margin:50px;
   background-image: url('../images/add_produit_gray.png'); 
 }
-.produit_client:hover
+.add_produit:hover
 {
 cursor:pointer;
- background-image: url('../images/add_prdoduit.png');
+ background-image: url('../images/add_produit.png');
 }
 
-.fournisseur_client
+.add_fournisseur
 {
  width:300px; height:250px; position:relative; top:7px; left:250px; bottom-margin:50px;
   background-image: url('../images/add_fournisseur_gray.png'); 
 }
-.fournisseur_client:hover
+.add_fournisseur:hover
 {
 cursor:pointer;
  background-image: url('../images/add_fournisseur.png');

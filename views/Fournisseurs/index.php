@@ -1,4 +1,4 @@
-<div id="form_action" class="add_client" onClick="show_form('upper_content_forms', 'form_action')"></div>
+<div id="form_action" class="add_fournisseur" onClick="show_form('upper_content_forms', 'form_action')"></div>
 <div id="upper_content_forms" >
     <div class="hide_form" onClick="hide_form('upper_content_forms', 'form_action')"></div>
         <form action="<?=WEBROOT?>Clients/creation" method="post" >
