@@ -324,12 +324,22 @@ border-style:solid; border-width:0px;
 
 .add_client
 {
- width:100px; height:25px; position:relative; top:5px; left:10px; border-style:1px solid black;
+ width:100px; height:25px; position:relative; top:5px; left:10px;
   background-image: url('../images/menu/add_client.png'); 
 }
 .add_client:hover
 {
 cursor:pointer;
+}
+.hide_form
+{
+ width:20px; height:20px; position:absolute; top:5px; right:10px; 
+background-image: url('../images/hide_form_gray.png'); 
+}
+.hide_form:hover
+{
+cursor:pointer;
+background-image: url('../images/hide_form.png'); 
 }
 #upper_content_forms {
         position:absolute; top:0px; left:10px;
