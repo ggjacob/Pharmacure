@@ -24,21 +24,16 @@
 </div>
 
 <div class="lower_content" style="font-size:13; top:20px">
-<!--        <ul id="inline-popups">
-    <li><a href="#test-popup" data-effect="mfp-zoom-in">Zoom</a></li>
-        </ul>-->
-                                    <div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes clients</span></div>
-                                    <table id="data_source">
-                         <thead>
-                            <tr ><th>Action</th><th>id</th>   <th >Nom</th>  <th >Prenom</th><th>Tel</th></tr>    
-                         </thead>
-                         <tbody>
-                        <?php foreach($view['clients'] as $client) : ?>
-                             <tr><td class="center"><div class="view_icon_table" Onclick=""></div><a class ="test" href="<?=WEBROOT?>Popup/editItem/<?=$client->id?>/Client"><div class="modif_icon_table"></div></a><a href="<?=WEBROOT?>Clients/delete/id"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->id?></td> <td><?=$client->Nom?></td><td><?=$client->Prenom?></td> <td><?=$client->Tel?></td> </tr>
-                        <?php endforeach;?>
-                        <tbody>
-                    </table>
-</div>
-<div id="somediv" title="this is a dialog" style="display:none;">
-    <iframe id="thedialog" width="350" height="350"></iframe>
+
+<div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes clients</span></div>
+    <table id="data_source">
+         <thead>
+            <tr ><th>Action</th><th>id</th>   <th >Nom</th>  <th >Prenom</th><th>Tel</th></tr>    
+         </thead>
+         <tbody>
+             <?php foreach($view['clients'] as $client) : ?>
+                 <tr><td class="center"><div class="view_icon_table" Onclick=""></div><a class ="test" href="<?=WEBROOT?>Popup/editItem/<?=$client->id?>/Client"><div class="modif_icon_table"></div></a><a href="<?=WEBROOT?>Clients/delete/id"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->id?></td> <td><?=$client->Nom?></td><td><?=$client->Prenom?></td> <td><?=$client->Tel?></td> </tr>
+             <?php endforeach;?>
+        <tbody>
+    </table>
 </div>
