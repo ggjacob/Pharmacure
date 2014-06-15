@@ -70,3 +70,25 @@ function hide_form(id, action)
 	ddmenuitem2.style.visibility = 'visible';
 	ddmenuitem2.style.position = 'relative';
 }
+
+function open_infos(url){
+        window.open(url,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=1076,height=768,directories=no,location=no')
+    }
+
+//Remplace l'action par defaut du clique sur un lien sur les elements du tableau
+$( "tr a" ).click(function( event ) {
+  event.preventDefault();
+  open_infos();
+});
+
+//addEventListener("load",function(){
+//    var links= document.getElementsByTagName("a");
+//    for (var i=0;i<links.length;i++){
+//        links[i].addEventListener("click",function(e){
+//        open_infos();
+//        //prevent event action
+//        e.preventDefault();
+//        })
+//    }
+//});
+
