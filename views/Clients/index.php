@@ -34,8 +34,11 @@
                          </thead>
                          <tbody>
                         <?php foreach($view['clients'] as $client) : ?>
-                             <tr><td class="center"><div class="view_icon_table" Onclick=""></div><a href="<?=WEBROOT?>Popup/editItem/<?=$client->id?>/Client"><div class="modif_icon_table"></div></a><a href="<?=WEBROOT?>Clients/delete/id"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->id?></td> <td><?=$client->Nom?></td><td><?=$client->Prenom?></td> <td><?=$client->Tel?></td> </tr>
+                             <tr><td class="center"><div class="view_icon_table" Onclick=""></div><a class ="test" href="<?=WEBROOT?>Popup/editItem/<?=$client->id?>/Client"><div class="modif_icon_table"></div></a><a href="<?=WEBROOT?>Clients/delete/id"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->id?></td> <td><?=$client->Nom?></td><td><?=$client->Prenom?></td> <td><?=$client->Tel?></td> </tr>
                         <?php endforeach;?>
                         <tbody>
                     </table>
+</div>
+<div id="somediv" title="this is a dialog" style="display:none;">
+    <iframe id="thedialog" width="350" height="350"></iframe>
 </div>

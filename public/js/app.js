@@ -76,16 +76,32 @@ function open_infos(url){
     }
 
 //Remplace l'action par defaut du clique sur un lien sur les elements du tableau
-$( ".odd a" ).click(function( event ) {
-  event.preventDefault();
-  var url = $( ".odd a" ).attr("href");
-  open_infos();
-});
+//$( ".odd a" ).click(function( event ) {
+//  event.preventDefault();
+//  var url = $( ".odd a" ).attr("href");
+//  open_infos();
+//});
+//
+//$( ".even a" ).click(function( event ) {
+//  event.preventDefault();
+//  var url = $( ".even a" ).attr("href");
+//  open_infos(url);
+//});
 
-$( ".even a" ).click(function( event ) {
-  event.preventDefault();
-  var url = $( ".even a" ).attr("href");
-  open_infos(url);
+$(document).ready(function () {
+    $(".test").click(function (event) {
+         event.preventDefault();
+        $("#thedialog").attr('src', $(this).attr("href"));
+        $("#somediv").dialog({
+            width: 400,
+            height: 450,
+            modal: true,
+            close: function () {
+                $("#thedialog").attr('src', "about:blank");
+            }
+        });
+        return false;
+    });
 });
 
 //$('#inline-popups').magnificPopup({
