@@ -1,4 +1,5 @@
-<div class="upper_content_forms">
+<div id="form_action" class="add_client" onClick="show_form('upper_content_forms')">Clique here</div>
+<div id="upper_content_forms" >
         <form action="<?=WEBROOT?>Clients/creation" method="post" >
             <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
             <font color="black" size="4">

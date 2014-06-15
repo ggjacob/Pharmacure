@@ -322,10 +322,19 @@ height:240px;
 border-style:solid; border-width:0px;
 }
 
-.upper_content_forms {
-        position:relative; top:0px; left:10px;
+.add_client
+{
+ width:100px; height:25px; position:relative; top:5px; left:10px; border-style:1px solid black;
+  background-image: url('../images/menu/add_client.png'); 
+}
+.add_client:hover
+{
+cursor:pointer;
+}
+#upper_content_forms {
+        position:absolute; top:0px; left:10px;
         width:740px; 
-                border-left-style:groove;
+        border-left-style:groove;
         border-right-style:groove;
         background: #EFEFEF;
           padding: 20px 30px 20px 30px;
@@ -333,14 +342,17 @@ border-style:solid; border-width:0px;
           color: #888;
           text-shadow: 1px 1px 1px #FFF;
           border:1px solid #DADADA;
+          visibility: hidden;
+
         }
- .upper_content_forms table.upper_content_forms_table
+ #upper_content_forms table.upper_content_forms_table
 
       { position:relative; left:55px;
         font: 15px Arial, "Arial";
         width : 600px; 
+
       }  
-.upper_content_forms input[type="text"], .upper_content_forms input[type="email"]{
+#upper_content_forms input[type="text"], #upper_content_forms input[type="email"]{
           border: 1px solid #DADADA;
           color: #888;
           height: 24px;
@@ -368,7 +380,7 @@ border-style:solid; border-width:0px;
         background: #00C040;
       }
 
-      .upper_content_forms textarea
+      #upper_content_forms textarea
       { 
         border: 1px solid #DADADA; width:525px; height:100px;
         position:relative; left:90px;
@@ -382,7 +394,7 @@ border-style:solid; border-width:0px;
 
       }
 
-      .upper_content_forms textarea:hover
+      #upper_content_forms textarea:hover
       { 
         border-color:#D5BC28;
       }
