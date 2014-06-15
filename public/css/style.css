@@ -952,4 +952,61 @@ right:10px;
       -webkit-animation: none;
       background-image: none;
     }
+/*
+    
+    ====== Zoom effect for popup======
 
+
+
+html,body {margin:0; padding:10px; -webkit-backface-visibility:hidden;}
+*/
+/* text-based popup styling 
+.white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 25px;
+  width:auto;
+  max-width: 400px;
+  margin: 0 auto; 
+}
+
+.mfp-zoom-in {
+  */
+  /* start state 
+  .mfp-with-anim {
+    opacity: 0;
+    transition: all 0.2s ease-in-out; 
+    transform: scale(0.8); 
+  }
+  
+  &.mfp-bg {
+    opacity: 0;
+	  transition: all 0.3s ease-out;
+  }
+  */
+  /* animate in 
+  &.mfp-ready {
+    .mfp-with-anim {
+      opacity: 1;
+      transform: scale(1); 
+    }
+    &.mfp-bg {
+      opacity: 0.8;
+    }
+  }
+  */
+  /* animate out 
+  &.mfp-removing {
+    
+    .mfp-with-anim {
+      transform: scale(0.8); 
+      opacity: 0;
+    }
+    &.mfp-bg {
+      opacity: 0;
+    }
+    
+  }
+  
+}
+*/

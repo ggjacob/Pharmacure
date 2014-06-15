@@ -76,10 +76,29 @@ function open_infos(url){
     }
 
 //Remplace l'action par defaut du clique sur un lien sur les elements du tableau
-$( "tr a" ).click(function( event ) {
+$( ".odd a" ).click(function( event ) {
   event.preventDefault();
+  var url = $( ".odd a" ).attr("href");
   open_infos();
 });
+
+$( ".even a" ).click(function( event ) {
+  event.preventDefault();
+  var url = $( ".even a" ).attr("href");
+  open_infos(url);
+});
+
+//$('#inline-popups').magnificPopup({
+//  delegate: 'a',
+//  removalDelay: 500, //delay removal by X to allow out-animation
+//  callbacks: {
+//    beforeOpen: function() {
+//       this.st.mainClass = this.st.el.attr('data-effect');
+//    }
+//  },
+//  midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+//});
+
 
 //addEventListener("load",function(){
 //    var links= document.getElementsByTagName("a");
