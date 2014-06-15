@@ -52,11 +52,9 @@ jQuery(document).ready(function($) {
 var ddmenuitem	= 0;
 function show_form(id)
 {	
-
 	ddmenuitem = document.getElementById(id);
 	ddmenuitem.style.visibility = 'visible';
 	ddmenuitem.style.position = 'relative';
-
 
 }
 
