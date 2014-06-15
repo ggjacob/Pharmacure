@@ -30,8 +30,8 @@
                             <tr ><th>Action</th><th>id</th>   <th >Nom</th>  <th >Prenom</th><th>Tel</th></tr>    
                          </thead>
                          <tbody>
-                        <?php foreach($view['clients'] as $client) : ?>
-                                <tr><td class="center"><div class="view_icon_table" Onclick=""></div><div class="modif_icon_table" Onclick="open_infos('Client', <?=$client->id?>)"></div><a href="<?=WEBROOT?>Clients/delete/id"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->id?></td> <td><?=$client->Nom?></td><td><?=$client->Prenom?></td> <td><?=$client->Tel?></td> </tr>
+                        <?php foreach($view['produits'] as $produit) : ?>
+                                <tr><td class="center"><div class="view_icon_table" Onclick=""></div><div class="modif_icon_table" Onclick="open_infos('Client', <?=$client->id?>)"></div><a href="<?=WEBROOT?>Clients/delete/id"><div class="remove_icon_table"></div></a></td>  <td ><?=$produit->id?></td> <td><?=$produit->Nom?></td><td><?=$produit->Prenom?></td> <td><?=$produit->Tel?></td> </tr>
                         <?php endforeach;?>
                         <tbody>
                     </table>
