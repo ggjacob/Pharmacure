@@ -1,3 +1,8 @@
+<script type="text/javascript">
+    $(function() {
+      $(".js__p_start, .js__p_another_start").simplePopup();
+    });
+</script>
 <div id="form_action" class="add_client" onClick="show_form('upper_content_forms', 'form_action')"></div>
 <div id="upper_content_forms" >
     <div class="hide_form" onClick="hide_form('upper_content_forms', 'form_action')"></div>
