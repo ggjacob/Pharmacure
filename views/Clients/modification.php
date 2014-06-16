@@ -1,44 +1,25 @@
-		<div id="" class="wrapper clearfix">
-			<div class="main">
-				<div id="contenu">
-						<a onclick='$("#modifier").html("");' href="#">Annuler</a>
-					<h1><?=$view["titre"]?></h1>
-					<form action="<?=WEBROOT?>Clients/creation" id="ajouterForm" method="post">
+<div id="form_action" class="add_client" onclick="show_form('upper_content_forms', 'form_action')"></div>
+<div id="upper_content_forms">
 
-						<input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
-						<input type="hidden" value='<?=$view["id"]?>' name="id">
-						<ul>
-							<li>
-								<label>Nom</label>
-								<input type="text" name='nom' value='<?php if(isset($view['form']['nom'])) echo$view['form']['nom'];?>' placeholder="Saisissez votre nom" required>
-							</li>
-							<li>
-								<label>Prénom</label>
-								<input type="text" name='prenom' value='<?php if(isset($view['form']['prenom'])) echo$view['form']['prenom'];?>' placeholder="Saisissez votre prénom" required>
-							</li>
-							<li>
-								<label>Email</label>
-								<input type="email" name='mail' value='<?php if(isset($view['form']['mail'])) echo$view['form']['mail'];?>' placeholder="Saisissez votre email" required>
-							</li>
-
-							<li>
-								<label>Téléphone (ex: +33629468981) </label>
-								<input type="text" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" name='tel' value='<?php if(isset($view['form']['tel'])) echo$view['form']['tel'];?>' placeholder="Saisissez votre numéro de téléphone" required>
-							</li>
-							<li>
-								<label> </label>
-								<span style='color:red;'><?php if(isset($view['erreur']['login'])) echo $view['erreur']['login'];?></span>
-							</li>
-							<li>
-								<label>Commentaire</label>
-								<textarea rows="4" cols="50" type="text" name='commentaire'><?php if(isset($view['form']['commentaire'])) echo$view['form']['commentaire'];?></textarea>
-							</li>
-							
-							<li>
-								<input type="submit" value="Enregistrer" class="btn3">
-							</li>
-						</ul>
-					</form>
-				</div>
-			</div>
-		</div>
+<form action="<?=WEBROOT?>Clients/creation" method="post" >
+    <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
+    <input type="hidden" value='<?=$view["id"]?>' name="id">
+    <font color="black" size="4">
+        <table class="upper_content_forms_table" >
+            <tr>
+                <td width="42px" align="left">Nom</td>   
+                <td align="center"><input type="text" name="nom" value='<?php if(isset($view['form']['nom'])) echo$view['form']['nom'];?>' placeholder="Nom Du Client"  required>  </td>
+                <td width="42px" align="left">Prenom</td>   
+                <td align="center"><input type="text" name="prenom" value='<?php if(isset($view['form']['prenom'])) echo$view['form']['prenom'];?>' placeholder="Prenom Du Client" required>  </td>
+            </tr>
+            <tr>
+                <td width="42px" align="left">N&deg; Tel</td>   
+                <td align="center"><input type="text" name="tel" value='<?php if(isset($view['form']['tel'])) echo$view['form']['tel'];?>' placeholder="Numero De Telephone">  </td>
+                <td width="42px" align="left">Mail</td>   
+                <td align="center"><input type="email" name="mail" value='<?php if(isset($view['form']['mail'])) echo$view['form']['mail'];?>' placeholder="Adresse Valide">  </td>
+            </tr>
+        </table>
+        <textarea name="commentaire"  id="message" cols="50" rows="6"  placeholder="Veuillez Taper Un Commentaire"><?php if(isset($view['form']['commentaire'])) echo$view['form']['commentaire'];?></textarea><br>
+        <input type="submit" name="Ajout_client" value="Ajouter" class="upper_content_forms_send"/>
+</form>
+</div>

@@ -1,6 +1,6 @@
 <script type="text/javascript">
     $(function() {
-      $(".js__p_start, .js__p_another_start").simplePopup();
+      $(".js__p_start").simplePopup();
     });
 </script>
 <div id="form_action" class="add_client" onClick="show_form('upper_content_forms', 'form_action')"></div>
@@ -37,8 +37,15 @@
          </thead>
          <tbody>
              <?php foreach($view['clients'] as $client) : ?>
-                 <tr><td class="center"><div class="view_icon_table" Onclick=""></div><a class ="test" href="<?=WEBROOT?>Popup/editItem/<?=$client->id?>/Client"><div class="modif_icon_table"></div></a><a href="<?=WEBROOT?>Clients/delete/id"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->id?></td> <td><?=$client->Nom?></td><td><?=$client->Prenom?></td> <td><?=$client->Tel?></td> </tr>
+                 <tr><td class="center"><div class="view_icon_table" Onclick=""></div><a href="#" class="js__p_start"><div class="modif_icon_table"></div></a><a href="<?=WEBROOT?>Clients/delete/<?=$client->id?>"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->id?></td> <td><?=$client->Nom?></td><td><?=$client->Prenom?></td> <td><?=$client->Tel?></td> </tr>                  
              <?php endforeach;?>
+             <div class="p_body js__p_body js__fadeout"></div>
+                    <div class="popup js__popup js__slide_top">
+                      <a href="#" class="p_close js__p_close" title="Закрыть">
+                        <span></span><span></span>
+                      </a>
+                      <iframe width="100%" height="100%" scrolling="no" src="<?=WEBROOT?>Clients/mesinfos/50"></iframe>
+            </div>
         <tbody>
     </table>
 </div>

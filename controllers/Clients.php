@@ -113,8 +113,8 @@ class Clients extends Controller{
         $client = new Client();
         $client = Doctrine_Core::getTable('client')->findOneById($id);
         if(!$client->delete()) $this->redirect('Clients/index',0);
-        $this->alert("Client supprimé",2000);
-        $this->redirect('Clients/index',2);
+        //$this->alert("Client supprimé",2000);
+        $this->redirect('Clients/index',0);
     }
 }
 ?>
