@@ -467,6 +467,18 @@ background-image: url('../images/hide_form.png');
         border-color:#D5BC28;
       }
       
+#send
+      { position:relative;  left:160px; width:250px; top:10px;
+         background: #15992B;
+        border: none;
+          padding: 10px 25px 10px 25px;
+          color: #FFF;
+      }
+
+      #send:hover
+      {
+        background: #00C040;
+      }   
    
 
 
@@ -770,18 +782,7 @@ right:10px;
 
 
 
-      #send
-      { position:relative;  left:160px; width:250px; top:10px;
-         background: #15992B;
-        border: none;
-          padding: 10px 25px 10px 25px;
-          color: #FFF;
-      }
-
-      #send:hover
-      {
-        background: #00C040;
-      }
+      
 /* --------------------------------------------
    End of Sales Page
 -------------------------------------------- */
