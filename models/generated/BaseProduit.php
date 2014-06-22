@@ -12,10 +12,13 @@
  * @property integer $Alerte
  * @property string $Conditionnement
  * @property integer $IdClasse
+ * @property integer $IdTaxe
  * @property Classe $Classe
+ * @property Taxe $Taxe
  * @property Doctrine_Collection $LigneFactureProduit
  * @property Doctrine_Collection $ArticleProduits
  * @property Doctrine_Collection $FournisseurProduit
+ * @property Doctrine_Collection $LigneCommandeProduit
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -51,6 +54,9 @@ abstract class BaseProduit extends Doctrine_Record
         $this->hasColumn('IdClasse', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('IdTaxe', 'integer', null, array(
+             'type' => 'integer',
+             ));
     }
 
     public function setUp()
@@ -58,6 +64,10 @@ abstract class BaseProduit extends Doctrine_Record
         parent::setUp();
         $this->hasOne('Classe', array(
              'local' => 'IdClasse',
+             'foreign' => 'id'));
+
+        $this->hasOne('Taxe', array(
+             'local' => 'IdTaxe',
              'foreign' => 'id'));
 
         $this->hasMany('LigneFacture as LigneFactureProduit', array(
@@ -69,6 +79,10 @@ abstract class BaseProduit extends Doctrine_Record
              'foreign' => 'IdProduit'));
 
         $this->hasMany('Fournisseur as FournisseurProduit', array(
+             'local' => 'id',
+             'foreign' => 'IdProduit'));
+
+        $this->hasMany('LigneCommande as LigneCommandeProduit', array(
              'local' => 'id',
              'foreign' => 'IdProduit'));
 

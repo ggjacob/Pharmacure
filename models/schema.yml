@@ -94,6 +94,21 @@ Classe:
     Libelle:
       type: string(255)
 
+#les Taxes
+Taxe:
+  tableName: Taxe
+  actAs:
+    Timestampable: 
+      created:
+        name: Date
+      updated:
+        name: DateModif
+  columns:
+     Libelle:
+       type: string(255)
+     Taux:
+       type: float
+
 #les produits :
 Produit:
   tableName: Produit
@@ -115,6 +130,7 @@ Produit:
       type: string(255)
     IdClasse:
       type: integer
+    IdTaxe: integer
   relations:
     classe:
       class: Classe
@@ -122,6 +138,12 @@ Produit:
       foreign: id
       alias: Classe # on pourra acceder à l'objet avec LigneFacture->Facture
       foreignAlias: ProduitClasse
+    taxe:
+      class: Taxe
+      local: IdTaxe
+      foreign: id
+      alias: Taxe # on pourra acceder à l'objet avec Produit->Taxe->taux
+      foreignAlias: ProduitTaxe
 
 #les lignes de facture :
 LigneFacture:
@@ -147,6 +169,61 @@ LigneFacture:
       alias: Produit # on pourra acceder à l'objet avec LigneFacture->Facture
       foreignAlias: LigneFactureProduit
 
+#les commandes
+Commande:
+  tableName: Commande
+  actAs:
+    Timestampable: 
+      created:
+        name: Date
+      updated:
+        name: DateModif
+  columns:
+    IdUser:
+      type: integer
+    IdUserModif:
+      type: integer
+    IdFournisseur:
+      type: integer
+  relations:
+    user:
+      class: User
+      local: IdUser
+      foreign: id
+      alias: User # on pourra acceder à l'objet avec Facture->Client
+      foreignAlias: CommandeUser
+    userModif:
+      class: User
+      local: IdUserModif
+      foreign: id
+      alias: UserModif # on pourra acceder à l'objet avec Facture->Client
+      foreignAlias: CommandeUserModif
+    fournisseur:
+      class: Fournisseur
+      local: IdFournisseur
+      foreign: id
+      alias: Fournisseur # on pourra acceder à l'objet avec Facture->Client
+      foreignAlias: CommandeUserModif
+
+#les Bordereaux
+Bordereau:
+  tableName: Bordereau
+  actAs:
+    Timestampable: 
+      created:
+        name: Date
+      updated:
+        name: DateModif
+  columns:
+    IdCommande:
+      type: integer
+  relations:
+    commande:
+      class: Commande
+      local: IdCommande
+      foreign: id
+      alias: Commande # on pourra acceder à l'objet avec LigneFacture->Facture
+      foreignAlias: BordereauCommande
 
 #les articles :
 Article:
@@ -185,7 +262,7 @@ Fournisseur:
     Searchable:
       fields: [id,Libelle, Adresse,Mail,Tel]
   columns:
-    LIbelle:
+    Libelle:
       type: string(255)
     Adresse:
       type: string(255)
@@ -204,3 +281,53 @@ Fournisseur:
       foreign: id
       alias: Produit # on pourra acceder à l'objet avec LigneFacture->Facture
       foreignAlias: FournisseurProduit
+
+#les ligne de commandes
+LigneCommande:
+  tableName: LigneCommande
+  actAs:
+    Timestampable: 
+      created:
+        name: Date
+      updated:
+        name: DateModif
+  columns:
+    IdCommande:
+      type: integer
+    IdProduit:
+      type: integer
+    Quantite:
+      type: integer
+  relations:
+    commande:
+      class: Commande
+      local: IdCommande
+      foreign: id
+      alias: Commande # on pourra acceder à l'objet avec LigneFacture->Facture
+      foreignAlias: LigneCommandeCommande
+    produit:
+      class: Produit
+      local: IdProduit
+      foreign: id
+      alias: Produit # on pourra acceder à l'objet avec LigneFacture->Facture
+      foreignAlias: LigneCommandeProduit
+
+#les lignes Bordereaux
+LigneBordereau:
+  tableName: LigneBordereau
+  actAs:
+    Timestampable: 
+      created:
+        name: Date
+      updated:
+        name: DateModif
+  columns:
+    IdBordereau:
+      type: integer
+  relations:
+    bordereau:
+      class: Bordereau
+      local: IdBordereau
+      foreign: id
+      alias: Bordereau # on pourra acceder à l'objet avec LigneFacture->Facture
+      foreignAlias: LigneBordereauBordereau

@@ -14,6 +14,8 @@
  * @property integer $Type
  * @property Doctrine_Collection $FactureUser
  * @property Doctrine_Collection $FactureUserModif
+ * @property Doctrine_Collection $CommandeUser
+ * @property Doctrine_Collection $CommandeUserModif
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -65,6 +67,14 @@ abstract class BaseUser extends Doctrine_Record
              'foreign' => 'IdUser'));
 
         $this->hasMany('Facture as FactureUserModif', array(
+             'local' => 'id',
+             'foreign' => 'IdUserModif'));
+
+        $this->hasMany('Commande as CommandeUser', array(
+             'local' => 'id',
+             'foreign' => 'IdUser'));
+
+        $this->hasMany('Commande as CommandeUserModif', array(
              'local' => 'id',
              'foreign' => 'IdUserModif'));
 
