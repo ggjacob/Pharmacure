@@ -322,6 +322,10 @@ LigneBordereau:
       updated:
         name: DateModif
   columns:
+    Libelle:
+      type: string(255)
+    Quantite:
+      type: integer
     IdBordereau:
       type: integer
   relations:
