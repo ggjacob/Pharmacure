@@ -400,7 +400,7 @@ background-image: url('../images/hide_form.png');
 }
 /*-------------------------------------------------------*/
 #upper_content_forms {
-        position:absolute; top:0px; left:10px;
+        position:absolute; top:0px;
         width:740px; 
         border-left-style:groove;
         border-right-style:groove;

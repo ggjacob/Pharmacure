@@ -17,9 +17,18 @@ function addTab(title, url){
 
 
 function MyPopUp(id, width,height){
-		//var popUp = document.getElementById('id_element');
-		//popUp.style.height = "502px";
-		
+		var searchedRule = document.styleSheets[5].cssRules[0];
+    	searchedRule.style.width=width;
+		searchedRule.style.height=height;
+
+		//if(montest.arguments.length == 2)
+    		//optionnel = montest.arguments[1];
+		//}
+
+		// pas encore redefini en parametre
+		searchedRule.style.top=-100;
+        searchedRule.style.left=500;
+        
 		var iframe = document.getElementById('IframePopUp');
 		iframe.src= id;
 }
