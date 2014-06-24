@@ -1,3 +1,7 @@
+$(function() {
+      $(".js__p_start").simplePopup();
+    });
+
 function addTab(title, url){
 					if ($('#tt').tabs('exists', title)){
 					$('#tt').tabs('select', title);
@@ -10,6 +14,15 @@ function addTab(title, url){
 						});
 					}	
 			}
+
+
+function MyPopUp(id, width,height){
+		//var popUp = document.getElementById('id_element');
+		//popUp.style.height = "502px";
+		
+		var iframe = document.getElementById('IframePopUp');
+		iframe.src= id;
+}
 
 function addTabVentes(title, url){
 		if ($('#tt').tabs('exists', title)){
