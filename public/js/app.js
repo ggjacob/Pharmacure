@@ -57,7 +57,7 @@ function show_form(id, action)
 	ddmenuitem2 = document.getElementById(action);
 	ddmenuitem.style.visibility = 'visible';
 	ddmenuitem.style.position = 'relative';
-		ddmenuitem2.style.visibility = 'hidden';
+	ddmenuitem2.style.visibility = 'hidden';
 	ddmenuitem2.style.position = 'absolute';
 }
 

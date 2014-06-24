@@ -32,7 +32,7 @@
 
         var name = cssClasses.replace("js__p_", "");
 
-        // We redefine the variables if there is an additional popap
+        // We redefine the variables if there is an additional popup
         if (name !== "start") {
           var NEW_URL = "another_popup";
 
@@ -49,6 +49,7 @@
 
         $(window).on("load", function() {
           simplePopup.hash(popup, body, routePopup);
+
         });
 
         // Close

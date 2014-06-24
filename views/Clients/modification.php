@@ -1,5 +1,15 @@
-<div id="form_action" class="add_client" onclick="show_form('upper_content_forms', 'form_action')"></div>
-<div id="upper_content_forms">
+
+<?php
+if(isset($view))
+{
+    die('it exists'.$view);
+}
+else
+{
+    die('does not exist');
+}
+?>
+<div id="upper_content_forms" style="visibility:visible !important;">
 
 <form action="<?=WEBROOT?>Clients/creation" method="post" >
     <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
@@ -20,6 +30,6 @@
             </tr>
         </table>
         <textarea name="commentaire"  id="message" cols="50" rows="6"  placeholder="Veuillez Taper Un Commentaire"><?php if(isset($view['form']['commentaire'])) echo$view['form']['commentaire'];?></textarea><br>
-        <input type="submit" name="Ajout_client" value="Ajouter" class="upper_content_forms_send"/>
+        <input type="submit" name="Modif_client" value="Modifier" class="upper_content_forms_send"/>
 </form>
 </div>
