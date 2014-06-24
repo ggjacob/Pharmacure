@@ -1,14 +1,4 @@
 
-<?php
-if(isset($view))
-{
-    die('it exists'.$view);
-}
-else
-{
-    die('does not exist');
-}
-?>
 <div id="upper_content_forms" style="visibility:visible !important;">
 
 <form action="<?=WEBROOT?>Clients/creation" method="post" >
