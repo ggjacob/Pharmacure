@@ -48,7 +48,7 @@
                          </thead>
                          <tbody>
                         <?php foreach($view['produits'] as $produit) : ?>
-                             <tr><td class="center"><div class="view_icon_table" Onclick=""></div><a id="<?=WEBROOT?>Clients/mesinfos/<?=$client->id?>" onclick="MyPopUp(this.id,800,230)" href="#" class="js__p_start"><div class="modif_icon_table" ></div></a><a href="<?=WEBROOT?>Produits/delete/id"><div class="remove_icon_table"></div></a></td>  <td ><?=$produit->Libelle?></td> <td><?=$produit->Prix?></td><td><?php if($produit->Ordonnance == 1){echo 'Oui';}else {echo 'Non';} ?></td> </tr>
+                             <tr><td class="center"><div class="view_icon_table" Onclick=""></div><a id="<?=WEBROOT?>Clients/mesinfos/<?=$produit->id?>" onclick="MyPopUp(this.id,800,230)" href="#" class="js__p_start"><div class="modif_icon_table" ></div></a><a href="<?=WEBROOT?>Produits/delete/id"><div class="remove_icon_table"></div></a></td>  <td ><?=$produit->Libelle?></td> <td><?=$produit->Prix?></td><td><?php if($produit->Ordonnance == 1){echo 'Oui';}else {echo 'Non';} ?></td> </tr>
                         <?php endforeach;?>
                              <div class="p_body js__p_body js__fadeout"></div>
                                 <div class="popup js__popup js__slide_top">
