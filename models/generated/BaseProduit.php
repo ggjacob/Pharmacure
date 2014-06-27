@@ -17,7 +17,6 @@
  * @property Taxe $Taxe
  * @property Doctrine_Collection $LigneFactureProduit
  * @property Doctrine_Collection $ArticleProduits
- * @property Doctrine_Collection $FournisseurProduit
  * @property Doctrine_Collection $LigneCommandeProduit
  * 
  * @package    ##PACKAGE##
@@ -75,10 +74,6 @@ abstract class BaseProduit extends Doctrine_Record
              'foreign' => 'IdProduit'));
 
         $this->hasMany('Article as ArticleProduits', array(
-             'local' => 'id',
-             'foreign' => 'IdProduit'));
-
-        $this->hasMany('Fournisseur as FournisseurProduit', array(
              'local' => 'id',
              'foreign' => 'IdProduit'));
 

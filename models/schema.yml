@@ -274,13 +274,18 @@ Fournisseur:
       type: string(255)
     IdProduit:
       type: integer
-  relations:
-    produit:
-      class: Produit
-      local: IdProduit
-      foreign: id
-      alias: Produit # on pourra acceder à l'objet avec LigneFacture->Facture
-      foreignAlias: FournisseurProduit
+
+#les fournisseurs produits :
+FournisseurProduit:
+  tableName: FournisseurProduit
+  actAs:
+    Searchable:
+      fields: [idProduit,IdFournisseur]
+  columns:
+    IdProduit:
+      type: integer
+    IdFournisseur:
+      type: integer
 
 #les ligne de commandes
 LigneCommande:

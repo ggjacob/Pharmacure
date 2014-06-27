@@ -11,7 +11,6 @@
  * @property string $Mail
  * @property string $Commentaire
  * @property integer $IdProduit
- * @property Produit $Produit
  * @property Doctrine_Collection $CommandeUserModif
  * 
  * @package    ##PACKAGE##
@@ -52,10 +51,6 @@ abstract class BaseFournisseur extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Produit', array(
-             'local' => 'IdProduit',
-             'foreign' => 'id'));
-
         $this->hasMany('Commande as CommandeUserModif', array(
              'local' => 'id',
              'foreign' => 'IdFournisseur'));
