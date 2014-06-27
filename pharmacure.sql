@@ -1,41 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.1.12
--- http://www.phpmyadmin.net
---
--- Client :  localhost
--- Généré le :  Ven 27 Juin 2014 à 22:36
--- Version du serveur :  5.6.16
--- Version de PHP :  5.5.11
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Base de données :  `pharmacure`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `Classe`
---
-
-CREATE TABLE IF NOT EXISTS `Classe` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `libelle` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
-
---
--- Contenu de la table `Classe`
---
-
 INSERT INTO `Classe` (`id`, `libelle`) VALUES
 (1, 'Netherlands'),
 (2, 'Equatorial Guinea'),
@@ -139,20 +101,6 @@ INSERT INTO `Classe` (`id`, `libelle`) VALUES
 (100, 'Heard Island and Mcdonald Islands');
 
 -- --------------------------------------------------------
-
---
--- Structure de la table `Client`
---
-
-CREATE TABLE IF NOT EXISTS `Client` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) DEFAULT NULL,
-  `prenom` varchar(255) DEFAULT NULL,
-  `mail` varchar(255) DEFAULT NULL,
-  `tel` varchar(255) DEFAULT NULL,
-  `commentaire` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=102 ;
 
 --
 -- Contenu de la table `Client`
@@ -260,21 +208,6 @@ INSERT INTO `Client` (`id`, `nom`, `prenom`, `mail`, `tel`, `commentaire`) VALUE
 (101, 'Acton', 'Henry Meadows', 'neque.In.ornare@at.co.uk', '05 68 65 87 44', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam auctor,');
 
 -- --------------------------------------------------------
-
-
-
---
--- Structure de la table `Taxe`
---
-
-CREATE TABLE IF NOT EXISTS `Taxe` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `libelle` varchar(255) DEFAULT NULL,
-  `taux` float(18,2) DEFAULT NULL,
-  `date` datetime NOT NULL,
-  `datemodif` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
 
 --
 -- Contenu de la table `Taxe`
@@ -385,55 +318,11 @@ INSERT INTO `Taxe` (`id`, `libelle`, `taux`, `date`, `datemodif`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `User`
---
-
-CREATE TABLE IF NOT EXISTS `User` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `login` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `nom` varchar(255) DEFAULT NULL,
-  `prenom` varchar(255) DEFAULT NULL,
-  `mail` varchar(255) DEFAULT NULL,
-  `tel` varchar(255) DEFAULT NULL,
-  `type` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `login` (`login`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
 -- Contenu de la table `User`
 --
 
 INSERT INTO `User` (`id`, `login`, `password`, `nom`, `prenom`, `mail`, `tel`, `type`) VALUES
 (1, 'admin', 'admin', NULL, NULL, NULL, NULL, 3);
-
---
--- Contraintes pour les tables exportées
---
-
---
--- Structure de la table `Produit`
---
-
-CREATE TABLE IF NOT EXISTS `Produit` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `libelle` varchar(255) DEFAULT NULL,
-  `prix` float(18,2) DEFAULT NULL,
-  `ordonnance` tinyint(1) DEFAULT NULL,
-  `commentaire` varchar(255) DEFAULT NULL,
-  `alerte` bigint(20) DEFAULT NULL,
-  `conditionnement` varchar(255) DEFAULT NULL,
-  `idclasse` bigint(20) DEFAULT NULL,
-  `idtaxe` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idclasse_idx` (`idclasse`),
-  KEY `idtaxe_idx` (`idtaxe`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
-
---
--- Contenu de la table `Produit`
---
 
 INSERT INTO `Produit` (`id`, `libelle`, `prix`, `ordonnance`, `commentaire`, `alerte`, `conditionnement`, `idclasse`, `idtaxe`) VALUES
 (1, 'morbi', 742.00, 1, 'Lorem ipsum dolor sit amet, consectetuer adipiscing', 2, 'aliquam eros turpis non enim. Mauris', 54, 48),
@@ -538,14 +427,3 @@ INSERT INTO `Produit` (`id`, `libelle`, `prix`, `ordonnance`, `commentaire`, `al
 (100, 'neque.', 305.00, 1, 'Lorem ipsum', 8, 'eu neque pellentesque massa lobortis ultrices.', 85, 3);
 
 -- --------------------------------------------------------
-
---
--- Contraintes pour la table `Produit`
---
-ALTER TABLE `Produit`
-  ADD CONSTRAINT `Produit_idclasse_Classe_id` FOREIGN KEY (`idclasse`) REFERENCES `Classe` (`id`),
-  ADD CONSTRAINT `Produit_idtaxe_Taxe_id` FOREIGN KEY (`idtaxe`) REFERENCES `Taxe` (`id`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
