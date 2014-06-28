@@ -31,12 +31,26 @@
 		addTab("Produits","<?=WEBROOT?>Produits/index");
 		addTab("Factures","<?=WEBROOT?>Factures/index");
 		addTab("Statistiques","<?=WEBROOT?>Statistiques/index");
-
-
 		' >
-		<div id="menu-admin">Badi mouahhahahahahahahah</div>
+		<div id="sousgear">
+			<div class="sousgear">
+				<a href="#">Sous-Menu 1.1</a>
+			</div>
+			<div class="sousgear">
+				<a href="#">Sous-Menu 1.2</a>
+			</div>
+			<div class="sousgear">
+				<a href="#">Sous-Menu 1.3</a>
+			</div>
+			<div class="sousgear">
+				<a href="#">Sous-Menu 1.4</a>
+			</div>
+		</div>
+
 		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div><div class="logo_info">PharmaCure&trade;</br></div><div class="logo_info_small">Le Premier Traitement Digital</div></a>
-		<div id="gear"></div>
+		
+		<div id="gear" onclick="afficheMenu(this)"></div>
+		
 		<div id="alerte"></div>
 		<div class="badge">44</div>
 		<div class="welcome_info" style="font-size:15;">
