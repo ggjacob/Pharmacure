@@ -34,8 +34,11 @@
 
 
 		' >
-
-		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div><div class="logo_info">PharmaCure&trade;</br></div><div class="logo_info_small">Le Premier Traitement Digital</div></a> <a><div id="gear"></div><div id="alerte"></div><div class="badge">44</div></a>
+		<div id="menu-admin">Badi mouahhahahahahahahah</div>
+		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div><div class="logo_info">PharmaCure&trade;</br></div><div class="logo_info_small">Le Premier Traitement Digital</div></a>
+		<div id="gear"></div>
+		<div id="alerte"></div>
+		<div class="badge">44</div>
 		<div class="welcome_info" style="font-size:15;">
 			<?php if(isset($_SESSION['user'])):?>
 				Bonjour <?=$_SESSION['user']->Nom?> <br>
