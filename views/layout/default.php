@@ -30,7 +30,7 @@
 		addTab("Fournisseurs","<?=WEBROOT?>Fournisseurs/index");
 		addTab("Produits","<?=WEBROOT?>Produits/index");
 		addTab("Factures","<?=WEBROOT?>Factures/index");
-		addTab("Statisques","<?=WEBROOT?>Statistiques/index");
+		addTab("Statistiques","<?=WEBROOT?>Statistiques/index");
 
 
 		' >
