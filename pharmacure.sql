@@ -319,14 +319,6 @@ INSERT INTO `Taxe` (`id`, `libelle`, `taux`, `date`, `datemodif`) VALUES
 (99, 'Ornare Company', 2.00, '2013-10-03 20:25:44', '2015-06-18 00:19:24'),
 (100, 'Aptent Taciti Company', 17.00, '2013-12-17 10:33:04', '2015-06-22 23:48:02');
 
--- --------------------------------------------------------
-
---
--- Contenu de la table `User`
---
-
-INSERT INTO `User` (`id`, `login`, `password`, `nom`, `prenom`, `mail`, `tel`, `type`) VALUES
-(1, 'admin', 'admin', NULL, NULL, NULL, NULL, 3);
 
 INSERT INTO `Produit` (`id`, `libelle`, `prix`, `ordonnance`, `commentaire`, `alerte`, `conditionnement`, `idclasse`, `idtaxe`) VALUES
 (1, 'morbi', 742.00, 1, 'Lorem ipsum dolor sit amet, consectetuer adipiscing', 2, 'aliquam eros turpis non enim. Mauris', 54, 48),
