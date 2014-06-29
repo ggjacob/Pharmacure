@@ -1,3 +1,7 @@
+INSERT INTO `user` (`id`, `login`, `password`, `nom`, `prenom`, `mail`, `tel`, `type`) VALUES
+(1, 'admin', 'admin', 'HAIDARA', 'Badi', 'badihaidara@gmail.com', '0629467871', 3),
+(2, 'user', 'user', 'SACKO', 'MADOU', 'madou@sakco.fr', '06 29 46 89 71', 1);
+
 INSERT INTO `Classe` (`id`, `libelle`) VALUES
 (1, 'Netherlands'),
 (2, 'Equatorial Guinea'),

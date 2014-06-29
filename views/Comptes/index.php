@@ -20,8 +20,13 @@
                         <td width="42px" align="left">Mail</td>   
                         <td align="center"><input type="email" name="mail" placeholder="Adresse Valide">  </td>
                     </tr>
+                    <tr>
+                        <td width="42px" align="left">Identifiant</td>   
+                        <td align="center"><input type="text" name="login" placeholder="Votre identifiant">  </td>
+                        <td width="100px" align="left">Mot de passe</td>   
+                        <td align="center"><input type="password" name="password" placeholder="Votre mot de passe">  </td>
+                    </tr>
                 </table>
-                <textarea name="commentaire"  id="message" cols="50" rows="6" placeholder="Veuillez Taper Un Commentaire"></textarea><br>
                 <input type="submit" name="Ajout_client" value="Ajouter" class="upper_content_forms_send"/>
         </form>
 </div>
