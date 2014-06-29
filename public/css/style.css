@@ -183,7 +183,8 @@ background-image: url('../images/gear.png')
 position:absolute; left:285px; top:13px;
 width:32px;
 height:32px;
-background-image: url('../images/alerte.png')
+background-image: url('../images/alerte.png');
+cursor:pointer;
 }
 #alerte:hover
 {-moz-transition: all 1s ease;
@@ -266,7 +267,7 @@ border-style:hidden;
 }
 
 .menutab
-{ position:fixed; left:0px; top:100px;
+{ position:relative; left:0px; top:0px;
   width:250px; height:300px; 
   color:#FFFFFF;
   border-collapse:separate; 
