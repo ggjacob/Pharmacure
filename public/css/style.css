@@ -132,7 +132,7 @@ background-color:#272822;
 font-size:10;
 }
 .mini_logo
-{position:fixed; bottom:12px; left:110px;
+{position:fixed; bottom:13px; left:95px;
  width:10px; height:10px;
  background-image: url('../images/mini_logo.png')
 }

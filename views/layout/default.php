@@ -75,7 +75,7 @@
 							<tr><td class="module" width="50px"><div class="statistique_img"></div></td><td class="module"><a href="#" name="Statistiques" onclick='addTab("Statistiques","<?=WEBROOT?>Statistiques/index")'><div width="100%" height="100%">Statistiques</div></a></td></tr>	
 						</table>
 				</div>
-				<span id="copyright" style="position:fixed; bottom:10px; color:white; font-family:arial; left:10px;"><font size="1"><p>&copy; Copyright 2014. All Rights Reserved </br> Site Created by DGK </p></font></span><div class="mini_logo"></div>
+				<span id="copyright" style="position:fixed; bottom:10px; color:white; font-family:arial; left:10px;"><font size="1"><p>&copy; Copyright 2014. All Rights Reserved </br> Designed by DGK </p></font></span><div class="mini_logo"></div>
 				</td>
 				<td style="min-height:100%;">
 					<div id="tt" class="easyui-tabs" style="min-height:100%;">
