@@ -161,16 +161,16 @@ background-image: url('../images/gear.png')
   z-index:100;
   top:50px;
   left:250px;
-  width:200px;
+  width:250px;
   display:none;
 }
 
-  #sousgear  div.sousgear { list-style: none; height:100%; display: block; margin: 0; padding: 0; font-size: 16px; text-transform: uppercase; -webkit-box-shadow: 0 0 4px rgba(0,0,0,.3);}
+  #sousgear  div.sousgear { list-style: none; height:100%; display: block; margin: 0; padding: 0; font-size: 14px; text-transform: uppercase; -webkit-box-shadow: 0 0 4px rgba(0,0,0,.3);}
           #sousgear  div.sousgear a { 
               height:100%;
               display: block; 
               background: #272822; 
-              padding: 12px 24px; 
+              padding: 12px 15px; 
               color: #fff; 
               text-decoration: none;
               -webkit-transition-property: background; 

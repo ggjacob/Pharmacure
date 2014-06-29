@@ -12,7 +12,8 @@ function addTab(title, url){
 							content:content,
 							closable:true	
 						});
-					}	
+					}
+					document.getElementById("sousgear").style.display='none';	
 			}
 
 
