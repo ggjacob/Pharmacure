@@ -18,8 +18,23 @@ class Produits extends Controller{
         $this->set($d);
         $this->render('index');
     }
+
+    /**
+     * @UserS('REQUIRED')
+     */
+    function infos($id){
+        
+        $produit = new Produit();
+        $produit = Doctrine_Core::getTable('Produit')->find($id);
+        $d['view'] = array("titre" => "Modification produit","produit" => $produit);
+        $this->set($d); 
+        $this->render('infos');
+    }
     
-    function mesInfos($id){
+    /**
+     * @UserS('REQUIRED')
+     */
+    function modification($id){
         $produit = new Produit();
         $produit = Doctrine_Core::getTable('produit')->find($id);
         $form = Array();
@@ -40,8 +55,12 @@ class Produits extends Controller{
         $this->set($d); 
         $this->render('modification');
     }
-    
-    function create(){
+
+
+    /**
+     * @UserS('REQUIRED')
+     */
+    function creation(){
         $taxes = new Taxe();
         $taxes = Doctrine_Core::getTable('taxe')->findAll();
         $classes = new Classe();
@@ -66,15 +85,15 @@ class Produits extends Controller{
             $form['type'] = $this->data['type'];
             
              if($form['type'] == "create"){
-                 $currentProduit = new Produit;
-                 $currentProduit = findOneByLibelle($this->data['libelle']);
+                 $currentProduit = new Produit();
+                 $currentProduit = Doctrine_Core::getTable('Produit')->findOneByLibelle($this->data['libelle']);
                                  if($currentProduit) $this->setErreur('libelle','Ce produit existe déja');
                                  if(empty($this->erreur)) {
                                     $produit = new Produit();
-                                    $produit->init($this->data['prix'],$this->data['ordonnance'],$this->data['commentaire'],$this->data['conditionnement'],$this->data['idtaxe'], $this->data['idclasse']);        
+                                    $produit->init($this->data['libelle'],$this->data['prix'],$this->data['ordonnance'],$this->data['commentaire'],$this->data['conditionnement'],$this->data['idtaxe'], $this->data['idclasse'],$this->data['alerte']);        
                                     $produit->save();    
                                     $this->alert("Produit crée avec succès.",2000);
-                                    $this->redirect('Produit/index',0);
+                                    $this->redirect('Produits/index',0);
                                 }
                                 else
                                 {
@@ -86,8 +105,6 @@ class Produits extends Controller{
              else{
                  $currentProduit = new Produit();
                     $currentProduit = Doctrine_Core::getTable('produit')->find($this->data['id']);
-
-            
                     if(empty($this->erreur)) {
                         $produit = new Produit();
                         $produit = Doctrine_Core::getTable('produit')->find($this->data['id']);                        
@@ -107,7 +124,10 @@ class Produits extends Controller{
         }
     }
     
-    function delete($id){
+    /**
+     * @UserS('REQUIRED')
+     */
+    function suppression($id){
         $produit = new Produit();
         $produit = Doctrine_Core::getTable('produit')->findOneById($id);
         if(!$produit->delete()) $this->redirect('Produits/index',0);

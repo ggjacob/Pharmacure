@@ -36,7 +36,7 @@
                                 <td width="110px" class="center">
                                     <a id="<?=WEBROOT?>Fournisseurs/infos/<?=$fournisseur->id?>" onclick="MyPopUp(this.id,800,230)" href="#" class="js__p_start"><div class="view_icon_table" Onclick=""></div></a>
                                     <a id="<?=WEBROOT?>Fournisseurs/modification/<?=$fournisseur->id?>" onclick="MyPopUp(this.id,800,230)" href="#" class="js__p_start"><div class="modif_icon_table" ></div></a>
-                                    <a href="<?=WEBROOT?>Fournisseurs/delete/<?=$fournisseur->id?>"><div class="remove_icon_table"></div></a>
+                                    <a href="<?=WEBROOT?>Fournisseurs/suppression/<?=$fournisseur->id?>"><div class="remove_icon_table"></div></a>
                                 </td>
                                 <td ><?=$fournisseur->Libelle?></td>
                                 <td><?=$fournisseur->Tel?></td>

@@ -130,7 +130,8 @@ Produit:
       type: string(255)
     IdClasse:
       type: integer
-    IdTaxe: integer
+    IdTaxe: 
+      type: integer
   relations:
     classe:
       class: Classe

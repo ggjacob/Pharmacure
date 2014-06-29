@@ -19,6 +19,19 @@ class Clients extends Controller{
     /**
      * @UserS('REQUIRED')
      */
+    function infos($id){
+        
+        $client = new Client();
+        $client = Doctrine_Core::getTable('Client')->find($id);
+        $d['view'] = array("titre" => "Modification produit","client" => $client);
+        $this->set($d); 
+        $this->render('infos');
+    }
+
+
+    /**
+     * @UserS('REQUIRED')
+     */
     function modification($id){
         
         $client = new Client();
@@ -109,7 +122,7 @@ class Clients extends Controller{
     /**
      * @UserS('REQUIRED')
      */
-    function delete($id){
+    function suppression($id){
         $client = new Client();
         $client = Doctrine_Core::getTable('client')->findOneById($id);
         if(!$client->delete()) $this->redirect('Clients/index',0);

@@ -52,7 +52,7 @@ class Fournisseurs extends Controller{
     /**
      * @UserS('REQUIRED')
      */
-    function delete($id){
+    function suppression($id){
         $fournisseur = new Fournisseur();
         $fournisseur = Doctrine_Core::getTable('Fournisseur')->findOneById($id);
         if(!$fournisseur->delete()) $this->redirect('Fournisseurs/index',0);
