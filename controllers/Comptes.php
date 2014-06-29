@@ -1,10 +1,11 @@
 <?php
  
-/**
- * @Admin('REQUIRED')
- */
+
 class Comptes extends Controller{
 
+    /**
+     * @Admin('REQUIRED')
+     */
     function index(){
 
         $form['type'] ='create';
@@ -26,6 +27,9 @@ class Comptes extends Controller{
         $this->render('infos');
     }
 
+    /**
+     * @Admin('REQUIRED')
+     */
     function mesInfos($id){
         
         $user = new User();

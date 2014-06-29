@@ -39,6 +39,15 @@ if(method_exists($controller, $action)){
     
     if(UserSecurity::Check($controller, $action) && PostSecurity::Check($controller, $action) && AdminSecurity::Check($controller, $action) && IntermediaireSecurity::Check($controller, $action) )
     {
+        /*
+        echo '<br> le admin classe : '.AnnotationManager::getClassAnnotation($controller,'Admin').'<br>';
+
+        echo '<br> le user : '.AnnotationManager::getMethodAnnotation($controller,$action,'UserS').'<br>';
+
+        echo '<br> le intermediaire : '.AnnotationManager::getMethodAnnotation($controller,$action,'Intermediaire').'<br>';
+
+        echo '<br> le Admin : '.AnnotationManager::getMethodAnnotation($controller,$action,'Admin').'<br>';
+        */
 
 	    unset($params[0]); unset($params[1]);
 	    call_user_func_array(array($controller,$action),$params);
@@ -46,13 +55,14 @@ if(method_exists($controller, $action)){
 		$controller->alert('Veillez vous connecter pour accéder à cette fonctionnalité',2000);
         $controller->redirect('Comptes/connexion',2);
 		/*
-    	echo 'le post : '
-    	.AnnotationManager::getMethodAnnotation($controller,$action,'Post').'<br> le user : '.
-    	AnnotationManager::getMethodAnnotation($controller,$action,'Security').'<br>';
+    	echo '<br> le admin classe : '.AnnotationManager::getClassAnnotation($controller,'Admin').'<br>';
 
-    	echo 'le post : '
-    	.PostSecurity::Check($controller, $action).'<br> le user : '.
-    	UserSecurity::Check($controller, $action).'<br>';
+        echo '<br> le user : '.AnnotationManager::getMethodAnnotation($controller,$action,'UserS').'<br>';
+
+        echo '<br> le intermediaire : '.AnnotationManager::getMethodAnnotation($controller,$action,'Intermediaire').'<br>';
+
+        echo '<br> le Admin : '.AnnotationManager::getMethodAnnotation($controller,$action,'Admin').'<br>';
+        
 		*/
     }
 }

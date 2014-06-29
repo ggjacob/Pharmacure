@@ -7,7 +7,7 @@ class AdminSecurity implements SecurityManager  {
 		
 		if($classCheck == 'REQUIRED' OR $methodeCheck == 'REQUIRED')
 		{
-			if(UserSecurity::UserCheck()){return true;}else return false;
+			if(AdminSecurity::UserCheck()){return true;}else return false;
         }
 
 
@@ -18,7 +18,7 @@ class AdminSecurity implements SecurityManager  {
 	}
 
 	public static function UserCheck(){
-		if(isset($_SESSION['user']) && $_SESSION['user']->type==3)
+		if(isset($_SESSION['user']) && $_SESSION['user']->Type==3)
 		{
          	return true;			
         }

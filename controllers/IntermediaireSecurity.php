@@ -7,7 +7,7 @@ class IntermediaireSecurity implements SecurityManager  {
 		
 		if($classCheck == 'REQUIRED' OR $methodeCheck == 'REQUIRED')
 		{
-			if(UserSecurity::UserCheck()){return true;}else return false;
+			if(IntermediaireSecurity::UserCheck()){return true;}else return false;
         }
 
 
@@ -18,7 +18,7 @@ class IntermediaireSecurity implements SecurityManager  {
 	}
 
 	public static function UserCheck(){
-		if(isset($_SESSION['user']) && $_SESSION['user']->type==2)
+		if(isset($_SESSION['user']) && $_SESSION['user']->Type==2)
 		{
          	return true;			
         }
