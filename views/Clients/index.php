@@ -35,7 +35,7 @@
          </thead>
          <tbody>
              <?php foreach($view['clients'] as $client) : ?>
-                 <tr><td class="center"><div class="view_icon_table" Onclick=""></div><a id="<?=WEBROOT?>Clients/mesinfos/<?=$client->id?>" onclick="MyPopUp(this.id,800,230)" href="#" class="js__p_start"><div class="modif_icon_table"></div></a><a href="<?=WEBROOT?>Clients/delete/<?=$client->id?>"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->id?></td> <td><?=$client->Nom?></td><td><?=$client->Prenom?></td> <td><?=$client->Tel?></td> </tr>                  
+                 <tr><td width="110px" class="center"><div class="view_icon_table" Onclick=""></div><a id="<?=WEBROOT?>Clients/modification/<?=$client->id?>" onclick="MyPopUp(this.id,800,230)" href="#" class="js__p_start"><div class="modif_icon_table"></div></a><a href="<?=WEBROOT?>Clients/delete/<?=$client->id?>"><div class="remove_icon_table"></div></a></td>  <td ><?=$client->id?></td> <td><?=$client->Nom?></td><td><?=$client->Prenom?></td> <td><?=$client->Tel?></td> </tr>                  
              <?php endforeach;?>
              <div class="p_body js__p_body js__fadeout"></div>
                     <div class="popup js__popup js__slide_top">

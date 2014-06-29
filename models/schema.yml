@@ -272,8 +272,6 @@ Fournisseur:
       type: string(255)
     Commentaire:
       type: string(255)
-    IdProduit:
-      type: integer
 
 #les fournisseurs produits :
 FournisseurProduit:

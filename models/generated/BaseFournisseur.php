@@ -10,7 +10,6 @@
  * @property string $Tel
  * @property string $Mail
  * @property string $Commentaire
- * @property integer $IdProduit
  * @property Doctrine_Collection $CommandeUserModif
  * 
  * @package    ##PACKAGE##
@@ -42,9 +41,6 @@ abstract class BaseFournisseur extends Doctrine_Record
         $this->hasColumn('Commentaire', 'string', 255, array(
              'type' => 'string',
              'length' => '255',
-             ));
-        $this->hasColumn('IdProduit', 'integer', null, array(
-             'type' => 'integer',
              ));
     }
 

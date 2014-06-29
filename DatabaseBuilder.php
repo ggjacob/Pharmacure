@@ -1,5 +1,4 @@
 <?php
-
 define('WEBROOT',str_replace('DatabaseBuilder.php','',$_SERVER['SCRIPT_NAME']));
 define('ROOT',str_replace('DatabaseBuilder.php','',$_SERVER['SCRIPT_FILENAME']));
 
@@ -33,5 +32,8 @@ Doctrine_Core::generateModelsFromYaml(ROOT.'models/schema.yml', ROOT.'models', a
 // Création des tables
 Doctrine_Core::createTablesFromModels(ROOT.'models');
 
-echo utf8_encode("fin de création de la base de donnée et génération des objets du domain <br> ");
+$codeSql = file_get_contents("pharmacure.sql");
+
+$st = $conn->execute($codeSql);
 ?>
+fin de creation de la base de donnee et generation des objets du domain.<br> Les donnees ont ete insere dans la base de donnees

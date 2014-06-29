@@ -19,7 +19,7 @@ class Clients extends Controller{
     /**
      * @UserS('REQUIRED')
      */
-    function mesInfos($id){
+    function modification($id){
         
         $client = new Client();
         $client = Doctrine_Core::getTable('client')->find($id);
