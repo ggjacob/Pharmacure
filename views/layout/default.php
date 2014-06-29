@@ -34,7 +34,7 @@
 		' >
 		<div id="sousgear">
 			<div class="sousgear">
-				<a href="#" onclick='addTab("Clients","<?=WEBROOT?>Clients/index")'>Votre pharmacie</a>
+				<a href="#" onclick='addTab("Clients","<?=WEBROOT?>Administrations/infos")'>Votre pharmacie</a>
 			</div>
 			<div class="sousgear">
 				<a href="#">Vos collaborateurs</a>
