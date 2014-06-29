@@ -49,8 +49,9 @@
 
 		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div><div class="logo_info">PharmaCure&trade;</br></div><div class="logo_info_small">Le Premier Traitement Digital</div></a>
 		
-		<div id="gear" onclick="afficheMenu(this)"></div>
-		
+		<?php if(isset($_SESSION['user']) && $_SESSION['user']->Type==3):?>
+			<div id="gear" onclick="afficheMenu(this)"></div>
+		<?php endif;?>	
 		<div id="alerte"></div>
 		<div class="badge">44</div>
 		<div class="welcome_info" style="font-size:15;">
