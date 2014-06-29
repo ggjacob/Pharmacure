@@ -34,16 +34,16 @@
 		' >
 		<div id="sousgear">
 			<div class="sousgear">
-				<a href="#">Sous-Menu 1.1</a>
+				<a href="#">Item 1</a>
 			</div>
 			<div class="sousgear">
-				<a href="#">Sous-Menu 1.2</a>
+				<a href="#">Item 2</a>
 			</div>
 			<div class="sousgear">
-				<a href="#">Sous-Menu 1.3</a>
+				<a href="#">Item 3</a>
 			</div>
 			<div class="sousgear">
-				<a href="#">Sous-Menu 1.4</a>
+				<a href="#">Item 4</a>
 			</div>
 		</div>
 

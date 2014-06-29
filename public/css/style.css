@@ -145,7 +145,7 @@ height:32px;
 background-image: url('../images/gear.png')
 }
 #gear:hover
-{
+{ cursor:pointer;
 -webkit-animation:spin 4s linear infinite;
     -moz-animation:spin 4s linear infinite;
     animation:spin 4s linear infinite;
@@ -157,8 +157,26 @@ background-image: url('../images/gear.png')
 
 #sousgear
 {
+  position:absolute;
+  z-index:100;
+  top:50px;
+  left:250px;
+  width:200px;
   display:none;
 }
+
+  #sousgear  div.sousgear { list-style: none; height:100%; display: block; margin: 0; padding: 0; font-size: 16px; text-transform: uppercase; -webkit-box-shadow: 0 0 4px rgba(0,0,0,.3);}
+          #sousgear  div.sousgear a { 
+              height:100%;
+              display: block; 
+              background: #272822; 
+              padding: 12px 24px; 
+              color: #fff; 
+              text-decoration: none;
+              -webkit-transition-property: background; 
+              -webkit-transition-duration: .5s; 
+              -webkit-transition-timing-function: linear;  }
+            #sousgear div.sousgear a:hover { text-decoration: none; background: #63635C; color:white; font-size:18;}
 
 #alerte
 {
