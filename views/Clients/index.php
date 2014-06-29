@@ -41,7 +41,8 @@
                     <a id="<?=WEBROOT?>Clients/modification/<?=$client->id?>" onclick="MyPopUp(this.id,800,230)" href="#" class="js__p_start"><div class="modif_icon_table"></div></a>
                     <a href="<?=WEBROOT?>Clients/suppression/<?=$client->id?>"><div class="remove_icon_table"></div></a>
                   </td>
-                  <td ><?=$client->id?></td> <td><?=$client->Nom?></td>
+                  <td ><?=$client->id?></td>
+                  <td><?=$client->Nom?></td>
                   <td><?=$client->Prenom?></td>
                   <td><?=$client->Tel?></td>
                  </tr>                  

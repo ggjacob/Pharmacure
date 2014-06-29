@@ -34,10 +34,10 @@
 		' >
 		<div id="sousgear">
 			<div class="sousgear">
-				<a href="#" onclick='addTab("Clients","<?=WEBROOT?>Administrations/infos")'>Votre pharmacie</a>
+				<a href="#" onclick='addTab("Votre pharmacie","<?=WEBROOT?>Administrations/infos")'>Votre pharmacie</a>
 			</div>
 			<div class="sousgear">
-				<a href="#">Vos collaborateurs</a>
+				<a href="#" onclick='addTab("Vos collaborateurs","<?=WEBROOT?>Comptes/index")'>Vos collaborateurs</a>
 			</div>
 			<div class="sousgear">
 				<a href="#">Item 3</a>

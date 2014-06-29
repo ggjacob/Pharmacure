@@ -1,25 +1,31 @@
 <?php
  
+/**
+ * @Admin('REQUIRED')
+ */
 class Comptes extends Controller{
 
-    /**
-     * @Admin('REQUIRED')
-     */
     function index(){
-        
-        $users = new Client();
-        $users = Doctrine_Core::getTable('user')->findAll();
-        
 
-        $d['view'] = array("titre" => "Gestion des Utilisateurs","users"=>$users);
-        $this->set($d);
-        $this->layout=false; 
+        $form['type'] ='create';
+        $users = new User();
+        $users = Doctrine_Core::getTable('User')->findAll();
+        $d['view'] = array("titre" => "Gestion des Utilisateurs","users"=>$users,"form"=>$form);
+        $this->set($d); 
         $this->render('index');
     }
 
     /**
      * @Admin('REQUIRED')
      */
+    function infos($id){
+        $user = new User();
+        $user = Doctrine_Core::getTable('User')->find($id);
+        $d['view'] = array("titre" => "Infos collaborateurs","user" => $user);
+        $this->set($d); 
+        $this->render('infos');
+    }
+
     function mesInfos($id){
         
         $user = new User();
@@ -147,6 +153,17 @@ class Comptes extends Controller{
             session_destroy();
             $this->alert("Vous êtes deconnecté.",2000);
             $this->redirect('Comptes/connexion',2);   
+    }
+
+    /**
+     * @Admin('REQUIRED')
+     */
+    function suppression($id){
+        $user = new User();
+        $user = Doctrine_Core::getTable('User')->findOneById($id);
+        if(!$user->delete()) $this->redirect('Comptes/index',0);
+        //$this->alert("Client supprimé",2000);
+        $this->redirect('Comptes/index',0);  
     }
 }
 
