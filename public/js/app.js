@@ -1,3 +1,9 @@
+jQuery(document).ready(function($) {
+		   		$( "#tabs" ).tabs({
+		   			
+		   		});
+});
+
 $(function() {
       $(".js__p_start").simplePopup();
     });
@@ -63,14 +69,6 @@ function display_ct()
 	tt=display_c();
  }
  
-jQuery(document).ready(function($) {
-		   		$( "#tabs" ).tabs();
-		   		
-		   		$('.submit').click(function()
-				{
-				    return false; //Empêche le formulaire d'être soumis
-				});
-});
 
 var ddmenuitem	= 0;
 var ddmenuitem2	= 0;
@@ -126,4 +124,3 @@ function fermerMenu(){
 	 }
 	 //alert("badi");
 }
-
