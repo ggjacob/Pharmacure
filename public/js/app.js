@@ -94,7 +94,12 @@ function hide_form(id, action)
 	ddmenuitem2.style.position = 'relative';
 }
 
-function afficheMenu(obj){
+ignoreClick =true;
+
+function afficheMenu(obj,event){
+	
+	event.stopPropagation();
+
 	var idMenu     = obj.id;
 	var idSousMenu = 'sous' + idMenu;
 	var sousMenu   = document.getElementById(idSousMenu);
@@ -105,8 +110,20 @@ function afficheMenu(obj){
 	/*****************************************************/
 	if(sousMenu.style.display == "none"){
 		sousMenu.style.display = "block";
+		ignoreClick = false;
 	}
 	else{
 		sousMenu.style.display = "none";
 	}
 }
+
+
+function fermerMenu(){ 
+	 var menu = document.getElementById('sousgear');
+	 if ( !ignoreClick){
+	 	 menu.style.display ='none';
+	 	 window.parent.document.getElementById('sousgear').style.display ='none' ; 
+	 }
+	 //alert("badi");
+}
+

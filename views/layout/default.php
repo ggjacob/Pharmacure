@@ -1,4 +1,4 @@
-﻿<html style="overflow: none;overflow: hidden;" lang="fr">
+﻿<html style="overflow: none;overflow: hidden;" onclick="fermerMenu()" lang="fr">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
 		<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" /> 
@@ -10,12 +10,17 @@
 		<link rel="stylesheet" type="text/css" href="<?=WEBROOT?>public/css/icon.css">
 		<link rel="stylesheet" type="text/css" href="<?=WEBROOT?>public/css/jquery.dataTables.css">
 
+		<link rel="stylesheet" type="text/css" href="<?=WEBROOT?>public/css/jquery.popup.css">
+		<!--  inclure les autres fichiers css après ce commentaire obligatoirement-->
+
+
 
 		<script type="text/javascript" src="<?=WEBROOT?>public/js/jquery.js"></script>
 	    <script type="text/javascript" src="<?=WEBROOT?>public/js/jquery.easyui.min.js"></script>
 	    <script type="text/javascript" src="<?=WEBROOT?>public/js/app.js"></script>
 	    <script type="text/javascript" src="<?=WEBROOT?>public/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="<?=WEBROOT?>public/js/table.js"></script>
+        <script type="text/javascript" src="<?=WEBROOT?>public/js/jquery.popup.js"></script>
 
 		<!--
 		<script type="text/javascript" src="public/js/color.js"></script>
@@ -50,7 +55,7 @@
 		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div><div class="logo_info">PharmaCure&trade;</br></div><div class="logo_info_small">Le Premier Traitement Digital</div></a>
 		
 		<?php if(isset($_SESSION['user']) && $_SESSION['user']->Type==3):?>
-			<div id="gear" onclick="afficheMenu(this)"></div>
+			<div id="gear" onclick="afficheMenu(this,event)"></div>
 		<?php endif;?>	
 		<div id="alerte"></div>
 		<div class="badge">44</div>
@@ -79,7 +84,7 @@
 				<span id="copyright" style="position:fixed; bottom:10px; color:white; font-family:arial; left:10px;"><font size="1"><p>&copy; Copyright 2014. All Rights Reserved </br> Designed by DGK </p></font></span><div class="mini_logo"></div>
 				</td>
 				<td style="min-height:100%;">
-					<div id="tt" class="easyui-tabs" style="min-height:100%;">
+					<div id="tt" onclick="fermerMenu()" class="easyui-tabs" style="min-height:100%;">
   							<div title="ACCEUIL">
   								<?php echo $content_for_layout; ?>	
 							</div>
