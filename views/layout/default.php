@@ -61,7 +61,7 @@
 		<div class="badge">44</div>
 		<div class="welcome_info" style="font-size:15;">
 			<?php if(isset($_SESSION['user'])):?>
-				Bonjour <?=$_SESSION['user']->Nom?> <br>
+				Bonjour <?=$_SESSION['user']->Prenom?> <br>
 				<span id='ct' style="font-size:10;"></span></div>
 			<a href="<?=WEBROOT?>Comptes/deconnexion"><div class="disconnect"> </div></a>	
 			<?php endif;?>
