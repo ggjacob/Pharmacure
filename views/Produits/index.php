@@ -64,7 +64,7 @@
                             </tr>
                         <?php endforeach;?>
                              <div class="p_body js__p_body js__fadeout"></div>
-                                <div class="popup js__popup js__slide_top">
+                                <div id="cadrePopUp" class="popup js__popup js__slide_top">
                                     <a href="#" class="p_close js__p_close" title="Fermer">
                                       <span></span><span></span>
                                     </a>

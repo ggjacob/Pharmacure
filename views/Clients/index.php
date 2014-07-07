@@ -28,6 +28,7 @@
 
 <div class="lower_content" style="font-size:13; top:20px">
 
+
 <div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes clients</span></div>
     <table id="data_source">
          <thead>
@@ -47,13 +48,14 @@
                   <td><?=$client->Tel?></td>
                  </tr>                  
              <?php endforeach;?>
-             <div class="p_body js__p_body js__fadeout"></div>
-                    <div class="popup js__popup js__slide_top">
-                      <a href="#" class="p_close js__p_close" title="Fermer">
-                        <span></span><span></span>
-                      </a>
-                      <iframe id="IframePopUp" width="100%" height="100%" scrolling="no" src=""></iframe>
-            </div>
+             <div class="p_body js__p_body js__fadeout">
+             </div>
+             <div id="cadrePopUp" class="popup js__popup js__slide_top">
+                  <a href="#" class="p_close js__p_close" title="Fermer">
+                      <span></span><span></span>
+                    </a>
+                  <iframe id="IframePopUp" width="100%" height="100%" scrolling="no" src=""></iframe>
+             </div>
         <tbody>
     </table>
 </div>

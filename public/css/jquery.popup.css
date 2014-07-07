@@ -44,5 +44,5 @@
   .js__p_start {}
   .js__p_close {}
   .js__p_body {}
-  .js__slide_top { height:0; overflow:hidden; top:0; }
+  .js__slide_top { height:0px; overflow:hidden; top:0; }
   .js__fadeout { height:0; overflow:hidden; opacity:0; }

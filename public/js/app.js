@@ -36,7 +36,10 @@ function MyPopUp(id, width,height){
 		searchedRule.style.top=-100;
         searchedRule.style.left=500;
         
+         document.getElementById("cadrePopUp").className = "popup js__popup";
+
 		var iframe = document.getElementById('IframePopUp');
+		iframe.className = ""  
 		iframe.src= id;
 }
 
