@@ -4,7 +4,7 @@
 <div id="form_action" class="add_client" onClick="show_form('upper_content_forms', 'form_action')"></div>
 <div id="upper_content_forms" >
     <div class="hide_form" onClick="hide_form('upper_content_forms', 'form_action')"></div>
-        <form action="<?=WEBROOT?>Clients/creation" method="post" >
+        <form action="<?=WEBROOT?>Comptes/inscription" method="post" >
             <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
             <font color="black" size="4">
                 <table class="upper_content_forms_table" >
@@ -19,12 +19,19 @@
                         <td align="center"><input type="text" name="tel" placeholder="Numero De Telephone">  </td>
                         <td width="42px" align="left">Mail</td>   
                         <td align="center"><input type="email" name="mail" placeholder="Adresse Valide">  </td>
+                        
                     </tr>
                     <tr>
                         <td width="42px" align="left">Identifiant</td>   
                         <td align="center"><input type="text" name="login" placeholder="Votre identifiant">  </td>
                         <td width="100px" align="left">Mot de passe</td>   
                         <td align="center"><input type="password" name="password" placeholder="Votre mot de passe">  </td>
+                    </tr>
+                    <tr>
+                        <td width="100px" align="left">Type Utilisateur</td>
+                        <td align="center"><select name="typeU"><option value="3">Utilisateur</option><option value="2">Intermediaire</option><option value="1">Administrateur</option></select></td>
+                        <td width="100px" align="left">Confirmer</td>   
+                        <td align="center"><input type="password" name="confirm" placeholder="Confirmer le mot de passe">  </td>
                     </tr>
                 </table>
                 <input type="submit" name="Ajout_client" value="Ajouter" class="upper_content_forms_send"/>
@@ -33,7 +40,7 @@
 
 <div class="lower_content" style="font-size:13; top:20px">
 
-<div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes clients</span></div>
+<div class="table_header"><div class="menu_icon"></div><span class="table_title">Utilisateurs</span></div>
     <table id="data_source">
          <thead>
             <tr ><th>Action</th><th>id</th>   <th >Nom</th>  <th >Prenom</th><th>Tel</th></tr>    
