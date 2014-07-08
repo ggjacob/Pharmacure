@@ -805,6 +805,35 @@ right:10px;
 
       }
 
+.alert.alert-success {
+    color: #4c8c4d;
+    background: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 3px; max-width:600px;
+}
+
+.alert .text {
+    font-size: 13px;
+}
+
+.alert.alert-icon .text {
+    padding-left: 32px;
+}
+
+.alert.border {
+    padding: 9px 14px;
+}
+
+.alert.alert-danger {
+    color: #b94a48;
+    background: #f2dede;
+    border-color: #eed3d7;
+}
 
 
 
@@ -979,6 +1008,9 @@ right:10px;
       -webkit-animation: none;
       background-image: none;
     }
+
+
+
 /*
     
     ====== Zoom effect for popup======
