@@ -28,7 +28,7 @@ $(function(){
                             $('#OKText').html("Succ&egrave;s ! Votre client a &eacute;t&eacute; enregistr&eacute;.");
                             $('#formOk').show();
                             $('#formKO').hide();
-                            $("#client").get(0).reset();
+                            $("#formClient").get(0).reset();
                         }
                         else if(data == 'failed'){
                             $('#KOText').html("Erreur ! Ce numero de téléphone existe déjà");

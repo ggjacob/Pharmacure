@@ -74,17 +74,10 @@ class Clients extends Controller{
             
             if($form['type'] == "create")
             {
-                $currentClient = new Client();
-                $currentClient = Doctrine_Core::getTable('client')->findOneByTel($this->data['tel']);
-
-                if($currentClient) $erreur="failed";
-
-                if(empty($erreur)) {
                     $client = new Client();
                     $client->init($this->data['nom'],$this->data['prenom'],$this->data['mail'],$this->data['tel'],$this->data['commentaire']);        
                     $client->save();    
                     $erreur="success";                    
-                }
             }
             else{
                     $currentClient = new Client();
