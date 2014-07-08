@@ -257,44 +257,44 @@ border-style:hidden;
 
 }
 
-.module
-{position:relative;
-border-style:hidden;
-  font-size: 20px;
-  padding-top: 15px;
-
- 
+.menutab div.line 
+{
+  height:50px;
+  background: #34A645;
+  text-indent:75px;
 }
 
-.menutab
-{ position:relative; left:0px; top:0px;
-  width:250px; height:300px; 
+.menutab{ position:relative; left:0px; top:0px;
+  width:250px; height:100%; 
+    font-size: 20px;
+  padding-top: 15px;
   color:#FFFFFF;
   border-collapse:separate; 
   border-spacing:1px;
-
 }
-
-.menutab tr td:first-child{
-  text-align:center;
+.menutab div.line div.back{
+  position:absolute; height:50px; width:52px;
   background: #138023; 
 }
-
-.menutab tr td:last-child{
-  text-indent:20px;
-background: #34A645;
+.menutab div.line div.text{ 
+   height:50px; }
+.menutab div.line div.text span{
+  position:relative; top:13px;
 }
 
-.menutab tr td a { color: white;} 
 
- 
-.menutab tr td:last-child:hover{
+.menutab  a { color: white;} 
+
+.menutab div.line:hover {
    background: #00C040; 
    -webkit-transition-property: background; 
               -webkit-transition-duration: .5s; 
               -webkit-transition-timing-function: linear; 
 }
-
+.clients_img
+{ width:50px; height:48px; position:absolute; top:0px;
+  background-image: url('../images/menu/clients.png');
+}
 .menu_icon
 {
 position:absolute; top:5px; left:10px;
@@ -302,10 +302,7 @@ width:15px;
 height:15px;
 background-image: url('../images/menu/menu.png')
 }
-.clients_img
-{ width:50px; height:48px; position:absolute; top:0px;
-  background-image: url('../images/menu/clients.png');
-}
+
 
 .inventaire_img
 { width:50px; height:48px; position:absolute; top:0px;
