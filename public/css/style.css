@@ -262,6 +262,7 @@ border-style:hidden;
   height:50px;
   background: #34A645;
   text-indent:75px;
+  margin-bottom:2px;
 }
 
 .menutab{ position:relative; left:0px; top:0px;
