@@ -50,10 +50,73 @@ class Clients extends Controller{
     }
 	
     
+
+    function creation(){
+        if(!isset($_POST['nom'])){
+            
+            $form['type'] ='create';
+
+            $d['view'] = array("erreur" => " ", "titre" => "Création client","form" => $form);
+            $this->set($d);
+            $this->render('creation');
+        }
+        else
+        {
+            $erreur="";
+            $form = array();
+            $form['nom'] =$this->data['nom'];
+            $form['prenom'] =$this->data['prenom'];
+            $form['tel'] =$this->data['tel'];
+            $form['mail'] =$this->data['mail'];
+            $form['commentaire'] =$this->data['commentaire'];
+
+            $form['type'] =$this->data['type'];    
+            
+            if($form['type'] == "create")
+            {
+                $currentClient = new Client();
+                $currentClient = Doctrine_Core::getTable('client')->findOneByTel($this->data['tel']);
+
+                if($currentClient) $erreur="failed";
+
+                if(empty($erreur)) {
+                    $client = new Client();
+                    $client->init($this->data['nom'],$this->data['prenom'],$this->data['mail'],$this->data['tel'],$this->data['commentaire']);        
+                    $client->save();    
+                    $erreur="success";                    
+                }
+            }
+            else{
+                    $currentClient = new Client();
+                    $currentClient = Doctrine_Core::getTable('client')->find($this->data['id']);
+
+            
+                    if(empty($this->erreur)) {
+                        $client = new Client();
+                        $client = Doctrine_Core::getTable('client')->find($this->data['id']);                        
+                        $client->init($this->data['nom'],$this->data['prenom'],$this->data['mail'],
+                                    $this->data['tel'],$this->data['commentaire']);        
+                        $client->save();    
+                        $this->alert("Client modifié avec succès.",2000);
+                        $this->redirect('Clients/index',2);
+                    }
+                    else
+                    {
+                        $d['view'] = array("titre" => "hhhh","erreur" => $this->erreur,"form" => $form);
+                        $this->set($d);
+                        $this->render('creation');
+                    }
+            }
+
+        }
+        echo $erreur;
+    }
+
+
 	/**
      * @UserS('REQUIRED')
      */
-    function creation(){
+    /*function creation(){
         if(!isset($_POST['nom'])){
             
             $form['type'] ='create';
@@ -117,7 +180,7 @@ class Clients extends Controller{
                     }
             }
         }
-    }
+    }*/
 
     /**
      * @UserS('REQUIRED')
