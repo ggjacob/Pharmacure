@@ -45,6 +45,7 @@ class Produits extends Controller{
         $form['conditionnement'] = $produit->Conditionnement;
         $form['idclasse'] = $produit->IdClasse;
         $form['idtaxe'] = $produit->IdTaxe;
+        $form['alerte'] = $produit->Alerte;
         $form['type'] = 'update';
         $taxes = new Taxe();
         $taxes = Doctrine_Core::getTable('taxe')->findAll();
@@ -83,6 +84,7 @@ class Produits extends Controller{
             $form['idclasse'] = $this->data['idclasse'];
             $form['idtaxe'] = $this->data['idtaxe'];
             $form['type'] = $this->data['type'];
+            $form['alerte'] = $this->data['alerte'];
             
              if($form['type'] == "create"){
                  $currentProduit = new Produit();
@@ -108,7 +110,7 @@ class Produits extends Controller{
                     if(empty($this->erreur)) {
                         $produit = new Produit();
                         $produit = Doctrine_Core::getTable('produit')->find($this->data['id']);                        
-                        $produit->init($this->data['prix'],$this->data['ordonnance'],$this->data['commentaire'],$this->data['conditionnement'],$this->data['idtaxe'], $this->data['idclasse']);     
+                        $produit->init($this->data['libelle'], $this->data['prix'],$this->data['ordonnance'],$this->data['commentaire'],$this->data['conditionnement'],$this->data['idtaxe'], $this->data['idclasse'], $this->data['alerte']);     
                         $produit->save();    
                         $this->alert("Produit modifié avec succès.",2000);
                         $this->redirect('Produits/index',2);

@@ -13,10 +13,28 @@
             </tr>
             <tr>
                 <td width="42px" align="left">Conditionnement</td>   
-                <td align="center"><input type="text" name="tel" value='<?php if(isset($view['form']['tel'])) echo$view['form']['tel'];?>' placeholder="Conditonnement du produit">  </td>
+                <td align="center"><input type="text" name="conditionnement" value='<?php if(isset($view['form']['tel'])) echo$view['form']['tel'];?>' placeholder="Conditonnement du produit">  </td>
                 <td width="42px" align="left">Ordonnance</td>
                 <td align="center"><input type="radio" name="ordonnance" value="0" <?php if($view['form']['ordonnance'] != 1){echo 'checked';} ?>>Non  <input type="radio" name="ordonnance" value="1" <?php if($view['form']['ordonnance'] == 1){echo 'checked';} ?>>Oui</td>
             </tr>
+            <tr>
+                        <td width="42px" align="left">Classe</td>
+                        <td align="center"><select  style="width:90px; text-overflow: ellipsis;" name="idclasse">
+                            <?php foreach ($view['classes'] as $classes):?>
+                                <option value="<?=$classes->id?>" <?php if($classes==$view['form']['idclasse']) echo 'selected' ?>> <?=$classes->Libelle?></option>
+                            <?php endforeach; ?>
+                            </select></td>
+                         <td width="42px" align="left">Taxe</td>
+                        <td align="center"><select style="width:90px; text-overflow: ellipsis;" name="idtaxe">
+                            <?php foreach ($view['taxes'] as $taxes):?>
+                                <option value="<?=$taxes->id?>" <?php if($taxes==$view['form']['idtaxe']) echo 'selected' ?>> <?=$taxes->Libelle?></option>
+                            <?php endforeach; ?>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td>Seuil d'alerte</td>
+                        <td><input type="number" name="alerte" placeholder="Seuil d'alerte" required value="<?php echo $view['form']['alerte'] ?>"></td>
+                    </tr>
             
         </table>
         <textarea name="commentaire"  id="message" cols="50" rows="6"  placeholder="Veuillez Taper Un Commentaire"><?php if(isset($view['form']['commentaire'])) echo$view['form']['commentaire'];?></textarea><br>
