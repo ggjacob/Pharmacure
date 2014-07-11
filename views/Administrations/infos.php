@@ -59,18 +59,17 @@ $(function(){
 	                <table class="upper_content_forms_table" >
 	                    <tr>
 	                        <td width="42px" align="left">Nom</td>   
-	                        <td align="center"><input type="text" id="nom" name="nom" placeholder="Nom Du Client">  </td>
-	                        <td width="42px" align="left">Prenom</td>   
-	                        <td align="center"><input type="text" id="prenom" name="prenom" placeholder="Prenom Du Client">  </td>
+	                        <td align="center"><input type="text" id="nom" name="nom" placeholder="Nom de votre pharmacie">  </td>
+	                        <td width="42px" align="left">Adresse</td>   
+	                        <td align="center"><input type="text" id="adresse" name="adresse" placeholder="Votre adresse">  </td>
 	                    </tr>
 	                    <tr>
 	                        <td width="42px" align="left">N&deg; Tel</td>   
 	                        <td align="center"><input type="text" id="tel" name="tel" placeholder="Numero De Telephone">  </td>
-	                        <td width="42px" align="left">Mail</td>   
+	                        <td width="42px" align="left">Mail de l'administrateur</td>   
 	                        <td align="center"><input type="email" id="mail" name="mail" placeholder="Adresse Valide">  </td>
 	                    </tr>
 	                </table>
-	                <textarea id="commentaire" name="commentaire"  id="message" cols="50" rows="6" placeholder="Veuillez Taper Un Commentaire"></textarea><br>
 	                <input type="submit" name="Ajout_client" value="Ajouter" class="upper_content_forms_send"/>
 	</form>
 </div>
