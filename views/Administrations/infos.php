@@ -52,24 +52,39 @@ $(function(){
 </script>
 <h1><?=$view['titre']?></h1>
 <div id="upper_content_forms" style="visibility:visible !important;">
-
 	<form  id="formClient" action="<?=WEBROOT?>Clients/creation" method="post" >
 	            <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
 	            <font color="black" size="4">
 	                <table class="upper_content_forms_table" >
 	                    <tr>
-	                        <td width="42px" align="left">Nom</td>   
+	                        <td width="200px" align="left">Nom</td>   
 	                        <td align="center"><input type="text" id="nom" name="nom" placeholder="Nom de votre pharmacie">  </td>
-	                        <td width="42px" align="left">Adresse</td>   
+	                    </tr>
+                        <tr>    
+                            <td width="200px" align="left">Adresse</td>   
 	                        <td align="center"><input type="text" id="adresse" name="adresse" placeholder="Votre adresse">  </td>
 	                    </tr>
 	                    <tr>
-	                        <td width="42px" align="left">N&deg; Tel</td>   
+	                        <td width="200px" align="left">N&deg; Tel</td>   
 	                        <td align="center"><input type="text" id="tel" name="tel" placeholder="Numero De Telephone">  </td>
-	                        <td width="42px" align="left">Mail de l'administrateur</td>   
+	                    </tr>
+                        <tr>    
+                            <td width="200px" align="left">Mail administrateur général</td>   
 	                        <td align="center"><input type="email" id="mail" name="mail" placeholder="Adresse Valide">  </td>
 	                    </tr>
+                        <tr>
+                            <td width="200px" align="left">Numéro du registre de commerce</td>   
+                            <td align="center"><input type="text" id="registre" name="registre" placeholder="Numero du registre de commerce">  </td>
+                        </tr>   
+                        <tr>
+                            <td width="200px" align="left">Numéro du crédit mobilier</td>   
+                            <td align="center"><input type="text" id="mobilier" name="mobilier" placeholder="Numero du credit mobilier">  </td>
+                        </tr>
+                        <tr>
+                            <td width="100px" align="left">Numéro d'identification Fiscalité</td>   
+                            <td align="center"><input type="text" id="fisc" name="fisc" placeholder="Numero d'identification fiscale">  </td>
+                        </tr>
 	                </table>
-	                <input type="submit" name="Ajout_client" value="Ajouter" class="upper_content_forms_send"/>
+	                <input type="submit" name="Ajout_client" value="Mettre à jour" class="upper_content_forms_send"/>
 	</form>
 </div>
