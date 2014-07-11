@@ -1,7 +1,67 @@
-
+<script type="text/javascript">
+$(function(){
+        $("#formClient").submit(function(event){
+            var nom             = $("#nom").val();
+            var prenom          = $("#prenom").val();
+            var tel             = $("#tel").val();
+            var email           = $("#mail").val();
+            var commentaire     = $("#mail").val();
+            var msg_all         = 'Merci de remplir tous les champs';
+            var msg_alert       = 'Merci de remplir ce champs';
+            
+            
+            if(nom == '' || prenom == '')
+            {
+                $('#formOk').hide();
+                $('#KOText').html("Erreur ! Veuillez renseigner tous les champs requis...");
+                $('#formKO').show();
+            }
+            else
+            {
+                $.ajax({
+                    type : "POST",
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    success : function(data){
+                        
+                        if(data == 'success'){
+                            $('#OKText').html("Succ&egrave;s ! Votre client a &eacute;t&eacute; modifi&eacute;.");
+                            $('#formOk').show();
+                            $('#formKO').hide();
+                            $("#formClient").get(0).reset();
+                        }
+                        else if(data == 'failed'){
+                            $('#KOText').html("Erreur ! Ce numero de téléphone existe déjà");
+                            $('#formOk').hide();
+                            $('#formKO').show();         
+                        }else{
+                            $('#KOText').html("Erreur ! La validation du formulaire à echouée");
+                            $('#formOk').hide();
+                            $('#formKO').show();
+                        }
+                        
+                    },
+                    error: function(){
+                        $('#formKO').html("Erreur d'appel, le formulaire ne peut pas fonctionner");
+                    }
+                });
+            }
+            return false;
+        });
+    });
+</script>
 <div id="upper_content_forms" style="visibility:visible !important;">
-
-<form action="<?=WEBROOT?>Clients/creation" method="post" >
+<div>
+            <div style="display:none;" id="formOk" class="alert alert-icon alert-success">
+                <div id="OKText" class="text">
+                </div>
+            </div>
+            <div style="display:none;" id="formKO" class="alert alert-icon alert-danger">
+                <div id="KOText" class="text">
+                </div>
+            </div>
+        </div>
+<form id="formClient" action="<?=WEBROOT?>Clients/creation" method="post" >
     <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
     <input type="hidden" value='<?=$view["id"]?>' name="id">
     <font color="black" size="4">
