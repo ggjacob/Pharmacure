@@ -94,8 +94,7 @@ class Produits extends Controller{
                                     $produit = new Produit();
                                     $produit->init($this->data['libelle'],$this->data['prix'],$this->data['ordonnance'],$this->data['commentaire'],$this->data['conditionnement'],$this->data['idtaxe'], $this->data['idclasse'],$this->data['alerte']);        
                                     $produit->save();    
-                                    $this->alert("Produit crée avec succès.",2000);
-                                    $this->redirect('Produits/index',0);
+                                    $erreur="success";
                                 }
                                 else
                                 {
@@ -111,9 +110,9 @@ class Produits extends Controller{
                         $produit = new Produit();
                         $produit = Doctrine_Core::getTable('produit')->find($this->data['id']);                        
                         $produit->init($this->data['libelle'], $this->data['prix'],$this->data['ordonnance'],$this->data['commentaire'],$this->data['conditionnement'],$this->data['idtaxe'], $this->data['idclasse'], $this->data['alerte']);     
-                        $produit->save();    
-                        $this->alert("Produit modifié avec succès.",2000);
-                        $this->redirect('Produits/index',2);
+                        $produit->save();
+                        $erreur="success";
+                        
                     }
                     else
                     {
@@ -124,6 +123,7 @@ class Produits extends Controller{
              }
                 
         }
+        echo $erreur;
     }
     
     /**

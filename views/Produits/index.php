@@ -5,7 +5,7 @@ $(function(){
             var prix            = $("#prix").val();
             var ordonnance      = $("#ordonnance").val();
             var conditionnement = $("#condtionnement").val();
-            var commentaire     = $("#mail").val();
+            var commentaire     = $("#commentaire").val();
             var taxe            = $("#idtaxe").val();
             var classe          = $("#idclasse").val();
             var alerte          = $("#alerte").val();
@@ -104,7 +104,7 @@ $(function(){
                         <td><input type="number" name="alerte" placeholder="Seuil d'alerte" required></td>
                     </tr>
                 </table>
-                <textarea name="commentaire"  id="message" cols="50" rows="6" placeholder="Veuillez Taper Un Commentaire"></textarea><br>
+                <textarea name="commentaire"  id="commentaire" cols="50" rows="6" placeholder="Veuillez Taper Un Commentaire"></textarea><br>
                 <input type="submit" name="Ajout_produit" value="Ajouter" class="upper_content_forms_send"/>
         </form>
 </div>
