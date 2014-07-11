@@ -89,9 +89,9 @@ class Clients extends Controller{
                         $client = Doctrine_Core::getTable('client')->find($this->data['id']);                        
                         $client->init($this->data['nom'],$this->data['prenom'],$this->data['mail'],
                                     $this->data['tel'],$this->data['commentaire']);        
-                        $client->save();    
-                        $this->alert("Client modifié avec succès.",2000);
-                        $this->redirect('Clients/index',2);
+                        $client->save();
+                        $erreur="success";
+                        
                     }
                     else
                     {
