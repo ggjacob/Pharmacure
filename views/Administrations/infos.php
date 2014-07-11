@@ -52,7 +52,7 @@ $(function(){
 </script>
 <h1><?=$view['titre']?></h1>
 <div id="upper_content_forms" style="visibility:visible !important;">
-	<form  id="formClient" action="<?=WEBROOT?>Clients/creation" method="post" >
+	<form  id="formClient" action="<?=WEBROOT?>Administrations/modification" method="post" >
 	            <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
 	            <font color="black" size="4">
 	                <table class="upper_content_forms_table" >
@@ -81,7 +81,7 @@ $(function(){
                             <td align="center"><input type="text" id="mobilier" name="mobilier" placeholder="Numero du credit mobilier">  </td>
                         </tr>
                         <tr>
-                            <td width="100px" align="left">Numéro d'identification Fiscalité</td>   
+                            <td width="200px" align="left">Numéro d'identification Fiscalité</td>   
                             <td align="center"><input type="text" id="fisc" name="fisc" placeholder="Numero d'identification fiscale">  </td>
                         </tr>
 	                </table>
