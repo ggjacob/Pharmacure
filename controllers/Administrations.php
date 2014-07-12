@@ -16,12 +16,8 @@ class Administrations extends Controller{
             
         $json = file_get_contents(ROOT."conf/pharmacie.json");
         $infos = json_decode($json);
-        //var_dump($infos);
-         //echo $infos["nom"];
-        //$infos->{'nom'};
         $d['view'] = array("titre" => "Mettre à jour les infos globales de la pharmacie","infos"=>$infos);
         $this->set($d); 
-        //echo $view["infos"]->{"nom"};
         $this->render('infos');
     }
 
@@ -33,7 +29,6 @@ class Administrations extends Controller{
                         'registre' => $this->data['registre'],
                         'mobilier' => $this->data['mobilier'],
                         'fiscale' => $this->data['fiscale']);
-        
         $json = json_encode($infos);
         try {
                 $file = fopen(ROOT."conf/pharmacie.json", 'w+');
