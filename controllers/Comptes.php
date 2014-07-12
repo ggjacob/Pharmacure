@@ -112,8 +112,7 @@ class Comptes extends Controller{
                     $user = new User();
                     $user->init($this->data['password'],$this->data['nom'],$this->data['prenom'],$this->data['mail'],$this->data['tel'],$this->data['login'],$this->data['typeU']);        
                     $user->save();    
-                    $this->alert("Votre compte a été crée. Vous pouvez l'utiliser dès à présent.",2000);
-                    $this->redirect('',2);
+                    $erreur="success"; 
                 }
                 else
                 {
@@ -138,8 +137,7 @@ class Comptes extends Controller{
                         $user->init($this->data['password'],$this->data['nom'],$this->data['prenom'],$this->data['mail'],
                                     $this->data['tel'],$this->data['login'],$this->data['typeU']);        
                         $user->save();    
-                        $this->alert("Votre compte a été modifié.",2000);
-                        $this->redirect('',2);
+                       $erreur="success";
                     }
                     else
                     {
@@ -149,6 +147,7 @@ class Comptes extends Controller{
                     }
             }
         }
+        echo $erreur;
     }
     /**
      * @UserS('REQUIRED')
