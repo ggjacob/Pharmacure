@@ -112,7 +112,7 @@ $(function(){
                  <tr>
                   <td width="110px" class="center">
                     <a id="<?=WEBROOT?>Comptes/infos/<?=$user->id?>" onclick="MyPopUp(this.id,800,230)" href="#" class="js__p_start"><div class="view_icon_table" Onclick=""></div></a>
-                    <a id="<?=WEBROOT?>Comptes/modification/<?=$user->id?>" onclick="MyPopUp(this.id,800,230)" href="#" class="js__p_start"><div class="modif_icon_table"></div></a>
+                    <a id="<?=WEBROOT?>Comptes/mesInfos/<?=$user->id?>" onclick="MyPopUp(this.id,800,380)" href="#" class="js__p_start"><div class="modif_icon_table"></div></a>
                     <a href="<?=WEBROOT?>Comptes/suppression/<?=$user->id?>"><div class="remove_icon_table"></div></a>
                   </td>
                   <td><?=$user->id?></td>

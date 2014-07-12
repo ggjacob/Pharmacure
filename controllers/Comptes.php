@@ -129,7 +129,7 @@ class Comptes extends Controller{
                     $user = new User();
                     $user = Doctrine_Core::getTable('user')->find($_SESSION['user']->id);
                     
-                    if($user->password != $this->data['oldPassword']) $this->setErreur('oldpassword','Mot de pas incorrect');
+                    if($user->password != $this->data['oldpassword']) $this->setErreur('oldpassword','Mot de pas incorrect');
                     if($this->data['password'] != $this->data['confirm']) $this->setErreur('password','Les mots de passe ne correspondent pas');
                     
 
