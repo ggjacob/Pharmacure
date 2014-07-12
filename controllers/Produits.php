@@ -75,36 +75,20 @@ class Produits extends Controller{
             $this->render('creation');
         }
         else{
-            $form = Array();
-            $form['libelle'] = $this->data['libelle'];
-            $form['prix'] = $this->data['prix'];
-            $form['ordonnance'] = $this->data['ordonnance'];
-            $form['commentaire'] = $this->data['commentaire'];
-            $form['conditionnement'] = $this->data['conditionnement'];
-            $form['idclasse'] = $this->data['idclasse'];
-            $form['idtaxe'] = $this->data['idtaxe'];
-            $form['type'] = $this->data['type'];
-            $form['alerte'] = $this->data['alerte'];
-            
-             if($form['type'] == "create"){
+            if($this->data['type'] == "create"){
+                 $erreur="";
                  $currentProduit = new Produit();
                  $currentProduit = Doctrine_Core::getTable('Produit')->findOneByLibelle($this->data['libelle']);
-                                 if($currentProduit) $this->setErreur('libelle','Ce produit existe déja');
-                                 if(empty($this->erreur)) {
-                                    $produit = new Produit();
-                                    $produit->init($this->data['libelle'],$this->data['prix'],$this->data['ordonnance'],$this->data['commentaire'],$this->data['conditionnement'],$this->data['idtaxe'], $this->data['idclasse'],$this->data['alerte']);        
-                                    $produit->save();    
-                                    $erreur="success";
-                                }
-                                else
-                                {
-                                    $d['view'] = array("titre" => "Saisie incorrect","erreur" => $this->erreur,"form" => $form, "classes"=>$classes, "taxes"=>$taxes);
-                                    $this->set($d);
-                                    $this->render('creation');
-                                }
+                 if($currentProduit) $erreur="failed";
+                 if(empty($erreur)) {
+                    $produit = new Produit();
+                    $produit->init($this->data['libelle'],$this->data['prix'],$this->data['ordonnance'],$this->data['commentaire'],$this->data['conditionnement'],$this->data['idtaxe'], $this->data['idclasse'],$this->data['alerte']);        
+                    $produit->save();    
+                    $erreur="success";
+                }
              }
              else{
-                 $currentProduit = new Produit();
+                    $currentProduit = new Produit();
                     $currentProduit = Doctrine_Core::getTable('produit')->find($this->data['id']);
                     if(empty($this->erreur)) {
                         $produit = new Produit();

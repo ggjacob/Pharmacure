@@ -8,12 +8,11 @@ $(function(){
             var commentaire     = $("#commentaire").val();
             var taxe            = $("#idtaxe").val();
             var classe          = $("#idclasse").val();
-            var alerte          = $("#alerte").val();
-            var msg_all         = 'Merci de remplir tous les champs';
-            var msg_alert       = 'Merci de remplir ce champs';
+            var alerte          = $("#seuil").val();
             
             
-            if(libelle == '' || prix == '')
+            if(libelle == '' || prix == '' || ordonnance == '' || conditionnement == '' 
+                || commentaire == '' || taxe == '' || classe == '' || alerte == '' )
             {
                 $('#formOk').hide();
                 $('#KOText').html("Erreur ! Veuillez renseigner tous les champs requis...");
@@ -28,13 +27,13 @@ $(function(){
                     success : function(data){
                         
                         if(data == 'success'){
-                            $('#OKText').html("Succ&egrave;s ! Votre client a &eacute;t&eacute; enregistr&eacute;.");
+                            $('#OKText').html("Succ&egrave;s ! Votre produit a &eacute;t&eacute; enregistr&eacute;.");
                             $('#formOk').show();
                             $('#formKO').hide();
-                            $("#formClient").get(0).reset();
+                            $("#formProduit").get(0).reset();
                         }
                         else if(data == 'failed'){
-                            $('#KOText').html("Erreur ! Ce numero de téléphone existe déjà");
+                            $('#KOText').html("Erreur ! Ce produit existe déjà(libellé");
                             $('#formOk').hide();
                             $('#formKO').show();         
                         }else{
@@ -65,7 +64,7 @@ $(function(){
                 <div id="KOText" class="text">
                 </div>
             </div>
-        </div>
+    </div>
         <form id="formProduit" action="<?=WEBROOT?>Produits/creation" method="post" >
             <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
             <font color="black" size="4">
@@ -73,9 +72,9 @@ $(function(){
                     <tr>
                         
                         <td width="42px" align="left">Libelle</td>   
-                        <td align="center"><input id="libelle" type="text" name="libelle" placeholder="Libelle Du Produit"  required>  </td>
+                        <td align="center"><input id="libelle" type="text" name="libelle" placeholder="Libelle Du Produit">  </td>
                         <td width="42px" align="left">Prix</td>   
-                        <td align="center"><input id="prix" type="number" name="prix" placeholder="Prix du Produit" required>  </td>
+                        <td align="center"><input id="prix" type="number" name="prix" placeholder="Prix du Produit">  </td>
                         
                     </tr>
                     <tr>
@@ -87,21 +86,25 @@ $(function(){
                     </tr>
                     <tr>
                         <td width="42px" align="left">Classe</td>
-                        <td align="center"><select id="idclasse" style="width:90px; text-overflow: ellipsis;" name="idclasse">
-                            <?php foreach ($view['classes'] as $classes):?>
-                                <option value="<?=$classes->id?>"> <?=$classes->Libelle?></option>
-                            <?php endforeach; ?>
-                            </select></td>
+                        <td align="center">
+                            <select id="idclasse" style="width:90px; text-overflow: ellipsis;" name="idclasse">
+                                <?php foreach ($view['classes'] as $classes):?>
+                                    <option value="<?=$classes->id?>"> <?=$classes->Libelle?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
                          <td width="42px" align="left">Taxe</td>
-                        <td align="center"><select id="idtaxe" style="width:90px; text-overflow: ellipsis;" name="idtaxe">
-                            <?php foreach ($view['taxes'] as $taxes):?>
-                                <option value="<?=$taxes->id?>"> <?=$taxes->Libelle?></option>
-                            <?php endforeach; ?>
-                            </select></td>
+                        <td align="center">
+                            <select id="idtaxe" style="width:90px; text-overflow: ellipsis;" name="idtaxe">
+                                <?php foreach ($view['taxes'] as $taxes):?>
+                                    <option value="<?=$taxes->id?>"> <?=$taxes->Libelle?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td>Seuil d'alerte</td>
-                        <td><input type="number" name="alerte" placeholder="Seuil d'alerte" required></td>
+                        <td><input type="number" id="seuil" name="alerte" placeholder="Seuil d'alerte"></td>
                     </tr>
                 </table>
                 <textarea name="commentaire"  id="commentaire" cols="50" rows="6" placeholder="Veuillez Taper Un Commentaire"></textarea><br>
