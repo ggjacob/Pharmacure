@@ -28,6 +28,17 @@ class Controller{
         echo '<meta http-equiv=\'refresh\' content=\''.$time.';url='.WEBROOT.$url.'\'/>';
     }
 
+    function infoPharmacie($show){
+        try {
+              $json = file_get_contents(ROOT."conf/pharmacie.json");
+              $infos = json_decode($json);
+              return $infos->{$show};    
+        } catch (Exception $e) {
+              $retour="Erreur";
+              return $retour;
+        }
+    }
+
     function render($filename){
         extract($this->vars);
         ob_start(); 
