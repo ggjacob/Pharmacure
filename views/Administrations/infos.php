@@ -30,7 +30,7 @@ $(function(){
                             $("#formClient").get(0).reset();
                         }
                         else if(data == 'failed'){
-                            $('#KOText').html("Erreur ! Les données n'ont pas ete mise à jour");
+                            $('#KOText').html("Erreur ! Les données n'ont pas été mise à jour");
                             $('#formOk').hide();
                             $('#formKO').show();         
                         }else{
@@ -82,19 +82,26 @@ $(function(){
                             <td width="200px" align="left">Mail administrateur général</td>   
 	                        <td align="center"><input type="email" id="mail" name="mail" value='<?=$view["infos"]->{"mail"}?>' placeholder="Adresse Valide">  </td>
 	                    </tr>
-                        <tr>
-                            <td width="200px" align="left">Numéro du registre de commerce</td>   
-                            <td align="center"><input type="text" id="registre" name="registre" value='<?=$view["infos"]->{"registre"}?>' placeholder="Numero du registre de commerce">  </td>
-                        </tr>   
-                        <tr>
-                            <td width="200px" align="left">Numéro du crédit mobilier</td>   
-                            <td align="center"><input type="text" id="mobilier" name="mobilier" value='<?=$view["infos"]->{"mobilier"}?>' placeholder="Numero du credit mobilier">  </td>
-                        </tr>
-                        <tr>
-                            <td width="200px" align="left">Numéro d'identification Fiscalité</td>   
-                            <td align="center"><input type="text" id="fiscale" name="fiscale" value='<?=$view["infos"]->{"fiscale"}?>' placeholder="Numero d\'identification fiscale">  </td>
-                        </tr>
-	                </table>
+                    </table>
+                        <div class="category">
+                            <span class="category_title">Informations légales</span>
+                            <div class="sub_category">
+                                 <table class="upper_content_forms_table" >
+                                        <tr>
+                                            <td width="200px" align="left">Numéro du registre de commerce</td>   
+                                            <td align="center"><input type="text" id="registre" name="registre" value='<?=$view["infos"]->{"registre"}?>' placeholder="Numero du registre de commerce">  </td>
+                                        </tr>   
+                                        <tr>
+                                            <td width="200px" align="left">Numéro du crédit mobilier</td>   
+                                            <td align="center"><input type="text" id="mobilier" name="mobilier" value='<?=$view["infos"]->{"mobilier"}?>' placeholder="Numero du credit mobilier">  </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="200px" align="left">Numéro d'identification Fiscalité</td>   
+                                            <td align="center"><input type="text" id="fiscale" name="fiscale" value='<?=$view["infos"]->{"fiscale"}?>' placeholder="Numero d\'identification fiscale">  </td>
+                                        </tr>
+                                 </table>
+                            </div>
+                        </div>
 	                <input type="submit" name="Ajout_client" value="Mettre à jour" class="upper_content_forms_send"/>
 	</form>
 </div>

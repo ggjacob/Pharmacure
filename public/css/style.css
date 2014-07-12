@@ -1009,6 +1009,28 @@ right:10px;
 
 
 
+.category{
+border:1px #AEAEAE solid;
+max-width:600px;
+margin:10px 10px 10px 10px;
+/*background-color:#EFEFEF;*/
+}
+
+.category_title{
+position:relative; top:-10px; left:25px;
+background-color:#EFEFEF;
+font-size:20;
+color:#404040;
+padding-left:15px;
+padding-right:15px;
+}
+
+.sub_category{
+/*padding-top: 10px;*/
+padding-bottom: 10px;
+/*text-align: center;*/
+}
+
 /*
     
     ====== Zoom effect for popup======
