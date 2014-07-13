@@ -13,4 +13,11 @@
 class Fournisseur extends BaseFournisseur
 {
 
+    public function init($libelle, $adresse, $tel, $mail, $commentaire){
+        $this->Libelle =$libelle;
+        $this->Adresse =$adresse;
+        $this->Mail =$mail;
+        $this->Tel =$tel;
+        $this->Commentaire =$commentaire;
+    }
 }
