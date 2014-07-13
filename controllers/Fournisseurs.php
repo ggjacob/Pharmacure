@@ -50,6 +50,7 @@ class Fournisseurs extends Controller{
     }
     
         function creation(){
+            $erreur="";
         if(!isset($_POST['libelle'])){
             
             $form['type'] ='create';
@@ -60,7 +61,7 @@ class Fournisseurs extends Controller{
         }
         else
         {
-            $erreur="";
+            
             $form = array();
             $form['libelle'] =$this->data['libelle'];
             $form['adresse'] =$this->data['adresse'];
@@ -73,7 +74,7 @@ class Fournisseurs extends Controller{
             if($form['type'] == "create")
             {
                     $fournisseur = new Fournisseur();
-                    $fournisseur->init($this->data['libelle'],$this->data[''],$this->data['mail'],$this->data['tel'],$this->data['commentaire']);        
+                    $fournisseur->init($this->data['libelle'],$this->data['adresse'],$this->data['mail'],$this->data['tel'],$this->data['commentaire']);        
                     $fournisseur->save();    
                     $erreur="success";                    
             }

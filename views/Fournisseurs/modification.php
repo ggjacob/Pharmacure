@@ -10,7 +10,7 @@ $(function(){
             var msg_alert       = 'Merci de remplir ce champs';
             
             
-            if(nom == '' || login == '')
+            if(libelle == '' || adresse == '' || tel =='' || mail =='')
             {
                 $('#formOk').hide();
                 $('#KOText').html("Erreur ! Veuillez renseigner tous les champs requis...");
@@ -25,7 +25,7 @@ $(function(){
                     success : function(data){
                         
                         if(data == 'success'){
-                            $('#OKText').html("Succ&egrave;s ! Votre client a &eacute;t&eacute; enregistr&eacute;.");
+                            $('#OKText').html("Succ&egrave;s ! Votre fournisseur a &eacute;t&eacute; modifi&eacute;.");
                             $('#formOk').show();
                             $('#formKO').hide();
                             $("#formClient").get(0).reset();
