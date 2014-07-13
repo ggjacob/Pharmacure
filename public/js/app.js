@@ -127,3 +127,10 @@ function fermerMenu(){
 	 }
 	 //alert("badi");
 }
+
+//Permet de vérifier si un email est correcte. Return true si l'email est correcte, false dans le cas contraire
+function validateEmail(email) { 
+  
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
