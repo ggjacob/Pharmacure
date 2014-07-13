@@ -136,7 +136,25 @@ function validateEmail(email) {
 }
 
 //Vérifie un numero de téléphone au format malien : 
-function checknum(num){
+function checkTel(tel){
     var valide = /^[7|6|2][0-9]\d{6}$/;
-    return valide.test(num);
+    return valide.test(tel);
+}
+
+//Vérifie si la chaine contient uniquement du texte
+function checkText(txt){
+    var reg = /^[a-zA-Z ]+$/;
+    return reg.test(txt);
+}
+
+//Verifie que la chaine contient uniquement des chiffres
+function checkNumber(num){
+    var reg = /^[0-9]{1,}(\.|)[0-9]{0,2}$/g;
+    return reg.test(num);
+}
+
+//Vérifie que la chaine est alphanumérique
+function checkLogin(login){
+    var reg = /([^A-Za-z0-9\-])/;
+    return reg.test(login);
 }

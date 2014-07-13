@@ -10,10 +10,22 @@ $(function(){
             var msg_alert       = 'Merci de remplir ce champs';
             
             
-            if(nom == '' || prenom == '')
+            if(nom == '' || prenom == '' || tel == '' || email == '')
             {
                 $('#formOk').hide();
                 $('#KOText').html("Erreur ! Veuillez renseigner tous les champs requis...");
+                $('#formKO').show();
+            }
+            else if(!checkText(nom) || !checkText(prenom))
+            {
+               $('#formOk').hide();
+                $('#KOText').html("Erreur ! Veuillez le nom/prénom renseigner n'est pas correcte...");
+                $('#formKO').show(); 
+            }
+            else if (!validateEmail(email))
+            {
+                $('#formOk').hide();
+                $('#KOText').html("Erreur ! Veuillez renseigner un email valide...");
                 $('#formKO').show();
             }
             else

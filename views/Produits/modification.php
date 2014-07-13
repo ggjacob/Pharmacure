@@ -18,6 +18,12 @@ $(function(){
                 $('#KOText').html("Erreur ! Veuillez renseigner tous les champs requis...");
                 $('#formKO').show();
             }
+            else if (!checkNumber(prix) || !checkNumber(alerte))
+            {
+                $('#formOk').hide();
+                $('#KOText').html("Erreur ! le format du prix ou le niveau de l'alerte n'est pas correcte...");
+                $('#formKO').show();
+            }
             else
             {
                 $.ajax({
