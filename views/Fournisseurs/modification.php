@@ -16,6 +16,12 @@ $(function(){
                 $('#KOText').html("Erreur ! Veuillez renseigner tous les champs requis...");
                 $('#formKO').show();
             }
+            else if (!validateEmail(mail))
+            {
+                $('#formOk').hide();
+                $('#KOText').html("Erreur ! Veuillez renseigner un email valide...");
+                $('#formKO').show();
+            }
             else
             {
                 $.ajax({

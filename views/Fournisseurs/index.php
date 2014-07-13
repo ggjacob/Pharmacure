@@ -39,7 +39,7 @@ $(function(){
                             $("#formClient").get(0).reset();
                         }
                         else if(data == 'failed'){
-                            $('#KOText').html("Erreur ! Ce numero de téléphone existe déjà");
+                            $('#KOText').html("Erreur ! Ce fournisseur pas valide");
                             $('#formOk').hide();
                             $('#formKO').show();         
                         }else{
