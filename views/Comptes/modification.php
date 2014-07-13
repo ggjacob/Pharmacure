@@ -17,6 +17,24 @@ $(function(){
                 $('#KOText').html("Erreur ! Veuillez renseigner tous les champs requis...");
                 $('#formKO').show();
             }
+            else if(!checkLogin(login))
+            {
+                $('#formOk').hide();
+                $('#KOText').html("Erreur ! le login doit etre alphanumérique...");
+                $('#formKO').show();
+            }
+            else if (!validateEmail(mail))
+            {
+                $('#formOk').hide();
+                $('#KOText').html("Erreur ! Veuillez renseigner un email valide...");
+                $('#formKO').show();
+            }
+            else if(!checkText(nom) || !checkText(prenom))
+            {
+               $('#formOk').hide();
+                $('#KOText').html("Erreur ! Veuillez le nom/prénom renseigner n'est pas correcte...");
+                $('#formKO').show(); 
+            }
             else
             {
                 $.ajax({

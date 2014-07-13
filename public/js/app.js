@@ -155,6 +155,6 @@ function checkNumber(num){
 
 //Vérifie que la chaine est alphanumérique
 function checkLogin(login){
-    var reg = /([^A-Za-z0-9\-])/;
+    var reg = /[a-zA-Z0-9]/;
     return reg.test(login);
 }
