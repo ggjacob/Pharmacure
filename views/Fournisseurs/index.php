@@ -23,6 +23,7 @@ $(function(){
                 $('#KOText').html("Erreur ! Veuillez renseigner un email valide...");
                 $('#formKO').show();
             }
+            
             else
             {
                 $.ajax({
@@ -82,9 +83,9 @@ $(function(){
                     </tr>
                     <tr>
                         <td width="42px" align="left">N&deg; Tel</td>   
-                        <td align="center"><input  type="text" name="tel" placeholder="Numero De Telephone" required>  </td>
+                        <td align="center"><input id="tel"  type="text" name="tel" placeholder="Numero De Telephone" required>  </td>
                         <td width="42px" align="left">Mail</td>   
-                        <td align="center"><input type="email" name="mail" placeholder="Adresse Valide" required>  </td>
+                        <td align="center"><input id="mail" type="email" name="mail" placeholder="Adresse Valide" required>  </td>
                     </tr>
                 </table>
                 <textarea name="commentaire"  id="message" cols="50" rows="6" placeholder="Veuillez Taper Un Commentaire"></textarea><br>

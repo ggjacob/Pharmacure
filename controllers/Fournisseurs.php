@@ -74,7 +74,7 @@ class Fournisseurs extends Controller{
             if($form['type'] == "create")
             {
                     $fournisseur = new Fournisseur();
-                    $fournisseur->init($this->data['libelle'],$this->data['adresse'],$this->data['mail'],$this->data['tel'],$this->data['commentaire']);        
+                    $fournisseur->init($this->data['libelle'],$this->data['adresse'],$this->data['tel'], $this->data['mail'],$this->data['commentaire']);        
                     $fournisseur->save();    
                     $erreur="success";                    
             }
@@ -83,14 +83,12 @@ class Fournisseurs extends Controller{
                     $currentFournisseur = Doctrine_Core::getTable('fournisseur')->find($this->data['id']);
                     if(!$currentFournisseur) {
                         
-                        $erreur = "false";
+                        $erreur = "failed";
                     }
             
-                    if(empty($erreur)) {
-                        
-                        $currentFournisseur = Doctrine_Core::getTable('fournisseur')->find($this->data['id']);                        
-                        $currentFournisseur->init($this->data['libelle'],$this->data['adresse'],$this->data['mail'],
-                                    $this->data['tel'],$this->data['commentaire']);        
+                    if(empty($erreur)) {                       
+                        $currentFournisseur->init($this->data['libelle'],$this->data['adresse'], $this->data['tel'], $this->data['mail'],
+                                    $this->data['commentaire']);        
                         $currentFournisseur->save();
                         $erreur="success";
                         
