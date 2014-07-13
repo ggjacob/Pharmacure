@@ -5,7 +5,7 @@ $(function(){
             var prenom          = $("#prenom").val();
             var tel             = $("#tel").val();
             var email           = $("#mail").val();
-            var commentaire     = $("#mail").val();
+            var commentaire     = $("#commentaire").val();
             var msg_all         = 'Merci de remplir tous les champs';
             var msg_alert       = 'Merci de remplir ce champs';
             
@@ -28,7 +28,6 @@ $(function(){
                             $('#OKText').html("Succ&egrave;s ! Votre client a &eacute;t&eacute; modifi&eacute;.");
                             $('#formOk').show();
                             $('#formKO').hide();
-                            $("#formClient").get(0).reset();
                         }
                         else if(data == 'failed'){
                             $('#KOText').html("Erreur ! Ce numero de téléphone existe déjà");
@@ -68,18 +67,18 @@ $(function(){
         <table class="upper_content_forms_table" >
             <tr>
                 <td width="42px" align="left">Nom</td>   
-                <td align="center"><input type="text" name="nom" value='<?php if(isset($view['form']['nom'])) echo$view['form']['nom'];?>' placeholder="Nom Du Client"  required>  </td>
+                <td align="center"><input type="text" id="nom" name="nom" value='<?php if(isset($view['form']['nom'])) echo$view['form']['nom'];?>' placeholder="Nom Du Client">  </td>
                 <td width="42px" align="left">Prenom</td>   
-                <td align="center"><input type="text" name="prenom" value='<?php if(isset($view['form']['prenom'])) echo$view['form']['prenom'];?>' placeholder="Prenom Du Client" required>  </td>
+                <td align="center"><input type="text" id="prenom" name="prenom" value='<?php if(isset($view['form']['prenom'])) echo$view['form']['prenom'];?>' placeholder="Prenom Du Client">  </td>
             </tr>
             <tr>
                 <td width="42px" align="left">N&deg; Tel</td>   
-                <td align="center"><input type="text" name="tel" value='<?php if(isset($view['form']['tel'])) echo$view['form']['tel'];?>' placeholder="Numero De Telephone">  </td>
+                <td align="center"><input type="text" id="tel" name="tel" value='<?php if(isset($view['form']['tel'])) echo$view['form']['tel'];?>' placeholder="Numero De Telephone">  </td>
                 <td width="42px" align="left">Mail</td>   
-                <td align="center"><input type="email" name="mail" value='<?php if(isset($view['form']['mail'])) echo$view['form']['mail'];?>' placeholder="Adresse Valide">  </td>
+                <td align="center"><input type="email"  id ="mail" name="mail" value='<?php if(isset($view['form']['mail'])) echo$view['form']['mail'];?>' placeholder="Adresse Valide">  </td>
             </tr>
         </table>
-        <textarea name="commentaire"  id="message" cols="50" rows="6"  placeholder="Veuillez Taper Un Commentaire"><?php if(isset($view['form']['commentaire'])) echo$view['form']['commentaire'];?></textarea><br>
+        <textarea name="commentaire"  id="commentaire" cols="50" rows="6"  placeholder="Veuillez Taper Un Commentaire"><?php if(isset($view['form']['commentaire'])) echo$view['form']['commentaire'];?></textarea><br>
         <input type="submit" name="Modif_client" value="Modifier" class="upper_content_forms_send"/>
 </form>
 </div>

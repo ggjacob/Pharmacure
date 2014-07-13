@@ -5,7 +5,7 @@ $(function(){
             var prenom          = $("#prenom").val();
             var tel             = $("#tel").val();
             var email           = $("#mail").val();
-            var commentaire     = $("#mail").val();
+            var commentaire     = $("#commentaire").val();
             var msg_all         = 'Merci de remplir tous les champs';
             var msg_alert       = 'Merci de remplir ce champs';
             

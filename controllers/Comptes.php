@@ -30,7 +30,7 @@ class Comptes extends Controller{
     /**
      * @Admin('REQUIRED')
      */
-    function mesInfos($id){
+    function modification($id){
         
         $user = new User();
         $user = Doctrine_Core::getTable('user')->find($id);
@@ -41,11 +41,12 @@ class Comptes extends Controller{
         $form['mail'] =$user->Mail;
         $form['login'] =$user->Login;
         $form['typeU'] =$user->Type;
+        $form['id'] =$id;
         $form['type'] ='update';    
         
         $d['view'] = array("titre" => "Mes Infos","form" => $form);
         $this->set($d); 
-        $this->render('inscription');
+        $this->render('modification');
     }
 	
     
@@ -75,7 +76,7 @@ class Comptes extends Controller{
 	/**
      * @Admin('REQUIRED')
      */
-    function inscription(){
+    function creation(){
         if(!isset($_POST['nom'])){
             
             $form['type'] ='create';
@@ -86,7 +87,6 @@ class Comptes extends Controller{
         }
         else
         {
-
             $form = array();
             $form['nom'] =$this->data['nom'];
             $form['prenom'] =$this->data['prenom'];
@@ -99,51 +99,40 @@ class Comptes extends Controller{
             
             if($form['type'] == "create")
             {
+                $erreur="";
                 $currentUser = new User();
                 $currentUser = Doctrine_Core::getTable('user')->findOneByLogin($this->data['login']);
 
-                if($currentUser) $this->setErreur('login','Ce Identifiant existe déjà');
+                if($currentUser) $erreur="existe";
 
                 
-                if($this->data['password'] != $this->data['confirm']) $this->setErreur('password','Les mots de passe ne correspondent pas');
-                
+                if(empty($erreur)){
+                if($this->data['password'] != $this->data['confirm']) $erreur="password";
+                }
 
-                if(empty($this->erreur)) {
+                if(empty($erreur)) {
                     $user = new User();
                     $user->init($this->data['password'],$this->data['nom'],$this->data['prenom'],$this->data['mail'],$this->data['tel'],$this->data['login'],$this->data['typeU']);        
                     $user->save();    
                     $erreur="success"; 
                 }
-                else
-                {
-                    $d['view'] = array("erreur" => $this->erreur,"form" => $form);
-                    $this->set($d);
-                    $this->render('inscription');
-                }
             }else{
+                    $erreur = "";
                     $currentUser = new User();
                     $currentUser = Doctrine_Core::getTable('user')->findByLogin($this->data['login']);
 
-                    if(count($currentUser)>1) $this->setErreur('login','Ce Identifiant existe déjà');
+                    if(count($currentUser)>1) $erreur="existe";
 
                     $user = new User();
-                    $user = Doctrine_Core::getTable('user')->find($_SESSION['user']->id);
+                    $user = Doctrine_Core::getTable('user')->find($this->data['id']);
                     
-                    if($user->password != $this->data['oldpassword']) $this->setErreur('oldpassword','Mot de pas incorrect');
-                    if($this->data['password'] != $this->data['confirm']) $this->setErreur('password','Les mots de passe ne correspondent pas');
+                    if($this->data['password'] != $this->data['confirm']) $erreur="password";
                     
-
-                    if(empty($this->erreur)) {
+                    if(empty($erreur)) {
                         $user->init($this->data['password'],$this->data['nom'],$this->data['prenom'],$this->data['mail'],
                                     $this->data['tel'],$this->data['login'],$this->data['typeU']);        
                         $user->save();    
                        $erreur="success";
-                    }
-                    else
-                    {
-                        $d['view'] = array("erreur" => $this->erreur,"form" => $form);
-                        $this->set($d);
-                        $this->render('inscription');
                     }
             }
         }

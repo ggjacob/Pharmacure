@@ -88,21 +88,14 @@ class Produits extends Controller{
                 }
              }
              else{
+                    $erreur="";
                     $currentProduit = new Produit();
                     $currentProduit = Doctrine_Core::getTable('produit')->find($this->data['id']);
+                    if(!$currentProduit) $erreur="failed";
                     if(empty($this->erreur)) {
-                        $produit = new Produit();
-                        $produit = Doctrine_Core::getTable('produit')->find($this->data['id']);                        
-                        $produit->init($this->data['libelle'], $this->data['prix'],$this->data['ordonnance'],$this->data['commentaire'],$this->data['conditionnement'],$this->data['idtaxe'], $this->data['idclasse'], $this->data['alerte']);     
-                        $produit->save();
-                        $erreur="success";
-                        
-                    }
-                    else
-                    {
-                        $d['view'] = array("titre" => "hhhh","erreur" => $this->erreur,"form" => $form, "classes"=>$classes, "taxes"=>$taxes);
-                        $this->set($d);
-                        $this->render('creation');
+                        $currentProduit->init($this->data['libelle'], $this->data['prix'],$this->data['ordonnance'],$this->data['commentaire'],$this->data['conditionnement'],$this->data['idtaxe'], $this->data['idclasse'], $this->data['alerte']);     
+                        $currentProduit->save();
+                        $erreur="success";   
                     }
              }
                 
