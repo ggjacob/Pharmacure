@@ -10,7 +10,7 @@ $(function(){
             var msg_alert       = 'Merci de remplir ce champs';
             
             
-            if(nom == '' || prenom == '' || tel =='' || email =='')
+            if(nom == '' || prenom == '')
             {
                 $('#formOk').hide();
                 $('#KOText').html("Erreur ! Veuillez renseigner tous les champs requis...");
