@@ -28,7 +28,17 @@ class Clients extends Controller{
         $this->render('infos');
     }
 
-
+    function test(){
+        $clients = new Client();
+        $clients = Doctrine_Core::getTable('client')->findAll();
+        $clients = $clients->toArray();
+           $data = array('data' =>$clients);
+//        var_dump($data);
+        $text = json_encode($data);
+        echo $text;
+//        $this->render('test');
+        
+    }
     /**
      * @UserS('REQUIRED')
      */
@@ -103,8 +113,8 @@ class Clients extends Controller{
         $client = new Client();
         $client = Doctrine_Core::getTable('client')->findOneById($id);
         if(!$client->delete()) $this->redirect('Clients/index',0);
-        //$this->alert("Client supprimé",2000);
-        $this->redirect('Clients/index',0);
+        $erreur="success";
+        echo $erreur;
     }
 }
 ?>

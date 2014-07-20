@@ -23,7 +23,7 @@ function addTab(title, url){
 			}
 
 
-function MyPopUp(id, width,height){
+function MyPopUp(id, width,height,left,top){
 		var searchedRule = document.styleSheets[5].cssRules[0];
     	searchedRule.style.width=width;
 		searchedRule.style.height=height;
@@ -33,8 +33,8 @@ function MyPopUp(id, width,height){
 		//}
 
 		// pas encore redefini en parametre
-		searchedRule.style.top=-100;
-        searchedRule.style.left=500;
+		searchedRule.style.top=top;
+        searchedRule.style.left=100;
         
          document.getElementById("cadrePopUp").className = "popup js__popup";
 
@@ -42,6 +42,28 @@ function MyPopUp(id, width,height){
 		iframe.className = ""  
 		iframe.src= id;
 }
+
+function MyPopupClose(){
+		
+        
+         document.getElementById("cadrePopUp").className = "popup js__popup js__slide_top";
+         $("#data_source").DataTable().ajax.reload();
+         
+		
+}
+
+//
+//$('.p_close js__p_close').click(function(e){
+//   e.preventDefault();
+//   $("#data_source").DataTable().ajax.reload();
+//});
+
+//function DataTableRefresh(){
+//    var table = $('#data_source').DataTable( {
+//    ajax: "data.php"
+//    } );
+//    table.DataTable.reload();
+//}
 
 function addTabVentes(title, url){
 		if ($('#tt').tabs('exists', title)){
@@ -157,4 +179,33 @@ function checkNumber(num){
 function checkLogin(login){
     var reg = /[a-zA-Z0-9]/;
     return reg.test(login);
+}
+
+function Suppression(id){
+     $.ajax({
+                    type : "POST",
+                    url: id,
+                    data: $(this).serialize(),
+                    success : function(data){
+                        
+                        if(data == 'success'){
+                            
+                            $("#data_source").DataTable().ajax.reload();
+                            
+                        }
+//                        else if(data == 'failed'){
+//                            $('#KOText').html("Erreur ! Ce numero de téléphone existe déjà");
+//                            $('#formOk').hide();
+//                            $('#formKO').show();         
+//                        }else{
+//                            $('#KOText').html("Erreur ! La validation du formulaire à echouée");
+//                            $('#formOk').hide();
+//                            $('#formKO').show();
+//                        }
+                        
+                    },
+                    error: function(){
+                        $('#formKO').html("Erreur d'appel, le formulaire ne peut pas fonctionner");
+                    }
+                });
 }
