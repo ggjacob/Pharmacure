@@ -28,7 +28,7 @@ class Clients extends Controller{
         $this->render('infos');
     }
 
-    function test(){
+    function data(){
         $clients = new Client();
         $clients = Doctrine_Core::getTable('client')->findAll();
         $clients = $clients->toArray();

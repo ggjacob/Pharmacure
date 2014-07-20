@@ -25,7 +25,7 @@
         }
     },
     "serverSide": false, //Ne pas mettre sur true, cela break la pagination
-        "ajax":"test",
+        "ajax":"data",
          "columns": [
             { "data": "id" },
             { "data": "Nom" },
