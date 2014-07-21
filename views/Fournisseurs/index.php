@@ -159,7 +159,7 @@ $(function(){
 <div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes Fournisseurs</span></div>
         <table id="data_source">
                          <thead>
-                            <tr><th>id</th><th>Libelle</th><th>Adresse</th><th>Tel</th><th>Mail</th><th>Commentaire</th></tr>    
+                            <tr><th width="95px">id</th><th>Libelle</th><th>Adresse</th><th>Tel</th><th>Mail</th><th>Commentaire</th></tr>    
                          </thead>
                          <tbody>
                              <div class="p_body js__p_body js__fadeout"></div>
