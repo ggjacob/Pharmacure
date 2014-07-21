@@ -28,6 +28,15 @@ class Fournisseurs extends Controller{
         $this->render('infos');
     }
 
+    function data(){
+        $fournisseurs = new Fournisseur();
+        $fournisseurs = Doctrine_Core::getTable('fournisseur')->findAll();
+        $fournisseurs = $fournisseurs->toArray();
+        $data = array('data' =>$fournisseurs);
+        $text = json_encode($data);
+        echo $text;
+        
+    }
 
     /**
      * @UserS('REQUIRED')
@@ -107,8 +116,8 @@ class Fournisseurs extends Controller{
         $fournisseur = new Fournisseur();
         $fournisseur = Doctrine_Core::getTable('Fournisseur')->findOneById($id);
         if(!$fournisseur->delete()) $this->redirect('Fournisseurs/index',0);
-        //$this->alert("Fournisseur supprimé",2000);
-        $this->redirect('Fournisseurs/index',0);
+        $erreur="success";
+        echo $erreur;
     }
     
     

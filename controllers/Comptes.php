@@ -21,10 +21,22 @@ class Comptes extends Controller{
      */
     function infos($id){
         $user = new User();
-        $user = Doctrine_Core::getTable('User')->find($id);
+        $user = Doctrine_Core::getTable('user')->find($id);
         $d['view'] = array("titre" => "Infos collaborateurs","user" => $user);
         $this->set($d); 
         $this->render('infos');
+    }
+    
+    function data(){
+        $comptes = new User();
+        $comptes = Doctrine_Core::getTable('user')->findAll();
+        $comptes = $comptes->toArray();
+           $data = array('data' =>$comptes);
+//        var_dump($data);
+        $text = json_encode($data);
+        echo $text;
+//        $this->render('test');
+        
     }
 
     /**
@@ -154,8 +166,9 @@ class Comptes extends Controller{
         $user = new User();
         $user = Doctrine_Core::getTable('User')->findOneById($id);
         if(!$user->delete()) $this->redirect('Comptes/index',0);
-        //$this->alert("Client supprimé",2000);
-        $this->redirect('Comptes/index',0);  
+        $erreur="success";
+        echo $erreur;
+         
     }
 }
 

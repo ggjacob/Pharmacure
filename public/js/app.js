@@ -52,19 +52,6 @@ function MyPopupClose(){
 		
 }
 
-//
-//$('.p_close js__p_close').click(function(e){
-//   e.preventDefault();
-//   $("#data_source").DataTable().ajax.reload();
-//});
-
-//function DataTableRefresh(){
-//    var table = $('#data_source').DataTable( {
-//    ajax: "data.php"
-//    } );
-//    table.DataTable.reload();
-//}
-
 function addTabVentes(title, url){
 		if ($('#tt').tabs('exists', title)){
 		$('#tt').tabs('select', title);
@@ -94,7 +81,6 @@ function display_ct()
 	tt=display_c();
  }
  
-
 var ddmenuitem	= 0;
 var ddmenuitem2	= 0;
 function show_form(id, action)
@@ -181,31 +167,23 @@ function checkLogin(login){
     return reg.test(login);
 }
 
-function Suppression(id){
-     $.ajax({
+//Supprime un element du DataTable
+function Suppression(id, type){
+    var result = confirm('Voulez-vous supprimer "'+type+'"');
+    if(result == true) { 
+    $.ajax({
                     type : "POST",
                     url: id,
                     data: $(this).serialize(),
                     success : function(data){
                         
-                        if(data == 'success'){
-                            
-                            $("#data_source").DataTable().ajax.reload();
-                            
+                        if(data == 'success'){ 
+                            $("#data_source").DataTable().ajax.reload();   
                         }
-//                        else if(data == 'failed'){
-//                            $('#KOText').html("Erreur ! Ce numero de téléphone existe déjà");
-//                            $('#formOk').hide();
-//                            $('#formKO').show();         
-//                        }else{
-//                            $('#KOText').html("Erreur ! La validation du formulaire à echouée");
-//                            $('#formOk').hide();
-//                            $('#formKO').show();
-//                        }
-                        
-                    },
+                       },
                     error: function(){
-                        $('#formKO').html("Erreur d'appel, le formulaire ne peut pas fonctionner");
+                        alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
                     }
                 });
+    }
 }

@@ -34,6 +34,19 @@ class Produits extends Controller{
     /**
      * @UserS('REQUIRED')
      */
+    function data(){
+        $produits = new Produit();
+        $produits = Doctrine_Core::getTable('produit')->findAll();
+        $produits = $produits->toArray();
+        $data = array('data' =>$produits);
+        $text = json_encode($data);
+        echo $text;
+        
+    }
+    
+    /**
+     * @UserS('REQUIRED')
+     */
     function modification($id){
         $produit = new Produit();
         $produit = Doctrine_Core::getTable('produit')->find($id);
@@ -110,7 +123,8 @@ class Produits extends Controller{
         $produit = new Produit();
         $produit = Doctrine_Core::getTable('produit')->findOneById($id);
         if(!$produit->delete()) $this->redirect('Produits/index',0);
-        $this->redirect('Produits/index',0);
+        $erreur="success";
+        echo $erreur;
     }
 }
 ?>
