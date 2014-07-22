@@ -32,8 +32,8 @@ Doctrine_Core::generateModelsFromYaml(ROOT.'models/schema.yml', ROOT.'models', a
 // Création des tables
 Doctrine_Core::createTablesFromModels(ROOT.'models');
 
-$codeSql = file_get_contents("pharmacure.sql");
+$codeSql = utf8_decode(file_get_contents("pharmacure.sql"));
 
 $st = $conn->execute($codeSql);
+echo utf8_decode("fin de création de la base de donnée et génération des objets du domain.<br> Les donnees ont été insérées dans la base de données.<br> Utiliser le compte admin/admin pour tester");
 ?>
-fin de creation de la base de donnee et generation des objets du domain.<br> Les donnees ont ete insere dans la base de donnees

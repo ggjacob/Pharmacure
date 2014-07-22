@@ -170,6 +170,13 @@ LigneFacture:
       alias: Produit # on pourra acceder à l'objet avec LigneFacture->Facture
       foreignAlias: LigneFactureProduit
 
+#les états de commande :
+Etat:
+  tableName: Etat
+  columns:
+    Libelle:
+      type: string(255)
+
 #les commandes
 Commande:
   tableName: Commande
@@ -185,6 +192,8 @@ Commande:
     IdUserModif:
       type: integer
     IdFournisseur:
+      type: integer
+    IdEtat:
       type: integer
   relations:
     user:
@@ -205,6 +214,12 @@ Commande:
       foreign: id
       alias: Fournisseur # on pourra acceder à l'objet avec Facture->Client
       foreignAlias: CommandeUserModif
+    etat:
+      class: Etat
+      local: IdEtat
+      foreign: id
+      alias: Etat # on pourra acceder à l'objet avec Facture->Client
+      foreignAlias: CommandeEtat
 
 #les Bordereaux
 Bordereau:

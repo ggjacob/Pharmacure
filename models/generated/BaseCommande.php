@@ -8,9 +8,11 @@
  * @property integer $IdUser
  * @property integer $IdUserModif
  * @property integer $IdFournisseur
+ * @property integer $IdEtat
  * @property User $User
  * @property User $UserModif
  * @property Fournisseur $Fournisseur
+ * @property Etat $Etat
  * @property Doctrine_Collection $BordereauCommande
  * @property Doctrine_Collection $LigneCommandeCommande
  * 
@@ -33,6 +35,9 @@ abstract class BaseCommande extends Doctrine_Record
         $this->hasColumn('IdFournisseur', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('IdEtat', 'integer', null, array(
+             'type' => 'integer',
+             ));
     }
 
     public function setUp()
@@ -48,6 +53,10 @@ abstract class BaseCommande extends Doctrine_Record
 
         $this->hasOne('Fournisseur', array(
              'local' => 'IdFournisseur',
+             'foreign' => 'id'));
+
+        $this->hasOne('Etat', array(
+             'local' => 'IdEtat',
              'foreign' => 'id'));
 
         $this->hasMany('Bordereau as BordereauCommande', array(
