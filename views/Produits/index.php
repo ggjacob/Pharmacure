@@ -53,6 +53,15 @@ $(document).ready( function () {
                 "visible": false
             },
             {
+                "targets": [ 3 ],
+                "mRender": function (data, type, full) {
+                if(full['Ordonnance'] == true){
+                    return "Oui";
+                }else return "non";
+            }
+                
+            },
+            {
                 "targets": [ 4 ],
                 "visible": false
             },

@@ -1,4 +1,79 @@
 <script type="text/javascript">
+    $(document).ready( function () {
+       $('#data_source').DataTable( {
+        
+        language: {
+        processing:     "Traitement en cours...",
+        search:         "Rechercher&nbsp;:",
+        lengthMenu:    "    _MENU_ Affichage  par page",
+        info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+        infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+        infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+        infoPostFix:    "",
+        loadingRecords: "Chargement en cours...",
+        zeroRecords:    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+        emptyTable:     "Aucune donnée disponible dans le tableau",
+        paginate: {
+            first:      "Premier",
+            previous:   "Pr&eacute;c&eacute;dent",
+            next:       "Suivant",
+            last:       "Dernier"
+        },
+        aria: {
+            sortAscending:  ": activer pour trier la colonne par ordre croissant",
+            sortDescending: ": activer pour trier la colonne par ordre décroissant"
+        }
+    },
+    "serverSide": false, //Ne pas mettre sur true, cela break la pagination
+        "ajax":"data",
+         "columns": [
+            { "data": "id" },
+            { "data": "IdUser" },
+            { "data": "IdUserModif" },
+            { "data": "IdFournisseur" },
+            { "data": "IdEtat" },
+            { "data": "Date" },
+            { "data": "DateModif" }
+        ],
+        scrollY: 400,
+        "columnDefs": [
+            {
+                "title": "Action",
+                "targets": [ 0 ],
+                "visible": true,
+                "searchable": false,
+                "mRender": function (data, type, full) {
+                return '<a id="infos/'+full["id"]+'" onclick="MyPopUp(this.id,800,230,300,-100)" href="#" class="js__p_start"><div class="view_icon_table" Onclick=""></div></a><a id="modification/'+full["id"]+'" onclick="MyPopUp(this.id,800,270)" href="#" class="js__p_start"><div class="modif_icon_table"></div></a><a id="suppression/'+full["id"]+'" onclick="Suppression(this.id)" href="#" class="js__p_start"><div class="remove_icon_table"></div></a>';
+                }
+            },
+            {
+                "title": "Fournisseur",
+                "targets": [ 3 ],
+                "visible": true,
+                "mRender": function (data, type, full) {
+                return full["id"]+"Badi"
+                }
+            },
+            {
+                "targets": [ 1 ],
+                "visible": false
+            },
+            {
+                "targets": [ 2 ],
+                "visible": false
+            },
+            {
+                "targets": [ 5 ],
+                "visible": false
+            }
+        ]
+//        "Paginate":true, // Pagination True 
+//        "PaginationType":"full_numbers", // And its type.
+//         "iDisplayLength": 10
+       
+        } );
+    } );
+
 $(function(){
         $("#formClient").submit(function(event){
             var nom             = $("#nom").val();
@@ -41,6 +116,7 @@ $(function(){
                             $('#formOk').show();
                             $('#formKO').hide();
                             $("#formClient").get(0).reset();
+                            
                         }
                         else if(data == 'failed'){
                             $('#KOText').html("Erreur ! Ce numero de téléphone existe déjà");
@@ -100,29 +176,16 @@ $(function(){
 <div class="lower_content" style="font-size:13; top:20px">
 
 
-<div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes clients</span></div>
+<div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes commandes</span></div>
     <table id="data_source">
          <thead>
-            <tr ><th>Action</th><th>id</th>   <th >Nom</th>  <th >Prenom</th><th>Tel</th></tr>    
+            <tr><th>id</th><th >IdUser</th><th>IdUserModif</th><th>Fournisseur</th><th>IdEtat</th><th>Date</th><th>DateModif</th></tr>     
          </thead>
          <tbody>
-             <?php foreach($view['clients'] as $client) : ?>
-                 <tr>
-                  <td width="110px" class="center">
-                    <a id="<?=WEBROOT?>Clients/infos/<?=$client->id?>" onclick="MyPopUp(this.id,800,230)" href="#" class="js__p_start"><div class="view_icon_table" Onclick=""></div></a>
-                    <a id="<?=WEBROOT?>Clients/modification/<?=$client->id?>" onclick="MyPopUp(this.id,800,270)" href="#" class="js__p_start"><div class="modif_icon_table"></div></a>
-                    <a href="<?=WEBROOT?>Clients/suppression/<?=$client->id?>"><div class="remove_icon_table"></div></a>
-                  </td>
-                  <td ><?=$client->id?></td>
-                  <td><?=$client->Nom?></td>
-                  <td><?=$client->Prenom?></td>
-                  <td><?=$client->Tel?></td>
-                 </tr>                  
-             <?php endforeach;?>
              <div class="p_body js__p_body js__fadeout">
              </div>
              <div id="cadrePopUp" class="popup js__popup js__slide_top">
-                  <a href="#" class="p_close js__p_close" title="Fermer">
+                 <a href="#" class="p_close js__p_close" title="Fermer" onclick="MyPopupClose()">
                       <span></span><span></span>
                     </a>
                   <iframe id="IframePopUp" width="100%" height="100%" scrolling="no" src=""></iframe>
