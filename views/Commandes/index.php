@@ -51,7 +51,7 @@
                 "targets": [ 3 ],
                 "visible": true,
                 "mRender": function (data, type, full) {
-                return full["id"]+"Badi"
+                return full["IdFournisseur"];
                 }
             },
             {
@@ -179,7 +179,7 @@ $(function(){
 <div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes commandes</span></div>
     <table id="data_source">
          <thead>
-            <tr><th>id</th><th >IdUser</th><th>IdUserModif</th><th>Fournisseur</th><th>IdEtat</th><th>Date</th><th>DateModif</th></tr>     
+            <tr><th width="95px">id</th><th >IdUser</th><th>IdUserModif</th><th>Fournisseur</th><th>Etat</th><th>Date</th><th>Date</th></tr>     
          </thead>
          <tbody>
              <div class="p_body js__p_body js__fadeout">

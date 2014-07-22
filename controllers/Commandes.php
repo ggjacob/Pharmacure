@@ -18,14 +18,16 @@ class Commandes extends Controller{
     function data(){
         $commandes = new Commande();
         $commandes = Doctrine_Core::getTable('commande')->findAll();
-        $commandes = $commandes->toArray(true);
-        var_dump($commandes);
-           //$data = array('data' =>$commandes);
-//        var_dump($data);
-        //$text = json_encode($data);
-        //echo $text;
-//        $this->render('test');
         
+        for ($i=0; $i < $commandes->count() ; $i++) { 
+            $commandes[$i]->IdFournisseur =$commandes[$i]->Fournisseur->Libelle;
+            $commandes[$i]->IdEtat =$commandes[$i]->Etat->Libelle;
+        }
+        $commandes = $commandes->toArray(false);
+        $data = array('data' =>$commandes);
+//        var_dump($data);
+        $text = json_encode($data);
+        echo $text;
     }
 }
 ?>

@@ -531,9 +531,9 @@ INSERT INTO `Fournisseur` (`Libelle`,`Adresse`,`Tel`,`Mail`,`Commentaire`) VALUE
 --
 
 INSERT INTO `Etat` (`id`, `libelle`) VALUES
-(1, 'pré-validée'),
-(2, 'commande en cours'),
-(3, 'validée');
+(1, 'Valid&eacute;e partiellement'),
+(2, 'Commande en cours'),
+(3, 'Valid&eacute;e');
 
 -- --------------------------------------------------------
 
