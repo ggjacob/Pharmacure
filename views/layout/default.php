@@ -27,6 +27,15 @@
 		<script type="text/javascript" src="public/js/angular.min.js"></script>
 		<script type="text/javascript" src="public/js/app.js"></script>
 		-->
+		<script type="text/javascript">
+		jQuery(document).ready(function($) {
+		   		$( "#tabs" ).tabs({
+		   			
+		   		});
+		});
+        </script>
+		
+
 	</head>
 
 	<body style="overflow-x: none;overflow-x: hidden" onload='display_ct();addTabVentes("Vente","<?=WEBROOT?>Vente/index");

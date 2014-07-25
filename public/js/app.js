@@ -1,8 +1,3 @@
-jQuery(document).ready(function($) {
-		   		$( "#tabs" ).tabs({
-		   			
-		   		});
-});
 
 $(function() {
       $(".js__p_start").simplePopup();
@@ -41,7 +36,7 @@ function MyPopUp(id, width,height,left,top){
         popup.removeClass("js__slide_top");
 
 		searchedRule.style.top=top;
-        searchedRule.style.left=100;
+        searchedRule.style.left=left;
         
         //document.getElementById("cadrePopUp").className = "popup js__popup";
 
