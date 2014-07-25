@@ -33,10 +33,23 @@ function MyPopUp(id, width,height,left,top){
 		//}
 
 		// pas encore redefini en parametre
+
+		var popup = $(".js__popup");
+        var body = $(".js__p_body");
+
+        body.removeClass("js__fadeout");
+        popup.removeClass("js__slide_top");
+
 		searchedRule.style.top=top;
         searchedRule.style.left=100;
         
-         document.getElementById("cadrePopUp").className = "popup js__popup";
+        //document.getElementById("cadrePopUp").className = "popup js__popup";
+
+        //"p_body js__p_body js__fadeout"
+        //document.getElementById("PopUpBody").className = "p_body js__p_body";
+
+        //body.removeClass("js__fadeout");
+        //popup.removeClass("js__slide_top");
 
 		var iframe = document.getElementById('IframePopUp');
 		iframe.className = ""  
@@ -45,8 +58,11 @@ function MyPopUp(id, width,height,left,top){
 
 function MyPopupClose(){
 		
-        
-         document.getElementById("cadrePopUp").className = "popup js__popup js__slide_top";
+         var popup = $(".js__popup");
+         var body = $(".js__p_body");
+         popup.addClass("js__slide_top");
+         body.addClass("js__fadeout");
+         //document.getElementById("cadrePopUp").className = "popup js__popup js__slide_top";
          $("#data_source").DataTable().ajax.reload();
          
 		

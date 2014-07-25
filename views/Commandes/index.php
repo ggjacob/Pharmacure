@@ -75,7 +75,7 @@
     } );
 
 $(function(){
-        $("#formClient").submit(function(event){
+        $("#formCommande").submit(function(event){
             var nom             = $("#nom").val();
             var prenom          = $("#prenom").val();
             var tel             = $("#tel").val();
@@ -151,7 +151,7 @@ $(function(){
                 </div>
             </div>
         </div>
-        <form  id="formClient" action="<?=WEBROOT?>Clients/creation" method="post" >
+        <form  id="formCommande" action="<?=WEBROOT?>Commandes/creation" method="post" >
             <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
             <font color="black" size="4">
                 <table class="upper_content_forms_table" >
@@ -182,14 +182,14 @@ $(function(){
             <tr><th width="95px">id</th><th >IdUser</th><th>IdUserModif</th><th>Fournisseur</th><th>Etat</th><th>Date</th><th>Date</th></tr>     
          </thead>
          <tbody>
-             <div class="p_body js__p_body js__fadeout">
-             </div>
-             <div id="cadrePopUp" class="popup js__popup js__slide_top">
-                 <a href="#" class="p_close js__p_close" title="Fermer" onclick="MyPopupClose()">
-                      <span></span><span></span>
-                    </a>
-                  <iframe id="IframePopUp" width="100%" height="100%" scrolling="no" src=""></iframe>
-             </div>
         <tbody>
     </table>
+    <div  class="p_body js__p_body js__fadeout">
+    </div>
+    <div class="popup js__popup js__slide_top">
+         <a href="#" class="p_close js__p_close" title="Fermer" onclick="MyPopupClose()">
+              <span></span><span></span>
+            </a>
+          <iframe id="IframePopUp" width="100%" height="100%" scrolling="no" src=""></iframe>
+    </div>
 </div>

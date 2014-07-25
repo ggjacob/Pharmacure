@@ -169,14 +169,14 @@ $(function(){
             <tr><th>id</th><th >Nom</th><th>Prenom</th><th>Mail</th><th>Tel</th><th>Commentaire</th></tr>     
          </thead>
          <tbody>
-             <div class="p_body js__p_body js__fadeout">
-             </div>
-             <div id="cadrePopUp" class="popup js__popup js__slide_top">
-                 <a href="#" class="p_close js__p_close" title="Fermer" onclick="MyPopupClose()">
-                      <span></span><span></span>
-                    </a>
-                  <iframe id="IframePopUp" width="100%" height="100%" scrolling="no" src=""></iframe>
-             </div>
         <tbody>
     </table>
+    <div  class="p_body js__p_body js__fadeout">
+    </div>
+    <div class="popup js__popup js__slide_top">
+         <a href="#" class="p_close js__p_close" title="Fermer" onclick="MyPopupClose()">
+              <span></span><span></span>
+            </a>
+          <iframe id="IframePopUp" width="100%" height="100%" scrolling="no" src=""></iframe>
+    </div>
 </div>

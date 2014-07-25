@@ -80,15 +80,15 @@
       // The overall function of the show
       show: function(popup, body, routePopup) {
         simplePopup.centering(popup);
-        body.removeClass("js__fadeout");
-        popup.removeClass("js__slide_top");
+        //body.removeClass("js__fadeout");
+        //popup.removeClass("js__slide_top");
         location.hash = routePopup;
       },
 
       // The overall function of the hide
       hide: function(popup, body) {
-        popup.addClass("js__slide_top");
-        body.addClass("js__fadeout");
+        //popup.addClass("js__slide_top");
+        //body.addClass("js__fadeout");
         location.hash = simplePopup.settings.hashtag;
       },
 
