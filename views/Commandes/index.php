@@ -101,7 +101,7 @@ $(function(){
                     success : function(data){
                         
                         if(data == 'success'){
-                            $('#OKText').html("Succ&egrave;s ! Votre client a &eacute;t&eacute; enregistr&eacute;.");
+                            $('#OKText').html("Succ&egrave;s ! Votre commande a &eacute;t&eacute; enregistr&eacute;.");
                             $('#formOk').show();
                             $('#formKO').hide();
                             $("#formCommande").get(0).reset();

@@ -41,6 +41,20 @@ class Commandes extends Controller{
         }
     }
     
+    function modification($id){
+        $etat = new Etat();
+        $etat = Doctrine_Core::getTable('etat')->findAll();
+        $commande = new Commande();
+        $commande = Doctrine_Core::getTable('commande')->find($id);
+        //var_dump($commande);
+        $form = array();
+        $form['idetat']=$commande->IdEtat;
+        $form['type'] ='update';    
+        $d['view'] = array("titre" => "Modification commande","form" => $form,"id" => $id, "etat" =>$etat);
+        $this->set($d); 
+        $this->render('modification');
+    }
+    
     function creation(){
         if(!isset($_POST['idfournisseur'])){ 
             $form['type'] ='create';
@@ -65,12 +79,12 @@ class Commandes extends Controller{
             }
             else{
                     $erreur="";
-                    $currentClient = new Commande();
-                    $currentClient = Doctrine_Core::getTable('commande')->find($this->data['id']);
-                    if(!$currentClient) $erreur="failed";
+                    $currentCommande = new Commande();
+                    $currentCommande = Doctrine_Core::getTable('commande')->find($this->data['id']);
+                    if(!$currentCommande) $erreur="failed";
                     if(empty($erreur)) {
-                        $currentClient->init2($this->data['idetat']);        
-                        $currentClient->save();
+                        $currentCommande->init2($this->data['idetat']);        
+                        $currentCommande->save();
                         $erreur="success";    
                     }
             }
