@@ -72,35 +72,24 @@
 //         "iDisplayLength": 10
        
         } );
+        $('#idfournisseur').on('change', function (){
+    alert('ok');
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+    product_list(valueSelected);
+});
     } );
 
 $(function(){
         $("#formCommande").submit(function(event){
-            var nom             = $("#nom").val();
-            var prenom          = $("#prenom").val();
-            var tel             = $("#tel").val();
-            var email           = $("#mail").val();
-            var commentaire     = $("#commentaire").val();
-            var msg_all         = 'Merci de remplir tous les champs';
-            var msg_alert       = 'Merci de remplir ce champs';
+            var idfournisseur         = $("#idfournisseur").val();
+            var msg_alert       = 'Merci de selectionner un fournisseur';
             
             
-            if(nom == '' || prenom == '' || tel == '' || email == '')
+            if(idfournisseur == '')
             {
                 $('#formOk').hide();
                 $('#KOText').html("Erreur ! Veuillez renseigner tous les champs requis...");
-                $('#formKO').show();
-            }
-            else if(!checkText(nom) || !checkText(prenom))
-            {
-               $('#formOk').hide();
-                $('#KOText').html("Erreur ! Veuillez le nom/prénom renseigner n'est pas correcte...");
-                $('#formKO').show(); 
-            }
-            else if (!validateEmail(email))
-            {
-                $('#formOk').hide();
-                $('#KOText').html("Erreur ! Veuillez renseigner un email valide...");
                 $('#formKO').show();
             }
             else
@@ -115,7 +104,7 @@ $(function(){
                             $('#OKText').html("Succ&egrave;s ! Votre client a &eacute;t&eacute; enregistr&eacute;.");
                             $('#formOk').show();
                             $('#formKO').hide();
-                            $("#formClient").get(0).reset();
+                            $("#formCommande").get(0).reset();
                             
                         }
                         else if(data == 'failed'){
@@ -137,8 +126,30 @@ $(function(){
             return false;
         });
     });
+
+
+function product_list(id){
+  var list_target_id = 'produit'; //first select list ID
+  var initial_target_html = '<option value="">Selectionner un Produit...</option>'; //Initial prompt for target select
+ 
+  $('#'+list_target_id).html(initial_target_html); //Give the target select the prompt option
+ 
+    //Display 'loading' status in the target select list
+    $('#'+list_target_id).html('<option value="">Loading...</option>');
+ 
+      //Make AJAX request, using the selected value as the GET
+      $.ajax({url: 'listeProduit/'+id,
+             success: function(output) {
+                //alert(output);
+                $('#'+list_target_id).html(output);
+            },
+          error: function (xhr, ajaxOptions, thrownError) {
+            alert(xhr.status + " "+ thrownError);
+          }});
+        }
+    
 </script>
-<div id="form_action" class="add_client" onClick="show_form('upper_content_forms', 'form_action')"></div>
+<div id="form_action" class="add_client" onClick="show_form('upper_content_forms', 'form_action');"></div>
 <div id="upper_content_forms" >
     <div class="hide_form" onClick="hide_form('upper_content_forms', 'form_action')"></div>
         <div>
@@ -151,25 +162,26 @@ $(function(){
                 </div>
             </div>
         </div>
-        <form  id="formCommande" action="<?=WEBROOT?>Commandes/creation" method="post" >
+        <form  id="formCommande" action="creation" method="post" >
             <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
             <font color="black" size="4">
                 <table class="upper_content_forms_table" >
                     <tr>
-                        <td width="42px" align="left">Nom</td>   
-                        <td align="center"><input type="text" id="nom" name="nom" placeholder="Nom Du Client">  </td>
-                        <td width="42px" align="left">Prenom</td>   
-                        <td align="center"><input type="text" id="prenom" name="prenom" placeholder="Prenom Du Client">  </td>
+                        <td width="42px" align="left">Fournisseur</td>   
+                        <td align="center"><select id="idfournisseur" style="width:190px; text-overflow: ellipsis;" name="idfournisseur">
+                                <?php foreach ($view['fournisseurs'] as $fournisseurs):?>
+                                    <option value="<?=$fournisseurs->id?>"> <?=$fournisseurs->Libelle?></option>
+                                <?php endforeach; ?>
+                            </select>  </td>
                     </tr>
-                    <tr>
-                        <td width="42px" align="left">N&deg; Tel</td>   
-                        <td align="center"><input type="text" id="tel" name="tel" placeholder="Numero De Telephone">  </td>
-                        <td width="42px" align="left">Mail</td>   
-                        <td align="center"><input type="email" id="mail" name="mail" placeholder="Adresse Valide">  </td>
+                    <tr class="product_line" style="display:none;">
+                        <td width="42px" align="left">Produit 1</td>   
+                        <td align="center"><select name="produit[]" id="list_target_id"> </select> </td>
+                        <td width="42px" align="left">Quantite</td>   
+                        <td align="center"><input type="number" id="quantite" name="quantite[]" placeholder="Quantité">  </td>
                     </tr>
                 </table>
-                <textarea id="commentaire" name="commentaire"  id="message" cols="50" rows="6" placeholder="Veuillez Taper Un Commentaire"></textarea><br>
-                <input type="submit" name="Ajout_client" value="Ajouter" class="upper_content_forms_send"/>
+                <input type="submit" name="Ajout_commande" value="Ajouter" class="upper_content_forms_send"/>
         </form>
 </div>
 
