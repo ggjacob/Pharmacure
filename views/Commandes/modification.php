@@ -12,6 +12,7 @@ $(function(){
                             $('#OKText').html("Succ&egrave;s ! Votre commande a &eacute;t&eacute; modifié.");
                             $('#formOk').show();
                             $('#formKO').hide();
+                            
                         }
                         else if(data == 'failed'){
                             $('#KOText').html("Erreur ! Cette commande n'est pas valide");
@@ -28,6 +29,7 @@ $(function(){
                         $('#formKO').html("Erreur d'appel, le formulaire ne peut pas fonctionner");
                     }
                 });
+             return false;
             });
         });
 </script>
@@ -42,7 +44,7 @@ $(function(){
                 </div>
             </div>
 </div>
-<form id="formCommande" action="creation" method="post" >
+<form id="formCommande" action="<?=WEBROOT?>Commandes/creation" method="post" >
     <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
     <input type="hidden" value='<?=$view["id"]?>' name="id">
     <font color="black" size="4">

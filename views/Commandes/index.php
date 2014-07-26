@@ -105,6 +105,7 @@ $(function(){
                             $('#formOk').show();
                             $('#formKO').hide();
                             $("#formCommande").get(0).reset();
+                            $('#data_source').DataTable().ajax.reload();
                             
                         }
                         else if(data == 'failed'){
@@ -123,8 +124,9 @@ $(function(){
                     }
                 });
             }
-            return false;
+           return false;
         });
+         
     });
 
 
@@ -162,7 +164,7 @@ function product_list(id){
                 </div>
             </div>
         </div>
-        <form  id="formCommande" action="creation" method="post" >
+        <form  id="formCommande" action="<?=WEBROOT?>Commandes/creation" method="post" >
             <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
             <font color="black" size="4">
                 <table class="upper_content_forms_table" >

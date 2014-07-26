@@ -56,20 +56,7 @@ class Commandes extends Controller{
     }
     
     function creation(){
-        if(!isset($_POST['idfournisseur'])){ 
-            $form['type'] ='create';
-            $d['view'] = array("erreur" => " ", "titre" => "Création commande","form" => $form);
-            $this->set($d);
-            $this->render('creation');
-        }
-        else
-        {
-            $erreur="";
-            $form = array();
-            $form['id'] =$this->data['idfournisseur'];
-
-            $form['type'] =$this->data['type'];    
-            
+        $form['type'] = $_POST['type'];
             if($form['type'] == "create")
             {
                     $commande = new Commande();
@@ -88,7 +75,7 @@ class Commandes extends Controller{
                         $erreur="success";    
                     }
             }
-        }
+        
         echo $erreur;
     }
 }
