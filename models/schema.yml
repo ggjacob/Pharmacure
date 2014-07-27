@@ -263,6 +263,8 @@ Article:
       type: date
     Commentaire:
       type: string(255)
+    Panier:
+      type: boolean
   relations:
     produit:
       class: Produit

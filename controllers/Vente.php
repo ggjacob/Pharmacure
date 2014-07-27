@@ -18,14 +18,21 @@ class Vente extends Controller{
         
         $nomProduit = $_POST['produit'];
 
+        //$nomProduit = 's';
         if (strlen($nomProduit)>0)
         {
         $articles = new Article();
         $q = Doctrine_Query::create()->from('Article a');
         $q = $q->leftJoin('a.Produit p')->Where('p.Libelle LIKE ?',$nomProduit.'%');
+
+        $q = $q->AndWhere('a.Panier = 0');
+
+        $q = $q->orderBy('p.Libelle ASC');
+
         $articles = $q->execute();
-        //var_dump($articles);
+        
         $d['view'] = array("titre" => "","articles" => $articles);
+        $this->layout=false;
         $this->set($d); 
         $this->render('listeArticles');
         }
@@ -38,12 +45,21 @@ class Vente extends Controller{
         $articles = $_SESSION['panier'];
         $d['view'] = array("titre" => "","articles" => $articles);
         $this->set($d); 
+        $this->layout=false;
         $this->render('listePanier');
     }
 
     function creationPanier(){
 	   //if (!isset($_SESSION['panier'])){
-	      $_SESSION['panier']=array();
+	      
+          for ($i=0; $i < count($_SESSION['panier']) ; $i++) { 
+              $_SESSION['panier'][$i]->Panier =0;
+              $_SESSION['panier'][$i]->save();
+          }
+          
+          //$_SESSION['panier']->save();
+          
+          $_SESSION['panier']=array();
 	      //$_SESSION['panier']['Libelle'] = array();
 	      //$_SESSION['panier']['id'] = array();
 	      //$_SESSION['panier']['Quantite'] = array();
@@ -70,9 +86,13 @@ class Vente extends Controller{
             //foreach ($_SESSION['panier'] as $courant) {
                 //if($courant->id == $article->id) $verif=true;
             //}
-            /*if(!$verif)$*/ $_SESSION['panier'][] = $article;
-		 }
-		 echo $article->id;
+            /*if(!$verif)$*/ 
+
+            $article->Panier = 1;
+            $article->save();
+            $_SESSION['panier'][] = $article;
+         }
+		 echo "success";
 	}	 
 }
 ?>

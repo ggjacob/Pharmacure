@@ -58,7 +58,23 @@
 jQuery(document).ready(function($){
     
     
-    function submitForm(){
+    /* Bind events form submit */
+    //$('#produit').change( function(event){ submitForm(); });
+    $('#classe').change(    function(event){ submitForm(); });
+    $('#produit').change(    function(event){ submitForm(); });
+    $('#produit').keyup(    function(event){ submitForm(); });
+    //$('.ajoutPanier').onclick(    function(event){ submitForm(); });
+
+    $('#formRecherche').submit(function(e){
+        // On désactive le comportement par défaut du navigateur
+        // (qui consiste à appeler la page action du formulaire)
+        e.preventDefault();
+    });
+});
+
+
+function submitForm(){
+        
         // On désactive le comportement par défaut du navigateur
         // (qui consiste à appeler la page action du formulaire)
         //e.preventDefault();
@@ -74,19 +90,8 @@ jQuery(document).ready(function($){
                 }
             });
     }
-    
-    /* Bind events form submit */
-    //$('#produit').change( function(event){ submitForm(); });
-    $('#classe').change(    function(event){ submitForm(); });
-    $('#produit').change(    function(event){ submitForm(); });
-    $('#produit').keyup(    function(event){ submitForm(); });
-    
-    $('#formRecherche').submit(function(e){
-        // On désactive le comportement par défaut du navigateur
-        // (qui consiste à appeler la page action du formulaire)
-        e.preventDefault();
-    });
-});
+
+
 
 function panierAjout(id){
     $('#produit').blur();
@@ -96,11 +101,15 @@ function panierAjout(id){
                     data: $(this).serialize(),
                     success : function(data){
                         
-                        //if(data == 'success'){ 
+                        if(data == 'success'){ 
                            //$("#data_source_panier").ajax.url( 'afficherPanier' ).load();
                            //$("#data_source_panier").DataTable().ajax.reload();
-                           AfficherPanier();   
-                        //}
+                           //AfficherPanier();
+                           //alert("badi");
+                           //$(this).removeAttr("href"); 
+                           submitForm();
+                           AfficherPanier(); 
+                        }
                        },
                     error: function(){
                         alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
@@ -128,13 +137,21 @@ $('.ajoutPanier').click(function(event){
   event.preventDefault();
 });
 
-function test(){
-	$("#data_source_panier").DataTable().ajax.reload();   
+function viderPanier(){
+	$.ajax({
+                    type : "POST",
+                    url: 'creationPanier',
+                    data: $(this).serialize(),
+                    success : function(data){
+                            AfficherPanier();
+                            submitForm();
+                       },
+                    error: function(){
+                        alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
+                    }
+                });   
 }
 </script>
-
-<a href="#" onclick="AfficherPanier();">dfjdjfdjfj</a>
-<a href="#" onclick="test();">dfjdjfdjfj</a>
 <div id="sales_dash">
         <div class="sales_step" id="step_1">Step 1</div>
         <div class="sales_step" id="step_2">Step 2</div>
@@ -174,21 +191,22 @@ function test(){
 <div class="category">
     <span class="category_title">Finaliser votre vente</span>
     <div class="sub_category">
+  <a href="#" onclick="viderPanier()">Vider le panier</a>
   <div id="retourPanier">
     <i></i>
     <table id="sale_table" width="600px" >
-        <tr><th>Action</th><th>Article</th><th>prix</th>  <th width="30px">Ordonnance</th></tr>
+        <tr><th>Code Barre</th><th>Article</th><th>prix</th></tr>
     </table>
     <div style="height:100px;overflow:auto;">
     <table id="sale_table" width="600px">
     <?php foreach($view['articles'] as $article) : ?>
         <tr >
-            <td align="center"> <a href="#" class="ajoutPanier" id="ajouter/<?=$article->id?>" onclick="panierAjout(this.id);" >Ajouter</a></td>
+            <td align="center">
+                <?=$article->CodeBarre?>
+            </td>
             <td align="center"><?=$article->Produit->Libelle?></td>
-            <td align="center"><?=$article->Produit->Prix?></td>
-            <td align="center" style=" border-top-style:solid;border-top-width:1px;">
-                <?php //if ($article->Produit->Ordonnance) echo "Oui";else echo "Non";?>
-            </td></tr>
+            <td align="center" style=" border-top-style:solid;border-top-width:1px;"><?=$article->Produit->Prix?></td>
+            </tr>
     <?php endforeach;?>                     
     </table>
     </div>

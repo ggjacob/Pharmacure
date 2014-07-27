@@ -10,6 +10,7 @@
  * @property integer $IdProduit
  * @property date $DateVente
  * @property string $Commentaire
+ * @property boolean $Panier
  * @property Produit $Produit
  * 
  * @package    ##PACKAGE##
@@ -37,6 +38,9 @@ abstract class BaseArticle extends Doctrine_Record
         $this->hasColumn('Commentaire', 'string', 255, array(
              'type' => 'string',
              'length' => '255',
+             ));
+        $this->hasColumn('Panier', 'boolean', null, array(
+             'type' => 'boolean',
              ));
     }
 
