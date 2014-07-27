@@ -418,6 +418,7 @@ background-image: url('../images/hide_gray.png');
 
 .hide_form:hover
 {
+  width:23px; height:23px;
 cursor:pointer;
 background-image: url('../images/hide_form.png'); 
 }
@@ -428,7 +429,7 @@ background-image: url('../images/hide_form.png');
   background-image: url('../images/view_icon_gray.png'); 
 }
 .view_icon_table:hover
-{
+{width:23px; height:23px;
 cursor:pointer;
 background-image: url('../images/view_icon.png'); 
 }
@@ -440,6 +441,7 @@ background-image: url('../images/view_icon.png');
 }
 .modif_icon_table:hover
 {
+  width:23px; height:23px;
 cursor:pointer;
 background-image: url('../images/modif_icon.png'); 
 }
@@ -450,13 +452,13 @@ width:20px; height:20px; position:relative;left:80px;
 background-image: url('../images/hide_gray.png');
 }
 .remove_icon_table:hover
-{
+{width:23px; height:23px;
 cursor:pointer;
 background-image: url('../images/hide_form.png'); 
 }
 /*-------------------------------------------------------*/
 #upper_content_forms {
-        position:absolute; top:0px;
+        position:absolute; top:5px; left:10px;
         width:740px; 
         border-left-style:groove;
         border-right-style:groove;
@@ -1062,6 +1064,88 @@ padding-right:15px;
 padding-bottom: 10px;
 /*text-align: center;*/
 }
+
+/*Sales Validation Steps*/
+
+#sales_dash
+{
+  position:relative;
+  height:120px; left:5px;
+}
+.sales_step
+{
+  position:relative;
+  border:1px solid #FEFEFE;
+  width:100px;
+  height: 100px;
+  float:left;
+  margin-right:75px;
+  background: #DEDEDE;
+    border-radius: 50%;
+    z-index:2;
+    text-align:center;
+    vertical-align: middle;
+}
+
+.bar
+{
+  clear:both;
+  position:absolute;
+  width:100px;
+}
+
+hr.bar {
+  z-index:1;
+  top:40px;
+    border: 0;
+    height: 2px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(100,100,100,0.75), rgba(0,0,0,0)); 
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(100,100,100,0.75), rgba(0,0,0,0)); 
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(100,100,100,0.75), rgba(0,0,0,0)); 
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(100,100,100,0.75), rgba(0,0,0,0)); 
+}
+
+
+#step_1:hover
+{
+  background: #FF530D;
+}
+#step_2:hover
+{
+  background: #E82C0C;
+}
+#step_3:hover
+{
+  background: #FF0000;
+}
+#step_4:hover
+{
+  background: #E80C7A;
+}
+#step_5:hover
+{
+  background: #FF0DFF;
+}
+
+#line_1
+{
+
+left:90px;
+}
+#line_2
+{
+left:270px;
+}
+#line_3
+{
+left:445px;
+}
+#line_4
+{
+left:625px;
+}
+
+
 
 /*
     

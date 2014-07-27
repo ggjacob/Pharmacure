@@ -133,7 +133,22 @@ function test(){
 }
 </script>
 
+<<<<<<< HEAD
 <a href="#" onclick="AfficherPanier();">dfjdjfdjfj</a>
+=======
+<a href="#" onclick="test();">dfjdjfdjfj</a>
+<div id="sales_dash">
+        <div class="sales_step" id="step_1">Step 1</div>
+        <div class="sales_step" id="step_2">Step 2</div>
+        <div class="sales_step" id="step_3">Step 3</div>
+        <div class="sales_step" id="step_4">Step 4</div>
+        <div class="sales_step" id="step_5">Step 5</div>
+        <hr class="bar" id="line_1"></hr>
+        <hr class="bar" id="line_2"></hr>
+        <hr class="bar" id="line_3"></hr>
+        <hr class="bar" id="line_4"></hr>
+</div>
+>>>>>>> FETCH_HEAD
 <div class="category">
     <span class="category_title">Choisissez les produits</span>
     <div class="sub_category">
