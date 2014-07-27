@@ -418,6 +418,7 @@ background-image: url('../images/hide_gray.png');
 
 .hide_form:hover
 {
+  width:23px; height:23px;
 cursor:pointer;
 background-image: url('../images/hide_form.png'); 
 }
@@ -428,7 +429,7 @@ background-image: url('../images/hide_form.png');
   background-image: url('../images/view_icon_gray.png'); 
 }
 .view_icon_table:hover
-{
+{width:23px; height:23px;
 cursor:pointer;
 background-image: url('../images/view_icon.png'); 
 }
@@ -440,6 +441,7 @@ background-image: url('../images/view_icon.png');
 }
 .modif_icon_table:hover
 {
+  width:23px; height:23px;
 cursor:pointer;
 background-image: url('../images/modif_icon.png'); 
 }
@@ -450,13 +452,13 @@ width:20px; height:20px; position:relative;left:80px;
 background-image: url('../images/hide_gray.png');
 }
 .remove_icon_table:hover
-{
+{width:23px; height:23px;
 cursor:pointer;
 background-image: url('../images/hide_form.png'); 
 }
 /*-------------------------------------------------------*/
 #upper_content_forms {
-        position:absolute; top:0px;
+        position:absolute; top:5px; left:10px;
         width:740px; 
         border-left-style:groove;
         border-right-style:groove;
