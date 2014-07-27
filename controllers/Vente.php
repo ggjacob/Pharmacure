@@ -7,10 +7,10 @@ class Vente extends Controller{
    
     function index(){
 
-        $articles = new Article();
-        $articles = $_SESSION['panier'];
-        $d['view'] = array("titre" => "","articles" => $articles);
-        $this->set($d); 
+        //$articles = new Article();
+        //$articles = $_SESSION['panier'];
+        //$d['view'] = array("titre" => "","articles" => $articles);
+        //$this->set($d); 
         $this->render('index');
     }
 
@@ -41,10 +41,6 @@ class Vente extends Controller{
 
 
     function afficherPanier(){
-        $articles = new Article();
-        $articles = $_SESSION['panier'];
-        $d['view'] = array("titre" => "","articles" => $articles);
-        $this->set($d); 
         $this->layout=false;
         $this->render('listePanier');
     }
@@ -82,17 +78,44 @@ class Vente extends Controller{
 	        //$data['Quantite'] = 1;
         	//$data = $article->toArray();
         	
-            //$verif=false;
-            //foreach ($_SESSION['panier'] as $courant) {
-                //if($courant->id == $article->id) $verif=true;
-            //}
-            /*if(!$verif)$*/ 
-
-            $article->Panier = 1;
-            $article->save();
-            $_SESSION['panier'][] = $article;
+            $verif=false;
+            foreach ($_SESSION['panier'] as $courant) {
+                if($courant->id == $article->id) $verif=true;
+            }
+            if(!$verif)
+            {
+                $article->Panier = 1;
+                $article->save();
+                $_SESSION['panier'][] = $article;
+            }
          }
 		 echo "success";
-	}	 
+	}
+
+    function supprimerArticle($id){
+        $article = new Article();
+        $article = Doctrine_Core::getTable('Article')->findOneById($id);
+        $erreur = "";
+        $temp = new Doctrine_Collection('Article');
+        if($article){
+            for ($i=0; $i < count($_SESSION['panier']) ; $i++) { 
+                if($_SESSION['panier'][$i]->id != $article->id){
+                    $temp[] = $_SESSION['panier'][$i];
+                }
+            }
+            
+            //foreach ($temp as $value) {
+              //  echo $value->CodeBarre.'<br>';
+            //}
+            $article->Panier = 0;
+            $article->save();
+            //$_SESSION['panier']=array();
+            $_SESSION['panier'] = $temp;
+            //var_dump($temp);
+         
+         }
+
+         echo "success";
+    }	 
 }
 ?>

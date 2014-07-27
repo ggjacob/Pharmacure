@@ -151,6 +151,22 @@ function viderPanier(){
                     }
                 });   
 }
+
+function panierSupprimer(id){
+    $.ajax({
+                    type : "POST",
+                    url: id,
+                    data: $(this).serialize(),
+                    success : function(data){
+                            AfficherPanier();
+                            submitForm();
+                       },
+                    error: function(){
+                        alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
+                    }
+                });   
+}
+
 </script>
 <div id="sales_dash">
         <div class="sales_step" id="step_1">Step 1</div>
@@ -189,25 +205,30 @@ function viderPanier(){
 </div>
 
 <div class="category">
-    <span class="category_title">Finaliser votre vente</span>
+    <span class="category_title">Finalisez votre vente</span>
     <div class="sub_category">
   <a href="#" onclick="viderPanier()">Vider le panier</a>
   <div id="retourPanier">
     <i></i>
     <table id="sale_table" width="600px" >
-        <tr><th>Code Barre</th><th>Article</th><th>prix</th></tr>
+        <tr><th>Action</th><th>Code Barre</th><th>Article</th><th>prix</th></tr>
     </table>
     <div style="height:100px;overflow:auto;">
     <table id="sale_table" width="600px">
-    <?php foreach($view['articles'] as $article) : ?>
-        <tr >
-            <td align="center">
-                <?=$article->CodeBarre?>
-            </td>
-            <td align="center"><?=$article->Produit->Libelle?></td>
-            <td align="center" style=" border-top-style:solid;border-top-width:1px;"><?=$article->Produit->Prix?></td>
-            </tr>
-    <?php endforeach;?>                     
+    <?php if(isset($_SESSION['panier'])) : ?>
+        <?php foreach($_SESSION['panier'] as $article) : ?>
+            <tr >
+                <td align="center">
+                <a href="#" class="ajoutPanier" id="supprimerArticle/<?=$article->id?>" onclick="panierSupprimer(this.id);" >Supprimer</a>
+                </td>
+                <td align="center">
+                    <?=$article->CodeBarre?>
+                </td>
+                <td align="center"><?=$article->Produit->Libelle?></td>
+                <td align="center" style=" border-top-style:solid;border-top-width:1px;"><?=$article->Produit->Prix?></td>
+                </tr>
+        <?php endforeach;?>
+    <?php endif; ?>                     
     </table>
     </div>
     <input type="submit" name="Valider" value="Valider" id="send"/>
