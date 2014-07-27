@@ -1,6 +1,6 @@
 <script type="text/javascript">
     $(document).ready( function () {
-       $('#data_source').DataTable( {
+       $('#data_source_panier').DataTable( {
         
         language: {
         processing:     "Traitement en cours...",
@@ -25,32 +25,26 @@
         }
     },
     "serverSide": false, //Ne pas mettre sur true, cela break la pagination
-        "ajax":"data",
+        "ajax":"afficherPanier",
          "columns": [
             { "data": "id" },
-            { "data": "Nom" },
-            { "data": "Prenom" },
-            { "data": "Mail" },
-            { "data": "Tel" },
-            { "data": "Commentaire" }
+            { "data": "Libelle" },
+            { "data": "Prix" },
+            { "data": "Quantite" }
         ],
         scrollY: 400,
         "columnDefs": [
             {
-                "title": "Action",
-                "targets": [ 0 ],
+                "title": "Quantite",
+                "targets": [ 3 ],
                 "visible": true,
                 "searchable": false,
                 "mRender": function (data, type, full) {
-                return '<a id="infos/'+full["id"]+'" onclick="MyPopUp(this.id,800,230,120,250)" href="#" class="js__p_start"><div class="view_icon_table" Onclick=""></div></a><a id="modification/'+full["id"]+'" onclick="MyPopUp(this.id,800,270,120,250)" href="#" class="js__p_start"><div class="modif_icon_table"></div></a><a id="suppression/'+full["id"]+'" onclick="Suppression(this.id)" href="#" class="js__p_start"><div class="remove_icon_table"></div></a>';
+                return '<input type="number" value='+ full["Quantite"] +'  id="majQuantite/'+full["id"]+'">';
     }
             },
             {
-                "targets": [ 5 ],
-                "visible": false
-            },
-            {
-                "targets": [ 3 ],
+                "targets": [ 0 ],
                 "visible": false
             }
         ]
@@ -94,74 +88,34 @@ jQuery(document).ready(function($){
     });
 });
 
-
-
-/*
-$(function(){
-        $("#formClient").submit(function(event){
-            var nom             = $("#nom").val();
-            var prenom          = $("#prenom").val();
-            var tel             = $("#tel").val();
-            var email           = $("#mail").val();
-            var commentaire     = $("#commentaire").val();
-            var msg_all         = 'Merci de remplir tous les champs';
-            var msg_alert       = 'Merci de remplir ce champs';
-            
-            
-            if(nom == '' || prenom == '' || tel == '' || email == '')
-            {
-                $('#formOk').hide();
-                $('#KOText').html("Erreur ! Veuillez renseigner tous les champs requis...");
-                $('#formKO').show();
-            }
-            else if(!checkText(nom) || !checkText(prenom))
-            {
-               $('#formOk').hide();
-                $('#KOText').html("Erreur ! Veuillez le nom/prénom renseigner n'est pas correcte...");
-                $('#formKO').show(); 
-            }
-            else if (!validateEmail(email))
-            {
-                $('#formOk').hide();
-                $('#KOText').html("Erreur ! Veuillez renseigner un email valide...");
-                $('#formKO').show();
-            }
-            else
-            {
-                $.ajax({
+function panierAjout(id){
+	$.ajax({
                     type : "POST",
-                    url: $(this).attr('action'),
+                    url: id,
                     data: $(this).serialize(),
                     success : function(data){
                         
-                        if(data == 'success'){
-                            $('#OKText').html("Succ&egrave;s ! Votre client a &eacute;t&eacute; enregistr&eacute;.");
-                            $('#formOk').show();
-                            $('#formKO').hide();
-                            $("#formClient").get(0).reset();
-                            
+                        if(data == 'success'){ 
+                           //$("#data_source_panier").ajax.url( 'afficherPanier' ).load();
+                           $("#data_source_panier").DataTable().ajax.reload();   
                         }
-                        else if(data == 'failed'){
-                            $('#KOText').html("Erreur ! Ce numero de téléphone existe déjà");
-                            $('#formOk').hide();
-                            $('#formKO').show();         
-                        }else{
-                            $('#KOText').html("Erreur ! La validation du formulaire à echouée");
-                            $('#formOk').hide();
-                            $('#formKO').show();
-                        }
-                        
-                    },
+                       },
                     error: function(){
-                        $('#formKO').html("Erreur d'appel, le formulaire ne peut pas fonctionner");
+                        alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
                     }
                 });
-            }
-            return false;
-        });
-    });
-*/
+}
+
+$('.ajoutPanier').click(function(event){
+  event.preventDefault();
+});
+
+function test(){
+	$("#data_source_panier").DataTable().ajax.reload();   
+}
 </script>
+
+<a href="#" onclick="test();">dfjdjfdjfj</a>
 <div class="category">
     <span class="category_title">Choisissez les produits</span>
     <div class="sub_category">
@@ -186,24 +140,22 @@ $(function(){
 		</form>
     </div>
 </div>
-
-<div class="category">
-    <span class="category_title">Finaliser votre vente</span>
-    <div class="sub_category">
+<div class="lower_content" style="font-size:13; top:20px">
+        <div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes clients</span></div>
+		    <table id="data_source_panier">
+		         <thead>
+		            <tr><th>id</th><th >Libelle</th><th>Prix</th><th>Quantite</th></tr>     
+		         </thead>
+		         <tbody>
+		        <tbody>
+		    </table>
         <form action="<?=WEBROOT?>Ventes/enregistrer" method="post">
 			<font color="black" size="4">
-				<table id="sale_table" width="600px" >
-				 	<tr width="100%"><th>Id</th><th>Article</th><th>prix</th>  <th width="15px">Quantité</th></tr>
-				 	<tr ><td align="center">4563</td><td align="center">Article 1</td><td  align="right">350 CFA</td>  <td align="center" style=" border-top-style:solid;border-top-width:1px;">x1</td></tr>
-				 	<tr ><td align="center">7364</td><td align="center">Article 2</td><td  align="right">1 5000 CFA</td>  <td align="center">x2</td></tr>
-				 	<tr ><td align="center">9034</td><td align="center">Article 3</td><td  align="right">2 0000 CFA</td>  <td align="center">x2</td></tr>
-				 	<tr ><td align="center">8374</td><td align="center">Article 4</td><td  align="right">200 CFA</td>  <td align="center">x5</td></tr>
-				</table>
 				<input type="submit" name="Valider" value="Valider" id="send"/>
 			</font>
 		</form>
-    </div>
 </div>
+ 
 <!-- 
 <table id="sale_table" width="600px" >
  	<tr width="100%"><th>Id</th><th>Article</th><th>prix</th>  <th width="15px">Quantité</th></tr>
