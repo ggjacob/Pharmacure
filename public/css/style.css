@@ -315,6 +315,11 @@ background-image: url('../images/menu/menu.png')
   background-image: url('../images/menu/fourniseurs.png');
 }
 
+.commandes_img
+{ width:50px; height:48px; position:absolute; top:0px;
+  background-image: url('../images/menu/commandes.png');
+}
+
 .produits_img
 { width:50px; height:48px; position:absolute; top:0px;
   background-image: url('../images/menu/produits.png');
@@ -376,6 +381,33 @@ cursor:pointer;
 cursor:pointer;
  background-image: url('../images/add_fournisseur.png');
 }
+
+
+.add_commande
+{
+ width:300px; height:250px; position:relative; top:7px; left:250px; bottom-margin:50px;
+  background-image: url('../images/add_commande_gray.png'); 
+}
+.add_commande:hover
+{
+cursor:pointer;
+ background-image: url('../images/add_commande.png');
+}
+
+
+.add_user
+{
+ width:300px; height:250px; position:relative; top:7px; left:250px; bottom-margin:50px;
+  background-image: url('../images/add_user_gray.png'); 
+}
+.add_user:hover
+{
+cursor:pointer;
+ background-image: url('../images/add_user.png');
+}
+
+
+
 
 .hide_form
 {

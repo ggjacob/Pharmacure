@@ -145,7 +145,7 @@ $(function(){
         });
     });
 </script>
-<div id="form_action" class="add_client" onClick="show_form('upper_content_forms', 'form_action')"></div>
+<div id="form_action" class="add_user" onClick="show_form('upper_content_forms', 'form_action')"></div>
 <div id="upper_content_forms" >
     <div class="hide_form" onClick="hide_form('upper_content_forms', 'form_action')"></div>
             <div>

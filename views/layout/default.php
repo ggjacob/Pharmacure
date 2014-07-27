@@ -100,9 +100,9 @@
 								<div class="back"><div class="fournisseurs_img"></div></div>
 										<div class="text"><span>Fournisseurs<span></div>
 							</div>
-							<a href="#" name="Fournisseurs" onclick='addTab("Commandes","<?=WEBROOT?>Commandes/index")'>
+							<a href="#" name="Commandes" onclick='addTab("Commandes","<?=WEBROOT?>Commandes/index")'>
 							<div class="line">
-								<div class="back"><div class="fournisseurs_img"></div></div>
+								<div class="back"><div class="commandes_img"></div></div>
 										<div class="text"><span>Commandes<span></div>
 							</div>
 							</a>
