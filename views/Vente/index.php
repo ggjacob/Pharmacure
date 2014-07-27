@@ -96,11 +96,11 @@ function panierAjout(id){
                     data: $(this).serialize(),
                     success : function(data){
                         
-                        if(data == 'success'){ 
+                        //if(data == 'success'){ 
                            //$("#data_source_panier").ajax.url( 'afficherPanier' ).load();
                            //$("#data_source_panier").DataTable().ajax.reload();
                            AfficherPanier();   
-                        }
+                        //}
                        },
                     error: function(){
                         alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
@@ -133,9 +133,7 @@ function test(){
 }
 </script>
 
-<<<<<<< HEAD
 <a href="#" onclick="AfficherPanier();">dfjdjfdjfj</a>
-=======
 <a href="#" onclick="test();">dfjdjfdjfj</a>
 <div id="sales_dash">
         <div class="sales_step" id="step_1">Step 1</div>
@@ -148,7 +146,6 @@ function test(){
         <hr class="bar" id="line_3"></hr>
         <hr class="bar" id="line_4"></hr>
 </div>
->>>>>>> FETCH_HEAD
 <div class="category">
     <span class="category_title">Choisissez les produits</span>
     <div class="sub_category">

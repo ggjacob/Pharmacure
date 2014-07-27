@@ -66,13 +66,13 @@ class Vente extends Controller{
 	        //$data['Quantite'] = 1;
         	//$data = $article->toArray();
         	
-            $verif=false;
-            foreach ($_SESSION['panier'] as $courant) {
-                if($courant->id == $article->id) $verif=true;
-            }
-            if(!$verif) $_SESSION['panier'][] = $article;
+            //$verif=false;
+            //foreach ($_SESSION['panier'] as $courant) {
+                //if($courant->id == $article->id) $verif=true;
+            //}
+            /*if(!$verif)$*/ $_SESSION['panier'][] = $article;
 		 }
-		 echo "success";
+		 echo $article->id;
 	}	 
 }
 ?>
