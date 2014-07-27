@@ -89,6 +89,7 @@ jQuery(document).ready(function($){
 });
 
 function panierAjout(id){
+    $('#produit').blur();
 	$.ajax({
                     type : "POST",
                     url: id,
@@ -97,8 +98,25 @@ function panierAjout(id){
                         
                         if(data == 'success'){ 
                            //$("#data_source_panier").ajax.url( 'afficherPanier' ).load();
-                           $("#data_source_panier").DataTable().ajax.reload();   
+                           //$("#data_source_panier").DataTable().ajax.reload();
+                           AfficherPanier();   
                         }
+                       },
+                    error: function(){
+                        alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
+                    }
+                });
+}
+
+function AfficherPanier(){
+    $.ajax({
+                    type : "POST",
+                    url: 'afficherPanier',
+                    data: $(this).serialize(),
+                    success : function(data){
+                            $('#retourPanier').html('');
+                            $("#retourPanier").append(data);
+                            $('#retourPanier').fadeIn();
                        },
                     error: function(){
                         alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
@@ -115,7 +133,7 @@ function test(){
 }
 </script>
 
-<a href="#" onclick="test();">dfjdjfdjfj</a>
+<a href="#" onclick="AfficherPanier();">dfjdjfdjfj</a>
 <div class="category">
     <span class="category_title">Choisissez les produits</span>
     <div class="sub_category">
@@ -140,22 +158,32 @@ function test(){
 		</form>
     </div>
 </div>
-<div class="lower_content" style="font-size:13; top:20px">
-        <div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes clients</span></div>
-		    <table id="data_source_panier">
-		         <thead>
-		            <tr><th>id</th><th >Libelle</th><th>Prix</th><th>Quantite</th></tr>     
-		         </thead>
-		         <tbody>
-		        <tbody>
-		    </table>
-        <form action="<?=WEBROOT?>Ventes/enregistrer" method="post">
-			<font color="black" size="4">
-				<input type="submit" name="Valider" value="Valider" id="send"/>
-			</font>
-		</form>
+
+<div class="category">
+    <span class="category_title">Finaliser votre vente</span>
+    <div class="sub_category">
+  <div id="retourPanier">
+    <i></i>
+    <table id="sale_table" width="600px" >
+        <tr><th>Action</th><th>Article</th><th>prix</th>  <th width="30px">Ordonnance</th></tr>
+    </table>
+    <div style="height:100px;overflow:auto;">
+    <table id="sale_table" width="600px">
+    <?php foreach($view['articles'] as $article) : ?>
+        <tr >
+            <td align="center"> <a href="#" class="ajoutPanier" id="ajouter/<?=$article->id?>" onclick="panierAjout(this.id);" >Ajouter</a></td>
+            <td align="center"><?=$article->Produit->Libelle?></td>
+            <td align="center"><?=$article->Produit->Prix?></td>
+            <td align="center" style=" border-top-style:solid;border-top-width:1px;">
+                <?php //if ($article->Produit->Ordonnance) echo "Oui";else echo "Non";?>
+            </td></tr>
+    <?php endforeach;?>                     
+    </table>
+    </div>
+    <input type="submit" name="Valider" value="Valider" id="send"/>
+  </div>
 </div>
- 
+</div> 
 <!-- 
 <table id="sale_table" width="600px" >
  	<tr width="100%"><th>Id</th><th>Article</th><th>prix</th>  <th width="15px">Quantité</th></tr>

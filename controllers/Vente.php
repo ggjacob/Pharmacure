@@ -6,7 +6,10 @@
 class Vente extends Controller{
    
     function index(){
-        $d['view'] = array("titre" => "");
+
+        $articles = new Article();
+        $articles = $_SESSION['panier'];
+        $d['view'] = array("titre" => "","articles" => $articles);
         $this->set($d); 
         $this->render('index');
     }
@@ -31,10 +34,11 @@ class Vente extends Controller{
 
 
     function afficherPanier(){
-        //var_dump($_SESSION['panier']);
-        $data = array('data' =>$_SESSION['panier']);
-        $text = json_encode($data);
-        echo $text;
+        $articles = new Article();
+        $articles = $_SESSION['panier'];
+        $d['view'] = array("titre" => "","articles" => $articles);
+        $this->set($d); 
+        $this->render('listePanier');
     }
 
     function creationPanier(){
@@ -54,14 +58,19 @@ class Vente extends Controller{
         $article = Doctrine_Core::getTable('Article')->findOneById($id);
         $erreur = "";
         if($article){
-        	$data = array();
+        	//$data = array();
 
-            $data['id'] = $article->id;
-            $data['Libelle'] = $article->Produit->Libelle;
-	        $data['Prix'] = $article->Produit->Prix;
-	        $data['Quantite'] = 1;
+            //$data['id'] = $article->id;
+            //$data['Libelle'] = $article->Produit->Libelle;
+	        //$data['Prix'] = $article->Produit->Prix;
+	        //$data['Quantite'] = 1;
         	//$data = $article->toArray();
-        	$_SESSION['panier'][] = $data;
+        	
+            $verif=false;
+            foreach ($_SESSION['panier'] as $courant) {
+                if($courant->id == $article->id) $verif=true;
+            }
+            if(!$verif) $_SESSION['panier'][] = $article;
 		 }
 		 echo "success";
 	}	 
