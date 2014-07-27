@@ -1,4 +1,10 @@
 <script type="text/javascript">
+function addline(){
+    var contenu = $(".ligneproduit").get()[0].outerHTML;
+    $('.upper_content_forms_table').append(contenu);
+    console.log(contenu);
+    $('.upper_content_forms_table').children('div').css('display', 'true');
+}
 $(function(){
         $("#formCommande").submit(function(event){
             var etat        = $("#idetat").val();
@@ -58,10 +64,24 @@ $(function(){
                         <?php endforeach; ?>
                     </select>
                 </td>
-                
             </tr>
         </table>
         <input type="submit" name="Modif_commande" value="Modifier" class="upper_content_forms_send"/>
+        <input type="button" value="Ajouter Produit" onclick="addline()"class="upper_content_forms_send"/>
 </form>
 </div>
+<div style="display:none;" class="ligneproduit">
+                <tr>
+                    <td width="42px" align="left">Produit</td>
+                    <td align="center">
+                    <select classe="idproduit" style="width:90px; text-overflow: ellipsis;" name="idproduit[]">
+                        <?php foreach ($view['produit'] as $produit):?>
+                            <option value="<?=$produit->id?>"> <?=$produit->Libelle?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+                <td width="42px" align="left">Quantité</td>   
+                <td align="center"><input classe="quantite" type="number" name="quantite[]"  placeholder="Quantité"></td>
+                </tr>
+            </div>
 

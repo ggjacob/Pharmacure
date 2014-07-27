@@ -44,13 +44,15 @@ class Commandes extends Controller{
     function modification($id){
         $etat = new Etat();
         $etat = Doctrine_Core::getTable('etat')->findAll();
+        $produit = new Produit();
+        $produit = Doctrine_Core::getTable('produit')->findAll();
         $commande = new Commande();
         $commande = Doctrine_Core::getTable('commande')->find($id);
         //var_dump($commande);
         $form = array();
         $form['idetat']=$commande->IdEtat;
         $form['type'] ='update';    
-        $d['view'] = array("titre" => "Modification commande","form" => $form,"id" => $id, "etat" =>$etat);
+        $d['view'] = array("titre" => "Modification commande","form" => $form,"id" => $id, "etat" =>$etat, "produit" =>$produit);
         $this->set($d); 
         $this->render('modification');
     }
