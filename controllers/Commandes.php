@@ -70,8 +70,16 @@ class Commandes extends Controller{
                     $erreur="";
                     $currentCommande = new Commande();
                     $currentCommande = Doctrine_Core::getTable('commande')->find($this->data['id']);
+                    
                     if(!$currentCommande) $erreur="failed";
                     if(empty($erreur)) {
+                        $produitList = $this->data['idproduit'];
+                        $quantiteList = $this->data['quantite'];
+                        $lignecommande = new LigneCommande();
+                        foreach ($produitList as $key => $p) {
+                            $lignecommande->init($this->data['id'], $p, $lignecommande[$key]);
+                            $lignecommande->save();
+                        }
                         $currentCommande->init2($this->data['idetat']);        
                         $currentCommande->save();
                         $erreur="success";    

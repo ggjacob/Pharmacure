@@ -1,13 +1,21 @@
 <script type="text/javascript">
 function addline(){
-    var contenu = $(".ligneproduit").get()[0].outerHTML;
+    var contenu = $(".ligneproduit").html();
+    //console.log(contenu);
     $('.upper_content_forms_table').append(contenu);
-    console.log(contenu);
     $('.upper_content_forms_table').children('div').css('display', 'true');
 }
 $(function(){
         $("#formCommande").submit(function(event){
             var etat        = $("#idetat").val();
+            var listeproduit = [];
+            var quantite = [];
+            var type = $("#type").val();
+            var idcommande = $("#idcommande").val();
+            $('select[name^="idproduit"]').each(function(){ listeproduit.push(this.value); });
+            $('input[name^="quantite"]').each(function(){ quantite.push(this.value); }); 
+            console.log(listeproduit);
+            console.log(quantite);
                 $.ajax({
                     type : "POST",
                     url: $(this).attr('action'),
@@ -51,14 +59,15 @@ $(function(){
             </div>
 </div>
 <form id="formCommande" action="<?=WEBROOT?>Commandes/creation" method="post" >
-    <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
-    <input type="hidden" value='<?=$view["id"]?>' name="id">
+    <input id="type" type="hidden" value='<?=$view["form"]["type"]?>' name="type">
+    <input id="idcommande" type="hidden" value='<?=$view["id"]?>' name="id">
     <font color="black" size="4">
         <table class="upper_content_forms_table" >
             <tr>
                 <td width="42px" align="left">Etat</td>
                 <td align="center">
                     <select id="idetat" style="width:90px; text-overflow: ellipsis;" name="idetat">
+                        <option value="">Select...</option>
                         <?php foreach ($view['etat'] as $etats):?>
                             <option value="<?=$etats->id?>" <?php if($etats->id==$view['form']['idetat']) echo 'selected' ?>> <?=$etats->Libelle?></option>
                         <?php endforeach; ?>
@@ -75,13 +84,15 @@ $(function(){
                     <td width="42px" align="left">Produit</td>
                     <td align="center">
                     <select classe="idproduit" style="width:90px; text-overflow: ellipsis;" name="idproduit[]">
+                        <option value="">Select...</option>
                         <?php foreach ($view['produit'] as $produit):?>
                             <option value="<?=$produit->id?>"> <?=$produit->Libelle?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>
                 <td width="42px" align="left">Quantité</td>   
-                <td align="center"><input classe="quantite" type="number" name="quantite[]"  placeholder="Quantité"></td>
+                <td align="center"><input width="40px" classe="quantite" type="number" name="quantite[]"  placeholder="Quantité"></td>
                 </tr>
+                <br/>
             </div>
 

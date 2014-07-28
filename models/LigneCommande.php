@@ -13,4 +13,9 @@
 class LigneCommande extends BaseLigneCommande
 {
 
+        public function init($idcommande, $idproduit, $quantite){
+            $this->IdCommande = $idcommande;
+            $this->IdProduit = $idproduit;
+            $this->Quantite = $quantite;
+        }
 }
