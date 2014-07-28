@@ -110,10 +110,11 @@ background-image: url('../images/logo.png');
 
 #logo
 {
-position:absolute; left:20px;
+position:absolute; left:15px;
 width:225px;
 height:45px;
 background-image: url('../images/logo.png');
+transform: scale(0.9);
 }
 .logo_info
 {
@@ -204,7 +205,8 @@ cursor:pointer;
 position:absolute; right:50px; 
 width:91px;
 height:45px;
-background-image: url('../images/dis.png')
+background-image: url('../images/dis.png');
+transform: scale(0.9);
 }
 .badge {
   position:absolute; left:300px; top:6px;
