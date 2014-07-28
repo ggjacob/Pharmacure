@@ -1070,7 +1070,7 @@ padding-bottom: 10px;
 #sales_dash
 {
   position:relative;
-  height:120px; left:5px;
+  height:120px; left:5px; top:5px;
 }
 .sales_step
 {
@@ -1106,25 +1106,42 @@ hr.bar {
 }
 
 
-#step_1:hover
+#step_1
 {
-  background: #FF530D;
+  background-image: url('../images/validation_steps/create_cart.png'); 
 }
-#step_2:hover
+#step_2
 {
-  background: #E82C0C;
+  background-image: url('../images/validation_steps/client_info_gray.png');
 }
-#step_3:hover
+#step_3
 {
-  background: #FF0000;
+  background-image: url('../images/validation_steps/medical_info_gray.png');
 }
-#step_4:hover
+#step_4
 {
-  background: #E80C7A;
+  background-image: url('../images/validation_steps/sale_recap_gray.png');
 }
-#step_5:hover
+#step_5
 {
-  background: #FF0DFF;
+  background-image: url('../images/validation_steps/validation_gray.png');
+}
+/* Steps Once They are validated the classes are to be changed to the following*/
+#step_2_validated 
+{
+  background-image: url('../images/validation_steps/client_info.png');
+}
+#step_3_validated 
+{
+  background-image: url('../images/validation_steps/medical_info.png');
+}
+#step_4_validated 
+{
+  background-image: url('../images/validation_steps/sale_recap.png');
+}
+#step_5_validated 
+{
+  background-image: url('../images/validation_steps/validation.png');
 }
 
 #line_1
