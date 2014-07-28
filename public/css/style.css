@@ -1106,28 +1106,28 @@ hr.bar {
 }
 
 
-#step_1
+.step_1
 {
   background-image: url('../images/validation_steps/create_cart.png'); 
 }
-#step_2
+.step_2
 {
   background-image: url('../images/validation_steps/client_info_gray.png');
 }
-#step_3
+.step_3
 {
   background-image: url('../images/validation_steps/medical_info_gray.png');
 }
-#step_4
+.step_4
 {
   background-image: url('../images/validation_steps/sale_recap_gray.png');
 }
-#step_5
+.step_5
 {
   background-image: url('../images/validation_steps/validation_gray.png');
 }
 /* Steps Once They are validated the classes are to be changed to the following*/
-#step_2_validated 
+.step_2_validated 
 {
   background-image: url('../images/validation_steps/client_info.png');
 }
