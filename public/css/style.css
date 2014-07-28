@@ -1087,6 +1087,13 @@ padding-bottom: 10px;
     vertical-align: middle;
 }
 
+.sales_step span{
+position:relative;
+top:6px;
+font-size: 14;
+opacity:0.6;
+}
+
 .bar
 {
   clear:both;
@@ -1109,6 +1116,7 @@ hr.bar {
 .step_1
 {
   background-image: url('../images/validation_steps/create_cart.png'); 
+  color:black;
 }
 .step_2
 {
@@ -1130,18 +1138,22 @@ hr.bar {
 .step_2_validated 
 {
   background-image: url('../images/validation_steps/client_info.png');
+  color:black;
 }
 #step_3_validated 
 {
   background-image: url('../images/validation_steps/medical_info.png');
+  color:black;
 }
 #step_4_validated 
 {
   background-image: url('../images/validation_steps/sale_recap.png');
+  color:black;
 }
 #step_5_validated 
 {
   background-image: url('../images/validation_steps/validation.png');
+  color:black;
 }
 
 #line_1

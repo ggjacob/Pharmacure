@@ -169,11 +169,11 @@ function panierSupprimer(id){
 
 </script>
 <div id="sales_dash">
-        <div class="sales_step step_1" id="step_1">Step 1</div>
-        <div class="sales_step step_2" id="step_2">Step 2</div>
-        <div class="sales_step step_3" id="step_3">Step 3</div>
-        <div class="sales_step step_4" id="step_4">Step 4</div>
-        <div class="sales_step step_5" id="step_5">Step 5</div>
+        <div class="sales_step step_1" id="step_1"><span>1</span></div>
+        <div class="sales_step step_2" id="step_2"><span>2</span></div>
+        <div class="sales_step step_3" id="step_3"><span>3</span></div>
+        <div class="sales_step step_4" id="step_4"><span>4</span></div>
+        <div class="sales_step step_5" id="step_5"><span>5</span></div>
         <hr class="bar" id="line_1"></hr>
         <hr class="bar" id="line_2"></hr>
         <hr class="bar" id="line_3"></hr>
