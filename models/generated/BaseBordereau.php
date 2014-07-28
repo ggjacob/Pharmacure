@@ -29,7 +29,8 @@ abstract class BaseBordereau extends Doctrine_Record
         parent::setUp();
         $this->hasOne('Commande', array(
              'local' => 'IdCommande',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $this->hasMany('LigneBordereau as LigneBordereauBordereau', array(
              'local' => 'id',

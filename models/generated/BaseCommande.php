@@ -45,11 +45,13 @@ abstract class BaseCommande extends Doctrine_Record
         parent::setUp();
         $this->hasOne('User', array(
              'local' => 'IdUser',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $this->hasOne('User as UserModif', array(
              'local' => 'IdUserModif',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $this->hasOne('Fournisseur', array(
              'local' => 'IdFournisseur',
@@ -58,7 +60,8 @@ abstract class BaseCommande extends Doctrine_Record
 
         $this->hasOne('Etat', array(
              'local' => 'IdEtat',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $this->hasMany('Bordereau as BordereauCommande', array(
              'local' => 'id',

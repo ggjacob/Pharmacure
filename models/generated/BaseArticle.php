@@ -49,7 +49,8 @@ abstract class BaseArticle extends Doctrine_Record
         parent::setUp();
         $this->hasOne('Produit', array(
              'local' => 'IdProduit',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $searchable0 = new Doctrine_Template_Searchable(array(
              'fields' => 

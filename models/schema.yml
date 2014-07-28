@@ -200,12 +200,14 @@ Commande:
       class: User
       local: IdUser
       foreign: id
+      onDelete: SET NULL
       alias: User # on pourra acceder à l'objet avec Facture->Client
       foreignAlias: CommandeUser
     userModif:
       class: User
       local: IdUserModif
       foreign: id
+      onDelete: SET NULL
       alias: UserModif # on pourra acceder à l'objet avec Facture->Client
       foreignAlias: CommandeUserModif
     fournisseur:
@@ -219,6 +221,7 @@ Commande:
       class: Etat
       local: IdEtat
       foreign: id
+      onDelete: SET NULL
       alias: Etat # on pourra acceder à l'objet avec Facture->Client
       foreignAlias: CommandeEtat
 
@@ -239,6 +242,7 @@ Bordereau:
       class: Commande
       local: IdCommande
       foreign: id
+      onDelete: SET NULL
       alias: Commande # on pourra acceder à l'objet avec LigneFacture->Facture
       foreignAlias: BordereauCommande
 
@@ -271,6 +275,7 @@ Article:
       class: Produit
       local: IdProduit
       foreign: id
+      onDelete: SET NULL
       alias: Produit # on pourra acceder à l'objet avec LigneFacture->Facture
       foreignAlias: ArticleProduits
 
@@ -325,12 +330,14 @@ LigneCommande:
       class: Commande
       local: IdCommande
       foreign: id
+      onDelete: SET NULL
       alias: Commande # on pourra acceder à l'objet avec LigneFacture->Facture
       foreignAlias: LigneCommandeCommande
     produit:
       class: Produit
       local: IdProduit
       foreign: id
+      onDelete: SET NULL
       alias: Produit # on pourra acceder à l'objet avec LigneFacture->Facture
       foreignAlias: LigneCommandeProduit
 
@@ -355,5 +362,6 @@ LigneBordereau:
       class: Bordereau
       local: IdBordereau
       foreign: id
+      onDelete: SET NULL
       alias: Bordereau # on pourra acceder à l'objet avec LigneFacture->Facture
       foreignAlias: LigneBordereauBordereau

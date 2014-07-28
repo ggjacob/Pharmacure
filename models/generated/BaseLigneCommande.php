@@ -37,11 +37,13 @@ abstract class BaseLigneCommande extends Doctrine_Record
         parent::setUp();
         $this->hasOne('Commande', array(
              'local' => 'IdCommande',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $this->hasOne('Produit', array(
              'local' => 'IdProduit',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $timestampable0 = new Doctrine_Template_Timestampable(array(
              'created' => 

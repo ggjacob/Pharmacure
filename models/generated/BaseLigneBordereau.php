@@ -37,7 +37,8 @@ abstract class BaseLigneBordereau extends Doctrine_Record
         parent::setUp();
         $this->hasOne('Bordereau', array(
              'local' => 'IdBordereau',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $timestampable0 = new Doctrine_Template_Timestampable(array(
              'created' => 
