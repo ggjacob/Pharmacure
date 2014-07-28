@@ -212,6 +212,7 @@ Commande:
       class: Fournisseur
       local: IdFournisseur
       foreign: id
+      onDelete: SET NULL
       alias: Fournisseur # on pourra acceder à l'objet avec Facture->Client
       foreignAlias: CommandeUserModif
     etat:

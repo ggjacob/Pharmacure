@@ -53,7 +53,8 @@ abstract class BaseCommande extends Doctrine_Record
 
         $this->hasOne('Fournisseur', array(
              'local' => 'IdFournisseur',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $this->hasOne('Etat', array(
              'local' => 'IdEtat',
