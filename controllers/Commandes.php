@@ -49,25 +49,33 @@ class Commandes extends Controller{
         $commande = new Commande();
         $commande = Doctrine_Core::getTable('commande')->find($id);
         //var_dump($commande);
-        $form = array();
+        $form = Array();
         $form['idetat']=$commande->IdEtat;
         $form['type'] ='update';    
-        $d['view'] = array("titre" => "Modification commande","form" => $form,"id" => $id, "etat" =>$etat, "produit" =>$produit);
+        $d['view'] = array("titre" => "Modification commande", "form" => $form, "id" => $id, "etat" =>$etat, "produit" =>$produit);
         $this->set($d); 
         $this->render('modification');
     }
     
+    
+    /**
+     * @UserS('REQUIRED')
+     */
     function creation(){
-        $form['type'] = $_POST['type'];
+        $erreur="";
+        if (isset($_POST['type'])){
+            $form['type'] = $this->data['type'];
+        
             if($form['type'] == "create")
-            {
-                    $commande = new Commande();
-                    $commande->init($this->data['idfournisseur']);        
-                    $commande->save();    
-                    $erreur="success";                    
-            }
+                {
+                        $commande = new Commande();
+                        $commande->init($this->data['idfournisseur']);        
+                        $commande->save();    
+                        $erreur="success";                    
+                }
+        
             else{
-                    $erreur="";
+                    
                     $currentCommande = new Commande();
                     $currentCommande = Doctrine_Core::getTable('commande')->find($this->data['id']);
                     
@@ -77,16 +85,32 @@ class Commandes extends Controller{
                         $quantiteList = $this->data['quantite'];
                         $lignecommande = new LigneCommande();
                         foreach ($produitList as $key => $p) {
-                            $lignecommande->init($this->data['id'], $p, $lignecommande[$key]);
+                            $lignecommande = new LigneCommande();
+                            $lignecommande->init($this->data['id'], $p, $quantiteList[$key]);
                             $lignecommande->save();
                         }
                         $currentCommande->init2($this->data['idetat']);        
                         $currentCommande->save();
                         $erreur="success";    
                     }
-            }
+                 }
         
+            echo $erreur;
+        }
+    }
+    
+    
+    /**
+     * @UserS('REQUIRED')
+     */
+    function suppression($id){
+        $commande = new Commande();
+        $commande = Doctrine_Core::getTable('commande')->findOneById($id);
+        if(!$commande->delete()) $this->redirect('Commandes/index',0);
+        $erreur="success";
         echo $erreur;
     }
 }
+
+    
 ?>
