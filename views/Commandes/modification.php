@@ -1,9 +1,16 @@
 <script type="text/javascript">
-function addline(){
-    var contenu = $(".ligneproduit").html();
-    console.log(contenu);
-    $('.upper_content_forms_table').append(contenu);
-    $('.upper_content_forms_table').children('div').css('display', 'true');
+function addline(url){
+//    var contenu = $(".ligneproduit").html();
+//    console.log(contenu);
+//    $('.upper_content_forms_table').append(contenu);
+//    $('.upper_content_forms_table').children('div').css('display', 'true');
+        $.ajax({
+                    url: url,
+                    success : function(data){
+                        $('.upper_content_forms_table').append(data);
+                }
+                        
+        });
 }
 $(function(){
         $("#formCommande").submit(function(event){
@@ -82,8 +89,23 @@ $(function(){
                     </select>
                 </td>
             </tr>
+            <?php foreach ($view['lignecommande'] as $l):?>
+            <tr>
+                    <td width="42px" align="left">Produit</td>
+                    <td align="center">
+                    <select classe="idproduit" style="width:90px; text-overflow: ellipsis;" name="idproduit[]">
+                        <option value="">Select...</option>
+                        <?php foreach ($view['produit'] as $produit):?>
+                            <option value="<?=$produit->id?>" <?php if($produit->id == $l->IdProduit) echo'selected' ?>> <?=$produit->Libelle?> </option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+                <td width="42px" align="left">Quantité</td>   
+                <td align="center"><input width="40px" classe="quantite" value="<?=$l->Quantite?>" type="number" name="quantite[]"  placeholder="Quantité"></td>
+                </tr>
+                <?php endforeach; ?>
         </table>
-        <input type="button" value="Ajouter Produit" onclick="addline()"class="upper_content_forms_send"/>
+        <input type="button" value="Ajouter Produit" onclick="addline('<?=WEBROOT?>Commandes/listeProduit')" class="upper_content_forms_send"/>
         <input type="submit" name="Modif_commande" value="Modifier" class="upper_content_forms_send"/>
         
 </form>
@@ -102,6 +124,5 @@ $(function(){
                 <td width="42px" align="left">Quantité</td>   
                 <td align="center"><input width="40px" classe="quantite" type="number" name="quantite[]"  placeholder="Quantité"></td>
                 </tr>
-                <br/>
             </div>
 

@@ -30,15 +30,22 @@ class Commandes extends Controller{
         echo $text;
     }
     
-    function listeProduit($id){
+    function listeProduit(){
         $produits = new Produit();
-        
-        $produits = $q->fetchArray();
-        $liste = array('id'=>$produits->identifier(), 'libelle'=>$produits->Libelle );
-        echo '<option value="">Please select...</option>';
-        foreach ($liste as $l){
-            echo'<option value="'.$l['id'].'">'.$l['libelle'].'</option>';
+        $produits = Doctrine_Core::getTable('produit')->findAll();
+        echo '<tr>
+                    <td width="42px" align="left">Produit</td>
+                    <td align="center">
+                    <select classe="idproduit" style="width:90px; text-overflow: ellipsis;" name="idproduit[]">
+                    <option value="">Select...</option>';
+        foreach ($produits as $l){
+            echo'<option value="'.$l->id.'">'.$l->Libelle.'</option>';
         }
+        echo '</select>
+                </td>
+                <td width="42px" align="left">Quantité</td>   
+                <td align="center"><input width="40px" classe="quantite" type="number" name="quantite[]"  placeholder="Quantité"></td>
+                </tr>';
     }
     
     function modification($id){
@@ -48,11 +55,14 @@ class Commandes extends Controller{
         $produit = Doctrine_Core::getTable('produit')->findAll();
         $commande = new Commande();
         $commande = Doctrine_Core::getTable('commande')->find($id);
+        $lignecommande = new LigneCommande();
+        $lignecommande = Doctrine_Core::getTable('lignecommande')->findByIdCommande($id);
+        //var_dump($lignecommande);
         //var_dump($commande);
         $form = Array();
         $form['idetat']=$commande->IdEtat;
         $form['type'] ='update';    
-        $d['view'] = array("titre" => "Modification commande", "form" => $form, "id" => $id, "etat" =>$etat, "produit" =>$produit);
+        $d['view'] = array("titre" => "Modification commande", "form" => $form, "id" => $id, "etat" =>$etat, "produit" =>$produit, "lignecommande" => $lignecommande);
         $this->set($d); 
         $this->render('modification');
     }
