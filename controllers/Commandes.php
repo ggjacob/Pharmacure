@@ -103,7 +103,7 @@ class Commandes extends Controller{
                                 $lignecommande->init2($p, $quantiteList[$key]);
                                 $lignecommande->save();    
                             }
-                            else{
+                            else if($checkList[$key] == 0){
                                  //Il faut instancier un nouvel objet pour chaque ligne
                                 $lignecommande = new LigneCommande();
                                 $lignecommande->init($this->data['id'], $p, $quantiteList[$key]);

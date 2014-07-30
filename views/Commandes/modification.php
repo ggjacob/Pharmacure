@@ -109,7 +109,7 @@ $(function(){
             <tr>
                 <td width="42px" align="left">Produit</td>
                 <td align="center">
-                    <input type="hidden" name="checkproduit[]" value="<?php $l->id ?>">
+                    <input type="hidden" name="checkproduit[]" value="<?php echo $l->id ?>">
                     <select classe="idproduit" style="width:90px; text-overflow: ellipsis;" name="idproduit[]">
                         <option value="">Select...</option>
                         <?php foreach ($view['produit'] as $produit):?>
