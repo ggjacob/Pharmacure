@@ -36,6 +36,7 @@ class Commandes extends Controller{
         echo '<tr>
                     <td width="42px" align="left">Produit</td>
                     <td align="center">
+                    <input type="hidden" name="checkproduit[]" value="0">
                     <select classe="idproduit" style="width:90px; text-overflow: ellipsis;" name="idproduit[]">
                     <option value="">Select...</option>';
         foreach ($produits as $l){
@@ -45,6 +46,7 @@ class Commandes extends Controller{
                 </td>
                 <td width="42px" align="left">Quantité</td>   
                 <td align="center"><input width="40px" classe="quantite" type="number" name="quantite[]"  placeholder="Quantité"></td>
+                <td align="center" onclick="deletenewline(this)"><input width="40px" type="button" name="deletenewline" value="Supprimer"/></td>
                 </tr>';
     }
     
@@ -93,11 +95,20 @@ class Commandes extends Controller{
                     if(empty($erreur)) {
                         $produitList = $this->data['idproduit'];
                         $quantiteList = $this->data['quantite'];
-                        $lignecommande = new LigneCommande();
+                        $checkList = $this->data['checkproduit'];
                         foreach ($produitList as $key => $p) {
-                            $lignecommande = new LigneCommande();
-                            $lignecommande->init($this->data['id'], $p, $quantiteList[$key]);
-                            $lignecommande->save();
+                            if($checkList[$key] != 0){
+                                $lignecommande = new LigneCommande();
+                                $lignecommande = Doctrine_Core::getTable('lignecommande')->findOneById($checkList[$key]);
+                                $lignecommande->init2($p, $quantiteList[$key]);
+                                $lignecommande->save();    
+                            }
+                            else{
+                                 //Il faut instancier un nouvel objet pour chaque ligne
+                                $lignecommande = new LigneCommande();
+                                $lignecommande->init($this->data['id'], $p, $quantiteList[$key]);
+                                $lignecommande->save();
+                            }
                         }
                         $currentCommande->init2($this->data['idetat']);        
                         $currentCommande->save();
@@ -117,6 +128,14 @@ class Commandes extends Controller{
         $commande = new Commande();
         $commande = Doctrine_Core::getTable('commande')->findOneById($id);
         if(!$commande->delete()) $this->redirect('Commandes/index',0);
+        $erreur="success";
+        echo $erreur;
+    }
+    
+    function suppressionligne($id){
+        $lignecommande = new LigneCommande();
+        $lignecommande = Doctrine_Core::getTable('lignecommande')->findOneById($id);
+        if(!$lignecommande->delete()) $this->redirect('Commandes/index',0);
         $erreur="success";
         echo $erreur;
     }

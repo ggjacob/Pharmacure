@@ -12,6 +12,22 @@ function addline(url){
                         
         });
 }
+function deletenewline(selector){
+    $(selector).parent('tr').remove();
+}
+function deleteoldline(selector){
+    var url = $(selector).children('input').attr('id');
+    console.log(url);
+    $.ajax({
+                    url: url,
+                    success : function(data){
+                        if(data == 'success'){
+                        $(selector).parent('tr').remove();
+                        }   
+                    }          
+            });
+    
+}
 $(function(){
         $("#formCommande").submit(function(event){
             var idetat = $("#idetat").val();
@@ -91,8 +107,9 @@ $(function(){
             </tr>
             <?php foreach ($view['lignecommande'] as $l):?>
             <tr>
-                    <td width="42px" align="left">Produit</td>
-                    <td align="center">
+                <td width="42px" align="left">Produit</td>
+                <td align="center">
+                    <input type="hidden" name="checkproduit[]" value="<?php $l->id ?>">
                     <select classe="idproduit" style="width:90px; text-overflow: ellipsis;" name="idproduit[]">
                         <option value="">Select...</option>
                         <?php foreach ($view['produit'] as $produit):?>
@@ -102,8 +119,9 @@ $(function(){
                 </td>
                 <td width="42px" align="left">Quantité</td>   
                 <td align="center"><input width="40px" classe="quantite" value="<?=$l->Quantite?>" type="number" name="quantite[]"  placeholder="Quantité"></td>
-                </tr>
-                <?php endforeach; ?>
+                <td align="center" onclick="deleteoldline(this)"><input id="../suppressionligne/<?php echo $l->id ?>" width="40px" type="button" name="deletenewline" value="Supprimer"/></td>
+            </tr>
+            <?php endforeach; ?>
         </table>
         <input type="button" value="Ajouter Produit" onclick="addline('<?=WEBROOT?>Commandes/listeProduit')" class="upper_content_forms_send"/>
         <input type="submit" name="Modif_commande" value="Modifier" class="upper_content_forms_send"/>
