@@ -38,6 +38,27 @@ class Vente extends Controller{
         }
     }
 
+    function rechercherClient(){
+        
+        $nomClient = $_POST['client'];
+
+        //$nomProduit = 's';
+        if (strlen($nomClient)>0)
+        {
+        $clients = new Client();
+        $q = Doctrine_Query::create()->from('Client c');
+        $q = $q->Where('c.Nom LIKE ?',$nomClient.'%');
+        $q = $q->orderBy('c.Nom ASC');
+
+        $clients = $q->execute();
+        
+        $d['view'] = array("clients" => $clients);
+        $this->layout=false;
+        $this->set($d); 
+        $this->render('listeClients');
+        }
+    }
+
 
 
     function afficherPanier(){
@@ -91,6 +112,33 @@ class Vente extends Controller{
          }
 		 echo "success";
 	}
+
+    function ajouterClient($id){
+        $client = new Client();
+        $client = Doctrine_Core::getTable('Client')->findOneById($id);
+        $erreur = "";
+        if($client){
+            //$data = array();
+
+            //$data['id'] = $article->id;
+            //$data['Libelle'] = $article->Produit->Libelle;
+            //$data['Prix'] = $article->Produit->Prix;
+            //$data['Quantite'] = 1;
+            //$data = $article->toArray();
+            $_SESSION['client'] = $client;
+         }
+         echo "success";
+    }
+
+    function afficherClient(){
+        $this->layout=false;
+        $this->render('clientSelected');
+    }
+
+    function viderClient(){
+        $_SESSION['client']=null;
+    }
+
 
     function supprimerArticle($id){
         $article = new Article();

@@ -839,6 +839,17 @@ right:10px;
 
       }
 
+      .SalesContentStep1{
+        margin-left: 100px;
+        /*visibility: hidden;*/
+      }
+
+
+      .SalesContent{
+        margin-left: 100px;
+        visibility: hidden;
+      }
+
 .alert.alert-success {
     color: #4c8c4d;
     background: #dff0d8;
@@ -1175,6 +1186,8 @@ left:445px;
 {
 left:625px;
 }
+
+.dataTables_scrollHeadInner{ width: 100% !important}
 
 
 

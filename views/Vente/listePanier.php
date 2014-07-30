@@ -19,4 +19,3 @@
 <?php endif; ?>  				 	
 </table>
 </div>
-<input type="submit" name="Valider" value="Valider" id="send"/>

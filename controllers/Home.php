@@ -15,28 +15,14 @@ class Home extends Controller{
 			$this->render('index');
     }
 	
-	function contact(){
+	function data(){
+        $produits = new Produit();
+        $produits = Doctrine_Core::getTable('produit')->findAll();
+        $produits = $produits->toArray();
+        $data = array('data' =>$produits);
+        $text = json_encode($data);
+        echo $text;
         
-        if(!isset($_POST['nom'])){
-            
-            
-            
-            $d['view'] = array("erreur" => " ", "titre" => "Nouvelle annonce",);
-            $this->set($d);
-            $this->render('contact');
-        }
-        else
-        {
-            $form['nom'] =$this->data['nom'];
-            $form['mail'] =$this->data['nom'];
-            $form['objet'] =$this->data['objet'];
-            $form['message'] =$this->data['message'];
-
-            
-            $d['view'] = array("titre" => "Contact","form" => $form);
-            $this->set($d);
-            $this->render('contact');    
-        }        
     }
 }
 ?>

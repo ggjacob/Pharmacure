@@ -1,59 +1,4 @@
 <script type="text/javascript">
-    $(document).ready( function () {
-       $('#data_source_panier').DataTable( {
-        
-        language: {
-        processing:     "Traitement en cours...",
-        search:         "Rechercher&nbsp;:",
-        lengthMenu:    "    _MENU_ Affichage  par page",
-        info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
-        infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
-        infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-        infoPostFix:    "",
-        loadingRecords: "Chargement en cours...",
-        zeroRecords:    "Aucun &eacute;l&eacute;ment &agrave; afficher",
-        emptyTable:     "Aucune donnée disponible dans le tableau",
-        paginate: {
-            first:      "Premier",
-            previous:   "Pr&eacute;c&eacute;dent",
-            next:       "Suivant",
-            last:       "Dernier"
-        },
-        aria: {
-            sortAscending:  ": activer pour trier la colonne par ordre croissant",
-            sortDescending: ": activer pour trier la colonne par ordre décroissant"
-        }
-    },
-    "serverSide": false, //Ne pas mettre sur true, cela break la pagination
-        "ajax":"afficherPanier",
-         "columns": [
-            { "data": "id" },
-            { "data": "Libelle" },
-            { "data": "Prix" },
-            { "data": "Quantite" }
-        ],
-        scrollY: 400,
-        "columnDefs": [
-            {
-                "title": "Quantite",
-                "targets": [ 3 ],
-                "visible": true,
-                "searchable": false,
-                "mRender": function (data, type, full) {
-                return '<input type="number" value='+ full["Quantite"] +'  id="majQuantite/'+full["id"]+'">';
-    }
-            },
-            {
-                "targets": [ 0 ],
-                "visible": false
-            }
-        ]
-//        "Paginate":true, // Pagination True 
-//        "PaginationType":"full_numbers", // And its type.
-//         "iDisplayLength": 10
-       
-        } );
-    } );
 
 jQuery(document).ready(function($){
     
@@ -65,7 +10,16 @@ jQuery(document).ready(function($){
     $('#produit').keyup(    function(event){ submitForm(); });
     //$('.ajoutPanier').onclick(    function(event){ submitForm(); });
 
+
+    $('#client').change(    function(event){ submitFormRechercheClient(); });
+    $('#client').keyup (    function(event){ submitFormRechercheClient(); });
+
     $('#formRecherche').submit(function(e){
+        // On désactive le comportement par défaut du navigateur
+        // (qui consiste à appeler la page action du formulaire)
+        e.preventDefault();
+    });
+    $('#formRechercheClient').submit(function(e){
         // On désactive le comportement par défaut du navigateur
         // (qui consiste à appeler la page action du formulaire)
         e.preventDefault();
@@ -87,6 +41,24 @@ function submitForm(){
                     $('#retour').html('');
                     $("#retour").append(data);
                     $('#retour').fadeIn();                            
+                }
+            });
+    }
+
+function submitFormRechercheClient(){
+        
+        // On désactive le comportement par défaut du navigateur
+        // (qui consiste à appeler la page action du formulaire)
+        //e.preventDefault();
+                $.ajax({
+                type: "POST",
+                url: $("#formRechercheClient").attr('action'),
+                data: $("#formRechercheClient").serialize(),
+                dataType: 'html',
+                success: function(data) {
+                    $('#retourClient').html('');
+                    $("#retourClient").append(data);
+                    $('#retourClient').fadeIn();                            
                 }
             });
     }
@@ -117,15 +89,56 @@ function panierAjout(id){
                 });
 }
 
+
+function ajoutClient(id){
+    $('#client').blur();
+    $.ajax({
+                    type : "POST",
+                    url: id,
+                    data: $(this).serialize(),
+                    success : function(data){
+                        
+                        if(data == 'success'){ 
+                           //$("#data_source_panier").ajax.url( 'afficherPanier' ).load();
+                           //$("#data_source_panier").DataTable().ajax.reload();
+                           //AfficherPanier();
+                           //alert("badi");
+                           //$(this).removeAttr("href"); 
+                           submitFormRechercheClient();
+                           AfficherClient(); 
+                        }
+                       },
+                    error: function(){
+                        alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
+                    }
+                });
+}
+
 function AfficherPanier(){
     $.ajax({
                     type : "POST",
                     url: 'afficherPanier',
                     data: $(this).serialize(),
                     success : function(data){
-                            $('#retourPanier').html('');
+                             $('#retourPanier').html('');
                             $("#retourPanier").append(data);
                             $('#retourPanier').fadeIn();
+                       },
+                    error: function(){
+                        alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
+                    }
+                });
+}
+
+function AfficherClient(){
+    $.ajax({
+                    type : "POST",
+                    url: 'afficherClient',
+                    data: $(this).serialize(),
+                    success : function(data){
+                            $('#retourClientSelected').html('');
+                            $('#retourClientSelected').append(data);
+                            $('#retourClientSelected').fadeIn();
                        },
                     error: function(){
                         alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
@@ -143,8 +156,24 @@ function viderPanier(){
                     url: 'creationPanier',
                     data: $(this).serialize(),
                     success : function(data){
-                            AfficherPanier();
+                            AfficherClient();
                             submitForm();
+                       },
+                    error: function(){
+                        alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
+                    }
+                });   
+}
+
+
+function viderClient(){
+    $.ajax({
+                    type : "POST",
+                    url: 'viderClient',
+                    data: $(this).serialize(),
+                    success : function(data){
+                            AfficherPanier();
+                            submitFormRechercheClient();
                        },
                     error: function(){
                         alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
@@ -179,68 +208,115 @@ function panierSupprimer(id){
         <hr class="bar" id="line_3"></hr>
         <hr class="bar" id="line_4"></hr>
 </div>
-<div class="category">
-    <span class="category_title">Choisissez les produits</span>
-    <div class="sub_category">
-        <form id="formRecherche" action="<?=WEBROOT?>Vente/rechercher" method="post">
-			<font color="black" size="4">
-				<table  border="0px" width="600px">
-					<tr>
-						<td width="100px" align="left">Medicament</td>	<td align="center"><input type="text"  id="produit" name="produit" placeholder="Libelle du medicament">	</td>
-					</tr>
-					<!--
-					<tr>
-						<td width="100px" align="left">Type</td>	<td align="center"><input type="text" id ="classe" name="classe" placeholder="Classe pharmaceutique">	</td>
-					</tr>
-					!-->
-					<tr>
-						<div id="retour">
-						<i></i>
-						</div>
-					</tr>
-				</table>
-			</font>
-		</form>
-    </div>
+<div class="SalesContentStep1" id="step1Content">
+        <div class="category">
+            <span class="category_title">Choisissez les produits</span>
+            <div class="sub_category">
+                <form id="formRecherche" action="<?=WEBROOT?>Vente/rechercher" method="post">
+        			<font color="black" size="4">
+        				<table  border="0px" width="600px">
+        					<tr>
+        						<td width="100px" align="left">Medicament</td>	<td align="center"><input type="text"  id="produit" name="produit" placeholder="Libelle du medicament">	</td>
+        					</tr>
+        					<!--
+        					<tr>
+        						<td width="100px" align="left">Type</td>	<td align="center"><input type="text" id ="classe" name="classe" placeholder="Classe pharmaceutique">	</td>
+        					</tr>
+        					!-->
+        					<tr>
+        						<div id="retour">
+        						<i></i>
+        						</div>
+        					</tr>
+        				</table>
+        			</font>
+        		</form>
+            </div>
+        </div>
+        <div class="category">
+            <span class="category_title">Finalisez votre vente</span>
+            <div class="sub_category">
+                  <a href="#" onclick="viderPanier()">Vider le panier</a>
+                  <div id="retourPanier">
+                    <i></i>
+                    <table id="sale_table" width="600px" >
+                        <tr><th>Action</th><th>Code Barre</th><th>Article</th><th>prix</th></tr>
+                    </table>
+                    <div style="height:100px;overflow:auto;">
+                    <table id="sale_table" width="600px">
+                    <?php if(isset($_SESSION['panier'])) : ?>
+                        <?php foreach($_SESSION['panier'] as $article) : ?>
+                            <tr >
+                                <td align="center">
+                                <a href="#" class="ajoutPanier" id="supprimerArticle/<?=$article->id?>" onclick="panierSupprimer(this.id);" >Supprimer</a>
+                                </td>
+                                <td align="center">
+                                    <?=$article->CodeBarre?>
+                                </td>
+                                <td align="center"><?=$article->Produit->Libelle?></td>
+                                <td align="center" style=" border-top-style:solid;border-top-width:1px;"><?=$article->Produit->Prix?></td>
+                                </tr>
+                        <?php endforeach;?>
+                    <?php endif; ?>                     
+                    </table>
+                    </div>
+                   </div> 
+                    <div onClick="show_step('step2Content', 'step1Content',2)">Suivant</div>
+                  
+            </div>
+        </div>
 </div>
-
-<div class="category">
-    <span class="category_title">Finalisez votre vente</span>
-    <div class="sub_category">
-  <a href="#" onclick="viderPanier()">Vider le panier</a>
-  <div id="retourPanier">
-    <i></i>
-    <table id="sale_table" width="600px" >
-        <tr><th>Action</th><th>Code Barre</th><th>Article</th><th>prix</th></tr>
-    </table>
-    <div style="height:100px;overflow:auto;">
-    <table id="sale_table" width="600px">
-    <?php if(isset($_SESSION['panier'])) : ?>
-        <?php foreach($_SESSION['panier'] as $article) : ?>
-            <tr >
-                <td align="center">
-                <a href="#" class="ajoutPanier" id="supprimerArticle/<?=$article->id?>" onclick="panierSupprimer(this.id);" >Supprimer</a>
-                </td>
-                <td align="center">
-                    <?=$article->CodeBarre?>
-                </td>
-                <td align="center"><?=$article->Produit->Libelle?></td>
-                <td align="center" style=" border-top-style:solid;border-top-width:1px;"><?=$article->Produit->Prix?></td>
-                </tr>
-        <?php endforeach;?>
-    <?php endif; ?>                     
-    </table>
+<div class="salesContent" id="step2Content">
+    
+    <div class="category">
+            <span class="category_title">Rechercher votre client</span>
+            <div class="sub_category">
+                <form id="formRechercheClient" action="<?=WEBROOT?>Vente/rechercherClient" method="post">
+                    <font color="black" size="4">
+                        <table  border="0px" width="600px">
+                            <tr>
+                                <td width="100px" align="left">Client</td>  <td align="center"><input type="text"  id="client" name="client" placeholder="Nom | Prenom | tel"> <a href="#"> Créer</a></td>
+                            </tr>
+                            <!--
+                            <tr>
+                                <td width="100px" align="left">Type</td>    <td align="center"><input type="text" id ="classe" name="classe" placeholder="Classe pharmaceutique">   </td>
+                            </tr>
+                            !-->
+                            <tr>
+                                <div id="retourClient">
+                                <i></i>
+                                </div>
+                            </tr>
+                        </table>
+                    </font>
+                </form>
+            </div>
     </div>
-    <input type="submit" name="Valider" value="Valider" id="send"/>
-  </div>
-</div>
+    
+    <div class="category">
+                <span class="category_title">Informations client</span>
+                <div class="sub_category">
+                      <div id="retourClientSelected">
+                        <a href="#" onclick="viderClient()">Désélectionner</a>
+                        <table id="sale_table" width="600px" >
+                        <tr><th>Nom</th><th>Prenom</th><th>tel</th></tr>
+                        </table>
+                        <i></i>
+                        <div style="height:100px;overflow:auto;">
+                        <table id="sale_table" width="600px">
+                            <?php if(isset($_SESSION['client'])) : ?>
+                                <tr >
+                                        <td align="center">
+                                            <?=$_SESSION['client']->Nom?>
+                                        </td>
+                                        <td align="center"><?=$_SESSION['client']->Prenom?></td>
+                                        <td align="center" style=" border-top-style:solid;border-top-width:1px;">
+                                            <?=$_SESSION['client']->Tel?></td>
+                                </tr>
+                            <?php endif; ?>                  
+                        </table>
+                        </div>
+                      </div>
+                </div>
+    </div> 
 </div> 
-<!-- 
-<table id="sale_table" width="600px" >
- 	<tr width="100%"><th>Id</th><th>Article</th><th>prix</th>  <th width="15px">Quantité</th></tr>
- 	<tr ><td align="center">4563</td><td align="center">Article 1</td><td style="border-right-style:hidden;" align="right">350 CFA</td>  <td align="center" style=" border-top-style:solid;border-top-width:1px;">x1</td></tr>
- 	<tr ><td align="center">7364</td><td align="center">Article 2</td><td style="border-right-style:hidden;" align="right">1 5000 CFA</td>  <td align="center">x2</td></tr>
- 	<tr ><td align="center">9034</td><td align="center">Article 3</td><td style="border-right-style:hidden;" align="right">2 0000 CFA</td>  <td align="center">x2</td></tr>
- 	<tr ><td align="center">8374</td><td align="center">Article 4</td><td style="border-right-style:hidden;" align="right">200 CFA</td>  <td align="center">x5</td></tr>
-</table>
-!-->
