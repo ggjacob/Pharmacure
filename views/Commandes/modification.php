@@ -30,21 +30,41 @@ function deleteoldline(selector){
 }
 $(function(){
         $("#formCommande").submit(function(event){
+            var error = false;
             var idetat = $("#idetat").val();
             var msg_alert       = 'Merci de selectionner un etat';
-            var idproduit = $(":select .idproduit").serialize();
-            console.log(idproduit);
+            var idproduit = [];
             var quantite = [];
-//            $('select[name^="idproduit"]').each(function(){ idproduit.push(this.value); });
-//            $('input[name^="quantite"]').each(function(){ quantite.push(this.value); }); 
-
-    if(idetat == '')
+            $('select[name^="idproduit"]').each(function(){ idproduit.push(this.value); });
+            $('input[name^="quantite"]').each(function(){ quantite.push(this.value); }); 
+            console.log(idproduit);
+            console.log(quantite);
+            
+            for (i = 0; i < idproduit.length; i++){
+                if (idproduit[i] == ''){
+                    $('#formOk').hide();
+                    $('#KOText').html("Erreur ! Veuillez renseigner un produit pour chaque ligne...");
+                    $('#formKO').show();
+                    error = true;
+                    
+                }
+            }
+            for (i = 0; i < quantite.length; i++){
+                if ((!checkNumber(quantite[i])){
+                    $('#formOk').hide();
+                    $('#KOText').html("Erreur ! Veuillez saisir uniquement un nombre...");
+                    $('#formKO').show();
+                    error = true;
+                    
+                }
+            }
+            if(idetat == '')
                 {
                     $('#formOk').hide();
-                    $('#KOText').html("Erreur ! Veuillez renseigner tous les champs requis...");
+                    $('#KOText').html("Erreur ! Veuillez selectionn&eacute; un &eacute;tat...");
                     $('#formKO').show();
                 }
-                else
+                else if(error == false)
                 {
                     $.ajax({
                         type : "POST",

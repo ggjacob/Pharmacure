@@ -171,6 +171,7 @@ function product_list(id){
                     <tr>
                         <td width="42px" align="left">Fournisseur</td>   
                         <td align="center"><select id="idfournisseur" style="width:190px; text-overflow: ellipsis;" name="idfournisseur">
+                                <option value="">Select...</option>
                                 <?php foreach ($view['fournisseurs'] as $fournisseurs):?>
                                     <option value="<?=$fournisseurs->id?>"> <?=$fournisseurs->Libelle?></option>
                                 <?php endforeach; ?>
