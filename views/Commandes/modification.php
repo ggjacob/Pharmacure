@@ -1,9 +1,5 @@
 <script type="text/javascript">
 function addline(url){
-//    var contenu = $(".ligneproduit").html();
-//    console.log(contenu);
-//    $('.upper_content_forms_table').append(contenu);
-//    $('.upper_content_forms_table').children('div').css('display', 'true');
         $.ajax({
                     url: url,
                     success : function(data){
@@ -21,9 +17,7 @@ function deleteoldline(selector){
     $.ajax({
                     url: url,
                     success : function(data){
-                        if(data == 'success'){
-                        $(selector).parent('tr').remove();
-                        }   
+                        $(selector).parent('tr').remove();   
                     }          
             });
     
@@ -32,13 +26,11 @@ $(function(){
         $("#formCommande").submit(function(event){
             var error = false;
             var idetat = $("#idetat").val();
-            var msg_alert       = 'Merci de selectionner un etat';
+            var msg_alert = 'Merci de selectionner un etat';
             var idproduit = [];
             var quantite = [];
             $('select[name^="idproduit"]').each(function(){ idproduit.push(this.value); });
             $('input[name^="quantite"]').each(function(){ quantite.push(this.value); }); 
-            console.log(idproduit);
-            console.log(quantite);
             
             for (i = 0; i < idproduit.length; i++){
                 if (idproduit[i] == ''){
@@ -50,7 +42,7 @@ $(function(){
                 }
             }
             for (i = 0; i < quantite.length; i++){
-                if ((!checkNumber(quantite[i])){
+                if (!checkNumber(quantite[i])){
                     $('#formOk').hide();
                     $('#KOText').html("Erreur ! Veuillez saisir uniquement un nombre...");
                     $('#formKO').show();
@@ -148,19 +140,3 @@ $(function(){
         
 </form>
 </div>
-<div style="display:none;" class="ligneproduit">
-                <tr>
-                    <td width="42px" align="left">Produit</td>
-                    <td align="center">
-                    <select classe="idproduit" style="width:90px; text-overflow: ellipsis;" name="idproduit[]">
-                        <option value="">Select...</option>
-                        <?php foreach ($view['produit'] as $produit):?>
-                            <option value="<?=$produit->id?>"> <?=$produit->Libelle?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </td>
-                <td width="42px" align="left">Quantité</td>   
-                <td align="center"><input width="40px" classe="quantite" type="number" name="quantite[]"  placeholder="Quantité"></td>
-                </tr>
-            </div>
-

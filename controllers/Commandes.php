@@ -59,8 +59,6 @@ class Commandes extends Controller{
         $commande = Doctrine_Core::getTable('commande')->find($id);
         $lignecommande = new LigneCommande();
         $lignecommande = Doctrine_Core::getTable('lignecommande')->findByIdCommande($id);
-        //var_dump($lignecommande);
-        //var_dump($commande);
         $form = Array();
         $form['idetat']=$commande->IdEtat;
         $form['type'] ='update';    
@@ -90,19 +88,20 @@ class Commandes extends Controller{
                     
                     $currentCommande = new Commande();
                     $currentCommande = Doctrine_Core::getTable('commande')->find($this->data['id']);
-                    
                     if(!$currentCommande) $erreur="failed";
                     if(empty($erreur)) {
                         $produitList = $this->data['idproduit'];
                         $quantiteList = $this->data['quantite'];
                         $checkList = $this->data['checkproduit'];
                         foreach ($produitList as $key => $p) {
+                            //Si la ligne existe on la modifie
                             if($checkList[$key] != 0){
                                 $lignecommande = new LigneCommande();
                                 $lignecommande = Doctrine_Core::getTable('lignecommande')->findOneById($checkList[$key]);
                                 $lignecommande->init2($p, $quantiteList[$key]);
                                 $lignecommande->save();    
                             }
+                            // Si la ligne n'existe pas on créer une nouvelle ligne
                             else if($checkList[$key] == 0){
                                  //Il faut instancier un nouvel objet pour chaque ligne
                                 $lignecommande = new LigneCommande();
@@ -125,6 +124,11 @@ class Commandes extends Controller{
      * @UserS('REQUIRED')
      */
     function suppression($id){
+        $lignecommande = new LigneCommande();
+        $lignecommande = Doctrine_Core::getTable('lignecommande')->findByIdCommande($id);
+        foreach ($lignecommande as $l){
+            $l->delete();
+        }
         $commande = new Commande();
         $commande = Doctrine_Core::getTable('commande')->findOneById($id);
         if(!$commande->delete()) $this->redirect('Commandes/index',0);
@@ -136,10 +140,7 @@ class Commandes extends Controller{
         $lignecommande = new LigneCommande();
         $lignecommande = Doctrine_Core::getTable('lignecommande')->findOneById($id);
         if(!$lignecommande->delete()) $this->redirect('Commandes/index',0);
-        $erreur="success";
-        echo $erreur;
     }
 }
-
-    
+  
 ?>
