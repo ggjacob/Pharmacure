@@ -102,7 +102,7 @@ $(document).ready( function () {
             <div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes Produits</span></div>
               <table id="data_source">
                    <thead>
-                      <tr ><th>id</th><th>Libelle</th><th>Prix</th><th>Ordonnance</th><th>Commentaire</th><th>Alerte</th><th>Conditionnement</th><th>IdClasse</th><th>IdTaxe</th></tr>    
+                      <tr ><th>id</th><th>Libelle</th><th>Prix</th><th>Ordonnance</th><th>Commentaire</th><th>Stock</th><th>Conditionnement</th><th>IdClasse</th><th>IdTaxe</th></tr>    
                    </thead>
                    <tbody>
                   <tbody>

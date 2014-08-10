@@ -172,7 +172,7 @@ function viderClient(){
                     url: 'viderClient',
                     data: $(this).serialize(),
                     success : function(data){
-                            AfficherPanier();
+                            AfficherClient();
                             submitFormRechercheClient();
                        },
                     error: function(){
@@ -296,8 +296,8 @@ function panierSupprimer(id){
     <div class="category">
                 <span class="category_title">Informations client</span>
                 <div class="sub_category">
+                    <a href="#" onclick="viderClient()">Désélectionner</a>
                       <div id="retourClientSelected">
-                        <a href="#" onclick="viderClient()">Désélectionner</a>
                         <table id="sale_table" width="600px" >
                         <tr><th>Nom</th><th>Prenom</th><th>tel</th></tr>
                         </table>
