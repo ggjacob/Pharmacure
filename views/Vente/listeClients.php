@@ -7,7 +7,7 @@
 <table id="sale_table" width="600px">
 <?php foreach($view['clients'] as $client) : ?>
 	<tr >
-		<td align="center"> <a href="#" class="ajoutPanier" id="ajouterClient/<?=$client->id?>" onclick="ajoutClient(this.id);" >Selectionner</a></td>
+		<td align="center"> <a href="#" class="ajoutPanier" id="ajouterClient/<?=$client->id?>" onclick="ajoutClient(this.id);return false;" >Selectionner</a></td>
 		<td align="center"><?=$client->Nom?></td>
 		<td align="center"><?=$client->Prenom?></td>
 		<td align="center" style=" border-top-style:solid;border-top-width:1px;">

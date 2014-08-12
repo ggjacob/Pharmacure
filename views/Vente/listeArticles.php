@@ -7,7 +7,7 @@
 <table id="sale_table" width="600px">
 <?php foreach($view['articles'] as $article) : ?>
 	<tr >
-		<td align="center"> <a href="#" class="ajoutPanier" id="ajouter/<?=$article->id?>" onclick="panierAjout(this.id);" >Ajouter</a></td>
+		<td align="center"> <a href="#" class="ajoutPanier" id="ajouter/<?=$article->id?>" onclick="panierAjout(this.id);return false;" >Ajouter</a></td>
 		<td align="center"><?=$article->Produit->Libelle?></td>
 		<td align="center"><?=$article->Produit->Prix?></td>
 		<td align="center" style=" border-top-style:solid;border-top-width:1px;">

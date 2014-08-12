@@ -7,7 +7,7 @@
 	<?php foreach($_SESSION['panier'] as $article) : ?>
 		<tr >
 			<td align="center">
-				<a href="#" class="ajoutPanier" id="supprimerArticle/<?=$article->id?>" onclick="panierSupprimer(this.id);" >Supprimer</a>
+				<a href="#" class="ajoutPanier" id="supprimerArticle/<?=$article->id?>" onclick="panierSupprimer(this.id);return false;" >Supprimer</a>
 			</td>
 			<td align="center">
 				<?=$article->CodeBarre?>

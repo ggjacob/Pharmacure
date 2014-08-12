@@ -172,7 +172,7 @@ function viderPanier(){
                     url: 'creationPanier',
                     data: $(this).serialize(),
                     success : function(data){
-                            AfficherClient();
+                            AfficherPanier();
                             submitForm();
                        },
                     error: function(){
@@ -252,7 +252,7 @@ function panierSupprimer(id){
         <div class="category">
             <span class="category_title">Finalisez votre liste</span>
             <div class="sub_category">
-                  <a href="#" onclick="viderPanier()">Vider le panier</a>
+                  <a href="#" onclick="viderPanier();return false;">Vider le panier</a>
                   <div id="retourPanier">
                     <i></i>
                     <table id="sale_table" width="600px" >
@@ -264,7 +264,7 @@ function panierSupprimer(id){
                         <?php foreach($_SESSION['panier'] as $article) : ?>
                             <tr >
                                 <td align="center">
-                                <a href="#" class="ajoutPanier" id="supprimerArticle/<?=$article->id?>" onclick="panierSupprimer(this.id);" >Supprimer</a>
+                                <a href="#" class="ajoutPanier" id="supprimerArticle/<?=$article->id?>" onclick="panierSupprimer(this.id);return false;" >Supprimer</a>
                                 </td>
                                 <td align="center">
                                     <?=$article->CodeBarre?>
@@ -312,7 +312,7 @@ function panierSupprimer(id){
     <div class="category">
                 <span class="category_title">Informations client</span>
                 <div class="sub_category">
-                    <a href="#" onclick="viderClient()">Désélectionner</a>
+                    <a href="#" onclick="viderClient();return false;">Désélectionner</a>
                       <div id="retourClientSelected">
                         <table id="sale_table" width="600px" >
                         <tr><th>Nom</th><th>Prenom</th><th>tel</th></tr>
@@ -387,4 +387,4 @@ function panierSupprimer(id){
                 <div onClick="show_prev_step('step4Content', 'step5Content',5)">Précédent</div>
                 impression facture
     </div> 
-</div>  
+</div>
