@@ -270,6 +270,8 @@ Article:
       type: string(255)
     Panier:
       type: boolean
+    Etat:
+      type: string(255)
   relations:
     produit:
       class: Produit

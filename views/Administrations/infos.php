@@ -49,7 +49,6 @@ $(function(){
         });
     });
 </script>
-<h1><?=$view['titre']?></h1>
 <div id="upper_content_forms" style="visibility:visible !important;">
     <div>
             <div style="display:none;" id="formOk" class="alert alert-icon alert-success">
@@ -61,7 +60,8 @@ $(function(){
                 </div>
             </div>
     </div>
-	<form  id="formInfosPharmacie" action="<?=WEBROOT?>Administrations/infosModification" method="post" >
+	
+    <form  id="formInfosPharmacie" action="<?=WEBROOT?>Administrations/infosModification" method="post" >
 	            <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
 	            <font color="black" size="4">
 	                <table class="upper_content_forms_table" >

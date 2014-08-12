@@ -62,8 +62,14 @@ class Vente extends Controller{
 
 
     function afficherPanier(){
+        
         $this->layout=false;
         $this->render('listePanier');
+    }
+
+    function afficherRecap(){
+        $this->layout=false;
+        $this->render('recap');
     }
 
     function creationPanier(){
@@ -118,13 +124,6 @@ class Vente extends Controller{
         $client = Doctrine_Core::getTable('Client')->findOneById($id);
         $erreur = "";
         if($client){
-            //$data = array();
-
-            //$data['id'] = $article->id;
-            //$data['Libelle'] = $article->Produit->Libelle;
-            //$data['Prix'] = $article->Produit->Prix;
-            //$data['Quantite'] = 1;
-            //$data = $article->toArray();
             $_SESSION['client'] = $client;
          }
          echo "success";

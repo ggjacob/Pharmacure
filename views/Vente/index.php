@@ -130,6 +130,22 @@ function AfficherPanier(){
                 });
 }
 
+function AfficherRecap(){
+    $.ajax({
+                    type : "POST",
+                    url: 'afficherRecap',
+                    data: $(this).serialize(),
+                    success : function(data){
+                             $('#retourRecap').html('');
+                             $('#retourRecap').append(data);
+                             $('#retourRecap').fadeIn();
+                       },
+                    error: function(){
+                        alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
+                    }
+                });
+}
+
 function AfficherClient(){
     $.ajax({
                     type : "POST",
@@ -337,7 +353,7 @@ function panierSupprimer(id){
                     Informations pour remboursement du client
                 </div>
                 <div onClick="show_prev_step('step2Content', 'step3Content',3)">Précédent</div>
-                <div onClick="show_next_step('step4Content', 'step3Content',4)">Suivant</div>
+                <div onClick="show_next_step('step4Content', 'step3Content',4);AfficherRecap();">Suivant</div>
     </div> 
 </div>
 
@@ -346,7 +362,9 @@ function panierSupprimer(id){
     <div class="category">
             <span class="category_title">Factures</span>
             <div class="sub_category">
-                <p>Informations factures</p>
+                    <div  id="retourRecap">
+                        <i></i>    
+                    </div>
             </div>
     </div>
     
