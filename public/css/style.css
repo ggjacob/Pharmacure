@@ -1153,17 +1153,17 @@ hr.bar {
   background-image: url('../images/validation_steps/client_info.png');
   color:black;
 }
-#step_3_validated 
+.step_3_validated
 {
   background-image: url('../images/validation_steps/medical_info.png');
   color:black;
 }
-#step_4_validated 
+.step_4_validated 
 {
   background-image: url('../images/validation_steps/sale_recap.png');
   color:black;
 }
-#step_5_validated 
+.step_5_validated 
 {
   background-image: url('../images/validation_steps/validation.png');
   color:black;

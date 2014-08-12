@@ -93,7 +93,7 @@ function display_ct()
 var ddmenuitem	= 0;
 var ddmenuitem2	= 0;
 var ddmenuitem3 = 0;
-function show_step(afficher, masquer,step)
+function show_next_step(afficher, masquer,step)
 {	
 	ddmenuitem = document.getElementById(afficher);
 	ddmenuitem2 = document.getElementById(masquer);
@@ -104,8 +104,24 @@ function show_step(afficher, masquer,step)
 
 	ddmenuitem3 = $("#step_"+step);
 
-    ddmenuitem3.removeClass("step_"+step);
-	ddmenuitem3.addClass("step_"+step+"_validated");
+	ddmenuitem3.removeClass("step_"+step);
+	
+    ddmenuitem3.addClass("step_"+step+"_validated");
+}
+
+function show_prev_step(afficher, masquer,step)
+{	
+	ddmenuitem = document.getElementById(afficher);
+	ddmenuitem2 = document.getElementById(masquer);
+	ddmenuitem.style.visibility = 'visible';
+	ddmenuitem.style.position = 'relative';
+	ddmenuitem2.style.visibility = 'hidden';
+	ddmenuitem2.style.position = 'absolute';
+
+	ddmenuitem3 = $("#step_"+step);
+
+	ddmenuitem3.removeClass("step_"+step+"_validated");
+    ddmenuitem3.addClass("step_"+step);
 }
 
 

@@ -234,7 +234,7 @@ function panierSupprimer(id){
             </div>
         </div>
         <div class="category">
-            <span class="category_title">Finalisez votre vente</span>
+            <span class="category_title">Finalisez votre liste</span>
             <div class="sub_category">
                   <a href="#" onclick="viderPanier()">Vider le panier</a>
                   <div id="retourPanier">
@@ -261,7 +261,7 @@ function panierSupprimer(id){
                     </table>
                     </div>
                    </div> 
-                    <div onClick="show_step('step2Content', 'step1Content',2)">Suivant</div>
+                    <div onClick="show_next_step('step2Content', 'step1Content',2)">Suivant</div>
                   
             </div>
         </div>
@@ -318,5 +318,55 @@ function panierSupprimer(id){
                         </div>
                       </div>
                 </div>
+                <div onClick="show_prev_step('step1Content', 'step2Content',2)">Précédent</div>
+                <div onClick="show_next_step('step3Content', 'step2Content',3)">Suivant</div>
     </div> 
-</div> 
+</div>
+<div class="salesContent" id="step3Content">
+    
+    <div class="category">
+            <span class="category_title">Remboursement medicament</span>
+            <div class="sub_category">
+                <p>Informations remboursements medicaments</p>
+            </div>
+    </div>
+    
+    <div class="category">
+                <span class="category_title">Informations client</span>
+                <div class="sub_category">
+                    Informations pour remboursement du client
+                </div>
+                <div onClick="show_prev_step('step2Content', 'step3Content',3)">Précédent</div>
+                <div onClick="show_next_step('step4Content', 'step3Content',4)">Suivant</div>
+    </div> 
+</div>
+
+<div class="salesContent" id="step4Content">
+    
+    <div class="category">
+            <span class="category_title">Factures</span>
+            <div class="sub_category">
+                <p>Informations factures</p>
+            </div>
+    </div>
+    
+    <div class="category">
+                <span class="category_title">Informations recap remboursement</span>
+                <div class="sub_category">
+                    Informations pour remboursement du client
+                </div>
+                <div onClick="show_prev_step('step3Content', 'step4Content',4)">Précédent</div>
+                <div onClick="show_next_step('step5Content', 'step4Content',5)">Suivant</div>
+    </div> 
+</div>
+<div class="salesContent" id="step5Content">
+    
+    <div class="category">
+                <span class="category_title">Félicitation</span>
+                <div class="sub_category">
+                    Votre vente à été finalisé
+                </div>
+                <div onClick="show_prev_step('step4Content', 'step5Content',5)">Précédent</div>
+                impression facture
+    </div> 
+</div>  
