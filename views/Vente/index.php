@@ -256,7 +256,7 @@ function panierSupprimer(id){
                   <div id="retourPanier">
                     <i></i>
                     <table id="sale_table" width="600px" >
-                        <tr><th>Action</th><th>Code Barre</th><th>Article</th><th>prix</th></tr>
+                        <tr><th>Action</th><th>Code Barre</th><th>Article</th><th>prix TTC</th></tr>
                     </table>
                     <div style="height:100px;overflow:auto;">
                     <table id="sale_table" width="600px">
@@ -270,7 +270,7 @@ function panierSupprimer(id){
                                     <?=$article->CodeBarre?>
                                 </td>
                                 <td align="center"><?=$article->Produit->Libelle?></td>
-                                <td align="center" style=" border-top-style:solid;border-top-width:1px;"><?=$article->Produit->Prix?></td>
+                                <td align="center" style=" border-top-style:solid;border-top-width:1px;"><?=$article->Produit->Prix * ( 1 + ($article->Produit->Taxe->Taux/100))?> f cfa</td>
                                 </tr>
                         <?php endforeach;?>
                     <?php endif; ?>                     
@@ -360,7 +360,7 @@ function panierSupprimer(id){
 <div class="salesContent" id="step4Content">
     
     <div class="category">
-            <span class="category_title">Factures</span>
+            <span class="category_title">Récapitulatif</span>
             <div class="sub_category">
                     <div  id="retourRecap">
                         <i></i>    

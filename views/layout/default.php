@@ -52,12 +52,6 @@
 			<div class="sousgear">
 				<a href="#" onclick='addTab("Vos collaborateurs","<?=WEBROOT?>Comptes/index")'>Vos collaborateurs</a>
 			</div>
-			<div class="sousgear">
-				<a href="#">Item 3</a>
-			</div>
-			<div class="sousgear">
-				<a href="#">Item 4</a>
-			</div>
 		</div>
 
 		<div id="top"><a href="<?=WEBROOT?>"><div id="logo"></div><div class="logo_info">PharmaCure&trade;</br></div><div class="logo_info_small">Le Premier Traitement Digital</div></a>

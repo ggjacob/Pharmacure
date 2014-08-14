@@ -5,12 +5,7 @@
  */
 class Vente extends Controller{
    
-    function index(){
-
-        //$articles = new Article();
-        //$articles = $_SESSION['panier'];
-        //$d['view'] = array("titre" => "","articles" => $articles);
-        //$this->set($d); 
+    function index(){ 
         $this->render('index');
     }
 
@@ -68,7 +63,16 @@ class Vente extends Controller{
     }
 
     function afficherRecap(){
+        $totalHT=0;
+        $totalTTC=0;
+        foreach ($_SESSION['panier'] as $article) {
+            $totalHT  += $article->Produit->Prix;
+            $totalTTC += $article->Produit->Prix * ( 1 + ($article->Produit->Taxe->Taux/100));
+        }
+
         $this->layout=false;
+        $d['view'] = array("totalHT"=>$totalHT,"totalTTC"=>$totalTTC);
+        $this->set($d); 
         $this->render('recap');
     }
 

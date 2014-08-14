@@ -34,7 +34,8 @@
         </tr>
 
     </table>
-    <table style="float:right; margin-bottom:20px" width="250px">  
+<?php endif; ?>
+<table style="float:right; margin-bottom:20px" width="250px">  
         <tr >
                 <td colspan="2" align="center">
                     Pharmacie Pharmacure
@@ -84,10 +85,8 @@
             <td></td>
         </tr>
     </table>
-
-<?php endif; ?>
 <table id="sale_table" width="600px" >
-    <tr><th>Code Barre</th><th>Article</th><th>prix</th></tr>
+    <tr><th>Code Barre</th><th>Article</th><th>prix HT</th><th>prix TTC</th><th>TVA</th></tr>
 </table>
 <div style="height:100px;overflow:auto;">
     <table id="sale_table" width="600px">
@@ -99,8 +98,28 @@
                     </td>
                     <td align="center"><?=$article->Produit->Libelle?></td>
                     <td align="center" style=" border-top-style:solid;border-top-width:1px;"><?=$article->Produit->Prix?> f cfa</td>
+                    <td align="center" style=" border-top-style:solid;border-top-width:1px;"><?=$article->Produit->Prix * ( 1 + ($article->Produit->Taxe->Taux/100))?> f cfa</td>
+                    <td align="center" style=" border-top-style:solid;border-top-width:1px;"><?=$article->Produit->Taxe->Taux?>%</td>
                     </tr>
             <?php endforeach;?>
         <?php endif; ?>                     
     </table>
 </div>
+<table width="600px">  
+        <tr >
+                <td align="left">
+                    <b>Total HT</b>
+                </td>
+                <td align="right">
+                    <b><?=$view['totalHT']?> f cfa</b>
+                </td>
+        </tr>
+        <tr >
+                <td align="left">
+                    <b>Total TTC</b>
+                </td>
+                <td align="right">
+                    <b><?=$view['totalTTC']?> f cfa</b>
+                </td>
+        </tr>
+    </table>
