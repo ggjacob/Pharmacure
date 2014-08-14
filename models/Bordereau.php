@@ -13,4 +13,7 @@
 class Bordereau extends BaseBordereau
 {
 
+    public function init($idcommande){
+        $this->IdCommande = $idcommande;
+    }
 }
