@@ -224,6 +224,7 @@ function finaliserVente(){
                             $('#OKText').html("Succ&egrave;s ! Votre vente a été finalisé. Vous pouvez imprimer la facture");
                             $('#formOk').show();
                             $('#formKO').hide();
+                            //show_prev_step('step1Content', 'step2Content',2);
                         }
                         else if(data == 'failed'){
                             $('#KOText').html("Erreur ! Veuillez choisir au moins un produit");
@@ -427,5 +428,6 @@ function finaliserVente(){
                     <br><br>
                     <div onClick="finaliserVente()">Finaliser vente</div>
                 </div>
+                <div onClick="show_prev_step('step4Content', 'step5Content',5)">Précédent</div>
     </div> 
 </div>

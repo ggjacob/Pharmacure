@@ -21,7 +21,7 @@ class Vente extends Controller{
         $q = $q->leftJoin('a.Produit p')->Where('p.Libelle LIKE ?',$nomProduit.'%');
 
         $q = $q->AndWhere('a.Panier = 0');
-        $q = $q->AndWhere('a.Etat <> "vendu"');
+        $q = $q->AndWhere('a.Etat is null');
 
         $q = $q->orderBy('p.Libelle ASC');
 
