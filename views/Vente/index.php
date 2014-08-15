@@ -311,10 +311,13 @@ function finaliserVente(){
                     </table>
                     </div>
                    </div> 
-                    <div onClick="show_next_step('step2Content', 'step1Content',2)">Suivant</div>
-                  
             </div>
         </div>
+        <table width="630px">
+                        <tr>
+                            <td align="right"> <a href="#" onclick="show_next_step('step2Content', 'step1Content',2);return false;"><div class="salesNavigation" id="suivant" ></div></a></td>
+                        </tr>
+                    </table>
 </div>
 <div class="salesContent" id="step2Content">
     
@@ -368,9 +371,13 @@ function finaliserVente(){
                         </div>
                       </div>
                 </div>
-                <div onClick="show_prev_step('step1Content', 'step2Content',2)">Précédent</div>
-                <div onClick="show_next_step('step3Content', 'step2Content',3)">Suivant</div>
-    </div> 
+    </div>
+    <table width="630px">
+                        <tr>
+                            <td align="left"> <a href="#" onclick="show_prev_step('step1Content', 'step2Content',2);return false;" ><div id="precedent" onclick=""></div></a></td>
+                            <td align="right"> <a href="#" onclick="show_next_step('step3Content', 'step2Content',3);return false;"><div class="salesNavigation" id="suivant" ></div></a></td>
+                        </tr>
+                </table> 
 </div>
 <div class="salesContent" id="step3Content">
     
@@ -386,9 +393,13 @@ function finaliserVente(){
                 <div class="sub_category">
                     Informations pour remboursement du client
                 </div>
-                <div onClick="show_prev_step('step2Content', 'step3Content',3)">Précédent</div>
-                <div onClick="show_next_step('step4Content', 'step3Content',4);AfficherRecap();">Suivant</div>
-    </div> 
+    </div>
+    <table width="630px">
+                        <tr>
+                            <td align="left"> <a href="#" onclick="show_prev_step('step2Content', 'step3Content',3);return false;" ><div id="precedent" onclick=""></div></a></td>
+                            <td align="right"> <a href="#" onclick="show_next_step('step4Content', 'step3Content',4);AfficherRecap();return false;"><div class="salesNavigation" id="suivant" ></div></a></td>
+                        </tr>
+                </table> 
 </div>
 
 <div class="salesContent" id="step4Content">
@@ -406,9 +417,13 @@ function finaliserVente(){
                 <div class="sub_category">
                     Informations pour remboursement du client
                 </div>
-                <div onClick="show_prev_step('step3Content', 'step4Content',4)">Précédent</div>
-                <div onClick="show_next_step('step5Content', 'step4Content',5)">Suivant</div>
     </div> 
+    <table width="630px">
+                        <tr>
+                            <td align="left"> <a href="#" onclick="show_prev_step('step3Content', 'step4Content',4);return false;" ><div id="precedent" onclick=""></div></a></td>
+                            <td align="right"> <a href="#" onclick="show_next_step('step5Content', 'step4Content',5);return false;"><div class="salesNavigation" id="suivant" ></div></a></td>
+                        </tr>
+                </table>
 </div>
 <div class="salesContent" id="step5Content">
     <div>
@@ -427,7 +442,11 @@ function finaliserVente(){
                     Vous êtes sur le point de finaliser la vente. impression facture
                     <br><br>
                     <div onClick="finaliserVente()">Finaliser vente</div>
-                </div>
-                <div onClick="show_prev_step('step4Content', 'step5Content',5)">Précédent</div>
-    </div> 
+                </div>     
+    </div>
+    <table width="630px">
+                        <tr>
+                            <td align="left"> <a href="#" onclick="show_prev_step('step4Content', 'step5Content',5);return false;" ><div id="precedent" onclick=""></div></a></td>
+                        </tr>
+                </table>
 </div>

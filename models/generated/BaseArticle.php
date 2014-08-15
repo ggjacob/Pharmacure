@@ -13,6 +13,7 @@
  * @property boolean $Panier
  * @property string $Etat
  * @property Produit $Produit
+ * @property Doctrine_Collection $LigneFactureArticle
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -56,6 +57,10 @@ abstract class BaseArticle extends Doctrine_Record
              'local' => 'IdProduit',
              'foreign' => 'id',
              'onDelete' => 'SET NULL'));
+
+        $this->hasMany('LigneFacture as LigneFactureArticle', array(
+             'local' => 'id',
+             'foreign' => 'IdArticle'));
 
         $searchable0 = new Doctrine_Template_Searchable(array(
              'fields' => 

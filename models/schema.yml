@@ -150,7 +150,7 @@ Produit:
 LigneFacture:
   tableName: LigneFacture
   columns:
-    IdProduit:
+    IdArticle:
       type: integer
     Quantite:
       type: integer
@@ -163,12 +163,12 @@ LigneFacture:
       foreign: id
       alias: Facture # on pourra acceder à l'objet avec LigneFacture->Facture
       foreignAlias: LigneFactureFacture
-    produit:
-      class: Produit
-      local: IdProduit
+    article:
+      class: Article
+      local: IdArticle
       foreign: id
-      alias: Produit # on pourra acceder à l'objet avec LigneFacture->Facture
-      foreignAlias: LigneFactureProduit
+      alias: Article # on pourra acceder à l'objet avec LigneFacture->Facture
+      foreignAlias: LigneFactureArticle
 
 #les états de commande :
 Etat:

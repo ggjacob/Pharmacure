@@ -15,7 +15,6 @@
  * @property integer $IdTaxe
  * @property Classe $Classe
  * @property Taxe $Taxe
- * @property Doctrine_Collection $LigneFactureProduit
  * @property Doctrine_Collection $ArticleProduits
  * @property Doctrine_Collection $LigneCommandeProduit
  * 
@@ -68,10 +67,6 @@ abstract class BaseProduit extends Doctrine_Record
         $this->hasOne('Taxe', array(
              'local' => 'IdTaxe',
              'foreign' => 'id'));
-
-        $this->hasMany('LigneFacture as LigneFactureProduit', array(
-             'local' => 'id',
-             'foreign' => 'IdProduit'));
 
         $this->hasMany('Article as ArticleProduits', array(
              'local' => 'id',

@@ -880,6 +880,22 @@ right:10px;
 }
 
 
+#precedent
+{
+  position:relative;
+  width:100px;
+  height: 40px;
+  background-image: url('../images/precedent.png');
+}
+
+#suivant
+{
+  background-image: url('../images/suivant.png');
+  position:relative;
+  width:100px;
+  height: 40px;
+}
+
 
       
 /* --------------------------------------------
