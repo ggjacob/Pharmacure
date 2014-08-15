@@ -21,6 +21,7 @@ class Vente extends Controller{
         $q = $q->leftJoin('a.Produit p')->Where('p.Libelle LIKE ?',$nomProduit.'%');
 
         $q = $q->AndWhere('a.Panier = 0');
+        $q = $q->AndWhere('a.Etat <> "vendu"');
 
         $q = $q->orderBy('p.Libelle ASC');
 
@@ -65,11 +66,12 @@ class Vente extends Controller{
     function afficherRecap(){
         $totalHT=0;
         $totalTTC=0;
-        foreach ($_SESSION['panier'] as $article) {
-            $totalHT  += $article->Produit->Prix;
-            $totalTTC += $article->Produit->Prix * ( 1 + ($article->Produit->Taxe->Taux/100));
+        if (isset($_SESSION['panier'])){
+            foreach ($_SESSION['panier'] as $article) {
+                $totalHT  += $article->Produit->Prix;
+                $totalTTC += $article->Produit->Prix * ( 1 + ($article->Produit->Taxe->Taux/100));
+            }
         }
-
         $this->layout=false;
         $d['view'] = array("totalHT"=>$totalHT,"totalTTC"=>$totalTTC);
         $this->set($d); 
@@ -86,7 +88,7 @@ class Vente extends Controller{
           
           //$_SESSION['panier']->save();
           
-          $_SESSION['panier']=array();
+          $_SESSION['panier']= new Doctrine_Collection('Article');
 	      //$_SESSION['panier']['Libelle'] = array();
 	      //$_SESSION['panier']['id'] = array();
 	      //$_SESSION['panier']['Quantite'] = array();
@@ -167,6 +169,23 @@ class Vente extends Controller{
          }
 
          echo "success";
-    }	 
+    }
+
+    function finaliserVente(){
+        $panier = 0;
+        if(isset($_SESSION['panier'])) $panier = count($_SESSION['panier']);
+        if ($panier >0){
+
+            for ($i=0; $i < count($_SESSION['panier']) ; $i++) { 
+                //$_SESSION['panier'][$i]->Panier = 1;
+                $_SESSION['panier'][$i]->Etat = "vendu";
+            }
+            
+            $_SESSION['panier']->save();
+            $this->creationPanier();
+            $this->viderClient();
+            echo 'success';
+        }else echo 'failed';
+    } 
 }
 ?>

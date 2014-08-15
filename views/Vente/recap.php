@@ -38,7 +38,7 @@
 <table style="float:right; margin-bottom:20px" width="250px">  
         <tr >
                 <td colspan="2" align="center">
-                    Pharmacie Pharmacure
+                     <?=$this->getPharmacieInfos('nom')?>
                 </td>
         </tr>
         <tr >
@@ -46,7 +46,7 @@
                     Adresse
                 </td>
                 <td align="right">
-                    babalabougou lampani coro
+                     <?=$this->getPharmacieInfos('adresse')?>
                 </td>
         </tr>
         <tr >
@@ -54,7 +54,7 @@
                     Téléphone
                 </td>
                 <td align="right">
-                    00 00 00 00
+                     <?=$this->getPharmacieInfos('tel')?>
                 </td>
         </tr>
         <tr >
@@ -62,7 +62,7 @@
                     registre
                 </td>
                 <td align="right">
-                    12345678
+                     <?=$this->getPharmacieInfos('registre')?>
                 </td>
         </tr>
         <tr >
@@ -70,7 +70,7 @@
                     Immobilier
                 </td>
                 <td align="right">
-                    5678910
+                     <?=$this->getPharmacieInfos('mobilier')?>
                 </td>
         </tr>
         <tr >
@@ -78,7 +78,7 @@
                     Fiscale
                 </td>
                 <td align="right">
-                    123988
+                     <?=$this->getPharmacieInfos('fiscale')?>
                 </td>
         </tr>
         <tr>

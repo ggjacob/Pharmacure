@@ -50,5 +50,12 @@ class Controller{
             require(ROOT.'views/layout/'.$this->layout.'.php');
         }
     }
+
+    function getPharmacieInfos($info){
+        $json = file_get_contents(ROOT."conf/pharmacie.json");
+        $infos = json_decode($json);
+        return $infos->{$info};
+    }
+
 }
 ?>

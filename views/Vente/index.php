@@ -212,6 +212,34 @@ function panierSupprimer(id){
                 });   
 }
 
+function finaliserVente(){
+
+    $.ajax({
+                    type : "POST",
+                    url: 'finaliserVente',
+                    data: $(this).serialize(),
+                    success : function(data){
+                        
+                        if(data == 'success'){
+                            $('#OKText').html("Succ&egrave;s ! Votre vente a été finalisé. Vous pouvez imprimer la facture");
+                            $('#formOk').show();
+                            $('#formKO').hide();
+                        }
+                        else if(data == 'failed'){
+                            $('#KOText').html("Erreur ! Veuillez choisir au moins un produit");
+                            $('#formOk').hide();
+                            $('#formKO').show();         
+                        }else{
+                            
+                        }
+                        
+                    },
+                    error: function(){
+                        $('#formKO').html("Erreur d'appel, le formulaire ne peut pas fonctionner");
+                    }
+                });
+}
+
 </script>
 <div id="sales_dash">
         <div class="sales_step step_1" id="step_1"><span>1</span></div>
@@ -232,8 +260,13 @@ function panierSupprimer(id){
         			<font color="black" size="4">
         				<table  border="0px" width="600px">
         					<tr>
-        						<td width="100px" align="left">Medicament</td>	<td align="center"><input type="text"  id="produit" name="produit" placeholder="Libelle du medicament">	</td>
-        					</tr>
+        						<td width="100px" align="left">Nom</td>
+                                <td align="center"><input type="text"  id="produit" name="produit" placeholder="Libelle du medicament">&nbsp;&nbsp;&nbsp;<input type="radio" name="critere" value="" checked></td>
+                            </tr>
+                            <tr>
+                                <td width="100px" align="left">Code barre</td>
+                                <td align="center"><input type="text"  id="codeBarre" name="codeBarre" placeholder="Code barre du medicament">&nbsp;&nbsp;&nbsp;<input type="radio" name="critere" value=""> </td>
+                            </tr>
         					<!--
         					<tr>
         						<td width="100px" align="left">Type</td>	<td align="center"><input type="text" id ="classe" name="classe" placeholder="Classe pharmaceutique">	</td>
@@ -358,7 +391,6 @@ function panierSupprimer(id){
 </div>
 
 <div class="salesContent" id="step4Content">
-    
     <div class="category">
             <span class="category_title">Récapitulatif</span>
             <div class="sub_category">
@@ -378,13 +410,22 @@ function panierSupprimer(id){
     </div> 
 </div>
 <div class="salesContent" id="step5Content">
-    
+    <div>
+            <div style="display:none;" id="formOk" class="alert alert-icon alert-success">
+                <div id="OKText" class="text">
+                </div>
+            </div>
+            <div style="display:none;" id="formKO" class="alert alert-icon alert-danger">
+                <div id="KOText" class="text">
+                </div>
+            </div>
+    </div>
     <div class="category">
                 <span class="category_title">Félicitation</span>
                 <div class="sub_category">
-                    Votre vente à été finalisé
+                    Vous êtes sur le point de finaliser la vente. impression facture
+                    <br><br>
+                    <div onClick="finaliserVente()">Finaliser vente</div>
                 </div>
-                <div onClick="show_prev_step('step4Content', 'step5Content',5)">Précédent</div>
-                impression facture
     </div> 
 </div>
