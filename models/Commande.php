@@ -14,7 +14,7 @@ class Commande extends BaseCommande
 {
     public function init($idfournisseur){
         $this->IdFournisseur =$idfournisseur;
-        $this->IdEtat =1;
+        $this->IdEtat =2;
         $this->IdUser = $_SESSION['user']->id;
         $this->IdUserModif = $_SESSION['user']->id;
    }
