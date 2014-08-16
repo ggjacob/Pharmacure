@@ -227,7 +227,7 @@ function finaliserVente(){
                             //show_prev_step('step1Content', 'step2Content',2);
                         }
                         else if(data == 'failed'){
-                            $('#KOText').html("Erreur ! Veuillez choisir au moins un produit");
+                            $('#KOText').html('Erreur ! Veuillez choisir au moins un produit en cliquant <a href="#" onclick="AfficherPanier();back_to_step1(\'step1Content\', \'step5Content\',2);return false;" >ICI</a>');
                             $('#formOk').hide();
                             $('#formKO').show();         
                         }else{
@@ -239,6 +239,11 @@ function finaliserVente(){
                         $('#formKO').html("Erreur d'appel, le formulaire ne peut pas fonctionner");
                     }
                 });
+}
+
+function cacherRes(){
+    $('#formOk').hide();   
+    $('#formKO').hide();
 }
 
 </script>
@@ -374,7 +379,7 @@ function finaliserVente(){
     </div>
     <table width="630px">
                         <tr>
-                            <td align="left"> <a href="#" onclick="show_prev_step('step1Content', 'step2Content',2);return false;" ><div id="precedent" onclick=""></div></a></td>
+                            <td align="left"> <a href="#" onclick="AfficherPanier();show_prev_step('step1Content', 'step2Content',2);return false;" ><div id="precedent" onclick=""></div></a></td>
                             <td align="right"> <a href="#" onclick="show_next_step('step3Content', 'step2Content',3);return false;"><div class="salesNavigation" id="suivant" ></div></a></td>
                         </tr>
                 </table> 
@@ -421,7 +426,7 @@ function finaliserVente(){
     <table width="630px">
                         <tr>
                             <td align="left"> <a href="#" onclick="show_prev_step('step3Content', 'step4Content',4);return false;" ><div id="precedent" onclick=""></div></a></td>
-                            <td align="right"> <a href="#" onclick="show_next_step('step5Content', 'step4Content',5);return false;"><div class="salesNavigation" id="suivant" ></div></a></td>
+                            <td align="right"> <a href="#" onclick="cacherRes();show_next_step('step5Content', 'step4Content',5);return false;"><div class="salesNavigation" id="suivant" ></div></a></td>
                         </tr>
                 </table>
 </div>

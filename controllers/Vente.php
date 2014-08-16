@@ -176,12 +176,37 @@ class Vente extends Controller{
         if(isset($_SESSION['panier'])) $panier = count($_SESSION['panier']);
         if ($panier >0){
 
+            $facture = new Facture();
+
+            $totalHT=0;
+            $totalTTC=0;
+            if (isset($_SESSION['panier'])){
+                foreach ($_SESSION['panier'] as $article) {
+                    $totalHT  += $article->Produit->Prix;
+                    $totalTTC += $article->Produit->Prix * ( 1 + ($article->Produit->Taxe->Taux/100));
+                }
+            }
+
+            if(isset($_SESSION['client'])){
+                $facture->init($_SESSION['user']->id,$_SESSION['user']->id
+                               ,$_SESSION['client']->id,$totalHT,$totalTTC);
+            }else {
+                $facture->init($_SESSION['user']->id,$_SESSION['user']->id
+                               ,null,$totalHT,$totalTTC);
+            }
+            $facture->save();
+            $idFacture = $facture->id;
             for ($i=0; $i < count($_SESSION['panier']) ; $i++) { 
                 //$_SESSION['panier'][$i]->Panier = 1;
                 $_SESSION['panier'][$i]->Etat = "vendu";
+
+                $ligneFacture = new LigneFacture();
+                $ligneFacture->init($_SESSION['panier'][$i]->id,$idFacture);
+                $ligneFacture->save();
             }
             
             $_SESSION['panier']->save();
+            
             $this->creationPanier();
             $this->viderClient();
             echo 'success';

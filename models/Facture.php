@@ -12,5 +12,12 @@
  */
 class Facture extends BaseFacture
 {
+	public function init($user,$userModif,$idClient,$totalHT,$totalTTC){
+        $this->IdUser = $user;
+        $this->IdUserModif = $userModif;
+        $this->IdClient =$idClient;
+        $this->TotalHT =$totalHT;
+        $this->TotalTTC =$totalTTC;
+   }
 
 }

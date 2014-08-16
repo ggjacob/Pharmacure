@@ -60,9 +60,9 @@ Facture:
       type: integer
       notnull: true
     TotalHT:
-      type: integer
+      type: float
     TotalTTC:
-      type: integer
+      type: float
   relations:
     client:
       class: Client
@@ -151,8 +151,6 @@ LigneFacture:
   tableName: LigneFacture
   columns:
     IdArticle:
-      type: integer
-    Quantite:
       type: integer
     IdFacture:
       type: integer

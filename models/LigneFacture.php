@@ -12,5 +12,9 @@
  */
 class LigneFacture extends BaseLigneFacture
 {
+	public function init($idArticle,$idFacture){
+        $this->IdArticle = $idArticle;
+        $this->IdFacture = $idFacture;
+   }
 
 }

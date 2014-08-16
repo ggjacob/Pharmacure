@@ -8,8 +8,8 @@
  * @property integer $IdClient
  * @property integer $IdUser
  * @property integer $IdUserModif
- * @property integer $TotalHT
- * @property integer $TotalTTC
+ * @property float $TotalHT
+ * @property float $TotalTTC
  * @property Client $Client
  * @property User $User
  * @property User $UserModif
@@ -36,11 +36,11 @@ abstract class BaseFacture extends Doctrine_Record
              'type' => 'integer',
              'notnull' => true,
              ));
-        $this->hasColumn('TotalHT', 'integer', null, array(
-             'type' => 'integer',
+        $this->hasColumn('TotalHT', 'float', null, array(
+             'type' => 'float',
              ));
-        $this->hasColumn('TotalTTC', 'integer', null, array(
-             'type' => 'integer',
+        $this->hasColumn('TotalTTC', 'float', null, array(
+             'type' => 'float',
              ));
     }
 
