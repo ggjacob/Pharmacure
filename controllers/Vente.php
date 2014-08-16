@@ -18,8 +18,7 @@ class Vente extends Controller{
         {
         $articles = new Article();
         $q = Doctrine_Query::create()->from('Article a');
-        $q = $q->leftJoin('a.Produit p')->Where('p.Libelle LIKE ?',$nomProduit.'%');
-
+        $q = $q->leftJoin('a.Produit p')->Where('p.Libelle LIKE ? OR a.CodeBarre LIKE ?',array($nomProduit.'%',$nomProduit.'%'));
         $q = $q->AndWhere('a.Panier = 0');
         $q = $q->AndWhere('a.Etat is null');
 
@@ -43,7 +42,7 @@ class Vente extends Controller{
         {
         $clients = new Client();
         $q = Doctrine_Query::create()->from('Client c');
-        $q = $q->Where('c.Nom LIKE ?',$nomClient.'%');
+        $q = $q->Where('c.Nom LIKE ? OR c.Prenom LIKE ? OR c.Tel LIKE ?',array($nomClient.'%',$nomClient.'%',$nomClient.'%'));
         $q = $q->orderBy('c.Nom ASC');
 
         $clients = $q->execute();
@@ -211,6 +210,13 @@ class Vente extends Controller{
             $this->viderClient();
             echo 'success';
         }else echo 'failed';
+    }
+
+    function nouveauClient(){
+        $form['type'] ='create';
+        $d['view'] = array("form" => $form);
+        $this->set($d); 
+        $this->render('nouveauClient');
     } 
 }
 ?>

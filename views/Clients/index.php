@@ -173,8 +173,7 @@ $(function(){
     </table>
 </div>
 
-<div  class="p_body js__p_body js__fadeout">
-    </div>
+<div  class="p_body js__p_body js__fadeout"></div>
     <div class="popup js__popup js__slide_top">
          <a href="#" class="p_close js__p_close" title="Fermer" onclick="MyPopupClose();return false;">
               <span></span><span></span>

@@ -5,7 +5,8 @@ jQuery(document).ready(function($){
     
     /* Bind events form submit */
     //$('#produit').change( function(event){ submitForm(); });
-    $('#classe').change(    function(event){ submitForm(); });
+    $('#codeBarre').change(    function(event){ submitForm(); });
+    $('#codeBarre').keyup(    function(event){ submitForm(); });
     $('#produit').change(    function(event){ submitForm(); });
     $('#produit').keyup(    function(event){ submitForm(); });
     //$('.ajoutPanier').onclick(    function(event){ submitForm(); });
@@ -266,15 +267,16 @@ function cacherRes(){
         			<font color="black" size="4">
         				<table  border="0px" width="600px">
         					<tr>
-        						<td width="100px" align="left">Nom</td>
-                                <td align="center"><input type="text"  id="produit" name="produit" placeholder="Libelle du medicament">&nbsp;&nbsp;&nbsp;<input type="radio" name="critere" value="" checked></td>
+        						<td width="100px" align="left">Medicament</td>
+                                <td align="center"><input type="text"  id="produit" name="produit" placeholder="Libelle | Code barre"></td>
                             </tr>
+
+                            <!--
                             <tr>
                                 <td width="100px" align="left">Code barre</td>
-                                <td align="center"><input type="text"  id="codeBarre" name="codeBarre" placeholder="Code barre du medicament">&nbsp;&nbsp;&nbsp;<input type="radio" name="critere" value=""> </td>
+                                <td align="center"><input type="text"  id="codeBarre" name="codeBarre" placeholder="Code barre du medicament"></td>
                             </tr>
-        					<!--
-        					<tr>
+        										<tr>
         						<td width="100px" align="left">Type</td>	<td align="center"><input type="text" id ="classe" name="classe" placeholder="Classe pharmaceutique">	</td>
         					</tr>
         					!-->
@@ -327,13 +329,21 @@ function cacherRes(){
 <div class="salesContent" id="step2Content">
     
     <div class="category">
+            <div  class="p_body js__p_body js__fadeout"></div>
+            <div class="popup js__popup js__slide_top">
+                 <a href="#" class="p_close js__p_close" title="Fermer" onclick="MyPopupClose();return false;">
+                      <span></span><span></span>
+                    </a>
+                  <iframe id="IframePopUp" width="100%" height="100%" scrolling="no" src=""></iframe>
+            </div>
+
             <span class="category_title">Rechercher votre client</span>
             <div class="sub_category">
                 <form id="formRechercheClient" action="<?=WEBROOT?>Vente/rechercherClient" method="post">
                     <font color="black" size="4">
                         <table  border="0px" width="600px">
                             <tr>
-                                <td width="100px" align="left">Client</td>  <td align="center"><input type="text"  id="client" name="client" placeholder="Nom | Prenom | tel"> <a href="#"> Créer</a></td>
+                                <td width="100px" align="left">Client</td>  <td align="center"><input type="text"  id="client" name="client" placeholder="Nom | Prenom | tel"> <a href="#" id="nouveauClient" onclick="MyPopUp(this.id,800,270,410,-15);return false;" class="js__p_start">Nouveau</a></td>
                             </tr>
                             <!--
                             <tr>
