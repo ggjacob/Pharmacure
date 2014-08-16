@@ -134,7 +134,7 @@ function back_to_step1(afficher, masquer,step)
 	ddmenuitem2.style.visibility = 'hidden';
 	ddmenuitem2.style.position = 'absolute';
 
-	for (var i = 2; i <= 5; i++) {
+	for (var i = 3; i <= 5; i++) {
 		ddmenuitem3 = $("#step_"+i);
 		ddmenuitem3.removeClass("step_"+i+"_validated");
 	    ddmenuitem3.addClass("step_"+i);
