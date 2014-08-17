@@ -454,7 +454,7 @@ function cacherRes(){
     <div class="category">
                 <span class="category_title">Félicitation</span>
                 <div class="sub_category">
-                    Vous êtes sur le point de finaliser la vente. impression facture
+                    Vous êtes sur le point de finaliser la vente. <a href="<?=WEBROOT?>Vente/imprimerFacture">impression facture</a>
                     <br><br>
                     <div onClick="finaliserVente()">Finaliser vente</div>
                 </div>     

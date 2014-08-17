@@ -217,6 +217,32 @@ class Vente extends Controller{
         $d['view'] = array("form" => $form);
         $this->set($d); 
         $this->render('nouveauClient');
-    } 
+    }
+
+    function imprimerFacture(){
+        $totalHT=0;
+        $totalTTC=0;
+        if (isset($_SESSION['panier'])){
+            foreach ($_SESSION['panier'] as $article) {
+                $totalHT  += $article->Produit->Prix;
+                $totalTTC += $article->Produit->Prix * ( 1 + ($article->Produit->Taxe->Taux/100));
+            }
+        }
+
+        $d['view'] = array("totalHT"=>$totalHT,"totalTTC"=>$totalTTC);
+        $this->set($d);
+
+        extract($this->vars);
+        ob_start();
+        require(ROOT.'views/'.get_class($this).'/facture.php');
+        
+        $content = ob_get_clean();
+        
+        $html2pdf = new HTML2PDF('P','A4','fr');
+        $html2pdf->pdf->SetDisplayMode('fullpage');
+        $html2pdf->WriteHTML($content);
+        $html2pdf->Output('pharmacure.pdf');
+    }
+
 }
 ?>

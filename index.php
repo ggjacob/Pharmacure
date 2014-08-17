@@ -20,6 +20,8 @@ require(ROOT.'lib/functions.php');
 require(ROOT.'lib/vendor/doctrine/Doctrine.php');
 
 require(ROOT.'core/Model.php');
+require(ROOT.'lib/html2pdf/html2pdf.class.php');
+
 
 $params = explode('/',$_GET['p']);
 $controller = $params[0];
