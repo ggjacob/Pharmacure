@@ -7,7 +7,7 @@
 <table id="sale_table" width="600px">
 <?php foreach($view['articles'] as $article) : ?>
 	<tr >
-		<td align="center" style=" border-top-style:solid;border-top-width:1px;"> <a href="#" class="ajoutPanier" id="ajouter/<?=$article->id?>" onclick="panierAjout(this.id);return false;" >Ajouter</a></td>
+		<td align="center" style=" border-top-style:solid;border-top-width:1px;"> <a href="#" class="ajoutPanier" id="ajouter/<?=$article->id?>" onclick="panierAjout(this.id);AfficherPanier();return false;" >Ajouter</a></td>
 		<td align="center" style=" border-top-style:solid;border-top-width:1px;">
 			<?=$article->CodeBarre;?>
 		</td>
