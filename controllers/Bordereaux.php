@@ -7,9 +7,9 @@
  */
     function index($idcommande){
         $commande = new Commande();
-        $commande = Doctrine_Core::getTable('commande')->find($id);
+        $commande = Doctrine_Core::getTable('commande')->find($idcommande);
         $lignecommande = new LigneCommande();
-        $lignecommande = Doctrine_Core::getTable('lignecommande')->findByIdCommande($id);
+        $lignecommande = Doctrine_Core::getTable('lignecommande')->findByIdCommande($idcommande);
         
         $bordereau = Doctrine_Core::getTable('bordereau')->findOneByIdCommande($idcommande);
         if($bordereau == null){
@@ -17,9 +17,18 @@
             $bordereau->init($idcommande);
             $bordereau->save();
         }
-        $d['view'] = array("titre" => "Bordereau","bordereau"=>$bordereau);
-        $this->set($d);
-        $this->render('index');
+        else {
+            $lignebordereau = new LigneBordereau();
+            $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau->_index()); 
+        }
+        if (isset($lignebordereau)) {
+        $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau, "lignebordereau" => $lignebordereau);
+        } 
+        else{
+        $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau);
+        }
+    $this->set($d);
+    $this->render('index');
         
     }
 
@@ -27,7 +36,7 @@
     
     function suppression($id){
         $lignebordereau = new LigneBordereau();
-        $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($id);
+        $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau);
         foreach ($lignebordereau as $l){
             $l->delete();
         }
