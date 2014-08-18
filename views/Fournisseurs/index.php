@@ -98,6 +98,7 @@ $(function(){
                             $('#formOk').show();
                             $('#formKO').hide();
                             $("#formClient").get(0).reset();
+                            $('#data_source').DataTable().ajax.reload();
                         }
                         else if(data == 'failed'){
                             $('#KOText').html("Erreur ! Ce fournisseur pas valide");

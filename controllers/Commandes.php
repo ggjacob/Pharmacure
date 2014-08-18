@@ -141,6 +141,57 @@ class Commandes extends Controller{
         $lignecommande = Doctrine_Core::getTable('lignecommande')->findOneById($id);
         if(!$lignecommande->delete()) $this->redirect('Commandes/index',0);
     }
-}
+
   
-?>
+    function indexBordereau($idcommande){
+        $commande = new Commande();
+        $commande = Doctrine_Core::getTable('commande')->find($idcommande);
+        $produit = new Produit();
+        $produit = Doctrine_Core::getTable('produit')->findAll();
+        $lignecommande = new LigneCommande();
+        $lignecommande = Doctrine_Core::getTable('lignecommande')->findByIdCommande($idcommande);
+        
+        $bordereau = Doctrine_Core::getTable('bordereau')->findOneByIdCommande($idcommande);
+        if($bordereau == null){
+            $bordereau = new Bordereau();
+            $bordereau->init($idcommande);
+            $bordereau->save();
+        }
+        else {
+            $lignebordereau = new LigneBordereau();
+            $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau->_index()); 
+        }
+        if (isset($lignebordereau)) {
+        $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau, "lignebordereau" => $lignebordereau);
+        } 
+        else{
+        $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau);
+        }
+    $this->set($d);
+    $this->render('indexBordereau');
+        
+    }
+
+    
+    
+    function suppressionBordereau($id){
+        $lignebordereau = new LigneBordereau();
+        $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau);
+        foreach ($lignebordereau as $l){
+            $l->delete();
+        }
+        $bordereau = new Bordereau();
+        $bordereau = Doctrine_Core::getTable('bordereau')->findOneById($id);
+        if(!$bordereau->delete()) $this->redirect('Bordereaux/index',0);
+        $erreur="success";
+        echo $erreur;
+    }
+    
+        function suppressionligneBordereau($id){
+        $lignebordereau = new LigneBordereau();
+        $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findOneById($id);
+        if(!$lignebordereau->delete()) $this->redirect('Bordereaux/index',0);
+        
+    }
+    
+}

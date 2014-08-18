@@ -118,6 +118,7 @@ $(function(){
                             $('#formOk').show();
                             $('#formKO').hide();
                             $("#formCompte").get(0).reset();
+                            $('#data_source').DataTable().ajax.reload();
                         }
                         else if(data == 'password'){
                             $('#KOText').html("Erreur ! Les deux mots de passe sont différent");
