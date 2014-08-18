@@ -12,8 +12,9 @@
  */
 class Produit extends BaseProduit
 {
-    public function init($libelle,$prix,$ordonnance,$commentaire,$conditionnement,$idtaxe,$idclasse,$alerte){
+    public function init($libelle,$prixAT,$prix,$ordonnance,$commentaire,$conditionnement,$idtaxe,$idclasse,$alerte){
         $this->Libelle=$libelle;
+        $this->PrixAT =$prixAT;
         $this->Prix =$prix;
         $this->Ordonnance= $ordonnance;
         $this->Conditionnement = $conditionnement;

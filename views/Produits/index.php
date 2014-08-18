@@ -29,6 +29,7 @@ $(document).ready( function () {
          "columns": [
             { "data": "id" },
             { "data": "Libelle" },
+            { "data": "PrixAT" },
             { "data": "Prix" },
             { "data": "Ordonnance" },
             { "data": "Commentaire" },
@@ -49,11 +50,11 @@ $(document).ready( function () {
     }
             },
             {
-                "targets": [ 5 ],
+                "targets": [ 6 ],
                 "visible": false
             },
             {
-                "targets": [ 3 ],
+                "targets": [ 4 ],
                 "mRender": function (data, type, full) {
                 if(full['Ordonnance'] == true){
                     return "Oui";
@@ -62,11 +63,7 @@ $(document).ready( function () {
                 
             },
             {
-                "targets": [ 4 ],
-                "visible": false
-            },
-            {
-                "targets": [ 6 ],
+                "targets": [ 5 ],
                 "visible": false
             },
             {
@@ -75,6 +72,10 @@ $(document).ready( function () {
             },
             {
                 "targets": [ 8 ],
+                "visible": false
+            },
+            {
+                "targets": [ 9 ],
                 "visible": false
             }
         ]
@@ -87,6 +88,7 @@ $(document).ready( function () {
 $(function(){
         $("#formProduit").submit(function(event){
             var libelle         = $("#libelle").val();
+            var prixAT          = $("#prixAT").val();
             var prix            = $("#prix").val();
             var ordonnance      = $("#ordonnance").val();
             var conditionnement = $("#condtionnement").val();
@@ -96,17 +98,17 @@ $(function(){
             var alerte          = $("#seuil").val();
             
             
-            if(libelle == '' || prix == '' || ordonnance == '' || conditionnement == '' 
+            if(libelle == '' || prix == ''  || prixAT == '' || ordonnance == '' || conditionnement == '' 
                 || commentaire == '' || taxe == '' || classe == '' || alerte == '' )
             {
                 $('#formOk').hide();
                 $('#KOText').html("Erreur ! Veuillez renseigner tous les champs requis...");
                 $('#formKO').show();
             }
-            else if (!checkNumber(prix) || !checkNumber(alerte))
+            else if (!checkNumber(prix) || !checkNumber(prixAT)  || !checkNumber(alerte))
             {
                 $('#formOk').hide();
-                $('#KOText').html("Erreur ! le format du prix ou le niveau de l'alerte n'est pas correcte...");
+                $('#KOText').html("Erreur ! le format des prix ou le niveau de l'alerte n'est pas correcte...");
                 $('#formKO').show();
             }
             else
@@ -164,8 +166,11 @@ $(function(){
                         
                         <td width="42px" align="left">Libelle</td>   
                         <td align="center"><input id="libelle" type="text" name="libelle" placeholder="Libelle Du Produit">  </td>
-                        <td width="42px" align="left">Prix</td>   
-                        <td align="center"><input id="prix" type="number" name="prix" placeholder="Prix du Produit">  </td>
+                        <td width="42px" align="left">Prix d'achat <br>Prix de vente</td>   
+                        <td align="center">
+                            <input id="prixAT" type="number" name="prixAT" placeholder="Prix d'achat"><br>
+                            <input id="prix" type="number" name="prix" placeholder="Prix de vente HT">
+                        </td>
                         
                     </tr>
                     <tr>
@@ -207,7 +212,7 @@ $(function(){
                                     <div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes Produits</span></div>
                                     <table id="data_source">
                          <thead>
-                            <tr ><th>id</th><th>Libelle</th><th>Prix</th><th>Ordonnance</th><th>Commentaire</th><th>Alerte</th><th>Conditionnement</th><th>IdClasse</th><th>IdTaxe</th></tr>    
+                            <tr ><th>id</th><th>Libelle</th><th>Prix d'achat</th><th>Prix</th><th>Ordonnance</th><th>Commentaire</th><th>Alerte</th><th>Conditionnement</th><th>IdClasse</th><th>IdTaxe</th></tr>    
                          </thead>
                          <tbody>
                         <tbody>

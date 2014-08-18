@@ -52,6 +52,7 @@ class Produits extends Controller{
         $produit = Doctrine_Core::getTable('produit')->find($id);
         $form = Array();
         $form['libelle'] = $produit->Libelle;
+        $form['prixAT'] = $produit->PrixAT;
         $form['prix'] = $produit->Prix;
         $form['ordonnance'] = $produit->Ordonnance;
         $form['commentaire'] = $produit->Commentaire;
@@ -95,7 +96,7 @@ class Produits extends Controller{
                  if($currentProduit) $erreur="failed";
                  if(empty($erreur)) {
                     $produit = new Produit();
-                    $produit->init($this->data['libelle'],$this->data['prix'],$this->data['ordonnance'],$this->data['commentaire'],$this->data['conditionnement'],$this->data['idtaxe'], $this->data['idclasse'],$this->data['alerte']);        
+                    $produit->init($this->data['libelle'],$this->data['prixAT'],$this->data['prix'],$this->data['ordonnance'],$this->data['commentaire'],$this->data['conditionnement'],$this->data['idtaxe'], $this->data['idclasse'],$this->data['alerte']);        
                     $produit->save();    
                     $erreur="success";
                 }
@@ -106,7 +107,7 @@ class Produits extends Controller{
                     $currentProduit = Doctrine_Core::getTable('produit')->find($this->data['id']);
                     if(!$currentProduit) $erreur="failed";
                     if(empty($this->erreur)) {
-                        $currentProduit->init($this->data['libelle'], $this->data['prix'],$this->data['ordonnance'],$this->data['commentaire'],$this->data['conditionnement'],$this->data['idtaxe'], $this->data['idclasse'], $this->data['alerte']);     
+                        $currentProduit->init($this->data['libelle'], $this->data['prixAT'],$this->data['prix'],$this->data['ordonnance'],$this->data['commentaire'],$this->data['conditionnement'],$this->data['idtaxe'], $this->data['idclasse'], $this->data['alerte']);     
                         $currentProduit->save();
                         $erreur="success";   
                     }
