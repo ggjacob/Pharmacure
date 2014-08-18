@@ -4,7 +4,6 @@
  * @UserS('REQUIRED')
  */
 class Vente extends Controller{
-   
     function index(){ 
         $this->render('index');
     }
@@ -78,26 +77,23 @@ class Vente extends Controller{
     }
 
     function creationPanier(){
-	   //if (!isset($_SESSION['panier'])){
-	      
           for ($i=0; $i < count($_SESSION['panier']) ; $i++) { 
               $_SESSION['panier'][$i]->Panier =0;
               $_SESSION['panier'][$i]->save();
           }
-          
-          //$_SESSION['panier']->save();
-          
           $_SESSION['panier']= new Doctrine_Collection('Article');
-	      //$_SESSION['panier']['Libelle'] = array();
-	      //$_SESSION['panier']['id'] = array();
-	      //$_SESSION['panier']['Quantite'] = array();
-	      //$_SESSION['panier']['Prix'] = array();
-	      //$_SESSION['panier']['verrou'] = false;
-	   //}
-	   return true;
+	       return true;
 	}
 
+    function panierExist(){
+        if(!isset($_SESSION['panier'])){
+            $_SESSION['panier']= new Doctrine_Collection('Article');
+        }
+        return true;
+    }
+
     function ajouter($id){
+        $this->panierExist();
         $article = new Article();
         $article = Doctrine_Core::getTable('Article')->findOneById($id);
         $erreur = "";
