@@ -118,6 +118,8 @@ Produit:
   columns:
     Libelle:
       type: string(255)
+    PrixAT:
+      type: float
     Prix:
       type: float
     Ordonnance:
