@@ -124,6 +124,7 @@ $(function(){
                             $('#formOk').show();
                             $('#formKO').hide();
                             $("#formProduit").get(0).reset();
+                            $('#data_source').DataTable().ajax.reload();
                         }
                         else if(data == 'failed'){
                             $('#KOText').html("Erreur ! Ce produit existe déjà(libellé");
