@@ -221,8 +221,8 @@ function finaliserVente(){
                     data: $(this).serialize(),
                     success : function(data){
                         
-                        if(data == 'success'){
-                            $('#OKText').html("Succ&egrave;s ! Votre vente a été finalisé. Vous pouvez imprimer la facture");
+                        if(data != 'failed'){
+                            $('#OKText').html("Succ&egrave;s ! Votre vente a été finalisé. "+'<a  onclick="back_to_step1(\'step1Content\', \'step5Content\',2);window.open(this.href); return false;"  href="<?=WEBROOT?>Vente/imprimerFacture/'+ data +'">Imprimer Facture</a>');
                             $('#formOk').show();
                             $('#formKO').hide();
                             //show_prev_step('step1Content', 'step2Content',2);
@@ -454,7 +454,7 @@ function cacherRes(){
     <div class="category">
                 <span class="category_title">Félicitation</span>
                 <div class="sub_category">
-                    Vous êtes sur le point de finaliser la vente. <a href="<?=WEBROOT?>Vente/imprimerFacture">impression facture</a>
+                    Vous êtes sur le point de finaliser la vente.
                     <br><br>
                     <div onClick="finaliserVente()">Finaliser vente</div>
                 </div>     

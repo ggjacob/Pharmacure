@@ -208,7 +208,7 @@ class Vente extends Controller{
             
             $this->creationPanier();
             $this->viderClient();
-            echo 'success';
+            echo $idFacture;
         }else echo 'failed';
     }
 
@@ -219,29 +219,41 @@ class Vente extends Controller{
         $this->render('nouveauClient');
     }
 
-    function imprimerFacture(){
-        $totalHT=0;
-        $totalTTC=0;
-        if (isset($_SESSION['panier'])){
-            foreach ($_SESSION['panier'] as $article) {
-                $totalHT  += $article->Produit->Prix;
-                $totalTTC += $article->Produit->Prix * ( 1 + ($article->Produit->Taxe->Taux/100));
+    function imprimerFacture($idFacture){
+        
+        $facture = new Facture();
+        $facture = Doctrine_Core::getTable('facture')->findOneById($idFacture);
+        if ($facture){
+
+            /*
+            if (isset($_SESSION['panier'])){
+                foreach ($_SESSION['panier'] as $article) {
+                    $totalHT  += $article->Produit->Prix;
+                    $totalTTC += $article->Produit->Prix * ( 1 + ($article->Produit->Taxe->Taux/100));
+                }
             }
+            */
+
+            $ligneFactures = new LigneFacture();
+            $ligneFactures = Doctrine_Core::getTable('lignefacture')->findByIdFacture($idFacture);
+
+            $d['view'] = array("ligneFactures"=> $ligneFactures,"facture"=>$facture);
+            $this->set($d);
+
+            extract($this->vars);
+            ob_start();
+            require(ROOT.'views/'.get_class($this).'/facture.php');
+            
+            $content = ob_get_clean();
+            
+            //die($content);
+
+            $html2pdf = new HTML2PDF('P','A4','fr');
+            $html2pdf->pdf->IncludeJS("print(true);");
+            //$html2pdf->pdf->IncludeJS("app.window.print();");
+            $html2pdf->WriteHTML($content);
+            $html2pdf->Output('pharmacure.pdf');
         }
-
-        $d['view'] = array("totalHT"=>$totalHT,"totalTTC"=>$totalTTC);
-        $this->set($d);
-
-        extract($this->vars);
-        ob_start();
-        require(ROOT.'views/'.get_class($this).'/facture.php');
-        
-        $content = ob_get_clean();
-        
-        $html2pdf = new HTML2PDF('P','A4','fr');
-        $html2pdf->pdf->SetDisplayMode('fullpage');
-        $html2pdf->WriteHTML($content);
-        $html2pdf->Output('pharmacure.pdf');
     }
 
 }

@@ -139,6 +139,10 @@ function back_to_step1(afficher, masquer,step)
 		ddmenuitem3.removeClass("step_"+i+"_validated");
 	    ddmenuitem3.addClass("step_"+i);
 	};
+
+	$("#produit").val('');
+	submitForm();
+	AfficherPanier();
 }
 
 
