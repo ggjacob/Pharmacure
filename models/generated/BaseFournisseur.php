@@ -11,6 +11,7 @@
  * @property string $Mail
  * @property string $Commentaire
  * @property Doctrine_Collection $CommandeUserModif
+ * @property Doctrine_Collection $ArticleFournisseur
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -48,6 +49,10 @@ abstract class BaseFournisseur extends Doctrine_Record
     {
         parent::setUp();
         $this->hasMany('Commande as CommandeUserModif', array(
+             'local' => 'id',
+             'foreign' => 'IdFournisseur'));
+
+        $this->hasMany('Article as ArticleFournisseur', array(
              'local' => 'id',
              'foreign' => 'IdFournisseur'));
 
