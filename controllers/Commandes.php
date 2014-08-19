@@ -150,22 +150,24 @@ class Commandes extends Controller{
         $produit = Doctrine_Core::getTable('produit')->findAll();
         $lignecommande = new LigneCommande();
         $lignecommande = Doctrine_Core::getTable('lignecommande')->findByIdCommande($idcommande);
-        
+        $bordereau = new Bordereau();
         $bordereau = Doctrine_Core::getTable('bordereau')->findOneByIdCommande($idcommande);
+        var_dump($bordereau);
         if($bordereau == null){
             $bordereau = new Bordereau();
             $bordereau->init($idcommande);
             $bordereau->save();
+            
         }
         else {
             $lignebordereau = new LigneBordereau();
             $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau->_index()); 
         }
         if (isset($lignebordereau)) {
-        $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau, "lignebordereau" => $lignebordereau);
+        $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau, "lignebordereau" => $lignebordereau, "produit" =>$produit, "lignecommande" => $lignecommande);
         } 
         else{
-        $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau);
+        $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau, "produit" =>$produit, "lignecommande" => $lignecommande);
         }
     $this->set($d);
     $this->render('indexBordereau');

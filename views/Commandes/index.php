@@ -43,7 +43,7 @@
                 "visible": true,
                 "searchable": false,
                 "mRender": function (data, type, full) {
-                return '<a id="infos/'+full["id"]+'" onclick="MyPopUp(this.id,800,230,120,250);return false;" href="#" class="js__p_start"><div class="view_icon_table" Onclick=""></div></a><a id="modification/'+full["id"]+'" onclick="MyPopUp(this.id,800,270,120,250);return false;" href="#" class="js__p_start"><div class="modif_icon_table"></div></a><a id="suppression/'+full["id"]+'" name ="'+full["IdFournisseur"]+'" onclick="Suppression(this.id, this.name);return false;" href="#" class="js__p_start"><div class="remove_icon_table"></div></a>';
+                return '<a id="infos/'+full["id"]+'" onclick="MyPopUp(this.id,800,230,120,250);return false;" href="#" class="js__p_start"><div class="view_icon_table" Onclick=""></div></a><a id="modification/'+full["id"]+'" onclick="MyPopUp(this.id,800,270,120,250);return false;" href="#" class="js__p_start"><div class="modif_icon_table"></div></a><a id="suppression/'+full["id"]+'" name ="'+full["IdFournisseur"]+'" onclick="Suppression(this.id, this.name);return false;" href="#" class="js__p_start"><div class="remove_icon_table"></div></a><a id="indexBordereau/'+full["id"]+'" onclick="MyPopUp(this.id,800,870,120,250);return false;" href="#" class="js__p_start"><div class="remove_icon_table"></div></a>';
                 }
             },
             {
