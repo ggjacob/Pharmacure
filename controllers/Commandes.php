@@ -152,7 +152,7 @@ class Commandes extends Controller{
         $lignecommande = Doctrine_Core::getTable('lignecommande')->findByIdCommande($idcommande);
         $bordereau = new Bordereau();
         $bordereau = Doctrine_Core::getTable('bordereau')->findOneByIdCommande($idcommande);
-        var_dump($bordereau);
+        //var_dump($bordereau);
         if($bordereau == null){
             $bordereau = new Bordereau();
             $bordereau->init($idcommande);
@@ -174,7 +174,10 @@ class Commandes extends Controller{
         
     }
 
-    
+    function modificationBordereau(){
+        
+    }
+            
     
     function suppressionBordereau($id){
         $lignebordereau = new LigneBordereau();
