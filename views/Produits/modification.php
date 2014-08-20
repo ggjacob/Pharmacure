@@ -2,6 +2,7 @@
 $(function(){
         $("#formProduit").submit(function(event){
             var libelle         = $("#libelle").val();
+            var prixAT          = $("#prixAT").val();
             var prix            = $("#prix").val();
             var ordonnance      = $("#ordonnance").val();
             var conditionnement = $("#condtionnement").val();
@@ -11,14 +12,14 @@ $(function(){
             var alerte          = $("#seuil").val();
             
             
-            if(libelle == '' || prix == '' || ordonnance == '' || conditionnement == '' 
+            if(libelle == '' || prix == '' || prixAT == '' || ordonnance == '' || conditionnement == '' 
                 || commentaire == '' || taxe == '' || classe == '' || alerte == '' )
             {
                 $('#formOk').hide();
                 $('#KOText').html("Erreur ! Veuillez renseigner tous les champs requis...");
                 $('#formKO').show();
             }
-            else if (!checkNumber(prix) || !checkNumber(alerte))
+            else if (!checkNumber(prix) || !checkNumber(prixAT) || !checkNumber(alerte))
             {
                 $('#formOk').hide();
                 $('#KOText').html("Erreur ! le format du prix ou le niveau de l'alerte n'est pas correcte...");
@@ -76,8 +77,11 @@ $(function(){
             <tr>
                 <td width="42px" align="left">Libelle</td>   
                 <td align="center"><input id="libelle" type="text" name="libelle" value='<?php if(isset($view['form']['libelle'])) echo$view['form']['libelle'];?>' placeholder="Nom Du Produit"d>  </td>
-                <td width="42px" align="left">Prix</td>   
-                <td align="center"><input id="prix" type="text" name="prix" value='<?php if(isset($view['form']['prix'])) echo$view['form']['prix'];?>' placeholder="Prix du produit">  </td>
+                <td width="42px" align="left">Prix d'achat <br>Prix de vente</td>   
+                <td align="center">
+                    <input id="prixAT" type="text" name="prixAT" value='<?php if(isset($view['form']['prixAT'])) echo$view['form']['prixAT'];?>' placeholder="Prix d'achat">
+                    <input id="prix" type="text" name="prix" value='<?php if(isset($view['form']['prix'])) echo$view['form']['prix'];?>' placeholder="Prix de vente HT">
+                </td>
             </tr>
             <tr>
                 <td width="42px" align="left">Ordonnance</td>
