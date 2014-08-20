@@ -42,7 +42,7 @@
 		addTab("Fournisseurs","<?=WEBROOT?>Fournisseurs/index");
 		addTab("Produits","<?=WEBROOT?>Produits/index");
 		addTab("Factures","<?=WEBROOT?>Factures/index");
-		addTab("Statistiques","<?=WEBROOT?>Statistiques/index");
+		addTab("Tableau de bord","<?=WEBROOT?>Statistiques/index");
 		addTab("Commandes","<?=WEBROOT?>Commandes/index");
 		' >
 		<div id="sousgear">
@@ -110,10 +110,10 @@
 										<div class="text"><span>Factures<span></div>
 							</div>
 							</a>
-							<a href="#" name="Statistiques" onclick='addTab("Statistiques","<?=WEBROOT?>Statistiques/index")'>
+							<a href="#" name="Statistiques" onclick='addTab("Tableau de bord","<?=WEBROOT?>Statistiques/index")'>
 							<div class="line">
 								<div class="back"><div class="statistique_img"></div></div>
-										<div class="text"><span>Statistiques<span></div>
+										<div class="text"><span>Tableau de bord<span></div>
 							</div>
 							</a>
 

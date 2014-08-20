@@ -13,5 +13,6 @@
 <script type="text/javascript" src="<?=WEBROOT?>public/js/table.js"></script>
 <script type="text/javascript" src="<?=WEBROOT?>public/js/app.js"></script>
 <script type="text/javascript" src="<?=WEBROOT?>public/js/jquery.popup.js"></script>
+<script type="text/javascript" src="<?=WEBROOT?>public/js/highcharts.js"></script>
 
 <?php echo $content_for_layout; ?>
