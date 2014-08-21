@@ -35,7 +35,7 @@ $(function(){
                         success : function(data){
 
                             if(data == 'success'){
-                                $('#OKText').html("Succ&egrave;s ! Votre commande a &eacute;t&eacute; modifié.");
+                                $('#OKText').html("Succ&egrave;s ! Le bordereau a &eacute;t&eacute; modifié.");
                                 $('#formOk').show();
                                 $('#formKO').hide();
 
@@ -74,7 +74,7 @@ $(function(){
 <form id="formCommande" action="<?=WEBROOT?>Commandes/modificationBordereau" method="POST" >
     <font color="black" size="4">
     <h2 style="text-align:center">Bordereau</h2>
-    <input type="hidden" id="id" name="id" value="<?=$view['bordereau']?>"
+    <input type="hidden" id="id" name="id" value="<?=$view['bordereau']?>">
     <br />
         <table class="upper_content_forms_table" >
             <?php foreach ($view['lignecommande'] as $key => $l):?>
@@ -93,9 +93,9 @@ $(function(){
                 <td width="42px" align="left">Produit Livré</td>
                 <td align="center">
                     <?php if (isset($view['lignebordereau'][$key])):?>
-                        <input type="text" name="libelleproduit[]" value="<?=$view['lignebordereau'][$key]->Libelle?>" placeholder="Libelle">
+                        <input type="text" name="libelleproduit[]" value="<?=$view['lignebordereau'][$key]->Libelle?>" placeholder="Libelle" disabled>
                     <?php else:?>
-                         <input type="text" name="libelleproduit[]" value="<?=$l->Produit->Libelle?>" placeholder="Libelle">
+                         <input type="text" name="libelleproduit[]" value="<?=$l->Produit->Libelle?>" placeholder="Libelle" disabled>
                     <?php endif; ?>
                 </td>
                 <td width="42px" align="left">Quantité Livré</td>

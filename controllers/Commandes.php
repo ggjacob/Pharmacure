@@ -129,6 +129,7 @@ class Commandes extends Controller{
         foreach ($lignecommande as $l){
             $l->delete();
         }
+        suppressionBordereau($id);
         $commande = new Commande();
         $commande = Doctrine_Core::getTable('commande')->findOneById($id);
         if(!$commande->delete()) $this->redirect('Commandes/index',0);
@@ -161,7 +162,7 @@ class Commandes extends Controller{
         }
         else {
             $lignebordereau = new LigneBordereau();
-            $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau->_index()); 
+            $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau->id); 
         }
         if (isset($lignebordereau)) {
         $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau->id, "lignebordereau" => $lignebordereau, "produit" =>$produit, "lignecommande" => $lignecommande);
@@ -175,14 +176,15 @@ class Commandes extends Controller{
     }
 
     function modificationBordereau(){
-        if ($this->data['id']){
+        $erreur="";
+        if (isset($_POST['id'])){
             $currentBordereau = new Bordereau();
             $currentBordereau = Doctrine_Core::getTable('bordereau')->find($this->data['id']);
             if(!$currentBordereau) $erreur="failed";
             if(empty($erreur)) {
-                $produitList = $this->data['idproduit'];
+                $produitList = $this->data['libelleproduit'];
                 $quantiteList = $this->data['quantite'];
-                $checkList = $this->data['checkproduit'];
+                $checkList = $this->data['checkbordereau'];
                 foreach ($produitList as $key => $p) {
                     //Si la ligne existe on la modifie
                     if($checkList[$key] != 0){
@@ -195,7 +197,7 @@ class Commandes extends Controller{
                     else if($checkList[$key] == 0){
                          //Il faut instancier un nouvel objet pour chaque ligne
                         $lignebordereau = new LigneBordereau();
-                        $lignebordereau->init($this->data['id'], $p, $quantiteList[$key]);
+                        $lignebordereau->init($p, $quantiteList[$key], $this->data['id']);
                         $lignebordereau->save();
                     }
                 }
@@ -203,26 +205,26 @@ class Commandes extends Controller{
             }
             echo $erreur;
         }
+        
     }
             
     
     function suppressionBordereau($id){
+        $bordereau = new Bordereau();
+        $bordereau = Doctrine_Core::getTable('bordereau')->findOneByIdCommande($id);
         $lignebordereau = new LigneBordereau();
-        $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau);
+        $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau->id);
         foreach ($lignebordereau as $l){
             $l->delete();
         }
-        $bordereau = new Bordereau();
-        $bordereau = Doctrine_Core::getTable('bordereau')->findOneById($id);
-        if(!$bordereau->delete()) $this->redirect('Bordereaux/index',0);
-        $erreur="success";
-        echo $erreur;
+        
+        $bordereau->delete();
     }
     
-        function suppressionligneBordereau($id){
+        function suppressionLigneBordereau($id){
         $lignebordereau = new LigneBordereau();
         $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findOneById($id);
-        if(!$lignebordereau->delete()) $this->redirect('Bordereaux/index',0);
+        $lignebordereau->delete();
         
     }
     
