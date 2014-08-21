@@ -264,7 +264,7 @@ Article:
       type: date
     IdProduit:
       type: integer
-    IdFournisseur:
+    IdBordereau:
       type: integer
     DateVente:
       type: date
@@ -282,13 +282,13 @@ Article:
       onDelete: SET NULL
       alias: Produit # on pourra acceder à l'objet avec LigneFacture->Facture
       foreignAlias: ArticleProduits
-    fournisseur:
-      class: Fournisseur
-      local: IdFournisseur
+    bordereau:
+      class: Bordereau
+      local: IdBordereau
       foreign: id
       onDelete: SET NULL
-      alias: Fournisseur # on pourra acceder à l'objet avec Facture->Client
-      foreignAlias: ArticleFournisseur
+      alias: Bordereau # on pourra acceder à l'objet avec Facture->Client
+      foreignAlias: ArticleBordereau
 
 #les fournisseurs :
 Fournisseur:
