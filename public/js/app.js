@@ -230,6 +230,18 @@ function checkLogin(login){
     return reg.test(login);
 }
 
+//Ajoute une ligne dans un formulaire
+function addline(url){
+        $.ajax({
+                    url: url,
+                    success : function(data){
+                        $('.upper_content_forms_table').append(data);
+                }
+                        
+        });
+}
+
+
 //Supprime un element du DataTable
 function Suppression(id, type){
     var result = confirm('Voulez-vous supprimer "'+type+'"');

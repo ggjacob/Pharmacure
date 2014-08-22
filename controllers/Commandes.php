@@ -10,6 +10,7 @@ class Commandes extends Controller{
         $form['type'] ='create';
         $fournisseurs = new Fournisseur();
         $fournisseurs = Doctrine_Core::getTable('fournisseur')->findAll();
+        
         $d['view'] = array("titre" => "Gestion des fournisseurs","fournisseurs"=>$fournisseurs,"form" => $form);
         $this->set($d);
         $this->render('index');
@@ -18,14 +19,26 @@ class Commandes extends Controller{
     function data(){
         $commandes = new Commande();
         $commandes = Doctrine_Core::getTable('commande')->findAll();
+        $bordereaux = new Bordereau();
+        $bordereaux = Doctrine_Core::getTable('bordereau')->findAll();
         
         for ($i=0; $i < $commandes->count() ; $i++) { 
             $commandes[$i]->IdFournisseur =$commandes[$i]->Fournisseur->Libelle;
             $commandes[$i]->IdEtat =$commandes[$i]->Etat->Libelle;
         }
         $commandes = $commandes->toArray(false);
+        foreach ($commandes as $key => $c){
+            $bordereau = new Bordereau();
+            $bordereau = Doctrine_Core::getTable('bordereau')->findOneByIdCommande($c['id']);
+            if($bordereau!= null){
+                $commandes[$key]['IdBordereau']= $bordereau->id;
+            }
+            else{
+                $commandes[$key]['IdBordereau']='0';
+            }
+        }
         $data = array('data' =>$commandes);
-//        var_dump($data);
+        //var_dump($commandes);
         $text = json_encode($data);
         echo $text;
     }
@@ -108,8 +121,7 @@ class Commandes extends Controller{
                                 $lignecommande->init($this->data['id'], $p, $quantiteList[$key]);
                                 $lignecommande->save();
                             }
-                        }
-                        $currentCommande->init2($this->data['idetat']);        
+                        }       
                         $currentCommande->save();
                         $erreur="success";    
                     }
@@ -129,7 +141,16 @@ class Commandes extends Controller{
         foreach ($lignecommande as $l){
             $l->delete();
         }
-        suppressionBordereau($id);
+        
+        $bordereau = new Bordereau();
+        $bordereau = Doctrine_Core::getTable('bordereau')->findOneByIdCommande($id);
+        $lignebordereau = new LigneBordereau();
+        $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau->id);
+        foreach ($lignebordereau as $l){
+            $l->delete();
+        }
+        
+        $bordereau->delete();
         $commande = new Commande();
         $commande = Doctrine_Core::getTable('commande')->findOneById($id);
         if(!$commande->delete()) $this->redirect('Commandes/index',0);
@@ -143,10 +164,14 @@ class Commandes extends Controller{
         if(!$lignecommande->delete()) $this->redirect('Commandes/index',0);
     }
 
-  
+    /**
+     * @UserS('REQUIRED')
+     */
     function indexBordereau($idcommande){
         $commande = new Commande();
         $commande = Doctrine_Core::getTable('commande')->find($idcommande);
+        $form = Array();
+        $form['idetat']=$commande->IdEtat;
         $produit = new Produit();
         $produit = Doctrine_Core::getTable('produit')->findAll();
         $lignecommande = new LigneCommande();
@@ -165,16 +190,40 @@ class Commandes extends Controller{
             $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau->id); 
         }
         if (isset($lignebordereau)) {
-        $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau->id, "lignebordereau" => $lignebordereau, "produit" =>$produit, "lignecommande" => $lignecommande);
+        $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau->id, "lignebordereau" => $lignebordereau, "produit" =>$produit, "lignecommande" => $lignecommande, "form" => $form);
         } 
         else{
-        $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau->id, "produit" =>$produit, "lignecommande" => $lignecommande);
+        $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau->id, "produit" =>$produit, "lignecommande" => $lignecommande, "form" => $form);
         }
     $this->set($d);
     $this->render('indexBordereau');
         
     }
+    
+    function createBordereau($idcommande){
+        $bordereau = new Bordereau();
+            $bordereau->init($idcommande);
+            $bordereau->save();
+            echo "success";
+    }
+    
+    function addArticle(){
+        echo'<tr>
+                
+                <td width="42px" align="left">Article Livré</td>
+                <td align="center">
+                        <input type="text" name="libelleproduit[]" placeholder="Libelle">
+                </td>
+                <td width="42px" align="left">Quantité Livré</td>
+               
+                    <td align="center" ><input width="40px" classe="quantite" type="number" name="quantite[]"  placeholder="0"></td>
+                    <td align="center" onclick="deletenewline(this)"><input width="40px" type="button" name="deletenewline" value="Supprimer"/></td>
+            </tr> ';
+    }
 
+    /**
+     * @UserS('REQUIRED')
+     */
     function modificationBordereau(){
         $erreur="";
         if (isset($_POST['id'])){
@@ -203,9 +252,9 @@ class Commandes extends Controller{
                 }
                 $erreur="success";    
             }
-            echo $erreur;
+            
         }
-        
+        echo $erreur;
     }
             
     
@@ -224,7 +273,7 @@ class Commandes extends Controller{
         function suppressionLigneBordereau($id){
         $lignebordereau = new LigneBordereau();
         $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findOneById($id);
-        $lignebordereau->delete();
+         if(!$lignebordereau->delete()) $this->redirect('Commandes/index',0);
         
     }
     

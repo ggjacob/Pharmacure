@@ -1,7 +1,21 @@
 <script type="text/javascript">
-
+function deleteoldline(selector){
+    var url = $(selector).children('input').attr('id');
+    console.log(url);
+    $.ajax({
+                    url: url,
+                    success : function(data){
+                        $(selector).parent('tr').remove();   
+                    }          
+            });
+    
+}
+function deletenewline(selector){
+    $(selector).parent('tr').remove();
+}
 $(function(){
         $("#formCommande").submit(function(event){
+            event.preventDefault();
             var error = false;
             var libelleproduit = [];
             var quantite = [];
@@ -72,44 +86,28 @@ $(function(){
             </div>
 </div>
 <form id="formCommande" action="<?=WEBROOT?>Commandes/modificationBordereau" method="POST" >
+    <input type="hidden" name="id" value="<?=$view['bordereau']?>">
     <font color="black" size="4">
     <h2 style="text-align:center">Bordereau</h2>
-    <input type="hidden" id="id" name="id" value="<?=$view['bordereau']?>">
     <br />
         <table class="upper_content_forms_table" >
-            <?php foreach ($view['lignecommande'] as $key => $l):?>
+            <?php foreach ($view['lignebordereau'] as $key => $l):?>
             <tr>
-                <td width="42px" align="left">Produit Commandé</td>
-                <td align="center">
-                    <p><?php echo $l->Produit->Libelle ?> </p>
-                </td>
-                <td width="42px" align="left">Quantité commandé</td>   
-                <td align="center"><?php echo $l->Quantite ?></td>
-            </tr>
-            <tr>
-                <?php if (isset($view['lignebordereau'][$key])):?>
                 <input type="hidden" name="checkbordereau[]" value="<?php echo $view['lignebordereau'][$key]->id ?>">
-                <?php endif; ?>
-                <td width="42px" align="left">Produit Livré</td>
+                <td width="42px" align="left">Article Livré</td>
                 <td align="center">
-                    <?php if (isset($view['lignebordereau'][$key])):?>
-                        <input type="text" name="libelleproduit[]" value="<?=$view['lignebordereau'][$key]->Libelle?>" placeholder="Libelle" disabled>
-                    <?php else:?>
-                         <input type="text" name="libelleproduit[]" value="<?=$l->Produit->Libelle?>" placeholder="Libelle" disabled>
-                    <?php endif; ?>
+                        <input type="text" name="libelleproduit[]" value="<?=$view['lignebordereau'][$key]->Libelle?>" placeholder="Libelle" <?php if($view['form']['idetat'] == 3) echo 'disabled' ?>>
                 </td>
                 <td width="42px" align="left">Quantité Livré</td>
-                <?php if (isset($view['lignebordereau'][$key])):?>
-                    <td align="center"><input width="40px" classe="quantite" value="<?=$view['lignebordereau'][$key]->Quantite?>" type="number" name="quantite[]"  placeholder="Quantité"></td>
-                <?php else:?>
-                     <td align="center"><input width="40px" classe="quantite" value="<?=$l->Quantite?>" type="number" name="quantite[]"  placeholder="Quantité"></td>
-                <?php endif; ?>
-            </tr>
-            
+               
+                    <td align="center"><input width="40px" classe="quantite" value="<?=$view['lignebordereau'][$key]->Quantite?>" type="number" name="quantite[]"  placeholder="Quantité" <?php if($view['form']['idetat'] == 3) echo 'disabled' ?>></td>
+                    <td align="center" <?php if($view['form']['idetat'] != 3) echo 'onclick="deleteoldline(this)"' ?>><input id="../suppressionLigneBordereau/<?php echo $l->id ?>" width="40px" type="button" name="deletenewline" value="Supprimer" <?php if($view['form']['idetat'] == 3) echo 'disabled' ?>/></td>
+
+            </tr> 
             <?php endforeach; ?>
         </table>
-        
-        <input type="submit" name="Modif_commande" value="Modifier" class="upper_content_forms_send"/>
+        <input type="button" value="Ajouter Article" onclick="addline('<?=WEBROOT?>Commandes/addArticle')" class="upper_content_forms_send" <?php if($view['form']['idetat'] == 3) echo 'disabled' ?>/>
+        <input type="submit" name="Modif_commande" value="Modifier" class="upper_content_forms_send" <?php if($view['form']['idetat'] == 3) echo 'disabled' ?>/>
         
 </form>
 </div>
