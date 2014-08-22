@@ -33,7 +33,8 @@
             { "data": "IdFournisseur" },
             { "data": "IdEtat" },
             { "data": "Date" },
-            { "data": "DateModif" }
+            { "data": "DateModif" },
+            { "data": "IdBordereau" }
         ],
         scrollY: 400,
         "columnDefs": [
@@ -43,8 +44,8 @@
                 "visible": true,
                 "searchable": false,
                 "mRender": function (data, type, full) {
-                    if(full["IdEtat"]=="Valid&eacute;e" || full["IdEtat"]=="Valid&eacute;e partiellement"){
-                        return '<a id="infos/'+full["id"]+'" onclick="MyPopUp(this.id,800,230,120,250);return false;" href="#" class="js__p_start"><div class="view_icon_table" Onclick=""></div></a><a id="modification/'+full["id"]+'" onclick="MyPopUp(this.id,800,270,120,250);return false;" href="#" class="js__p_start"><div class="modif_icon_table"></div></a><a id="suppression/'+full["id"]+'" name ="'+full["IdFournisseur"]+'" onclick="Suppression(this.id, this.name);return false;" href="#" class="js__p_start"><div class="remove_icon_table"></div></a><a id="indexBordereau/'+full["id"]+'" onclick="MyPopUp(this.id,800,470,120,150);return false;" href="#" class="js__p_start"><div class="remove_icon_table"></div></a>';
+                    if(full["IdBordereau"]=='0'){
+                        return '<a id="infos/'+full["id"]+'" onclick="MyPopUp(this.id,800,230,120,250);return false;" href="#" class="js__p_start"><div class="view_icon_table" Onclick=""></div></a><a id="modification/'+full["id"]+'" onclick="MyPopUp(this.id,800,270,120,250);return false;" href="#" class="js__p_start"><div class="modif_icon_table"></div></a><a id="suppression/'+full["id"]+'" name ="'+full["IdFournisseur"]+'" onclick="Suppression(this.id, this.name);return false;" href="#" class="js__p_start"><div class="remove_icon_table"></div></a><a id="createBordereau/'+full["id"]+'" onclick="newBordereau(this.id);return false;" href="#" class="js__p_start"><div class="remove_icon_table"></div></a>';
                     }
                     else
                     {
@@ -71,6 +72,17 @@
             {
                 "targets": [ 5 ],
                 "visible": false
+            },
+            {
+                "targets": [7],
+                "mRender": function (data, type, full) {
+                    if (full["IdBordereau"]!='0'){
+                        return '<a id="indexBordereau/'+full["id"]+'" onclick="MyPopUp(this.id,800,270,120,250);return false;" href="#" class="js__p_start"><div class="modif_icon_table"></div></a>'
+                    }
+                    else{
+                        return '<div class="modif_icon_table"></div>'
+                    }
+                }
             }
         ]
 //        "Paginate":true, // Pagination True 
@@ -155,7 +167,27 @@ function product_list(id){
             alert(xhr.status + " "+ thrownError);
           }});
         }
-    
+
+function newBordereau(idCommande){
+    var result = confirm('Un bordereau sera créer pour cette commande. Cliquez sur OK pour valider');
+    if(result == true) { 
+    $.ajax({
+                    type : "POST",
+                    url: idCommande,
+                    data: $(this).serialize(),
+                    success : function(data){
+                        
+                        if(data == 'success'){
+                            alert("Le bordereau à été créer.")
+                            $("#data_source").DataTable().ajax.reload();   
+                        }
+                       },
+                    error: function(){
+                        alert("Erreur d'appel, le formulaire ne peut pas fonctionner");
+                    }
+                });
+    }
+}
 </script>
 <div id="form_action" class="add_commande" onClick="show_form('upper_content_forms', 'form_action');"></div>
 <div id="upper_content_forms" >
@@ -200,10 +232,10 @@ function product_list(id){
 <div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes commandes</span></div>
     <table id="data_source">
          <thead>
-            <tr><th width="95px">id</th><th >IdUser</th><th>IdUserModif</th><th>Fournisseur</th><th>Etat</th><th>Date</th><th>Date</th></tr>     
+             <tr><th width="130px">id</th><th >IdUser</th><th>IdUserModif</th><th>Fournisseur</th><th>Etat</th><th>Date</th><th>Date</th><th>Bordereau</th></tr>     
          </thead>
          <tbody>
-        <tbody>
+        </tbody>
     </table>
 </div>
 <div  class="p_body js__p_body js__fadeout">

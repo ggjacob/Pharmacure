@@ -1,13 +1,4 @@
 <script type="text/javascript">
-function addline(url){
-        $.ajax({
-                    url: url,
-                    success : function(data){
-                        $('.upper_content_forms_table').append(data);
-                }
-                        
-        });
-}
 function deletenewline(selector){
     $(selector).parent('tr').remove();
 }
@@ -111,23 +102,12 @@ $(function(){
 </div>
 <form id="formCommande" action="<?=WEBROOT?>Commandes/creation" method="POST" >
     <?php if($view['form']['idetat'] != 2):?>
-    <p>Cette commande ne peut plus etre modifier</p>
+    <p>Cette commande ne peut plus etre modifier</p><br/>
     <?php endif;?>
     <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
     <input type="hidden" value='<?=$view["id"]?>' name="id">
     <font color="black" size="4">
         <table class="upper_content_forms_table" >
-            <tr>
-                <td width="42px" align="left">Etat</td>
-                <td align="center">
-                    <select id="idetat" style="width:90px; text-overflow: ellipsis;" name="idetat" <?php if($view['form']['idetat'] != 2) echo 'disabled' ?>>
-                        
-                        <?php foreach ($view['etat'] as $etats):?>
-                            <option value="<?=$etats->id?>" <?php if($etats->id==$view['form']['idetat']) echo 'selected' ?>> <?=$etats->Libelle?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </td>
-            </tr>
             <?php foreach ($view['lignecommande'] as $l):?>
             <tr>
                 <td width="42px" align="left">Produit</td>
