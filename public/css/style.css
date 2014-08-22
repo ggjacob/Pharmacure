@@ -539,6 +539,78 @@ background-image: url('../images/hide_form.png');
         background: #00C040;
       }   
    
+/*******************************************************************/
+#popup_content_forms {
+        position:absolute; top:5px; left:10px;
+        width:722px; 
+        border-left-style:groove;
+        border-right-style:groove;
+        background: #EFEFEF;
+          padding: 20px 30px 20px 30px;
+          font: 10px Arial, "Arial";
+          color: #888;
+          text-shadow: 1px 1px 1px #FFF;
+          border:1px solid #DADADA;
+          visibility: hidden;
+
+        }
+ #popup_content_forms table.upper_content_forms_table
+
+      { position:relative; left:55px;
+        font: 15px Arial, "Arial";
+        width : calc(100% - 10px); 
+
+      }  
+#popup_content_forms input[type="text"], #upper_content_forms input[type="email"]{
+          border: 1px solid #DADADA;
+          color: #888;
+          height: 24px;
+          margin-bottom: 5px;
+          margin-right: 6px;
+          margin-top: 2px;
+          outline: 0 none;
+          padding: 3px 3px 3px 5px;
+          width: 70%;
+          font: normal 12px/12px Arial, "Arial";
+
+      }
+
+
+     .popup_content_forms_send
+      { position:relative;  left:220px; width:200px; top:10px;
+         background: #15992B;
+        border: none;
+          padding: 2px 25px 2px 25px;
+          color: #FFF;
+      }
+
+      .popup_content_forms_send:hover
+      {
+        background: #00C040;
+      }
+
+      #popup_content_forms textarea
+      { 
+        border: 1px solid #DADADA; width:525px; height:100px;
+        position:relative; left:90px;
+          color: #888;
+          margin-bottom: 0px;
+          margin-right: 6px;
+          margin-top: 2px;
+          outline: 0 none;
+          padding: 3px 3px 3px 5px;
+          font: normal 12px/12px Arial, "Arial";    
+
+      }
+
+      #popup_content_forms textarea:hover
+      { 
+        border-color:#D5BC28;
+      }
+
+      #popup_content_forms table tr td{
+        border:1px solid black;
+      }
 
 
 .blue_icon
@@ -761,6 +833,10 @@ div.dataTables_info
 {
 position:relative;
 right:10px;
+}
+
+.dataTable {
+  width: 100% !important;
 }
 
 /* --------------------------------------------

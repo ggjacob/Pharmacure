@@ -7,6 +7,7 @@
  * 
  * @property integer $IdCommande
  * @property Commande $Commande
+ * @property Doctrine_Collection $ArticleBordereau
  * @property Doctrine_Collection $LigneBordereauBordereau
  * 
  * @package    ##PACKAGE##
@@ -31,6 +32,10 @@ abstract class BaseBordereau extends Doctrine_Record
              'local' => 'IdCommande',
              'foreign' => 'id',
              'onDelete' => 'SET NULL'));
+
+        $this->hasMany('Article as ArticleBordereau', array(
+             'local' => 'id',
+             'foreign' => 'IdBordereau'));
 
         $this->hasMany('LigneBordereau as LigneBordereauBordereau', array(
              'local' => 'id',
