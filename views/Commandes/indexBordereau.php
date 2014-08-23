@@ -1,7 +1,6 @@
 <script type="text/javascript">
 function deleteoldline(selector){
     var url = $(selector).children('input').attr('id');
-    console.log(url);
     $.ajax({
                     url: url,
                     success : function(data){

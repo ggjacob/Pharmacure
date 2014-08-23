@@ -208,14 +208,12 @@ class Commandes extends Controller{
     }
     
     function addArticle(){
-        echo'<tr>
-                
+        echo'<tr>               
                 <td width="42px" align="left">Article Livré</td>
                 <td align="center">
                         <input type="text" name="libelleproduit[]" placeholder="Libelle">
                 </td>
                 <td width="42px" align="left">Quantité Livré</td>
-               
                     <td align="center" ><input width="40px" classe="quantite" type="number" name="quantite[]"  placeholder="0"></td>
                     <td align="center" onclick="deletenewline(this)"><input width="40px" type="button" name="deletenewline" value="Supprimer"/></td>
             </tr> ';
@@ -226,31 +224,38 @@ class Commandes extends Controller{
      */
     function modificationBordereau(){
         $erreur="";
-        if (isset($_POST['id'])){
+        if (isset($this->data['id'])){
             $currentBordereau = new Bordereau();
             $currentBordereau = Doctrine_Core::getTable('bordereau')->find($this->data['id']);
             if(!$currentBordereau) $erreur="failed";
             if(empty($erreur)) {
+                $erreur="success";
                 $produitList = $this->data['libelleproduit'];
                 $quantiteList = $this->data['quantite'];
                 $checkList = $this->data['checkbordereau'];
                 foreach ($produitList as $key => $p) {
                     //Si la ligne existe on la modifie
+                    if(isset($checkList[$key])){
                     if($checkList[$key] != 0){
                         $lignebordereau = new LigneBordereau();
                         $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findOneById($checkList[$key]);
                         $lignebordereau->init2($p, $quantiteList[$key]);
                         $lignebordereau->save();  
                     }
+                    
+                    }
                     // Si la ligne n'existe pas on créer une nouvelle ligne
-                    else if($checkList[$key] == 0){
+                    if(isset($checkList[$key])){
+                   if($checkList[$key] == 0){
                          //Il faut instancier un nouvel objet pour chaque ligne
                         $lignebordereau = new LigneBordereau();
                         $lignebordereau->init($p, $quantiteList[$key], $this->data['id']);
                         $lignebordereau->save();
                     }
+                    }
+                    
                 }
-                $erreur="success";    
+                    
             }
             
         }
