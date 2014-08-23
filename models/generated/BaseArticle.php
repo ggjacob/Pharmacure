@@ -8,13 +8,13 @@
  * @property integer $CodeBarre
  * @property date $DateExpiration
  * @property integer $IdProduit
- * @property integer $IdBordereau
+ * @property integer $IdFournisseur
  * @property date $DateVente
  * @property string $Commentaire
  * @property boolean $Panier
  * @property string $Etat
  * @property Produit $Produit
- * @property Bordereau $Bordereau
+ * @property Fournisseur $Fournisseur
  * @property Doctrine_Collection $LigneFactureArticle
  * 
  * @package    ##PACKAGE##
@@ -36,7 +36,7 @@ abstract class BaseArticle extends Doctrine_Record
         $this->hasColumn('IdProduit', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('IdBordereau', 'integer', null, array(
+        $this->hasColumn('IdFournisseur', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('DateVente', 'date', null, array(
@@ -63,8 +63,8 @@ abstract class BaseArticle extends Doctrine_Record
              'foreign' => 'id',
              'onDelete' => 'SET NULL'));
 
-        $this->hasOne('Bordereau', array(
-             'local' => 'IdBordereau',
+        $this->hasOne('Fournisseur', array(
+             'local' => 'IdFournisseur',
              'foreign' => 'id',
              'onDelete' => 'SET NULL'));
 

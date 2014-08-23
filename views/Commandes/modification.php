@@ -1,5 +1,4 @@
 <script type="text/javascript">
-<<<<<<< HEAD
 function addline(url){
         $.ajax({
                     url: url,
@@ -9,8 +8,6 @@ function addline(url){
                         
         });
 }
-=======
->>>>>>> FETCH_HEAD
 function deletenewline(selector){
     $(selector).parent('tr').remove();
 }
@@ -119,7 +116,6 @@ $(function(){
     <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
     <input type="hidden" value='<?=$view["id"]?>' name="id">
     <font color="black" size="4">
-<<<<<<< HEAD
         <table class="popup_content_forms_table" >
             <tr>
                 <td width="42px" align="left">Etat</td>
@@ -132,9 +128,7 @@ $(function(){
                     </select>
                 </td>
             </tr>
-=======
         <table class="upper_content_forms_table" >
->>>>>>> FETCH_HEAD
             <?php foreach ($view['lignecommande'] as $l):?>
             <tr>
                 <td width="80px" align="left">Produit</td>
