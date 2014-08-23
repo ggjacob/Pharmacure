@@ -235,24 +235,23 @@ class Commandes extends Controller{
                 $checkList = $this->data['checkbordereau'];
                 foreach ($produitList as $key => $p) {
                     //Si la ligne existe on la modifie
-                    if(isset($checkList[$key])){
+                    if(!isset($checkList[$key])){
+                        $checkList[$key] = 0;
+                    }
                     if($checkList[$key] != 0){
                         $lignebordereau = new LigneBordereau();
                         $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findOneById($checkList[$key]);
                         $lignebordereau->init2($p, $quantiteList[$key]);
                         $lignebordereau->save();  
                     }
-                    
-                    }
                     // Si la ligne n'existe pas on créer une nouvelle ligne
-                    if(isset($checkList[$key])){
-                   if($checkList[$key] == 0){
+                   else if($checkList[$key] == 0){
                          //Il faut instancier un nouvel objet pour chaque ligne
                         $lignebordereau = new LigneBordereau();
                         $lignebordereau->init($p, $quantiteList[$key], $this->data['id']);
                         $lignebordereau->save();
                     }
-                    }
+                    
                     
                 }
                     
