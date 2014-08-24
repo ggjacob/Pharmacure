@@ -1,6 +1,6 @@
 <table id="sale_table" width="600px" >
 <?php if($view['clients']->count() > 0) : ?>
-	<tr><th>Action</th><th>Nom</th><th>Prenom</th><th>tel</th></tr>
+	<tr><th width="141px">Action</th><th width="105px">Nom</th><th width="190px">Prenom</th><th>tel</th></tr>
 <?php endif;?>
 </table>
 <div style="height:100px;overflow:auto;">
