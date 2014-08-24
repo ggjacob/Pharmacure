@@ -71,7 +71,7 @@ $(function(){
                             success : function(data){
 
                                 if(data == 'success'){
-                                    $('#OKText').html("Succ&egrave;s ! Votre commande a &eacute;t&eacute; modifi&eacu.");
+                                    $('#OKText').html("Succ&egrave;s ! Votre commande a &eacute;t&eacute; modifi&eacute;e.");
                                     $('#formOk').show();
                                     $('#formKO').hide();
 
