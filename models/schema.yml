@@ -350,8 +350,8 @@ LigneBordereau:
       updated:
         name: DateModif
   columns:
-    Libelle:
-      type: string(255)
+    IdProduit:
+      type: integer
     Quantite:
       type: integer
     IdBordereau:
@@ -364,3 +364,10 @@ LigneBordereau:
       onDelete: SET NULL
       alias: Bordereau # on pourra acceder à l'objet avec LigneFacture->Facture
       foreignAlias: LigneBordereauBordereau
+    produit:
+        class: Produit
+        local: IdProduit
+        foreign: id
+        onDelete: SET NULL
+        alias: Produit # on pourra acceder à l'objet avec LigneFacture->Facture
+        foreignAlias: LigneBordereauProduit

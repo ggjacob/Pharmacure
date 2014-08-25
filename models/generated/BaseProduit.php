@@ -18,6 +18,7 @@
  * @property Taxe $Taxe
  * @property Doctrine_Collection $ArticleProduits
  * @property Doctrine_Collection $LigneCommandeProduit
+ * @property Doctrine_Collection $LigneBordereauProduit
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -77,6 +78,10 @@ abstract class BaseProduit extends Doctrine_Record
              'foreign' => 'IdProduit'));
 
         $this->hasMany('LigneCommande as LigneCommandeProduit', array(
+             'local' => 'id',
+             'foreign' => 'IdProduit'));
+
+        $this->hasMany('LigneBordereau as LigneBordereauProduit', array(
              'local' => 'id',
              'foreign' => 'IdProduit'));
 
