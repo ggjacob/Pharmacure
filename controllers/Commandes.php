@@ -184,11 +184,15 @@ class Commandes extends Controller{
             $bordereau->init($idcommande);
             $bordereau->save();
             
+            foreach($lignecommande as $l){
+                $lignebordereau = new LigneBordereau();
+                $lignebordereau->init($l->id, $l->Quantite, $bordereau->id);
+                $lignebordereau->save();
+            }
         }
-        else {
-            $lignebordereau = new LigneBordereau();
-            $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau->id); 
-        }
+        $lignebordereau = new LigneBordereau();
+        $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau->id); 
+        
         if (isset($lignebordereau)) {
         $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau->id, "lignebordereau" => $lignebordereau, "produit" =>$produit, "lignecommande" => $lignecommande, "form" => $form);
         } 
@@ -204,6 +208,14 @@ class Commandes extends Controller{
         $bordereau = new Bordereau();
             $bordereau->init($idcommande);
             $bordereau->save();
+            
+        $lignecommande = new LigneCommande();
+        $lignecommande = Doctrine_Core::getTable('lignecommande')->findByIdCommande($idcommande);
+        foreach($lignecommande as $l){
+                $lignebordereau = new LigneBordereau();
+                $lignebordereau->init($l->id, $l->Quantite, $bordereau->id);
+                $lignebordereau->save();
+            }
             echo "success";
     }
     
@@ -230,7 +242,7 @@ class Commandes extends Controller{
             if(!$currentBordereau) $erreur="failed";
             if(empty($erreur)) {
                 $erreur="success";
-                $produitList = $this->data['libelleproduit'];
+                $produitList = $this->data['idproduit'];
                 $quantiteList = $this->data['quantite'];
                 $checkList = $this->data['checkbordereau'];
                 foreach ($produitList as $key => $p) {

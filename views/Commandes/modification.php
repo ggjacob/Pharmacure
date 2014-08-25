@@ -24,19 +24,18 @@ function deleteoldline(selector){
 }
 $(function(){
         $("#formCommande").submit(function(event){
-            event.preventDefault();
-            var error = false;
-            var idetat = $("#idetat").val();
-            var result = true
-            if (idetat == 3 || idetat == 1){
-                var result = confirm("Après validation, cette commande ne pourra plus etre modifier. Etes vous sur?");
-            }
-                if(result == true){
-                var msg_alert = 'Merci de selectionner un etat';
+                event.preventDefault();
+                var error = false;
                 var idproduit = [];
                 var quantite = [];
                 $('select[name^="idproduit"]').each(function(){ idproduit.push(this.value); });
                 $('input[name^="quantite"]').each(function(){ quantite.push(this.value); }); 
+                if(idproduit.length == 0){
+                    $('#formOk').hide();
+                        $('#KOText').html("Erreur ! Aucune ligne n'a &eacute;t&eacute; renseign&eacute;e ...");
+                        $('#formKO').show();
+                        error = true;
+                }
 
                 for (i = 0; i < idproduit.length; i++){
                     if (idproduit[i] == ''){
@@ -56,13 +55,8 @@ $(function(){
 
                     }
                 }
-                if(idetat == '')
-                    {
-                        $('#formOk').hide();
-                        $('#KOText').html("Erreur ! Veuillez selectionn&eacute; un &eacute;tat...");
-                        $('#formKO').show();
-                    }
-                    else if(error == false)
+
+                    if(error == false)
                     {
                         $.ajax({
                             type : "POST",
@@ -93,7 +87,7 @@ $(function(){
                         });
                  }
                  return false;
-            }
+            
             });
             
         });
@@ -116,19 +110,8 @@ $(function(){
     <input type="hidden" value='<?=$view["form"]["type"]?>' name="type">
     <input type="hidden" value='<?=$view["id"]?>' name="id">
     <font color="black" size="4">
+        <h2 style="text-align:center">Commande</h2><br />
         <table class="popup_content_forms_table" >
-            <tr>
-                <td width="42px" align="left">Etat</td>
-                <td align="center">
-                    <select id="idetat" style="width:90px; text-overflow: ellipsis;" name="idetat" <?php if($view['form']['idetat'] != 2) echo 'disabled' ?>>
-                        
-                        <?php foreach ($view['etat'] as $etats):?>
-                            <option value="<?=$etats->id?>" <?php if($etats->id==$view['form']['idetat']) echo 'selected' ?>> <?=$etats->Libelle?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </td>
-            </tr>
-        <table class="upper_content_forms_table" >
             <?php foreach ($view['lignecommande'] as $l):?>
             <tr>
                 <td width="80px" align="left">Produit</td>

@@ -9,20 +9,26 @@ function deleteoldline(selector){
             });
     
 }
+
 function deletenewline(selector){
     $(selector).parent('tr').remove();
 }
+
+function addArticle(){
+    
+}
+
 $(function(){
         $("#formCommande").submit(function(event){
             event.preventDefault();
             var error = false;
-            var libelleproduit = [];
+            var idproduit = [];
             var quantite = [];
-            $('select[name^="libelleproduit"]').each(function(){ libelleproduit.push(this.value); });
+            $('select[name^="idproduit"]').each(function(){ idproduit.push(this.value); });
             $('input[name^="quantite"]').each(function(){ quantite.push(this.value); }); 
             
-            for (i = 0; i < libelleproduit.length; i++){
-                if (libelleproduit[i] == ''){
+            for (i = 0; i < idproduit.length; i++){
+                if (idproduit[i] == ''){
                     $('#formOk').hide();
                     $('#KOText').html("Erreur ! Veuillez renseigner un produit pour chaque ligne...");
                     $('#formKO').show();
@@ -93,19 +99,23 @@ $(function(){
             <?php foreach ($view['lignebordereau'] as $key => $l):?>
             <tr>
                 <input type="hidden" name="checkbordereau[]" value="<?php echo $view['lignebordereau'][$key]->id ?>">
-                <td width="42px" align="left">Article Livré</td>
+                <td width="42px" align="left">Produit Livré</td>
                 <td align="center">
-                        <input type="text" name="libelleproduit[]" value="<?=$view['lignebordereau'][$key]->Libelle?>" placeholder="Libelle" <?php if($view['form']['idetat'] == 3) echo 'disabled' ?>>
+                    <select classe="idproduit" style="width:90px; text-overflow: ellipsis;" name="idproduit[]" <?php if($view['form']['idetat'] == 3) echo 'disabled' ?>>
+                        <option value="">Select...</option>
+                        <?php foreach ($view['produit'] as $produit):?>
+                            <option value="<?=$produit->id?>" <?php if($produit->id == $l->IdProduit) echo'selected' ?>> <?=$produit->Libelle?> </option>
+                        <?php endforeach; ?>
+                    </select>
                 </td>
                 <td width="42px" align="left">Quantité Livré</td>
                
                     <td align="center"><input width="40px" classe="quantite" value="<?=$view['lignebordereau'][$key]->Quantite?>" type="number" name="quantite[]"  placeholder="Quantité" <?php if($view['form']['idetat'] == 3) echo 'disabled' ?>></td>
-                    <td align="center" <?php if($view['form']['idetat'] != 3) echo 'onclick="deleteoldline(this)"' ?>><input id="../suppressionLigneBordereau/<?php echo $l->id ?>" width="40px" type="button" name="deletenewline" value="Supprimer" <?php if($view['form']['idetat'] == 3) echo 'disabled' ?>/></td>
+                    <td align="center"><input id="../afficherArticle/<?php echo $view['bordereau']; ?>"  <?php if($view['form']['idetat'] != 3) echo 'onclick="showArticle(this)"' ?> width="50px" type="button" name="showline" value="Afficher article" <?php if($view['form']['idetat'] == 3) echo 'disabled' ?>/>&nbsp;<input id="../ajouterArticle/<?php echo $l->id ?>" <?php if($view['form']['idetat'] != 3) echo 'onclick="addArticle();"' ?> width="50px" type="button" name="addnewline" value="Ajouter article" <?php if($view['form']['idetat'] == 3) echo 'disabled' ?>/></td>
 
             </tr> 
             <?php endforeach; ?>
         </table>
-        <input type="button" value="Ajouter Article" onclick="addline('<?=WEBROOT?>Commandes/addArticle')" class="upper_content_forms_send" <?php if($view['form']['idetat'] == 3) echo 'disabled' ?>/>
         <input type="submit" name="Modif_commande" value="Modifier" class="upper_content_forms_send" <?php if($view['form']['idetat'] == 3) echo 'disabled' ?>/>
         
 </form>
