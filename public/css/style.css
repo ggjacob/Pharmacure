@@ -609,7 +609,7 @@ background-image: url('../images/hide_form.png');
       }
 
       #popup_content_forms table tr td{
-        border:1px solid black;
+        border:0px solid black;
       }
 
 
