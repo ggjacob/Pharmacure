@@ -285,22 +285,23 @@ class Commandes extends Controller{
                     
                     
                 }
-                
-                foreach ($codeList as $key => $c){
-                    if(!isset($checkArticle[$key])){
-                        $checkArticle[$key] = 0;
-                    }
-                    
-                    if($checkArticle[$key] != 0){
-                        $article = new Article();
-                        $article = Doctrine_Core::getTable('article')->findOneById($checkArticle[$key]);
-                        $article->init($c, $dateListe[$key], $produitArticle[$key], $this->data['id']);
-                        $article->save();
-                    }
-                    else if($checkArticle[$key] == 0){
-                        $article = new Article();
-                        $article->init($c, $dateListe[$key], $produitArticle[$key], $this->data['id']);
-                        $article->save();
+                if(isset($codeList)){
+                    foreach ($codeList as $key => $c){
+                        if(!isset($checkArticle[$key])){
+                            $checkArticle[$key] = 0;
+                        }
+
+                        if($checkArticle[$key] != 0){
+                            $article = new Article();
+                            $article = Doctrine_Core::getTable('article')->findOneById($checkArticle[$key]);
+                            $article->init($c, $dateListe[$key], $produitArticle[$key], $this->data['id']);
+                            $article->save();
+                        }
+                        else if($checkArticle[$key] == 0){
+                            $article = new Article();
+                            $article->init($c, $dateListe[$key], $produitArticle[$key], $this->data['id']);
+                            $article->save();
+                        }
                     }
                 }
                     
