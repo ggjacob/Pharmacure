@@ -191,10 +191,12 @@ class Commandes extends Controller{
             }
         }
         $lignebordereau = new LigneBordereau();
-        $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau->id); 
+        $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau->id);
+        $articles = new Article();
+        $articles = Doctrine_Core::getTable('article')->findByIdBordereau($bordereau->id);
         
-        if (isset($lignebordereau)) {
-        $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau->id, "lignebordereau" => $lignebordereau, "produit" =>$produit, "lignecommande" => $lignecommande, "form" => $form);
+        if ($articles != null) {
+        $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau->id, "lignebordereau" => $lignebordereau, "produit" =>$produit, "articles" => $articles, "form" => $form);
         } 
         else{
         $d['view'] = array("titre" => "Bordereau", "bordereau" => $bordereau->id, "produit" =>$produit, "lignecommande" => $lignecommande, "form" => $form);
@@ -219,16 +221,26 @@ class Commandes extends Controller{
             echo "success";
     }
     
-    function addArticle(){
+    function addArticle($idBordereau){
+        $ligneBordereau = new LigneBordereau();
+        $ligneBordereau= Doctrine_Core::getTable('ligneBordereau')->findByIdBordereau($idBordereau);
         echo'<tr>               
-                <td width="42px" align="left">Article Livré</td>
+                <td width="42px" align="left">Code barre</td>
                 <td align="center">
-                        <input type="text" name="libelleproduit[]" placeholder="Libelle">
-                </td>
-                <td width="42px" align="left">Quantité Livré</td>
-                    <td align="center" ><input width="40px" classe="quantite" type="number" name="quantite[]"  placeholder="0"></td>
+                        <input type="hidden" name="checkArticle[]" value="0">
+                        <input type="text" name="cbarticle[]" placeholder="Code Barre">
+                <td width="42px" align="left">Date de péremption</td>
+                    <td align="center" ><input width="40px" classe="date" type="date" name="dateexpiration[]"></td>
+                    <td width="42px" align="left">Produit</td>
+                    <td align="center">
+                        <select classe="idproduit" style="width:90px; text-overflow: ellipsis;" name="idproduitArticle[]">
+                        <option value="">Select...</option>';
+                        foreach ($ligneBordereau as $l){
+                            echo'<option value="'.$l->IdProduit.'">'.$l->Produit->Libelle.'</option>';
+                        }
+                        echo '</select>
                     <td align="center" onclick="deletenewline(this)"><input width="40px" type="button" name="deletenewline" value="Supprimer"/></td>
-            </tr> ';
+            </tr>';
     }
 
     /**
@@ -245,6 +257,12 @@ class Commandes extends Controller{
                 $produitList = $this->data['idproduit'];
                 $quantiteList = $this->data['quantite'];
                 $checkList = $this->data['checkbordereau'];
+                if (isset($this->data['checkArticle'])){
+                    $codeList = $this->data['cbarticle'];
+                    $dateListe = $this->data['dateexpiration'];
+                    $checkArticle = $this->data['checkArticle'];
+                    $produitArticle = $this->data['idproduitArticle'];
+                }
                 foreach ($produitList as $key => $p) {
                     //Si la ligne existe on la modifie
                     if(!isset($checkList[$key])){
@@ -254,7 +272,8 @@ class Commandes extends Controller{
                         $lignebordereau = new LigneBordereau();
                         $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findOneById($checkList[$key]);
                         $lignebordereau->init2($p, $quantiteList[$key]);
-                        $lignebordereau->save();  
+                        $lignebordereau->save();
+                        
                     }
                     // Si la ligne n'existe pas on créer une nouvelle ligne
                    else if($checkList[$key] == 0){
@@ -265,6 +284,24 @@ class Commandes extends Controller{
                     }
                     
                     
+                }
+                
+                foreach ($codeList as $key => $c){
+                    if(!isset($checkArticle[$key])){
+                        $checkArticle[$key] = 0;
+                    }
+                    
+                    if($checkArticle[$key] != 0){
+                        $article = new Article();
+                        $article = Doctrine_Core::getTable('article')->findOneById($checkArticle[$key]);
+                        $article->init($c, $dateListe[$key], $produitArticle[$key], $this->data['id']);
+                        $article->save();
+                    }
+                    else if($checkArticle[$key] == 0){
+                        $article = new Article();
+                        $article->init($c, $dateListe[$key], $produitArticle[$key], $this->data['id']);
+                        $article->save();
+                    }
                 }
                     
             }
@@ -290,6 +327,13 @@ class Commandes extends Controller{
         $lignebordereau = new LigneBordereau();
         $lignebordereau = Doctrine_Core::getTable('lignebordereau')->findOneById($id);
          if(!$lignebordereau->delete()) $this->redirect('Commandes/index',0);
+        
+    }
+    
+    function suppressionArticle($id){
+        $article = new Article();
+        $article = Doctrine_Core::getTable('article')->findOneById($id);
+        if(!$article->delete()) $this->redirect('Commandes/index',0);
         
     }
     

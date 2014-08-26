@@ -77,7 +77,7 @@
                 "targets": [7],
                 "mRender": function (data, type, full) {
                     if (full["IdBordereau"]!='0'){
-                        return '<a id="indexBordereau/'+full["id"]+'" onclick="MyPopUp(this.id,800,270,120,250);return false;" href="#" class="js__p_start"><div class="modif_icon_table"></div></a>'
+                        return '<a id="indexBordereau/'+full["id"]+'" onclick="MyPopUp(this.id,900,350,120,250);return false;" href="#" class="js__p_start"><div class="modif_icon_table"></div></a>'
                     }
                     else{
                         return '<div class="modif_icon_table"></div>'

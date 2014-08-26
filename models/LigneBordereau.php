@@ -19,8 +19,8 @@ class LigneBordereau extends BaseLigneBordereau
         $this->Quantite = $quantite;
     }
     
-    public function init2($libelle, $quantite){
-            $this->Libelle = $libelle;
+    public function init2($idProduit, $quantite){
+            $this->IdProduit = $idProduit;
             $this->Quantite = $quantite;
         }
 }

@@ -13,4 +13,10 @@
 class Article extends BaseArticle
 {
 
+    public function init($codeBarre, $dateExpiration, $idProduit, $idBordereau){
+        $this->CodeBarre = $codeBarre;
+        $this->DateExpiration = $dateExpiration;
+        $this->IdProduit = $idProduit;
+        $this->IdBordereau = $idBordereau;
+    }
 }
