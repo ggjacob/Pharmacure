@@ -225,6 +225,7 @@ function finaliserVente(){
                             $('#OKText').html("Succ&egrave;s ! Votre vente a été finalisé. "+'<a  onclick="back_to_step1(\'step1Content\', \'step5Content\',2);window.open(this.href); return false;"  href="<?=WEBROOT?>Vente/imprimerFacture/'+ data +'">Imprimer Facture</a>');
                             $('#formOk').show();
                             $('#formKO').hide();
+
                             //show_prev_step('step1Content', 'step2Content',2);
                         }
                         else if(data == 'failed'){

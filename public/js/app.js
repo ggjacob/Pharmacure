@@ -143,6 +143,10 @@ function back_to_step1(afficher, masquer,step)
 	$("#produit").val('');
 	submitForm();
 	AfficherPanier();
+
+	$("#client").val('');
+    submitFormRechercheClient();
+    AfficherClient();
 }
 
 
