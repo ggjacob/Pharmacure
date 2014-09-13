@@ -448,8 +448,8 @@ background-image: url('../images/modif_icon.png');
 }
 
 .remove_icon_table
-{
-width:20px; height:20px; position:relative;left:80px;
+{float:left;left:40px;
+width:20px; height:20px;position:relative;
 background-image: url('../images/hide_gray.png');
 }
 .remove_icon_table:hover
@@ -457,6 +457,45 @@ background-image: url('../images/hide_gray.png');
 cursor:pointer;
 background-image: url('../images/hide_form.png'); 
 }
+
+
+.modif_icon_table_bordereau
+{ float:left; left:35px;
+ width:20px; height:20px; position:relative;
+  background-image: url('../images/modif_icon_gray.png'); 
+}
+.modif_icon_table_bordereau:hover
+{
+  width:23px; height:23px;
+cursor:pointer;
+background-image: url('../images/modif_icon.png'); 
+}
+
+.modif_icon_table_no_bordereau
+{ float:center; left:35px;
+ width:20px; height:20px; position:relative;
+  background-image: url('../images/modif_icon_bord.png'); 
+}
+
+.bordereau_icon_table
+{
+float:left;left:55px;
+width:23px; height:23px;position:relative;
+background-image: url('../images/bordereau.png');
+}
+
+.bordereau_icon_table:hover
+{width:26px; height:26px;
+cursor:pointer;
+background-image: url('../images/bordereau_zoom.png'); 
+}
+
+.radd_bord_icon_table
+{
+width:20px; height:20px; position:relative;left:80px;
+background-image: url('../images/hide_gray.png');
+}
+
 /*-------------------------------------------------------*/
 #upper_content_forms {
         position:absolute; top:5px; left:10px;
