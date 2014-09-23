@@ -50,3 +50,21 @@
             <?php endforeach;?>                     
     </table>
 </div>
+<table width="600px">  
+        <tr >
+                <td align="left">
+                    <b>Total HT</b>
+                </td>
+                <td align="right">
+                    <b><?=$view['totalHT']?> f cfa</b>
+                </td>
+        </tr>
+        <tr >
+                <td align="left">
+                    <b>Total TTC</b>
+                </td>
+                <td align="right">
+                    <b><?=$view['totalTTC']?> f cfa</b>
+                </td>
+        </tr>
+    </table>

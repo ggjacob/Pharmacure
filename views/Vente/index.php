@@ -222,14 +222,14 @@ function finaliserVente(){
                     success : function(data){
                         
                         if(data != 'failed'){
-                            $('#OKText').html("Succ&egrave;s ! Votre vente a été finalisé. "+'<a  onclick="back_to_step1(\'step1Content\', \'step5Content\',2);window.open(this.href); return false;"  href="<?=WEBROOT?>Vente/imprimerFacture/'+ data +'">Imprimer Facture</a>');
+                            $('#OKText').html("Succ&egrave;s ! Votre vente a été finalisé. "+'<a  onclick="back_to_step1(\'step1Content\', \'step4Content\',2);window.open(this.href); return false;"  href="<?=WEBROOT?>Vente/imprimerFacture/'+ data +'">Imprimer Facture</a>');
                             $('#formOk').show();
                             $('#formKO').hide();
 
                             //show_prev_step('step1Content', 'step2Content',2);
                         }
                         else if(data == 'failed'){
-                            $('#KOText').html('Erreur ! Veuillez choisir au moins un produit en cliquant <a href="#" onclick="AfficherPanier();back_to_step1(\'step1Content\', \'step5Content\',2);return false;" >ICI</a>');
+                            $('#KOText').html('Erreur ! Veuillez choisir au moins un produit en cliquant <a href="#" onclick="AfficherPanier();back_to_step1(\'step1Content\', \'step4Content\',2);return false;" >ICI</a>');
                             $('#formOk').hide();
                             $('#formKO').show();         
                         }else{
@@ -254,11 +254,10 @@ function cacherRes(){
         <div class="sales_step step_2" id="step_2"><span>2</span></div>
         <div class="sales_step step_3" id="step_3"><span>3</span></div>
         <div class="sales_step step_4" id="step_4"><span>4</span></div>
-        <div class="sales_step step_5" id="step_5"><span>5</span></div>
         <hr class="bar" id="line_1"></hr>
         <hr class="bar" id="line_2"></hr>
         <hr class="bar" id="line_3"></hr>
-        <hr class="bar" id="line_4"></hr>
+        
 </div>
 <div class="SalesContentStep1" id="step1Content">
         <div class="category">
@@ -391,34 +390,11 @@ function cacherRes(){
     <table width="630px">
                         <tr>
                             <td align="left"> <a href="#" onclick="AfficherPanier();show_prev_step('step1Content', 'step2Content',2);return false;" ><div id="precedent" onclick=""></div></a></td>
-                            <td align="right"> <a href="#" onclick="show_next_step('step3Content', 'step2Content',3);return false;"><div class="salesNavigation" id="suivant" ></div></a></td>
+                            <td align="right"> <a href="#" onclick="show_next_step('step3Content', 'step2Content',3);AfficherRecap();return false;"><div class="salesNavigation" id="suivant" ></div></a></td>
                         </tr>
                 </table> 
 </div>
 <div class="salesContent" id="step3Content">
-    
-    <div class="category">
-            <span class="category_title">Remboursement medicament</span>
-            <div class="sub_category">
-                <p>Informations remboursements medicaments</p>
-            </div>
-    </div>
-    
-    <div class="category">
-                <span class="category_title">Informations client</span>
-                <div class="sub_category">
-                    Informations pour remboursement du client
-                </div>
-    </div>
-    <table width="630px">
-                        <tr>
-                            <td align="left"> <a href="#" onclick="show_prev_step('step2Content', 'step3Content',3);return false;" ><div id="precedent" onclick=""></div></a></td>
-                            <td align="right"> <a href="#" onclick="show_next_step('step4Content', 'step3Content',4);AfficherRecap();return false;"><div class="salesNavigation" id="suivant" ></div></a></td>
-                        </tr>
-                </table> 
-</div>
-
-<div class="salesContent" id="step4Content">
     <div class="category">
             <span class="category_title">Récapitulatif</span>
             <div class="sub_category">
@@ -426,22 +402,15 @@ function cacherRes(){
                         <i></i>    
                     </div>
             </div>
-    </div>
-    
-    <div class="category">
-                <span class="category_title">Informations recap remboursement</span>
-                <div class="sub_category">
-                    Informations pour remboursement du client
-                </div>
     </div> 
     <table width="630px">
                         <tr>
-                            <td align="left"> <a href="#" onclick="show_prev_step('step3Content', 'step4Content',4);return false;" ><div id="precedent" onclick=""></div></a></td>
-                            <td align="right"> <a href="#" onclick="cacherRes();show_next_step('step5Content', 'step4Content',5);return false;"><div class="salesNavigation" id="suivant" ></div></a></td>
+                            <td align="left"> <a href="#" onclick="show_prev_step('step2Content', 'step3Content',3);return false;" ><div id="precedent" onclick=""></div></a></td>
+                            <td align="right"> <a href="#" onclick="cacherRes();show_next_step('step4Content', 'step3Content',4);return false;"><div class="salesNavigation" id="suivant" ></div></a></td>
                         </tr>
                 </table>
 </div>
-<div class="salesContent" id="step5Content">
+<div class="salesContent" id="step4Content">
     <div>
             <div style="display:none;" id="formOk" class="alert alert-icon alert-success">
                 <div id="OKText" class="text">
@@ -462,7 +431,7 @@ function cacherRes(){
     </div>
     <table width="630px">
                         <tr>
-                            <td align="left"> <a href="#" onclick="show_prev_step('step4Content', 'step5Content',5);return false;" ><div id="precedent" onclick=""></div></a></td>
+                            <td align="left"> <a href="#" onclick="show_prev_step('step3Content', 'step4Content',4);return false;" ><div id="precedent" onclick=""></div></a></td>
                         </tr>
                 </table>
 </div>

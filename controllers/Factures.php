@@ -39,7 +39,13 @@ class Factures extends Controller{
    function infos($id){
    		$facture = new Facture();
         $facture = Doctrine_Core::getTable('facture')->find($id);
-        $d['view'] = array("facture" => $facture);
+        $totalHT=0;
+        $totalTTC=0;
+        foreach ($facture->LigneFactureFacture as $ligne) {
+            $totalHT  += $ligne->Article->Produit->Prix;
+            $totalTTC += $ligne->Article->Produit->Prix * ( 1 + ($ligne->Article->Produit->Taxe->Taux/100));
+        }
+        $d['view'] = array("facture" => $facture,"totalHT"=>$totalHT,"totalTTC"=>$totalTTC);
         $this->set($d); 
         $this->render('infos');
    	}

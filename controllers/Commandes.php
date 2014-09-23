@@ -16,6 +16,22 @@ class Commandes extends Controller{
         $this->render('index');
     }
 
+    function infos($id){
+        $commande = new Commande();
+        $commande = Doctrine_Core::getTable('commande')->find($id);
+        
+        $totalHT=0;
+        $totalTTC=0;
+        foreach ($commande->LigneCommandeCommande as $ligne) {
+            $totalHT  += $ligne->Produit->Prix*$ligne->Quantite;
+            $totalTTC += ($ligne->Produit->Prix * ( 1 + ($ligne->Produit->Taxe->Taux/100)))*$ligne->Quantite;
+        }
+
+        $d['view'] = array("commande" => $commande,"totalHT"=>$totalHT,"totalTTC"=>$totalTTC);
+        $this->set($d); 
+        $this->render('infos');
+    }
+
     function data(){
         $commandes = new Commande();
         $commandes = Doctrine_Core::getTable('commande')->findAll();
