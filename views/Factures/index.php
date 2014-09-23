@@ -43,7 +43,7 @@
                 "visible": true,
                 "searchable": false,
                 "mRender": function (data, type, full) {
-                return '<a id="infos/'+full["id"]+'" onclick="MyPopUp(this.id,650,230,120,250);return false;" href="#" class="js__p_start"><div class="view_icon_table" onclick="Infos(this.id);return false;"></div><';
+                return '<a id="infos/'+full["id"]+'" onclick="MyPopUp(this.id,650,230,120,200);return false;" href="#" class="js__p_start"><div class="view_icon_table" onclick="Infos(this.id);return false;"></div><';
     }
             },
             {
@@ -88,5 +88,5 @@
          <a href="#" class="p_close js__p_close" title="Fermer" onclick="MyPopupClose();return false;">
               <span></span><span></span>
             </a>
-          <iframe id="IframePopUp" width="100%" height="100%" scrolling="no" src=""></iframe>
+          <iframe id="IframePopUp" width="100%" height="100%" scrolling="yes" src=""></iframe>
     </div>
