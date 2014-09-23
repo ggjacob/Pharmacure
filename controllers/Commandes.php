@@ -215,7 +215,7 @@ class Commandes extends Controller{
         $lignecommande = Doctrine_Core::getTable('lignecommande')->findByIdCommande($idcommande);
         foreach($lignecommande as $l){
                 $lignebordereau = new LigneBordereau();
-                $lignebordereau->init($l->id, $l->Quantite, $bordereau->id);
+                $lignebordereau->init($l->IdProduit, $l->Quantite, $bordereau->id);
                 $lignebordereau->save();
             }
             echo "success";
