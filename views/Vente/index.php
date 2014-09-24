@@ -297,21 +297,21 @@ function cacherRes(){
                   <div id="retourPanier">
                     <i></i>
                     <table id="sale_table" width="600px" >
-                        <tr><th>Action</th><th>Code Barre</th><th>Article</th><th>prix TTC</th></tr>
+                        <tr><th width="100px">Action</th><th width="200px">Code Barre</th><th  width="200px">Article</th><th width="100px">prix TTC</th></tr>
                     </table>
                     <div style="height:100px;overflow:auto;">
                     <table id="sale_table" width="600px">
                     <?php if(isset($_SESSION['panier'])) : ?>
                         <?php foreach($_SESSION['panier'] as $article) : ?>
                             <tr >
-                                <td align="center">
+                                <td width="100px" align="center" style=" border-top-style:solid;border-right-width:1px;">
                                 <a href="#" class="ajoutPanier" id="supprimerArticle/<?=$article->id?>" onclick="panierSupprimer(this.id);return false;" >Supprimer</a>
                                 </td>
-                                <td align="center">
+                                <td width="200px" align="center">
                                     <?=$article->CodeBarre?>
                                 </td>
-                                <td align="center"><?=$article->Produit->Libelle?></td>
-                                <td align="center" style=" border-top-style:solid;border-top-width:1px;"><?=$article->Produit->Prix * ( 1 + ($article->Produit->Taxe->Taux/100))?> f cfa</td>
+                                <td width="200px" align="center"><?=$article->Produit->Libelle?></td>
+                                <td width="100px" align="center" style=" border-top-style:solid;border-top-width:1px;"><?=$article->Produit->Prix * ( 1 + ($article->Produit->Taxe->Taux/100))?> f cfa</td>
                                 </tr>
                         <?php endforeach;?>
                     <?php endif; ?>                     
@@ -367,17 +367,17 @@ function cacherRes(){
                     <a href="#" onclick="viderClient();return false;">Désélectionner</a>
                       <div id="retourClientSelected">
                         <table id="sale_table" width="600px" >
-                        <tr><th>Nom</th><th>Prenom</th><th>tel</th></tr>
+                        <tr><th width="200px">Nom</th><th width="200px">Prenom</th><th>tel</th></tr>
                         </table>
                         <i></i>
                         <div style="height:100px;overflow:auto;">
                         <table id="sale_table" width="600px">
                             <?php if(isset($_SESSION['client'])) : ?>
                                 <tr >
-                                        <td align="center">
+                                        <td width="200px" style=" border-top-style:solid;border-right-width:1px;" align="center">
                                             <?=$_SESSION['client']->Nom?>
                                         </td>
-                                        <td align="center"><?=$_SESSION['client']->Prenom?></td>
+                                        <td width="200px" align="center"><?=$_SESSION['client']->Prenom?></td>
                                         <td align="center" style=" border-top-style:solid;border-top-width:1px;">
                                             <?=$_SESSION['client']->Tel?></td>
                                 </tr>
