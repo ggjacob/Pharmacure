@@ -148,7 +148,7 @@
             <?php foreach ($view['lignebordereau'] as $key => $l): ?>
                 <tr>
                 <input type="hidden" name="checkbordereau[]" value="<?php echo $view['lignebordereau'][$key]->id ?>">
-                <input type="hidden" name="idproduit[]" value="<?= $l->id ?>">
+                <input type="hidden" name="idproduit[]" value="<?= $l->IdProduit ?>">
                 <td width="42px" align="left">Produit Livré</td>
                 <td align="center">
                     <select classe="idproduit" style="width:90px; text-overflow: ellipsis;" name="idproduit[]" disabled>
