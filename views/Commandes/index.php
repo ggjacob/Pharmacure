@@ -229,7 +229,11 @@ function newBordereau(idCommande){
 <div class="lower_content" style="font-size:13; top:20px">
 
 
-<div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes commandes</span></div>
+<div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes commandes</span>
+    <a onclick="refresh();return false;" href="#">
+        <div class="refresh_icon_table" Onclick=""></div>
+    </a>
+</div>
     <table id="data_source">
          <thead>
              <tr><th width="130px">id</th><th >IdUser</th><th>IdUserModif</th><th>Fournisseur</th><th>Etat</th><th>Date</th><th>Date</th><th>Bordereau</th></tr>     

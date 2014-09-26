@@ -424,6 +424,15 @@ cursor:pointer;
 background-image: url('../images/hide_form.png'); 
 }
 /*-------------------- Table ICONS --------------------*/
+
+.refresh_icon_table
+{ float:right;
+  margin-right:3px;
+  width:33px; height:33px; 
+  background-image: url('../images/refresh.png'); 
+}
+
+
 .view_icon_table
 { float:left;left:10px;
  width:20px; height:20px; position:relative;

@@ -3,6 +3,10 @@ $(function() {
       $(".js__p_start").simplePopup();
     });
 
+function refresh(){
+	$("#data_source").DataTable().ajax.reload();
+}
+
 function addTab(title, url){
 					if ($('#tt').tabs('exists', title)){
 					$('#tt').tabs('select', title);

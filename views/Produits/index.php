@@ -210,14 +210,18 @@ $(function(){
 </div>
 
 <div class="lower_content" style="font-size:13; top:20px">
-                                    <div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes Produits</span></div>
-                                    <table id="data_source">
-                         <thead>
-                            <tr ><th>id</th><th>Libelle</th><th>Prix d'achat</th><th>Prix</th><th>Ordonnance</th><th>Commentaire</th><th>Alerte</th><th>Conditionnement</th><th>IdClasse</th><th>IdTaxe</th></tr>    
-                         </thead>
-                         <tbody>
-                        <tbody>
-                    </table>
+<div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes Produits</span>
+    <a onclick="refresh();return false;" href="#">
+        <div class="refresh_icon_table" Onclick=""></div>
+    </a>
+</div>
+<table id="data_source">
+     <thead>
+        <tr ><th>id</th><th>Libelle</th><th>Prix d'achat</th><th>Prix</th><th>Ordonnance</th><th>Commentaire</th><th>Alerte</th><th>Conditionnement</th><th>IdClasse</th><th>IdTaxe</th></tr>    
+     </thead>
+     <tbody>
+    <tbody>
+</table>
 </div>
 <div  class="p_body js__p_body js__fadeout">
     </div>

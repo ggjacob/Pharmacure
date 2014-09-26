@@ -157,7 +157,11 @@ $(function(){
 
 
 <div class="lower_content" style="font-size:13; top:20px">
-<div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes Fournisseurs</span></div>
+<div class="table_header"><div class="menu_icon"></div><span class="table_title">Mes Fournisseurs</span>
+    <a onclick="refresh();return false;" href="#">
+        <div class="refresh_icon_table" Onclick=""></div>
+    </a>
+</div>
         <table id="data_source">
                          <thead>
                             <tr><th width="95px">id</th><th>Libelle</th><th>Adresse</th><th>Tel</th><th>Mail</th><th>Commentaire</th></tr>    
