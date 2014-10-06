@@ -121,6 +121,6 @@ $(function(){
                         <td align="center"><input id="confirm" type="password" name="confirm" placeholder="Confirmer le mot de passe">  </td>
                     </tr>
                 </table>
-                <input type="submit" name="Ajout_client" value="Ajouter" class="upper_content_forms_send"/>
+                <input type="submit" name="Ajout_client" value="Enregistrer" class="upper_content_forms_send"/>
         </form>
 </div>

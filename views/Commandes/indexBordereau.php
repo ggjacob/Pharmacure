@@ -1,8 +1,20 @@
 <script type="text/javascript">
     function showArticle(url) {
-        $('.article_table').show();
+        if (!$('.article_table').is(":visible")) {
+            $('.article_table').show();
+            $('.upper_content_forms_send').first().attr('value', 'Cacher articles');
+        }
+        else {
+            $('.article_table').hide()
+            $('.upper_content_forms_send').first().attr('value', 'Afficher articles');
+        }
     }
+
     function addline(selector, url) {
+        if (!$('.article_table').is(":visible")) {
+            $('.article_table').show();
+            $('.upper_content_forms_send').first().attr('value', 'Cacher articles');
+        }
         $.ajax({
             url: url,
             success: function (data) {
@@ -13,7 +25,7 @@
     }
     function deleteoldline(selector) {
         var url = $(selector).children('input').attr('id');
-        
+
         $.ajax({
             url: url,
             success: function (data) {
@@ -26,19 +38,19 @@
     function updateline(selector, link) {
         var bordereau = $('#formCommande').children('input').first().val();
         var url = $(selector).children('input').attr('id');
-        var codeBarre = $('.article_table').find('#cb'+url).val();
-        var datePeremption = $('.article_table').find('#datep'+url).val();
-        var produit = $('.article_table').find('#produit'+url).val();
+        var codeBarre = $('.article_table').find('#cb' + url).val();
+        var datePeremption = $('.article_table').find('#datep' + url).val();
+        var produit = $('.article_table').find('#produit' + url).val();
         console.log(url);
         console.log(codeBarre);
         console.log(bordereau);
         console.log(datePeremption);
         console.log(produit);
         $.ajax({
-            type:"POST",
-            url: link+"/modificationArticle",
-            data:{bordereau: bordereau, codebarre: codeBarre, dateperemption: datePeremption, produit: produit, id: url},
-            datatype:"json",
+            type: "POST",
+            url: link + "/modificationArticle",
+            data: {bordereau: bordereau, codebarre: codeBarre, dateperemption: datePeremption, produit: produit, id: url},
+            datatype: "json",
             success: function (data) {
                 if (data == 'success') {
                     $('#OKText').html("Succ&egrave;s ! Le bordereau a &eacute;t&eacute; modifié.");
@@ -172,24 +184,26 @@
                         <td width="42px" align="left">Code barre</td>
                         <td align="center">
                             <input type="hidden" name="checkArticle[]" value="<?php echo $view['articles'][$key]->id ?>">
-                            <input classe="cb" id="cb<?=$a->id?>" type="text" name="cbarticle[]" placeholder="Code Barre" value="<?= $a->CodeBarre ?>">
+                            <input classe="cb" id="cb<?= $a->id ?>" type="text" name="cbarticle[]" placeholder="Code Barre" value="<?= $a->CodeBarre ?>">
                         <td width="42px" align="left">Date de péremption</td>
-                        <td align="center" ><input id="datep<?=$a->id?>" width="40px" classe="date" type="date" name="dateexpiration[]" value="<?= $a->DateExpiration ?>"></td>
+                        <td align="center" ><input id="datep<?= $a->id ?>" width="40px" classe="date" type="date" name="dateexpiration[]" value="<?= $a->DateExpiration ?>"></td>
                         <td width="42px" align="left">Produit</td>
                         <td align="center">
-                            <select classe="idproduit" id="produit<?=$a->id?>" style="width:90px; text-overflow: ellipsis;" name="idproduitArticle[]">
+                            <select classe="idproduit" id="produit<?= $a->id ?>" style="width:90px; text-overflow: ellipsis;" name="idproduitArticle[]">
                                 <option value="">Select...</option>';
                                 <?php foreach ($view['lignebordereau'] as $l): ?>{
                                     <option value="<?= $l->IdProduit ?>" <?php if ($l->IdProduit == $a->IdProduit) echo 'selected'; ?>><?= $l->Produit->Libelle ?></option>
                                 <?php endforeach; ?>
                             </select>
-                        <td align="center" onclick="updateline(this, '<?=WEBROOT?>Commandes/modificationArticle')"><input id="<?= $a->id?>" width="40px" type="button" name="updateline" value="Modifier"/></td>
+                        <td align="center" onclick="updateline(this, '<?= WEBROOT ?>Commandes/modificationArticle')"><input id="<?= $a->id ?>" width="40px" type="button" name="updateline" value="Modifier"/></td>
                         <td align="center" onclick="deleteoldline(this)"><input id="../suppressionArticle/<?= $a->id ?>" width="40px" type="button" name="deleteoldline" value="Supprimer"/></td>
 
                     </tr>
                 <?php endforeach; ?>
         </table>
-        <input class="upper_content_forms_send" id="../afficherArticle/<?php echo $view['bordereau']; ?>"  <?php if ($view['form']['idetat'] != 3) echo 'onclick="showArticle(this)"' ?> width="50px" type="button" name="showline" value="Afficher article" <?php if ($view['form']['idetat'] == 3) echo 'disabled' ?>/>&nbsp;<input class="upper_content_forms_send" id="../addArticle/<?php echo $view['bordereau'] ?>" <?php if ($view['form']['idetat'] != 3) echo 'onclick="addline(this, this.id)"' ?> width="50px" type="button" name="addnewline" value="Ajouter article" <?php if ($view['form']['idetat'] == 3) echo 'disabled' ?>/>&nbsp;<input type="submit" name="Modif_commande" value="Modifier" class="upper_content_forms_send" <?php if ($view['form']['idetat'] == 3) echo 'disabled' ?>/> 
+        <input class="upper_content_forms_send" id="../afficherArticle/<?php echo $view['bordereau']; ?>"  <?php if ($view['form']['idetat'] != 3) echo 'onclick="showArticle(this)"' ?> width="50px" type="button" name="showline" value="Afficher articles" <?php if ($view['form']['idetat'] == 3) echo 'disabled' ?>/>&nbsp;
+        <input class="upper_content_forms_send" id="../addArticle/<?php echo $view['bordereau'] ?>" <?php if ($view['form']['idetat'] != 3) echo 'onclick="addline(this, this.id)"' ?> width="50px" type="button" name="addnewline" value="Ajouter article" <?php if ($view['form']['idetat'] == 3) echo 'disabled' ?>/>&nbsp;
+        <input type="submit" name="Modif_commande" value="Enregistrer" class="upper_content_forms_send" <?php if ($view['form']['idetat'] == 3) echo 'disabled' ?>/> 
 
     </form>
 </div>

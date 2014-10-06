@@ -86,7 +86,7 @@ $(function(){
             </tr>
         </table>
         <textarea name="commentaire"  id="commentaire" cols="50" rows="6"  placeholder="Veuillez Taper Un Commentaire"><?php if(isset($view['form']['commentaire'])) echo$view['form']['commentaire'];?></textarea><br>
-        <input type="submit" name="Modif_client" value="Modifier" class="popup_content_forms_send"/>
+        <input type="submit" name="Modif_client" value="Enregistrer" class="popup_content_forms_send"/>
 </form>
 </div>
 

@@ -131,7 +131,7 @@ $(function(){
             <?php endforeach; ?>
         </table>
         <input type="button" value="Ajouter Produit" onclick="addline('<?=WEBROOT?>Commandes/listeProduit')" class="popup_content_forms_send" <?php if($view['form']['idetat'] != 2) echo 'disabled' ?>/>
-        <input type="submit" name="Modif_commande" value="Modifier" class="popup_content_forms_send" <?php if($view['form']['idetat'] != 2) echo 'disabled' ?>/>
+        <input type="submit" name="Modif_commande" value="Enregistrer" class="popup_content_forms_send" <?php if($view['form']['idetat'] != 2) echo 'disabled' ?>/>
         
 </form>
 </div>
