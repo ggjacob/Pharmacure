@@ -1,0 +1,57 @@
+
+ul, ol {
+    list-style: none;
+}
+
+h1 {
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 400; 
+}
+
+h3 {
+  font-size: 25px;
+  font-weight: 600;
+}
+/*#34393E*/
+html {background: white;color:white !important;}
+
+/* Gridster styles */
+.demo {
+    padding-top: 20px;
+    padding-left: 100px;
+    /*background: #34393E;*/
+}
+
+.demo:hover .gridster {
+    opacity: 1;
+}
+
+.gridster {
+    width: 940px;
+    height: 400px
+    margin: 0 auto;
+
+    opacity: .8;
+
+    -webkit-transition: opacity .6s;
+    -moz-transition: opacity .6s;
+    -o-transition: opacity .6s;
+    -ms-transition: opacity .6s;
+    transition: opacity .6s;
+}
+
+
+.gridster .gs_w {
+    /*background: #34393E;*/
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+
+.gridster .preview-holder {
+    border: none!important;
+    background: green!important;
+}
