@@ -28,6 +28,7 @@
 					lang: 'fr',             // language (OPTIONAL)
 				}).elfinder('instance');
 			});
+			
 		</script>
 	</head>
 	<body>
