@@ -152,9 +152,6 @@
         </div>
     </div>
     <form id="formCommande" action="<?= WEBROOT ?>Commandes/modificationBordereau" method="POST" >
-        <?php if ($view['form']['idetat'] == 3): ?>
-            <p>Ce bordereau ne peut plus etre modifier</p><br/>
-        <?php endif; ?>
         <input type="hidden" name="id" value="<?= $view['bordereau'] ?>">
         <font color="black" size="4">
         <h2 style="text-align:center">Bordereau</h2>
@@ -198,13 +195,13 @@
                                     <option value="<?= $l->IdProduit ?>" <?php if ($l->IdProduit == $a->IdProduit) echo 'selected'; ?>><?= $l->Produit->Libelle ?></option>
                                 <?php endforeach; ?>
                             </select>
-                        <td align="center" <?php if ($view['form']['idetat'] != 3) echo 'onclick="updateline(this, <?= WEBROOT ?>Commandes/modificationArticle)"'; ?>><input id="<?= $a->id ?>" width="40px" type="button" name="updateline" value="Modifier"/></td>
-                        <td align="center" <?php if ($view['form']['idetat'] != 3) echo 'onclick="deleteoldline(this)"'; ?>><input id="../suppressionArticle/<?= $a->id ?>" width="40px" type="button" name="deleteoldline" value="Supprimer"/></td>
+                        <td align="center" onclick="updateline(this, '<?= WEBROOT ?>Commandes/modificationArticle')"><input id="<?= $a->id ?>" width="40px" type="button" name="updateline" value="Modifier"/></td>
+                        <td align="center" onclick="deleteoldline(this)"><input id="../suppressionArticle/<?= $a->id ?>" width="40px" type="button" name="deleteoldline" value="Supprimer"/></td>
 
                     </tr>
                 <?php endforeach; ?>
         </table>
-        <input class="upper_content_forms_send" id="../afficherArticle/<?php echo $view['bordereau']; ?>" onclick="showArticle(this)" width="50px" type="button" name="showline" value="Afficher articles"/>&nbsp;
+        <input class="upper_content_forms_send" id="../afficherArticle/<?php echo $view['bordereau']; ?>"  <?php if ($view['form']['idetat'] != 3) echo 'onclick="showArticle(this)"' ?> width="50px" type="button" name="showline" value="Afficher articles" <?php if ($view['form']['idetat'] == 3) echo 'disabled' ?>/>&nbsp;
         <input class="upper_content_forms_send" id="../addArticle/<?php echo $view['bordereau'] ?>" <?php if ($view['form']['idetat'] != 3) echo 'onclick="addline(this, this.id)"' ?> width="50px" type="button" name="addnewline" value="Ajouter article" <?php if ($view['form']['idetat'] == 3) echo 'disabled' ?>/>&nbsp;
         <input type="submit" name="Modif_commande" value="Enregistrer" class="upper_content_forms_send" <?php if ($view['form']['idetat'] == 3) echo 'disabled' ?>/> 
 
