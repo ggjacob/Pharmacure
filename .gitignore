@@ -2,3 +2,5 @@ conf/config.php
 /nbproject/private/
 nbproject/project.properties
 nbproject/project.xml
+/lib/Doc/nbproject/private/
+/lib/gestion_document/nbproject/private/
