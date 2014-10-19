@@ -186,7 +186,7 @@
                     <tr>               
                         <td width="42px" align="left">Code barre</td>
                         <td align="center">
-                            <input type="hidden" name="checkArticle[]" value="<?php echo $view['articles'][$key]->id ?>">
+                            <input type="hidden" maxlength="15" name="checkArticle[]" value="<?php echo $view['articles'][$key]->id ?>">
                             <input classe="cb" id="cb<?= $a->id ?>" type="text" name="cbarticle[]" placeholder="Code Barre" value="<?= $a->CodeBarre ?>">
                         <td width="42px" align="left">Date de péremption</td>
                         <td align="center" ><input id="datep<?= $a->id ?>" width="40px" classe="date" type="date" name="dateexpiration[]" value="<?= $a->DateExpiration ?>"></td>
