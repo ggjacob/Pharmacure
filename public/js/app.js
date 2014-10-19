@@ -270,3 +270,22 @@ function Suppression(id, type){
                 });
     }
 }
+
+window.setTimeout(function() {
+    $.ajax({
+        type: "POST",
+        url: 'Commandes/consolidation',
+        success: function (data) {
+            if (data == 'success') {
+                console.log("Certaines commandes sont passées à Valider");
+            }
+            else{
+                console.log("Pas de changements");
+            }
+        },
+        error: function () {
+            console.log("Erreur d'appel, le formulaire ne peut pas fonctionner");
+        }
+    });
+    
+}, 20000);

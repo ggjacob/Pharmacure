@@ -181,6 +181,10 @@ function newBordereau(idCommande){
                             alert("Le bordereau à été créer.")
                             $("#data_source").DataTable().ajax.reload();   
                         }
+                        else{
+                            alert("La commande ne contient pas de produit, le bordereau ne peut etre créer.")
+                            $("#data_source").DataTable().ajax.reload();  
+                        }
                        },
                     error: function(){
                         alert("Erreur d'appel, le formulaire ne peut pas fonctionner");

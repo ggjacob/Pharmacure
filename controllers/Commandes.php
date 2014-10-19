@@ -217,18 +217,29 @@ class Commandes extends Controller {
     }
 
     function createBordereau($idcommande) {
-        $bordereau = new Bordereau();
-        $bordereau->init($idcommande);
-        $bordereau->save();
+        $check = "failed";
+        $commande = new Commande();
+        $commande = Doctrine_Core::getTable('commande')->find($idcommande);
 
         $lignecommande = new LigneCommande();
         $lignecommande = Doctrine_Core::getTable('lignecommande')->findByIdCommande($idcommande);
-        foreach ($lignecommande as $l) {
-            $lignebordereau = new LigneBordereau();
-            $lignebordereau->init($l->IdProduit, $l->Quantite, $bordereau->id);
-            $lignebordereau->save();
+        if ($lignecommande->count() > 0) {
+
+            $bordereau = new Bordereau();
+            $bordereau->init($idcommande);
+            $bordereau->save();
+            foreach ($lignecommande as $l) {
+                $lignebordereau = new LigneBordereau();
+                $lignebordereau->init($l->IdProduit, $l->Quantite, $bordereau->id);
+                $lignebordereau->save();
+            }
+
+            $commande->IdEtat = 1;
+            $commande->save();
+
+            $check = "success";
         }
-        echo "success";
+        echo $check;
     }
 
     function addArticle($idBordereau) {
@@ -311,9 +322,55 @@ class Commandes extends Controller {
                         }
                     }
                 }
+
+                //Verification du bordereau et changement d'etat de la commande si OK
+                $check = false;
+                $ligneBordereau = new LigneBordereau();
+                $ligneBordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($currentBordereau->id);
+                foreach ($ligneBordereau as $l) {
+                    $quantiteArticle = 0;
+                    $article = new Article();
+                    $article = Doctrine_Core::getTable('article')->findByIdBordereau($currentBordereau->id);
+                    $quantiteArticle = $article->count();
+                    if ($quantiteArticle == $l->Quantite) {
+                        $check = true;
+                    } else {
+                        $check = false;
+                    }
+                }
+                if ($check == true) {
+                    $commande = $bordereau->Commande;
+                    $commande->IdEtat = 3;
+                    $commande->save();
+                }
             }
         }
         echo $erreur;
+    }
+
+    /**
+     * @UserS('REQUIRED')
+     */
+    function checkBordereau(Bordereau $bordereau) {
+        $check = false;
+        $ligneBordereau = new LigneBordereau();
+        $ligneBordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($bordereau->id);
+        foreach ($ligneBordereau as $l) {
+            $quantiteArticle = 0;
+            $article = new Article();
+            $article = Doctrine_Core::getTable('article')->findByIdBordereau($bordereau->id);
+            $quantiteArticle = $article->count();
+            if ($quantiteArticle == $l->Quantite) {
+                $check = true;
+            } else {
+                $check = false;
+            }
+        }
+        if ($check == true) {
+            $commande = $bordereau->Commande;
+            $commande->IdEtat = 3;
+            $commande->save();
+        }
     }
 
     function suppressionBordereau($id) {
@@ -334,8 +391,8 @@ class Commandes extends Controller {
         if (!$lignebordereau->delete())
             $this->redirect('Commandes/index', 0);
     }
-    
-    function modificationArticle(){
+
+    function modificationArticle() {
         $idArticle = $_POST['id'];
         $idBordereau = $_POST['bordereau'];
         $codeBarre = $_POST['codebarre'];
@@ -345,9 +402,8 @@ class Commandes extends Controller {
         $article = Doctrine_Core::getTable('article')->findOneById($idArticle);
         $article->init($codeBarre, $dateExpiration, $idProduit, $idBordereau);
         $article->save();
-        
+
         echo "success";
-        
     }
 
     function suppressionArticle($id) {
@@ -355,6 +411,34 @@ class Commandes extends Controller {
         $article = Doctrine_Core::getTable('article')->findOneById($id);
         if (!$article->delete())
             $this->redirect('Commandes/index', 0);
+    }
+
+    function consolidation() {
+        $bordereau = new Bordereau();
+        $bordereau = Doctrine_Core::getTable('bordereau')->findAll();
+        foreach ($bordereau as $b) {
+            $check = false;
+            $ligneBordereau = new LigneBordereau();
+            $ligneBordereau = Doctrine_Core::getTable('lignebordereau')->findByIdBordereau($b->id);
+            if ($ligneBordereau->count() > 0) {
+                foreach ($ligneBordereau as $l) {
+                    $quantiteArticle = 0;
+                    $article = new Article();
+                    $article = Doctrine_Core::getTable('article')->findByIdBordereau($b->id);
+                    $quantiteArticle = $article->count();
+                    if ($quantiteArticle == $l->Quantite) {
+                        $check = true;
+                    } else {
+                        $check = false;
+                    }
+                }
+                if ($check == true) {
+                    $commande = $bordereau->Commande;
+                    $commande->IdEtat = 3;
+                    $commande->save();
+                }
+            }
+        }
     }
 
 }
