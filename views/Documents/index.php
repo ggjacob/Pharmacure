@@ -17,15 +17,15 @@
 		<script type="text/javascript" src="<?=WEBROOT?>lib/gestion_document/js/elfinder.min.js"></script>
 
 		<!-- elFinder translation (OPTIONAL) -->
-		<script type="text/javascript" src="<?=WEBROOT?>lib/gestion_document/js/i18n/elfinder.ru.js"></script>
+		<script type="text/javascript" src="<?=WEBROOT?>lib/gestion_document/js/i18n/elfinder.fr.js"></script>
 
 		<!-- elFinder initialization (REQUIRED) -->
 		<script type="text/javascript" charset="utf-8">
 			$().ready(function() {
-                                var path = $('span').attr('id');
+                var path = $('span').attr('id');
 				var elf = $('#elfinder').elfinder({
-					url : path // connector URL (REQUIRED)
-					// lang: 'ru',             // language (OPTIONAL)
+					url : path, // connector URL (REQUIRED)
+					lang: 'fr',             // language (OPTIONAL)
 				}).elfinder('instance');
 			});
 		</script>
