@@ -35,7 +35,7 @@
 
     }
 
-    function updateline(selector, link) {
+    function updateline(selector) {
         var bordereau = $('#formCommande').children('input').first().val();
         var url = $(selector).children('input').attr('id');
         var codeBarre = $('.article_table').find('#cb' + url).val();
@@ -48,7 +48,7 @@
         console.log(produit);
         $.ajax({
             type: "POST",
-            url: link + "/modificationArticle",
+            url: "../modificationArticle",
             data: {bordereau: bordereau, codebarre: codeBarre, dateperemption: datePeremption, produit: produit, id: url},
             datatype: "json",
             success: function (data) {
@@ -198,7 +198,8 @@
                                     <option value="<?= $l->IdProduit ?>" <?php if ($l->IdProduit == $a->IdProduit) echo 'selected'; ?>><?= $l->Produit->Libelle ?></option>
                                 <?php endforeach; ?>
                             </select>
-                        <td align="center" <?php if ($view['form']['idetat'] != 3) echo 'onclick="updateline(this, <?= WEBROOT ?>Commandes/modificationArticle)"'; ?>><input id="<?= $a->id ?>" width="40px" type="button" name="updateline" value="Modifier"/></td>
+                        </td>
+                        <td align="center" <?php if ($view['form']['idetat'] != 3) echo 'onclick="updateline(this)"'; ?>><input id="<?= $a->id ?>" width="40px" type="button" name="updateline" value="Modifier"/></td>
                         <td align="center" <?php if ($view['form']['idetat'] != 3) echo 'onclick="deleteoldline(this)"'; ?>><input id="../suppressionArticle/<?= $a->id ?>" width="40px" type="button" name="deleteoldline" value="Supprimer"/></td>
 
                     </tr>
