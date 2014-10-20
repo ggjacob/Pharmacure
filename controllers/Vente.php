@@ -194,6 +194,7 @@ class Vente extends Controller{
             for ($i=0; $i < count($_SESSION['panier']) ; $i++) { 
                 //$_SESSION['panier'][$i]->Panier = 1;
                 $_SESSION['panier'][$i]->Etat = "vendu";
+                $_SESSION['panier'][$i]->DateVente = date('Y-m-d g:i:s',time());
 
                 $ligneFacture = new LigneFacture();
                 $ligneFacture->init($_SESSION['panier'][$i]->id,$idFacture);
