@@ -26,8 +26,8 @@
                                                 <?=$view['today']["CA"]?> F cfa
                                                 <br><?=$view['today']["vente"]?> article(s)
                                                 <br><?=$view['today']["marge"]?> F cfa
-                                                <br>4
-                                                <br>4
+                                                <br><?=$view['today']["nbArticleStock"]?> article(s)
+                                                <br><?=$view['today']["valeurStock"]?> F cfa
                                                 <br>  
                                             </td>
                                         </tr>

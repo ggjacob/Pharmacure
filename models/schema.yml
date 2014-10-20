@@ -259,7 +259,7 @@ Article:
         name: DateModif
   columns:
     CodeBarre:
-      type: integer
+      type: string(255)
     DateExpiration:
       type: date
     IdProduit:
