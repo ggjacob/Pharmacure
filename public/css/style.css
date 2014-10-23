@@ -1204,11 +1204,20 @@ margin:10px 10px 10px 10px;
 
 .category_title{
 position:relative; top:-10px; left:25px;
-background-color:#EFEFEF;
 font-size:20;
 color:#404040;
 padding-left:15px;
 padding-right:15px;
+}
+
+.category_title_statistique
+{
+  background-color: white;
+}
+
+.category_title_vente_color
+{
+  background-color: #f2f0ed ;
 }
 
 .sub_category{

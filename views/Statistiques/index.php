@@ -8,7 +8,7 @@
                             <tr>
                             <td>
                                 <div class="category"; style="width:328px !important;height:110px;">
-                                    <span class="category_title">Aujourd'hui</span>
+                                    <span class="category_title category_title_statistique">Aujourd'hui</span>
                                     <div class="sub_category" style="padding:5px">
                                         <table width="300px">
                                             <tr>
@@ -34,7 +34,7 @@
                             </td>
                             <td>
                             <div class="category"; style="width:328px !important;height:110px;float:right;">
-                                <span class="category_title">Depuis</span>
+                                <span class="category_title category_title_statistique">Depuis</span>
                                 <div class="sub_category" style="padding:5px">
                                     Chiffre d'affaire:
                                     <br><br>Nombre de vente:

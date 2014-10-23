@@ -261,7 +261,7 @@ function cacherRes(){
 </div>
 <div class="SalesContentStep1" id="step1Content">
         <div class="category">
-            <span class="category_title">Choisissez les produits</span>
+            <span class="category_title category_title_vente_color">Choisissez les produits</span>
             <div class="sub_category">
                 <form id="formRecherche" action="<?=WEBROOT?>Vente/rechercher" method="post">
         			<font color="black" size="4">
@@ -291,7 +291,7 @@ function cacherRes(){
             </div>
         </div>
         <div class="category">
-            <span class="category_title">Finalisez votre liste</span>
+            <span class="category_title category_title_vente_color">Finalisez votre liste</span>
             <div class="sub_category">
                   <a href="#" onclick="viderPanier();return false;">Vider le panier</a>
                   <div id="retourPanier">
@@ -337,7 +337,7 @@ function cacherRes(){
                   <iframe id="IframePopUp" width="100%" height="100%" scrolling="no" src=""></iframe>
             </div>
 
-            <span class="category_title">Rechercher votre client</span>
+            <span class="category_title category_title_vente_color">Rechercher votre client</span>
             <div class="sub_category">
                 <form id="formRechercheClient" action="<?=WEBROOT?>Vente/rechercherClient" method="post">
                     <font color="black" size="4">
@@ -362,7 +362,7 @@ function cacherRes(){
     </div>
     
     <div class="category">
-                <span class="category_title">Informations client</span>
+                <span class="category_title category_title_vente_color">Informations client</span>
                 <div class="sub_category">
                     <a href="#" onclick="viderClient();return false;">Désélectionner</a>
                       <div id="retourClientSelected">
@@ -396,7 +396,7 @@ function cacherRes(){
 </div>
 <div class="salesContent" id="step3Content">
     <div class="category">
-            <span class="category_title">Récapitulatif</span>
+            <span class="category_title category_title_vente_color">Récapitulatif</span>
             <div class="sub_category">
                     <div  id="retourRecap">
                         <i></i>    
@@ -422,7 +422,7 @@ function cacherRes(){
             </div>
     </div>
     <div class="category">
-                <span class="category_title">Félicitation</span>
+                <span class="category_title category_title_vente_color">Félicitation</span>
                 <div class="sub_category">
                     Vous êtes sur le point de finaliser la vente.
                     <br><br>
