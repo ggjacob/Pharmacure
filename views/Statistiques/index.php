@@ -6,34 +6,31 @@
                     <li data-row="1" data-col="1" data-sizex="6" data-sizey="3">
                         <table>
                             <tr>
-                                <td>
-                                    
-                                
-                            
-                            <div class="category"; style="width:328px !important;height:110px;">
-                                <span class="category_title">Aujourd'hui</span>
-                                <div class="sub_category" style="padding:5px">
-                                    <table width="300px">
-                                        <tr>
-                                            <td>
-                                            Chiffre d'affaire:
-                                            <br>Nombre de vente:
-                                            <br>Marge brute:
-                                            <br>Articles en stock:
-                                            <br>Valeur du stock:            
-                                            </td>
-                                            <td align="right">
-                                                <?=$view['today']["CA"]?> F cfa
-                                                <br><?=$view['today']["vente"]?> article(s)
-                                                <br><?=$view['today']["marge"]?> F cfa
-                                                <br><?=$view['today']["nbArticleStock"]?> article(s)
-                                                <br><?=$view['today']["valeurStock"]?> F cfa
-                                                <br>  
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>     
-                            </div>
+                            <td>
+                                <div class="category"; style="width:328px !important;height:110px;">
+                                    <span class="category_title">Aujourd'hui</span>
+                                    <div class="sub_category" style="padding:5px">
+                                        <table width="300px">
+                                            <tr>
+                                                <td>
+                                                    Chiffre d'affaire:
+                                                    <br>Nombre de vente:
+                                                    <br>Marge brute:
+                                                    <br>Articles en stock:
+                                                    <br>Valeur du stock:            
+                                                </td>
+                                                <td align="right">
+                                                    <?=$view['today']["CA"]?> F cfa
+                                                    <br><?=$view['today']["vente"]?> article(s)
+                                                    <br><?=$view['today']["marge"]?> F cfa
+                                                    <br><?=$view['today']["nbArticleStock"]?> article(s)
+                                                    <br><?=$view['today']["valeurStock"]?> F cfa
+                                                    <br>  
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>     
+                                </div>
                             </td>
                             <td>
                             <div class="category"; style="width:328px !important;height:110px;float:right;">
