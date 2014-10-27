@@ -336,6 +336,12 @@ background-image: url('../images/menu/menu.png')
   background-image: url('../images/menu/statistique.png');
 }
 
+.documents_img
+{
+  width:50px; height:48px; position:absolute; top:0px;
+  background-image: url('../images/menu/documents.png');
+}
+
 .upper_content
 {
 position:relative;
@@ -426,11 +432,26 @@ background-image: url('../images/hide_form.png');
 /*-------------------- Table ICONS --------------------*/
 
 .refresh_icon_table
-{ float:right;
-  margin-right:3px;
-  width:33px; height:33px; 
+{ 
+  float:right;
+  margin-right:10px;
+  width:30px;
+  height:30px; 
   background-image: url('../images/refresh.png'); 
   background-repeat: no-repeat;
+}
+
+.refresh_icon_table:hover
+{
+  margin-right:10px;
+  width:30px;
+  height:30px; 
+  background-image: url('../images/refresh_black.png');
+  background-repeat: no-repeat;
+  transition:all 0.2s;
+  -wekit-transition:all 0.2s;
+  -moz-transition:all 0.2s;
+  -o-transition:all 0.2s;
 }
 
 .view_icon_table
@@ -1193,13 +1214,19 @@ right:10px;
       background-image: none;
     }
 
+.category_title_legales
+{
+  position: relative;
+  top: -11px;
+  margin-left: 20px;
+  background-color: #ebebeb;
+}
 
-
-.category{
-border:1px #AEAEAE solid;
-max-width:600px;
-margin:10px 10px 10px 10px;
-/*background-color:#EFEFEF;*/
+.category
+{
+  border:1px #AEAEAE solid;
+  max-width:600px;
+  margin:30px 10px 10px 10px;
 }
 
 .category_title{
