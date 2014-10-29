@@ -84,7 +84,7 @@ $(function(){
 	                    </tr>
                     </table>
                         <div class="category">
-                            <span class="category_title_legales">Informations légales</span>
+                            <span class="category_title">Informations légales</span>
                             <div class="sub_category">
                                  <table class="upper_content_forms_table" >
                                         <tr>

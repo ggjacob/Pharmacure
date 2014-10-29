@@ -118,8 +118,7 @@
 							</a>
                                                         <a href="#" name="Statistiques" onclick='addTab("Documents","<?=WEBROOT?>Documents/index")'>
 							<div class="line">
-								<div class="back"><div class="documents_img"></div></div>
-
+								<div class="back"><div class="statistique_img"></div></div>
 										<div class="text"><span>Documents<span></div>
 							</div>
 							</a>
