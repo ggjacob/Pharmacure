@@ -36,9 +36,21 @@
                             <div class="category"; style="width:328px !important;height:110px;float:right;">
                                 <span class="category_title category_title_statistique">Depuis</span>
                                 <div class="sub_category" style="padding:5px">
-                                    Chiffre d'affaire:
-                                    <br><br>Nombre de vente:
-                                    <br><br>Marge brute
+                                    <table width="300px">
+                                            <tr>
+                                                <td>
+                                                    Chiffre d'affaire:
+                                                    <br>Nombre de vente:
+                                                    <br>Marge brute:            
+                                                </td>
+                                                <td align="right">
+                                                    <?=$view['since']["CA"]?> F cfa
+                                                    <br><?=$view['since']["vente"]?> article(s)
+                                                    <br><?=$view['since']["marge"]?> F cfa
+                                                    <br>  
+                                                </td>
+                                            </tr>
+                                    </table>
                                 </div>     
                             </div>
                             </td>
